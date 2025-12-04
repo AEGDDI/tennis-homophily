@@ -5767,3 +5767,507 @@ JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_IL
 JavaScript error: , line 0: AbortError: The operation was aborted. 
 JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
 JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868731946	geckodriver	INFO	Listening on 127.0.0.1:59691
+1764868734981	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 92" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileiGMv42"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868735749	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868735970	Marionette	INFO	Listening on port 59720
+WebDriver BiDi listening on ws://127.0.0.1:59692
+Read port: 59720
+1764868736254	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+JavaScript error: resource://gre/modules/LoginManagerChild.sys.mjs, line 1746: TypeError: can't access property "addEventListener", this.contentWindow.windowRoot is null
+1764868748942	Marionette	INFO	Stopped listening on port 59720
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868758864	geckodriver	INFO	Listening on 127.0.0.1:59768
+1764868761910	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 69" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofilenNkr4W"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868762485	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868762670	Marionette	INFO	Listening on port 59776
+WebDriver BiDi listening on ws://127.0.0.1:59769
+Read port: 59776
+1764868762881	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868771346	Marionette	INFO	Stopped listening on port 59776
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868780697	geckodriver	INFO	Listening on 127.0.0.1:59820
+1764868783750	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 21" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofiledkkLIy"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868784055	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868784122	Marionette	INFO	Listening on port 59829
+WebDriver BiDi listening on ws://127.0.0.1:59821
+Read port: 59829
+1764868784225	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868792839	Marionette	INFO	Stopped listening on port 59829
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868803205	geckodriver	INFO	Listening on 127.0.0.1:59880
+1764868806241	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 81" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileYjIBWk"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868806710	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868806826	Marionette	INFO	Listening on port 59891
+WebDriver BiDi listening on ws://127.0.0.1:59881
+Read port: 59891
+1764868807016	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868816139	Marionette	INFO	Stopped listening on port 59891
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: AbortError: The operation was aborted. 
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868826195	geckodriver	INFO	Listening on 127.0.0.1:59941
+1764868829232	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 42" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileJS4xmj"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868829530	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868829604	Marionette	INFO	Listening on port 59951
+WebDriver BiDi listening on ws://127.0.0.1:59942
+Read port: 59951
+1764868829708	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868838895	Marionette	INFO	Stopped listening on port 59951
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868849232	geckodriver	INFO	Listening on 127.0.0.1:60013
+1764868852278	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 14" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileGn8XOV"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868852585	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868852657	Marionette	INFO	Listening on port 60022
+WebDriver BiDi listening on ws://127.0.0.1:60014
+Read port: 60022
+1764868852759	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868859402	Marionette	INFO	Stopped listening on port 60022
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868869822	geckodriver	INFO	Listening on 127.0.0.1:60085
+1764868872876	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 86" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofile8IGiCO"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868873188	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868873255	Marionette	INFO	Listening on port 60093
+WebDriver BiDi listening on ws://127.0.0.1:60086
+Read port: 60093
+1764868873354	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868879636	Marionette	INFO	Stopped listening on port 60093
+Dynamically enable window occlusion 1
+JavaScript warning: https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2, line 586: Script terminated by timeout at:
+We@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:586:72
+get@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:620:130
+css@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:619:161
+S.fn[o]/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:873:677
+$@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:388:97
+S.fn[o]@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:873:373
+sendMessageOnLoad.prototype.getWidth@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2780:45
+sendMessageOnLoad.prototype.checkSize@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2762:61
+sendMessageOnLoad.prototype.startTimer/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2759:63
+
+JavaScript warning: https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 222 > eval line 1 > eval line 1 > eval, line 1: Script terminated by timeout at:
+S@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 222 > eval line 1 > eval line 1 > eval:1:24
+@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 222 > eval line 1 > eval line 1 > eval:1:48
+uQ@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 222 > eval line 1 > eval line 1 > eval:1:202
+xA@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 222 > eval line 1 > eval line 1 > eval:1:45
+M.N</<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:222:50257
+YT@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:222:25497
+pU@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:222:7758
+C@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:222:14912
+pU/<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:222:7475
+jg</<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:222:48155
+
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868890624	geckodriver	INFO	Listening on 127.0.0.1:60142
+1764868893669	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 43" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofile1hNOBy"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868894025	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868894102	Marionette	INFO	Listening on port 60153
+WebDriver BiDi listening on ws://127.0.0.1:60143
+Read port: 60153
+1764868894257	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868904369	Marionette	INFO	Stopped listening on port 60153
+Dynamically enable window occlusion 1
+JavaScript warning: https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2, line 36: Script terminated by timeout at:
+S@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:36:44
+sendMessageOnLoad.prototype.getHeight@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2788:18
+sendMessageOnLoad.prototype.checkSize@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2762:35
+sendMessageOnLoad.prototype.startTimer/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2759:63
+
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868917587	geckodriver	INFO	Listening on 127.0.0.1:60208
+1764868920617	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 09" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofilebVNBTB"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868921216	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868921342	Marionette	INFO	Listening on port 60216
+WebDriver BiDi listening on ws://127.0.0.1:60209
+Read port: 60216
+1764868921545	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868930738	Marionette	INFO	Stopped listening on port 60216
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868940954	geckodriver	INFO	Listening on 127.0.0.1:60278
+1764868943999	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 79" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileGk22mM"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868944300	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868944366	Marionette	INFO	Listening on port 60291
+WebDriver BiDi listening on ws://127.0.0.1:60279
+Read port: 60291
+1764868944475	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868950892	Marionette	INFO	Stopped listening on port 60291
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: AbortError: The operation was aborted. 
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868961163	geckodriver	INFO	Listening on 127.0.0.1:60341
+1764868964199	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 42" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofiler4JgEv"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868964514	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868964584	Marionette	INFO	Listening on port 60349
+WebDriver BiDi listening on ws://127.0.0.1:60342
+Read port: 60349
+1764868964679	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868971636	Marionette	INFO	Stopped listening on port 60349
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764868981539	geckodriver	INFO	Listening on 127.0.0.1:60397
+1764868984571	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 98" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofile1DQKxO"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764868984896	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764868984967	Marionette	INFO	Listening on port 60405
+WebDriver BiDi listening on ws://127.0.0.1:60398
+Read port: 60405
+1764868985085	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764868994720	Marionette	INFO	Stopped listening on port 60405
+Dynamically enable window occlusion 1
+JavaScript warning: https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2, line 602: Script terminated by timeout at:
+Ke@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:602:45
+Ze@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:609:304
+get@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:620:116
+css@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:619:161
+S.fn[o]/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:873:677
+$@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:388:97
+S.fn[o]@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:873:373
+sendMessageOnLoad.prototype.getWidth@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2780:45
+sendMessageOnLoad.prototype.checkSize@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2762:61
+sendMessageOnLoad.prototype.startTimer/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2759:63
+
+JavaScript warning: https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 7813 > eval line 1 > eval line 1 > eval, line 1: Script terminated by timeout at:
+S@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 7813 > eval line 1 > eval line 1 > eval:1:24
+@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 7813 > eval line 1 > eval line 1 > eval:1:48
+uQ@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 7813 > eval line 1 > eval line 1 > eval:1:202
+xA@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 7813 > eval line 1 > eval line 1 > eval:1:45
+M.N</<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:7813:50257
+YT@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:7813:25497
+pU@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:7813:7758
+C@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:7813:14912
+pU/<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:7813:7475
+jg</<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:7813:48155
+
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: AbortError: The operation was aborted. 
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764869005539	geckodriver	INFO	Listening on 127.0.0.1:60468
+1764869008571	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 69" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileyiW3fA"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764869009113	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764869009268	Marionette	INFO	Listening on port 60476
+WebDriver BiDi listening on ws://127.0.0.1:60469
+Read port: 60476
+1764869009477	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764869020030	Marionette	INFO	Stopped listening on port 60476
+Dynamically enable window occlusion 1
+JavaScript warning: https://s0.2mdn.net/dfp/1879452/5334689486/1745610454719/index.html, line 189: Script terminated by timeout at:
+scheduleNextTick/this.raf<@https://s0.2mdn.net/dfp/1879452/5334689486/1745610454719/index.html:189:31842
+
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764869032262	geckodriver	INFO	Listening on 127.0.0.1:60531
+1764869035341	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 32" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileTURZt4"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764869036177	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764869036444	Marionette	INFO	Listening on port 60545
+WebDriver BiDi listening on ws://127.0.0.1:60532
+Read port: 60545
+1764869036699	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764869048629	Marionette	INFO	Stopped listening on port 60545
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: , line 0: AbortError: The operation was aborted. 
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764869061690	geckodriver	INFO	Listening on 127.0.0.1:60616
+1764869064709	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 17" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileiSydbr"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764869065181	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764869065296	Marionette	INFO	Listening on port 60624
+WebDriver BiDi listening on ws://127.0.0.1:60617
+Read port: 60624
+1764869065485	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764869074278	Marionette	INFO	Stopped listening on port 60624
+Dynamically enable window occlusion 1
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: , line 0: AbortError: The operation was aborted. 
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764869084814	geckodriver	INFO	Listening on 127.0.0.1:60672
+1764869087894	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 73" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofileCNsYwa"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764869088221	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764869088288	Marionette	INFO	Listening on port 60680
+WebDriver BiDi listening on ws://127.0.0.1:60673
+Read port: 60680
+1764869088386	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764869096658	Marionette	INFO	Stopped listening on port 60680
+Dynamically enable window occlusion 1
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
+1764869107185	geckodriver	INFO	Listening on 127.0.0.1:60730
+1764869110248	mozrunner::runner	INFO	Running command: "C:\\Users\\aldi\\AppData\\Local\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless=new" "--remote-de ... 31" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\aldi\\AppData\\Local\\Temp\\rust_mozprofile2jGg0i"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1764869110644	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag" "-headless"
+1764869110729	Marionette	INFO	Listening on port 60738
+WebDriver BiDi listening on ws://127.0.0.1:60731
+Read port: 60738
+1764869110849	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 183"  data: no]
+1764869123155	Marionette	INFO	Stopped listening on port 60738
+Dynamically enable window occlusion 1
+JavaScript warning: https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2, line 602: Script terminated by timeout at:
+Ke@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:602:45
+Ze@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:609:304
+get@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:620:116
+css@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:619:161
+S.fn[o]/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:873:677
+$@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:388:97
+S.fn[o]@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:873:373
+sendMessageOnLoad.prototype.getWidth@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2780:45
+sendMessageOnLoad.prototype.checkSize@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2762:61
+sendMessageOnLoad.prototype.startTimer/<@https://news.atptour.com/assets/scripts/LandingPagesEmbedded1_2:2759:63
+
+JavaScript warning: https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 4876 > eval line 1 > eval line 1 > eval, line 1: Script terminated by timeout at:
+S@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 4876 > eval line 1 > eval line 1 > eval:1:24
+@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 4876 > eval line 1 > eval line 1 > eval:1:48
+uQ@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 4876 > eval line 1 > eval line 1 > eval:1:202
+xA@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval line 4876 > eval line 1 > eval line 1 > eval:1:45
+M.N</<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:4876:50257
+YT@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:4876:25497
+pU@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:4876:7758
+C@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:4876:14912
+pU/<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:4876:7475
+jg</<@https://pagead2.googlesyndication.com/bg/srEyw1CGy7QA-z8K5gw-KNJL_Xru-x_lhYshApT7PMA.js line 2 > eval:4876:48155
+
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.error: (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: (new Error("OHTTP was configured for https://ads.mozilla.org/v1/delete_user but we couldn't fetch a valid config", "moz-src:///browser/modules/ContextId.sys.mjs", 234))
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
+JavaScript error: resource://gre/modules/ObliviousHTTP.sys.mjs, line 117: NS_ERROR_XPC_CANT_CONVERT_PRIMITIVE_TO_ARRAY: Cannot convert primitive JavaScript value into an array arg 2 [nsIObliviousHttpService.newChannel]
+JavaScript error: resource:///modules/AboutNewTab.sys.mjs, line 242: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+JavaScript error: resource://services-settings/RemoteSettingsClient.sys.mjs, line 85: Error: Unknown callback
+JavaScript error: resource://gre/modules/JSONFile.sys.mjs, line 432: TypeError: can't access property "toJSONSafe", this._data is null
