@@ -1,152 +1,77 @@
-albot
-altmaier
-arends
-arevalo
-baena
-baez
-balaji
-bambridge
-barrientos
-basic
-basilashvili
-bedene
-berankis
-bhambri
-blumberg
-bonzi
-bopanna
-bourgue
-brkic
-bublik
-busta
-cacic
-cecchinato
-cerundolo
-clarke
-coria
-cuevas
-daniell
-delbonis
-demoliner
-dodig
-donskoy
-dzumhur
-ebden
-escobar
-etcheverry
-eysseric
-farah
-fucsovics
-galan
-garin
-gaston
-gille
-giron
-golubev
-gonzalez
-gorzny
-granollers
-gray
-guinard
-haase
-halys
-hanfmann
-harris
-heliovaara
-herbert
-hernandez
-hewitt
-holt
-humbert
-inglot
-ivashka
-jacquet
-jebavy
-johnson
-karatsev
-klaasen
-kontinen
-krajicek
-krawietz
-kudla
-kukushkin
-kwon
-lajovic
-lammons
-lehecka
-lindstedt
-lopez
-mahut
-mannarino
-marach
-martin
-martinez
-matos
-mayer
-mayot
-mcdonald
-mclachlan
-mektic
-middelkoop
-millman
-minaur
-molchanov
-molteni
-monroe
-monteiro
-moutet
-munar
-murray
-musetti
-myneni
-nakashima
-nedovyesov
-nedunchezhiyan
-nishioka
-o'connell
-o'mara
-olivetti
-oswald
-otte
-patten
-pavic
-pella
-peniston
-peralta
-popyrin
-querrey
-qureshi
-ram
-ramanathan
-ramos-vinolas
-reboul
-reese
-reyes-varela
-rinderknech
-rojer
-ruud
-salisbury
-sandgren
-saville
-schwartzman
-shapovalov
-sharan
-shelton
-skugor
-skupski
-soares
-sock
-sousa
-struff
-taberner
-tabilo
-travaglia
-tsitsipas
-varillas
-venus
-vesely
-vliegen
-withrow
-wolf
-zandschulp
-zelenay
+d altmaier
+s baez
+n barrientos
+n basilashvili
+a bedene
+w blumberg
+b bonzi
+r bopanna
+t brkic
+n cacic
+f coria
+g escobar
+r farah
+f fognini
+m fucsovics
+r galloway
+h gaston
+s gille
+m giron
+a golubev
+s gonzalez
+s gorzny
+m granollers
+q halys
+b holt
+u humbert
+i ivashka
+k jacquet
+n jarry
+s johnson
+d kudla
+m kukushkin
+d lajovic
+j lehecka
+n mahut
+o marach
+f martin
+l martinez
+p martinez
+r matos
+h mayot
+m mcdonald
+b mclachlan
+m middelkoop
+j millman
+j munar
+s myneni
+y nishioka
+a olivetti
+p oswald
+a pavlasek
+a popyrin
+s querrey
+a qureshi
+r ram
+a ramos-vinolas
+h reese
+j rojer
+c ruud
+l sanchez
+t sandgren
+l saville
+d shapovalov
+d sharan
+b shelton
+k skupski
+j sousa
+j struff
+s travaglia
+s tsitsipas
+j vesely
+j vliegen
+s weissborn
+j withrow
+y wu
+i zelenay
+j zielinski
