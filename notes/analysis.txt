@@ -1,0 +1,45 @@
+  Part 1 — Pressure Outcomes                                                                                                                                                
+                                                                                                                                                                            
+  ┌────────────────────────────────┬───────┬───────┐                                                                                                                        
+  │            Outcome             │   N   │ Share │                                                                                                                        
+  ├────────────────────────────────┼───────┼───────┤                                                                                                                        
+  │ Regular tiebreak (sets 1 or 2) │ 964   │ 44.0% │                                                                                                                        
+  ├────────────────────────────────┼───────┼───────┤                                                                                                                        
+  │ Match tiebreak / super-tb      │ 30    │ 1.4%  │                                                                                                                        
+  ├────────────────────────────────┼───────┼───────┤                                                                                                                        
+  │ Any tiebreak                   │ 1,076 │ 49.1% │                                                                                                                        
+  ├────────────────────────────────┼───────┼───────┤                                                                                                                        
+  │ Went to 3 sets                 │ 903   │ 41.2% │                                                                                                                        
+  ├────────────────────────────────┼───────┼───────┤                                                                                                                        
+  │ Comeback wins                  │ 395   │ 18.0% │                                                                                                                        
+  └────────────────────────────────┴───────┴───────┘
+
+  Match tiebreaks (10-pt) only appear at the Olympics (20) and Wimbledon (10); the rest are treated together for regression but separated in descriptives.
+
+  Part 2 — Olympic Cycle Descriptives
+
+  Homophily shares are stable across 2018–23 (~40% same-nationality, ~53% same-language), then drop sharply in 2024–25 to ~31% and ~46%. This drop is a composition artifact
+   — the 2024-25 GS data contains ~134 matches per tournament (vs. ~62 before), importing more early-round pairs with diverse nationalities. Winner teams have a +3.3 pp
+  language advantage over loser teams.
+
+  Parts 3-4 — Baseline Regressions (LPM + Logit, 1,684 GS matches, clustered SE)
+
+  ┌──────────────────┬─────────────────┬────────────────────┬────────────────────┐
+  │     Variable     │ Match Win (LPM) │ Tiebreak Win (LPM) │ Comeback Win (LPM) │
+  ├──────────────────┼─────────────────┼────────────────────┼────────────────────┤
+  │ Same nationality │ +0.031 (p=0.23) │ +0.030 (p=0.46)    │ +0.045 (p=0.28)    │
+  ├──────────────────┼─────────────────┼────────────────────┼────────────────────┤
+  │ Same language    │ +0.034 (p=0.70) │ +0.204 (p=0.11)    │ +0.010 (p=0.95)    │
+  ├──────────────────┼─────────────────┼────────────────────┼────────────────────┤
+  │ Lang. proximity  │ +0.006 (p=0.95) │ -0.185 (p=0.14)    │ -0.043 (p=0.76)    │
+  ├──────────────────┼─────────────────┼────────────────────┼────────────────────┤
+  │ Log(rank)        │ -0.121*         │ -0.058*            │ —                  │
+  └──────────────────┴─────────────────┴────────────────────┴────────────────────┘
+
+  Same language is borderline significant for tiebreak wins (+20 pp, p≈0.11), suggesting language cohesion may matter under pressure — but it doesn't survive to 5%
+  significance and language proximity has an offsetting negative coefficient (high collinearity between the two language measures).
+
+  Part 5 — Olympic Interaction
+
+  No evidence that homophily predicts better performance during the 2022-23 pre-Paris build-up. All interaction terms are small and insignificant (largest p-value = 0.57).
+  Ranking and career win rate dominate throughout.
