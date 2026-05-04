@@ -3,7 +3,20 @@
     "allow": [
       "Bash(python -c ' *)",
       "Bash(python *)",
-      "Bash(dir \"C:/Users/ALESSANDRO/Documents/GitHub/tennis-homophily/data/atp/\")"
+      "Bash(dir \"C:/Users/ALESSANDRO/Documents/GitHub/tennis-homophily/data/atp/\")",
+      "Bash(where wkhtmltopdf *)",
+      "Bash(where chromium *)",
+      "Bash(where chrome *)",
+      "Bash(where msedge *)",
+      "Bash(python3)",
+      "Bash(gh api *)",
+      "WebFetch(domain:api.github.com)",
+      "Read(//usr/**)",
+      "Read(//c/Users/aldi/.local/**)",
+      "Read(//c/Users/aldi/anaconda3/**)",
+      "Read(//c/Users/aldi/miniconda3/**)",
+      "Bash(\"/c/Users/aldi/anaconda3/python\" -c \"import pandas; print\\('anaconda ok'\\)\")",
+      "Bash(\"/c/Users/aldi/AppData/Local/Programs/Python/Python310/python\" -c \"import pandas; print\\('py310 ok'\\)\")"
     ]
   }
 }
