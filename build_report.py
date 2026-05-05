@@ -12,8 +12,13 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import statsmodels.formula.api as smf
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 os.makedirs('report', exist_ok=True)
+os.makedirs('pdf', exist_ok=True)
 
 # ─────────────────────────── DATA + VARIABLES ────────────────────────────────
 df = pd.read_excel('data/atp/men_matches_with_ranks_cleaned.xlsx')
@@ -38,9 +43,39 @@ df['ling_prox_diff']     = df['winners_linguistic_proximity'].astype(float) - df
 df['same_country_avg']   = (df['same_country_winners'] + df['same_country_losers'])/2
 df['same_language_avg']  = (df['winners_same_language'] + df['losers_same_language'])/2
 df['ling_prox_avg']      = (df['winners_linguistic_proximity'] + df['losers_linguistic_proximity'])/2
+
+def assign_tokyo_cycle(row):
+    y = row['year']
+    t = row['tournament']
+    if y in [2018, 2019]:
+        return 'Pre-Tokyo (2018–19)'
+    if y == 2020:
+        return 'Tokyo Prep (2020–21)' if t != 'Wimbledon' else None
+    if y == 2021:
+        if t in ['Australian Open', 'Roland Garros', 'Wimbledon']:
+            return 'Tokyo Prep (2020–21)'
+        if t == 'US Open':
+            return 'Post-Tokyo (2021–22)'
+    if y == 2022:
+        return 'Post-Tokyo (2021–22)'
+    return None
+
+def assign_paris_cycle(row):
+    y = row['year']
+    t = row['tournament']
+    if y == 2022:
+        return 'Pre-Paris (2022)'
+    if y in [2023, 2024]:
+        return 'Paris Prep (2023–24)' if t in ['Australian Open', 'Roland Garros', 'Wimbledon'] else ('Post-Paris (2024–25)' if t == 'US Open' else None)
+    if y == 2025:
+        return 'Post-Paris (2024–25)'
+    return None
+
 cycle_map = {2018:'Pre-Tokyo (2018–19)',2019:'Pre-Tokyo (2018–19)',2021:'Post-Tokyo (2021)',
              2022:'Pre-Paris (2022–23)',2023:'Pre-Paris (2022–23)',2024:'Paris 2024',2025:'Post-Paris (2025)'}
 df['cycle'] = df['year'].map(cycle_map)
+df['cycle_tokyo'] = df.apply(assign_tokyo_cycle, axis=1)
+df['cycle_paris'] = df.apply(assign_paris_cycle, axis=1)
 
 gs = df[df['olympics_tourn']==0].copy()
 
@@ -50,28 +85,31 @@ match_vars = ['match_id','tournament','year','surface','stage_code','any_tb','re
 w_row = df[match_vars].copy()
 for col,src in [('same_country','same_country_winners'),('same_language','winners_same_language'),
                 ('ling_prox','winners_linguistic_proximity'),('rank_mean','rank_mean_winners'),
-                ('same_hand','same_hand_winners'),('same_coach','same_coach_winners'),
-                ('wl_career_diff','wl_career_diff_winners')]:
+                ('wl_career_diff','wl_career_diff_winners'),('rank_gap','rank_diff_winners')]:
     w_row[col] = df[src].values
+w_row['single_top100'] = ((df['winners_p1_top100_within_1y']==1) | (df['winners_p2_top100_within_1y']==1)).astype(int)
 w_row['win']=1; w_row['won_tb_s1']=df['w_won_tb_s1'].values; w_row['won_tb_s2']=df['w_won_tb_s2'].values
 
 l_row = df[match_vars].copy()
 for col,src in [('same_country','same_country_losers'),('same_language','losers_same_language'),
                 ('ling_prox','losers_linguistic_proximity'),('rank_mean','rank_mean_losers'),
-                ('same_hand','same_hand_losers'),('same_coach','same_coach_losers'),
-                ('wl_career_diff','wl_career_diff_losers')]:
+                ('wl_career_diff','wl_career_diff_losers'),('rank_gap','rank_diff_losers')]:
     l_row[col] = df[src].values
+l_row['single_top100'] = ((df['losers_p1_top100_within_1y']==1) | (df['losers_p2_top100_within_1y']==1)).astype(int)
 l_row['win']=0
 l_row['won_tb_s1']=(df['tb_s1']&(df['winners_set1']==6)).values
 l_row['won_tb_s2']=(df['tb_s2']&(df['winners_set2']==6)).values
 
 team_df = pd.concat([w_row, l_row], ignore_index=True)
 team_df['log_rank'] = np.log1p(team_df['rank_mean'].clip(lower=1))
+team_df['opp_log_rank'] = team_df.groupby('match_id')['log_rank'].transform('sum') - team_df['log_rank']
 team_df['stage_code'] = team_df['stage_code'].fillna(-1).astype(int)
+team_df['lost_set1'] = np.where(team_df['win']==1, team_df['winner_lost_s1'], ~team_df['winner_lost_s1'])
+team_df['comeback'] = (team_df['win'] & team_df['lost_set1']).astype(int)
 for col in team_df.columns:
     if str(team_df[col].dtype) in ('bool','boolean','Int64','Int32'):
         team_df[col] = team_df[col].fillna(0).astype(int)
-team_gs = team_df[team_df['olympics_tourn']==0].dropna(subset=['log_rank','wl_career_diff']).copy()
+team_gs = team_df[team_df['olympics_tourn']==0].dropna(subset=['log_rank','rank_gap']).copy()
 team_gs['won_regular_tb'] = ((team_gs['won_tb_s1']==1)|(team_gs['won_tb_s2']==1)).astype(int)
 tb_sub = team_gs[team_gs['regular_tb']==1].copy()
 
@@ -85,7 +123,7 @@ print('Data ready. Fitting models...')
 
 # ─────────────────────────── MODELS ──────────────────────────────────────────
 H    = 'same_country + same_language + ling_prox'
-BASE = '+ log_rank + wl_career_diff + same_hand + same_coach'
+BASE = '+ log_rank + opp_log_rank + rank_gap + single_top100'
 FE   = '+ C(tournament) + C(stage_code) + C(year)'
 FE2  = '+ C(tournament) + C(stage_code)'
 
@@ -93,8 +131,10 @@ lpm_win   = smf.ols(f'win ~ {H} {BASE} {FE}', data=team_gs).fit(cov_type='cluste
 logit_win = smf.logit(f'win ~ {H} {BASE} {FE}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']}, disp=False)
 lpm_tb    = smf.ols(f'won_regular_tb ~ {H} {BASE} {FE}', data=tb_sub).fit(cov_type='cluster', cov_kwds={'groups':tb_sub['match_id']})
 logit_tb  = smf.logit(f'won_regular_tb ~ {H} {BASE} {FE}', data=tb_sub).fit(cov_type='cluster', cov_kwds={'groups':tb_sub['match_id']}, disp=False)
-lpm_cb    = smf.ols('comeback ~ same_country_diff + same_language_diff + ling_prox_diff + log_rank_diff + C(tournament) + C(stage_code) + C(year)', data=cdf).fit(cov_type='HC1')
-logit_cb  = smf.logit('comeback ~ same_country_diff + same_language_diff + ling_prox_diff + log_rank_diff + C(tournament) + C(stage_code) + C(year)', data=cdf).fit(disp=False)
+cb_sub = team_gs[team_gs['three_sets']==True].copy()
+cb_sub['comeback'] = cb_sub['comeback'].astype(int)
+lpm_cb    = smf.ols(f'comeback ~ {H} {BASE} {FE}', data=cb_sub).fit(cov_type='cluster', cov_kwds={'groups':cb_sub['match_id']})
+logit_cb  = smf.logit(f'comeback ~ {H} {BASE} {FE}', data=cb_sub).fit(cov_type='cluster', cov_kwds={'groups':cb_sub['match_id']}, disp=False)
 lpm_int   = smf.ols(f'win ~ same_country*pre_olympic + same_language*pre_olympic + ling_prox*pre_olympic {BASE} {FE2}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']})
 logit_int = smf.logit(f'win ~ same_country*pre_olympic + same_language*pre_olympic + ling_prox*pre_olympic {BASE} {FE2}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']}, disp=False)
 print('Models fitted.')
@@ -109,6 +149,35 @@ def fig_to_b64(fig):
     plt.close(fig)
     buf.seek(0)
     return base64.b64encode(buf.read()).decode()
+
+def html_to_pdf(html_path, pdf_path):
+    options = Options()
+    options.add_argument('--headless=new')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-software-rasterizer')
+    options.add_argument('--hide-scrollbars')
+    options.add_argument('--disable-infobars')
+    options.add_argument('--disable-extensions')
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
+    try:
+        driver.get('file:///' + os.path.abspath(html_path).replace('\\', '/'))
+        driver.execute_cdp_cmd('Page.enable', {})
+        result = driver.execute_cdp_cmd('Page.printToPDF', {
+            'printBackground': True,
+            'landscape': False,
+            'marginTop': 0.4,
+            'marginBottom': 0.4,
+            'marginLeft': 0.4,
+            'marginRight': 0.4,
+        })
+        with open(pdf_path, 'wb') as f:
+            f.write(base64.b64decode(result['data']))
+    finally:
+        driver.quit()
+
 
 def reg_row(res, var, label, note_mfx=False):
     if var not in res.params:
@@ -151,13 +220,15 @@ def reg_table_html(results_list, var_labels, model_labels, caption='', nobs_list
 hcols = ['same_country_avg','same_language_avg','ling_prox_avg']
 year_means = gs.groupby('year')[hcols].mean()*100
 
-fig1, axes = plt.subplots(1,3, figsize=(13,4), sharey=False)
+fig1_tokyo, axes = plt.subplots(1,3, figsize=(13,4), sharey=False)
 titles = ['Same Nationality','Same Official Language','Language Proximity (ethnic)']
 colors = ['#2166ac','#1a9850','#d6604d']
 for ax, col, title, clr in zip(axes, hcols, titles, colors):
     ax.plot(year_means.index, year_means[col], marker='o', color=clr, linewidth=2, markersize=6, zorder=3)
-    ax.axvspan(2021.5, 2023.5, alpha=0.10, color='#f4a261', label='Pre-Paris prep')
-    ax.axvline(2024, color='#e76f51', linestyle='--', linewidth=1.5, label='Paris Olympics')
+    ax.axvspan(2017.5, 2019.5, alpha=0.10, color='#8ecae6', label='Pre-Tokyo')
+    ax.axvspan(2019.5, 2021.5, alpha=0.10, color='#f4a261', label='Tokyo Prep')
+    ax.axvspan(2021.5, 2022.5, alpha=0.10, color='#2a9d8f', label='Post-Tokyo')
+    ax.axvline(2021.5, color='#d62728', linestyle='--', linewidth=1.8, alpha=0.8, label='Tokyo Olympics', zorder=2)
     ax.set_title(title, fontsize=10, fontweight='bold')
     ax.set_xlabel('Year', fontsize=9)
     ax.set_ylabel('Share of pairs (%)', fontsize=9)
@@ -166,10 +237,30 @@ for ax, col, title, clr in zip(axes, hcols, titles, colors):
     ax.tick_params(axis='x', rotation=45, labelsize=8)
     ax.grid(axis='y', alpha=0.3)
     ax.legend(fontsize=7)
-fig1.suptitle('Cultural Homophily in Grand Slam Doubles — Olympic Cycle Pattern',
-              fontsize=12, fontweight='bold', y=1.02)
+fig1_tokyo.suptitle('Cultural Homophily in Grand Slam Doubles — Tokyo 2021 Cycle',
+                  fontsize=12, fontweight='bold', y=1.02)
 plt.tight_layout()
-fig1_b64 = fig_to_b64(fig1)
+fig1_tokyo_b64 = fig_to_b64(fig1_tokyo)
+
+fig1_paris, axes = plt.subplots(1,3, figsize=(13,4), sharey=False)
+for ax, col, title, clr in zip(axes, hcols, titles, colors):
+    ax.plot(year_means.index, year_means[col], marker='o', color=clr, linewidth=2, markersize=6, zorder=3)
+    ax.axvspan(2021.5, 2022.5, alpha=0.10, color='#8ecae6', label='Pre-Paris')
+    ax.axvspan(2022.5, 2024.5, alpha=0.10, color='#f4a261', label='Paris Prep')
+    ax.axvspan(2024.5, 2025.5, alpha=0.10, color='#2a9d8f', label='Post-Paris')
+    ax.axvline(2024.5, color='#d62728', linestyle='--', linewidth=1.8, alpha=0.8, label='Paris Olympics', zorder=2)
+    ax.set_title(title, fontsize=10, fontweight='bold')
+    ax.set_xlabel('Year', fontsize=9)
+    ax.set_ylabel('Share of pairs (%)', fontsize=9)
+    ax.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.0f%%'))
+    ax.set_xticks(sorted(gs['year'].unique()))
+    ax.tick_params(axis='x', rotation=45, labelsize=8)
+    ax.grid(axis='y', alpha=0.3)
+    ax.legend(fontsize=7)
+fig1_paris.suptitle('Cultural Homophily in Grand Slam Doubles — Paris 2024 Cycle',
+                  fontsize=12, fontweight='bold', y=1.02)
+plt.tight_layout()
+fig1_paris_b64 = fig_to_b64(fig1_paris)
 
 # Figure 2: Olympic interaction bar chart
 fig2, ax2 = plt.subplots(figsize=(8,4.5))
@@ -223,30 +314,42 @@ print('Figures generated.')
 
 # ─────────────────────────── TABLES ──────────────────────────────────────────
 # Table 1: pressure outcomes
-cycle_order = ['Pre-Tokyo (2018–19)','Post-Tokyo (2021)','Pre-Paris (2022–23)','Paris 2024','Post-Paris (2025)']
-by_cycle = gs.groupby('cycle')[['same_country_avg','same_language_avg','ling_prox_avg']].mean()*100
-by_cycle = by_cycle.reindex(cycle_order)
-by_cycle.columns = ['Same Nationality (%)','Same Language (%)','Ling. Proximity (%)']
-by_cycle['N matches'] = gs.groupby('cycle').size().reindex(cycle_order)
-by_cycle = by_cycle.round(1)
-# add full sample row
+cycle_order_tokyo = ['Pre-Tokyo (2018–19)','Tokyo Prep (2020–21)','Post-Tokyo (2021–22)']
+cycle_order_paris = ['Pre-Paris (2022)','Paris Prep (2023–24)','Post-Paris (2024–25)']
+by_tokyo = gs[gs['cycle_tokyo'].notna()].groupby('cycle_tokyo')[['same_country_avg','same_language_avg','ling_prox_avg']].mean()*100
+by_tokyo = by_tokyo.reindex(cycle_order_tokyo)
+by_tokyo.columns = ['Same Nationality (%)','Same Language (%)','Ling. Proximity (%)']
+by_tokyo['N matches'] = gs[gs['cycle_tokyo'].notna()].groupby('cycle_tokyo').size().reindex(cycle_order_tokyo)
+by_tokyo = by_tokyo.round(1)
+
+by_paris = gs[gs['cycle_paris'].notna()].groupby('cycle_paris')[['same_country_avg','same_language_avg','ling_prox_avg']].mean()*100
+by_paris = by_paris.reindex(cycle_order_paris)
+by_paris.columns = ['Same Nationality (%)','Same Language (%)','Ling. Proximity (%)']
+by_paris['N matches'] = gs[gs['cycle_paris'].notna()].groupby('cycle_paris').size().reindex(cycle_order_paris)
+by_paris = by_paris.round(1)
+
+# add full sample row to both panels
 full_row = pd.DataFrame({
     'Same Nationality (%)': [round(gs['same_country_avg'].mean()*100,1)],
     'Same Language (%)':    [round(gs['same_language_avg'].mean()*100,1)],
     'Ling. Proximity (%)':  [round(gs['ling_prox_avg'].mean()*100,1)],
     'N matches':            [len(gs)],
 }, index=['Full Sample'])
-desc_table = pd.concat([full_row, by_cycle])
 
-def df_to_html(df, id='', bold_first=False):
+desc_tokyo_table = pd.concat([full_row, by_tokyo])
+desc_paris_table = pd.concat([full_row, by_paris])
+
+def df_to_html(df, id='', bold_first=False, caption=''):
     thead = '<tr>' + ''.join(f'<th>{c}</th>' for c in [''] + list(df.columns)) + '</tr>'
     rows = ''
     for i,(idx,row) in enumerate(df.iterrows()):
         cls = ' class="first-row"' if (bold_first and i==0) else (' class="alt"' if i%2==1 else '')
         rows += f'<tr{cls}><td class="rowlbl">{idx}</td>' + ''.join(f'<td class="num">{v}</td>' for v in row) + '</tr>'
-    return f'<table class="dtable" id="{id}"><thead>{thead}</thead><tbody>{rows}</tbody></table>'
+    cap = f'<caption>{caption}</caption>' if caption else ''
+    return f'<table class="dtable" id="{id}">{cap}<thead>{thead}</thead><tbody>{rows}</tbody></table>'
 
-desc_html = df_to_html(desc_table, id='desc', bold_first=True)
+desc_tokyo_html = df_to_html(desc_tokyo_table, id='desc_tokyo', bold_first=True, caption='Table 2A. Tokyo 2021 cycle — Team composition across period')
+desc_paris_html = df_to_html(desc_paris_table, id='desc_paris', bold_first=True, caption='Table 2B. Paris 2024 cycle — Team composition across period')
 
 # Regression tables
 vars_main = [
@@ -255,10 +358,10 @@ vars_main = [
     ('ling_prox',      'Language proximity (ethnic)'),
 ]
 vars_controls = [
-    ('log_rank',       'Log(rank mean)'),
-    ('wl_career_diff', 'Career W-L ratio diff'),
-    ('same_hand',      'Same dominant hand'),
-    ('same_coach',     'Same coach'),
+    ('log_rank',       'Log(team rank mean)'),
+    ('opp_log_rank',   'Opponent log(team rank mean)'),
+    ('rank_gap',       'Teammate rank gap'),
+    ('single_top100',  'Top-100 singles player'),
 ]
 
 reg_win_html = reg_table_html(
@@ -277,16 +380,11 @@ reg_tb_html = reg_table_html(
     r2_list=[f'{lpm_tb.rsquared:.3f}', f'{logit_tb.prsquared:.3f}'],
 )
 
-cb_vars = [
-    ('same_country_diff',  'Same nationality (winner − loser)'),
-    ('same_language_diff', 'Same language (winner − loser)'),
-    ('ling_prox_diff',     'Lang. proximity (winner − loser)'),
-    ('log_rank_diff',      'Log(rank) advantage'),
-]
+cb_vars = vars_main + vars_controls
 reg_cb_html = reg_table_html(
     [lpm_cb, logit_cb], cb_vars,
     ['LPM', 'Logit'],
-    caption='Table 5. Comeback Win. Outcome = 1 if winning team came back from losing set 1. 3-set matches only. HC1 SE.',
+    caption='Table 5. Comeback Win. Outcome = 1 if winning team came back from losing set 1. 3-set matches only. Tournament, round, year FE. SE clustered by match.',
     nobs_list=[int(lpm_cb.nobs), int(logit_cb.nobs)],
     r2_list=[f'{lpm_cb.rsquared:.3f}', f'{logit_cb.prsquared:.3f}'],
 )
@@ -460,20 +558,28 @@ HTML = f"""<!DOCTYPE html>
 <!-- ── OLYMPIC CYCLES ──────────────────────────────────────────── -->
 <h2>3. Cultural Homophily Across Olympic Cycles</h2>
 
-<p>The descriptive table below shows the share of pairs (averaged over both teams in each match) with each homophily characteristic, broken out by Olympic cycle. Grand Slam matches only — the Olympics tournament is excluded because same-nationality pairing is compulsory there.</p>
+<p>The descriptive tables below show the share of pairs (averaged over both teams in each match) with each homophily characteristic, broken out separately for the Tokyo 2021 and Paris 2024 cycles. Grand Slam matches only — the Olympics tournament is excluded because same-nationality pairing is compulsory there.</p>
 
-{desc_html}
-<p class="note">2024–25 sample sizes are larger (134 matches per Grand Slam vs. ~62 previously) because of expanded draw coverage. This compositional shift — more early-round, lower-ranked, diverse-nationality pairs — accounts for most of the observed decline in 2024–25 homophily shares.</p>
-
+<h3>3.1 Tokyo 2021 cycle</h3>
+{desc_tokyo_html}
+<p class="note">Tokyo panel includes 2020 as Tokyo Prep, excluding Wimbledon 2020 because Olympic doubles was not yet in the build-up path.</p>
 <figure>
-  <img src="data:image/png;base64,{fig1_b64}" alt="Homophily trends">
-  <figcaption>Figure 1. Share of pairs with each cultural characteristic, by year. Grand Slams only. Shaded area = pre-Paris build-up (2022–23). Red dashed line = Paris Olympics 2024.</figcaption>
+  <img src="data:image/png;base64,{fig1_tokyo_b64}" alt="Tokyo cycle homophily trends">
+  <figcaption>Figure 1. Tokyo 2021 cycle homophily trends. Shaded bands mark Pre-Tokyo, Tokyo Prep, and Post-Tokyo periods.</figcaption>
 </figure>
 
-<h3>3.1 Winner vs. Loser Team Homophily</h3>
+<h3>3.2 Paris 2024 cycle</h3>
+{desc_paris_html}
+<p class="note">Paris panel treats the 2023–24 Grand Slams as the Paris Prep window, with 2024 US Open and 2025 matches as Post-Paris.</p>
+<figure>
+  <img src="data:image/png;base64,{fig1_paris_b64}" alt="Paris cycle homophily trends">
+  <figcaption>Figure 2. Paris 2024 cycle homophily trends. Shaded bands mark Pre-Paris, Paris Prep, and Post-Paris periods.</figcaption>
+</figure>
+
+<h3>3.3 Winner vs. Loser Team Homophily</h3>
 <figure>
   <img src="data:image/png;base64,{fig3_b64}" alt="Winner vs loser homophily">
-  <figcaption>Figure 2. Percentage of teams with each homophily trait, split by match outcome. Annotation shows the winner-minus-loser gap.</figcaption>
+  <figcaption>Figure 3. Percentage of teams with each homophily trait, split by match outcome. Annotation shows the winner-minus-loser gap.</figcaption>
 </figure>
 <p>Winner teams are more likely to share a language (+{100*(gs['winners_same_language'].mean()-gs['losers_same_language'].mean()):+.1f} pp) and to be linguistically proximate (+{100*(gs['winners_linguistic_proximity'].mean()-gs['losers_linguistic_proximity'].mean()):+.1f} pp) than loser teams. Same-nationality is marginally more common among losers ({100*gs['same_country_losers'].mean():.1f}% vs {100*gs['same_country_winners'].mean():.1f}%).</p>
 
@@ -511,7 +617,7 @@ HTML = f"""<!DOCTYPE html>
 
 <figure>
   <img src="data:image/png;base64,{fig2_b64}" alt="Olympic interaction">
-  <figcaption>Figure 3. LPM marginal effects of each homophily variable, separately for non-Olympic years (blue) and the pre-Paris build-up period 2022–23 (orange). Error bars = ±1 SE.</figcaption>
+  <figcaption>Figure 4. LPM marginal effects of each homophily variable, separately for non-Olympic years (blue) and the pre-Paris build-up period 2022–23 (orange). Error bars = ±1 SE.</figcaption>
 </figure>
 
 <p>None of the interaction terms are statistically significant. The pre-Olympic dummy itself is also insignificant (p = 0.55), indicating no detectable change in the baseline win rate during the build-up period. The Olympic preparation hypothesis is <strong>not supported</strong> in these data.</p>
@@ -550,4 +656,10 @@ out_path = 'report/homophily_report.html'
 with open(out_path, 'w', encoding='utf-8') as f:
     f.write(HTML)
 print(f'\nReport written to {out_path}')
-print('Open in any browser and use File > Print > Save as PDF to get a PDF.')
+pdf_path = 'pdf/homophily_report.pdf'
+try:
+    html_to_pdf(out_path, pdf_path)
+    print(f'PDF written to {pdf_path}')
+except Exception as e:
+    print('PDF generation failed:', e)
+    print('Open the HTML in a browser and use File > Print > Save as PDF if needed.')
