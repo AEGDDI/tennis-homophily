@@ -80,7 +80,7 @@ df['cycle_paris'] = df.apply(assign_paris_cycle, axis=1)
 gs = df[df['olympics_tourn']==0].copy()
 
 # team panel
-match_vars = ['match_id','tournament','year','surface','stage_code','any_tb','regular_tb','match_tb',
+match_vars = ['match_id','tournament','year','surface','stage_code','any_tb','regular_tb','match_tb','tb_s3_regular',
               'three_sets','comeback','winner_lost_s1','pre_olympic','olympic_period','olympics_tourn']
 w_row = df[match_vars].copy()
 for col,src in [('same_country','same_country_winners'),('same_language','winners_same_language'),
@@ -101,17 +101,17 @@ l_row['won_tb_s1']=(df['tb_s1']&(df['winners_set1']==6)).values
 l_row['won_tb_s2']=(df['tb_s2']&(df['winners_set2']==6)).values
 
 team_df = pd.concat([w_row, l_row], ignore_index=True)
-team_df['log_rank'] = np.log1p(team_df['rank_mean'].clip(lower=1))
-team_df['opp_log_rank'] = team_df.groupby('match_id')['log_rank'].transform('sum') - team_df['log_rank']
+team_df['opp_rank_mean'] = team_df.groupby('match_id')['rank_mean'].transform('sum') - team_df['rank_mean']
 team_df['stage_code'] = team_df['stage_code'].fillna(-1).astype(int)
 team_df['lost_set1'] = np.where(team_df['win']==1, team_df['winner_lost_s1'], ~team_df['winner_lost_s1'])
 team_df['comeback'] = (team_df['win'] & team_df['lost_set1']).astype(int)
 for col in team_df.columns:
     if str(team_df[col].dtype) in ('bool','boolean','Int64','Int32'):
         team_df[col] = team_df[col].fillna(0).astype(int)
-team_gs = team_df[team_df['olympics_tourn']==0].dropna(subset=['log_rank','rank_gap']).copy()
+team_gs = team_df[team_df['olympics_tourn']==0].dropna(subset=['rank_mean','rank_gap']).copy()
 team_gs['won_regular_tb'] = ((team_gs['won_tb_s1']==1)|(team_gs['won_tb_s2']==1)).astype(int)
-tb_sub = team_gs[team_gs['regular_tb']==1].copy()
+team_gs['won_any_tb'] = ((team_gs['won_tb_s1']==1)|(team_gs['won_tb_s2']==1)|(team_gs['match_tb']==1)|(team_gs['tb_s3_regular']==1)).astype(int)
+tb_sub = team_gs[team_gs['any_tb']==1].copy()
 
 cdf = df[(df['olympics_tourn']==0)&(df['three_sets']==True)].copy()
 cdf['log_rank_diff'] = np.log1p(cdf['rank_mean_winners'].clip(lower=1))-np.log1p(cdf['rank_mean_losers'].clip(lower=1))
@@ -122,21 +122,30 @@ cdf = cdf.dropna(subset=['log_rank_diff','same_country_diff'])
 print('Data ready. Fitting models...')
 
 # ─────────────────────────── MODELS ──────────────────────────────────────────
-H    = 'same_country + same_language + ling_prox'
-BASE = '+ log_rank + opp_log_rank + rank_gap + single_top100'
-FE   = '+ C(tournament) + C(stage_code) + C(year)'
+# Align baseline regressions with notebook (`code/analysis/homophily_analysis.ipynb`):
+# culture measure = language proximity (ethnic), plus ranking controls.
+BASE = '+ ling_prox + rank_mean + opp_rank_mean + rank_gap + single_top100'
+FE   = '+ C(tournament):C(year) + C(stage_code)'
 FE2  = '+ C(tournament) + C(stage_code)'
 
-lpm_win   = smf.ols(f'win ~ {H} {BASE} {FE}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']})
-logit_win = smf.logit(f'win ~ {H} {BASE} {FE}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']}, disp=False)
-lpm_tb    = smf.ols(f'won_regular_tb ~ {H} {BASE} {FE}', data=tb_sub).fit(cov_type='cluster', cov_kwds={'groups':tb_sub['match_id']})
-logit_tb  = smf.logit(f'won_regular_tb ~ {H} {BASE} {FE}', data=tb_sub).fit(cov_type='cluster', cov_kwds={'groups':tb_sub['match_id']}, disp=False)
-cb_sub = team_gs[team_gs['three_sets']==True].copy()
-cb_sub['comeback'] = cb_sub['comeback'].astype(int)
-lpm_cb    = smf.ols(f'comeback ~ {H} {BASE} {FE}', data=cb_sub).fit(cov_type='cluster', cov_kwds={'groups':cb_sub['match_id']})
-logit_cb  = smf.logit(f'comeback ~ {H} {BASE} {FE}', data=cb_sub).fit(cov_type='cluster', cov_kwds={'groups':cb_sub['match_id']}, disp=False)
-lpm_int   = smf.ols(f'win ~ same_country*pre_olympic + same_language*pre_olympic + ling_prox*pre_olympic {BASE} {FE2}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']})
-logit_int = smf.logit(f'win ~ same_country*pre_olympic + same_language*pre_olympic + ling_prox*pre_olympic {BASE} {FE2}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']}, disp=False)
+logit_win = smf.logit(f'win ~ {BASE} {FE}', data=team_gs).fit(cov_type='cluster', cov_kwds={'groups':team_gs['match_id']}, disp=False)
+logit_tb  = smf.logit(f'won_any_tb ~ {BASE} {FE}', data=tb_sub).fit(cov_type='cluster', cov_kwds={'groups':tb_sub['match_id']}, disp=False)
+
+# Table 5 (Comeback Win): align with notebook spec.
+# Estimate P(win | lost set 1, 3 sets) with tournament×year FE (dropping non-informative cells).
+BASE_T5 = '+ ling_prox + rank_mean + opp_rank_mean + rank_gap + single_top100'
+cb_sub = team_gs[(team_gs['three_sets'] == True) & (team_gs['lost_set1'] == 1)].copy()
+cb_sub['ty'] = cb_sub['tournament'].astype(str) + '__' + cb_sub['year'].astype(int).astype(str)
+_ty_nuniq = cb_sub.groupby('ty')['win'].nunique()
+keep_ty = _ty_nuniq[_ty_nuniq == 2].index
+cb_sub = cb_sub[cb_sub['ty'].isin(keep_ty)].copy()
+try:
+    logit_cb = smf.logit(f'win ~ {BASE_T5} + C(ty) + C(stage_code)', data=cb_sub).fit(
+        cov_type='cluster', cov_kwds={'groups': cb_sub['match_id']}, disp=False, maxiter=200)
+except Exception:
+    logit_cb = smf.logit(f'win ~ {BASE_T5} + C(ty)', data=cb_sub).fit(
+        cov_type='cluster', cov_kwds={'groups': cb_sub['match_id']}, disp=False, maxiter=200)
+
 print('Models fitted.')
 
 # ─────────────────────────── HELPERS ─────────────────────────────────────────
@@ -262,32 +271,6 @@ fig1_paris.suptitle('Cultural Homophily in Grand Slam Doubles — Paris 2024 Cyc
 plt.tight_layout()
 fig1_paris_b64 = fig_to_b64(fig1_paris)
 
-# Figure 2: Olympic interaction bar chart
-fig2, ax2 = plt.subplots(figsize=(8,4.5))
-vars_p = ['same_country','same_language','ling_prox']
-lbls_p = ['Same Nationality','Same Official\nLanguage','Language\nProximity']
-x = np.arange(len(vars_p)); w = 0.35
-
-c_base = [lpm_int.params.get(v,np.nan) for v in vars_p]
-c_int  = [lpm_int.params.get(f'{v}:pre_olympic',0) for v in vars_p]
-c_olym = [b+i for b,i in zip(c_base,c_int)]
-se_b   = [lpm_int.bse.get(v,np.nan) for v in vars_p]
-se_i   = [lpm_int.bse.get(f'{v}:pre_olympic',0) for v in vars_p]
-se_o   = [np.sqrt(sb**2+si**2) for sb,si in zip(se_b,se_i)]
-
-b1 = ax2.bar(x-w/2, c_base, w, yerr=se_b, label='Non-Olympic years',
-             color='#2166ac', alpha=0.85, capsize=5, error_kw={'linewidth':1.5})
-b2 = ax2.bar(x+w/2, c_olym, w, yerr=se_o, label='Pre-Olympic build-up (2022–23)',
-             color='#f4a261', alpha=0.85, capsize=5, error_kw={'linewidth':1.5})
-ax2.axhline(0, color='black', linewidth=0.8, linestyle='--')
-ax2.set_xticks(x); ax2.set_xticklabels(lbls_p, fontsize=10)
-ax2.set_ylabel('Marginal effect on win probability (LPM)', fontsize=9)
-ax2.set_title('Cultural Homophily and Match Win — Olympic Interaction', fontsize=11, fontweight='bold')
-ax2.legend(fontsize=9)
-ax2.grid(axis='y', alpha=0.3)
-plt.tight_layout()
-fig2_b64 = fig_to_b64(fig2)
-
 # Figure 3: Win-rate advantage by homophily (winners vs losers)
 fig3, ax3 = plt.subplots(figsize=(7,4))
 categories = ['Same\nNationality','Same\nLanguage','Language\nProximity']
@@ -353,57 +336,42 @@ desc_paris_html = df_to_html(desc_paris_table, id='desc_paris', bold_first=True,
 
 # Regression tables
 vars_main = [
-    ('same_country',   'Same nationality'),
-    ('same_language',  'Same language (official)'),
     ('ling_prox',      'Language proximity (ethnic)'),
-]
-vars_controls = [
-    ('log_rank',       'Log(team rank mean)'),
-    ('opp_log_rank',   'Opponent log(team rank mean)'),
+    ('rank_mean',      'Team average doubles ranking'),
+    ('opp_rank_mean',  'Opponent average doubles ranking'),
     ('rank_gap',       'Teammate rank gap'),
     ('single_top100',  'Top-100 singles player'),
 ]
 
 reg_win_html = reg_table_html(
-    [lpm_win, logit_win], vars_main + vars_controls,
-    ['LPM', 'Logit'],
-    caption='Table 3. Match Win. Outcome = 1 if team won. Tournament, round, year FE. SE clustered by match.',
-    nobs_list=[int(lpm_win.nobs), int(logit_win.nobs)],
-    r2_list=[f'{lpm_win.rsquared:.3f}', f'{logit_win.prsquared:.3f}'],
+    [logit_win], vars_main,
+    ['Logit'],
+    caption='Table 3. Match Win. Outcome = 1 if team won. Tournament×year and round FE. SE clustered by match.',
+    nobs_list=[int(logit_win.nobs)],
+    r2_list=[f'{logit_win.prsquared:.3f}'],
 )
 
 reg_tb_html = reg_table_html(
-    [lpm_tb, logit_tb], vars_main + vars_controls,
-    ['LPM', 'Logit'],
-    caption='Table 4. Tiebreak Win. Outcome = 1 if team won a regular tiebreak. Sample: matches with tiebreak only.',
-    nobs_list=[int(lpm_tb.nobs), int(logit_tb.nobs)],
-    r2_list=[f'{lpm_tb.rsquared:.3f}', f'{logit_tb.prsquared:.3f}'],
+    [logit_tb], vars_main,
+    ['Logit'],
+    caption='Table 4. Tiebreak Win — Logit (sample: matches with any tiebreak, 7p/10p). Outcome = 1 if team won any tiebreak. Tournament×year and round FE. SE clustered by match.',
+    nobs_list=[int(logit_tb.nobs)],
+    r2_list=[f'{logit_tb.prsquared:.3f}'],
 )
 
-cb_vars = vars_main + vars_controls
-reg_cb_html = reg_table_html(
-    [lpm_cb, logit_cb], cb_vars,
-    ['LPM', 'Logit'],
-    caption='Table 5. Comeback Win. Outcome = 1 if winning team came back from losing set 1. 3-set matches only. Tournament, round, year FE. SE clustered by match.',
-    nobs_list=[int(lpm_cb.nobs), int(logit_cb.nobs)],
-    r2_list=[f'{lpm_cb.rsquared:.3f}', f'{logit_cb.prsquared:.3f}'],
-)
-
-int_vars = [
-    ('same_country',             'Same nationality'),
-    ('same_language',            'Same language'),
-    ('ling_prox',                'Language proximity'),
-    ('pre_olympic',              'Pre-Olympic period (2022–23)'),
-    ('same_country:pre_olympic', 'Same nationality × Pre-Olympic'),
-    ('same_language:pre_olympic','Same language × Pre-Olympic'),
-    ('ling_prox:pre_olympic',    'Lang. proximity × Pre-Olympic'),
+cb_vars = [
+    ('ling_prox',      'Language proximity (ethnic)'),
+    ('rank_mean',      'Team average doubles ranking'),
+    ('opp_rank_mean',  'Opponent average doubles ranking'),
+    ('rank_gap',       'Teammate rank gap'),
+    ('single_top100',  'Top-100 singles player'),
 ]
-reg_int_html = reg_table_html(
-    [lpm_int, logit_int], int_vars + vars_controls,
-    ['LPM', 'Logit'],
-    caption='Table 6. Olympic Interaction. Year FE excluded (collinear with pre_olympic). Tournament and round FE retained.',
-    nobs_list=[int(lpm_int.nobs), int(logit_int.nobs)],
-    r2_list=[f'{lpm_int.rsquared:.3f}', f'{logit_int.prsquared:.3f}'],
+reg_cb_html = reg_table_html(
+    [logit_cb], cb_vars,
+    ['Logit'],
+    caption='Table 5. Comeback Win — Logit (3-set GS matches; conditional on losing set 1). Outcome = 1 if team wins given it lost set 1. Tournament×year FE (cells with no within-cell variation dropped). SE clustered by match.',
+    nobs_list=[int(logit_cb.nobs)],
+    r2_list=[f'{logit_cb.prsquared:.3f}'],
 )
 
 # Pressure outcomes mini-table
@@ -527,9 +495,8 @@ HTML = f"""<!DOCTYPE html>
 <div class="box">
 <h4>Key Findings</h4>
 <ul>
-  <li><strong>Cultural homophily does not significantly predict match wins</strong> after controlling for ranking quality and career performance. Same nationality (+3.1 pp, p = 0.23), same language (+3.4 pp, p = 0.70), and language proximity (+0.6 pp, p = 0.95) are all positive but statistically insignificant.</li>
-  <li><strong>Same language shows a borderline pressure advantage:</strong> teams sharing an official language are approximately 20 pp more likely to win a tiebreak (p ≈ 0.11), consistent with communication benefits under stress — but not significant at the 5% level.</li>
-  <li><strong>No Olympic build-up effect:</strong> homophily does not predict better outcomes during the 2022–23 Paris preparation period. All interaction terms are small and insignificant.</li>
+  <li><strong>Language proximity does not significantly predict match wins</strong> after controlling for ranking quality. Ranking variables dominate match outcomes, as expected.</li>
+  <li><strong>No robust pressure advantage under tiebreak stress:</strong> language proximity is not statistically significant for tiebreak outcomes in the baseline specification.</li>
   <li><strong>Homophily shares are stable pre-2024</strong> (~40% same-nationality, ~53% same-language from 2018–23), then drop sharply in 2024–25 — an artifact of expanded draw sizes (134 vs. ~62 matches per Grand Slam).</li>
   <li><strong>Ranking and career win rate dominate</strong> match outcomes, as expected.</li>
 </ul>
@@ -586,44 +553,27 @@ HTML = f"""<!DOCTYPE html>
 <!-- ── REGRESSIONS ─────────────────────────────────────────────── -->
 <h2>4. Baseline Regressions</h2>
 
-<p><strong>Specification:</strong> each match contributes two team-level observations (winner = 1, loser = 0). Regressors include the three cultural homophily dummies, log of the team's mean ATP doubles ranking, within-team career W-L ratio difference, and indicators for same dominant hand and same coach. Fixed effects for tournament, round, and year. Standard errors clustered by match.</p>
+<p><strong>Specification:</strong> each match contributes two team-level observations (winner = 1, loser = 0). Regressors include language proximity (ethnic) and ranking controls (team mean ranking, opponent mean ranking, within-team rank gap, and a top-100 singles indicator). Fixed effects for tournament×year and round. Standard errors are clustered by match.</p>
 
 <h3>4.1 Match Win</h3>
 {reg_win_html}
 <p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-<p>All three cultural homophily variables are positive but statistically insignificant. Ranking (log mean) and career performance are the dominant, highly significant predictors.</p>
+<p>Language proximity is not statistically significant for match wins once rankings are controlled for.</p>
 
 <h3>4.2 Tiebreak Win (pressure outcome)</h3>
-<p>Sample restricted to matches where a regular tiebreak occurred in set 1 or 2 (N = {int(lpm_tb.nobs)//2:,} matches). Outcome: team won at least one tiebreak set.</p>
+<p>Sample restricted to matches where a regular tiebreak occurred in set 1 or 2 (N = {len(tb_sub)//2:,} matches). Outcome: team won at least one tiebreak set.</p>
 {reg_tb_html}
 <p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-<p>Same language has a positive effect (+20 pp in LPM, p ≈ 0.11) and language proximity a negative one (−18 pp, p ≈ 0.14). The two measures are highly correlated, making precise separation difficult; the pattern is consistent with shared language aiding communication under tiebreak pressure, but neither reaches the 5% threshold.</p>
+<p>Language proximity is not statistically significant for tiebreak outcomes in the baseline specification.</p>
 
 <h3>4.3 Comeback Win (pressure outcome)</h3>
-<p>Sample: {int(lpm_cb.nobs):,} three-set Grand Slam matches. Outcome = 1 if the eventual winner came back from losing set 1. Regressors are homophily <em>differences</em> (winner team minus loser team). HC1 heteroskedasticity-robust SE.</p>
+<p>Sample: three-set Grand Slam matches <em>conditional on the team having lost set 1</em>. Outcome = 1 if the team wins the match (i.e., a comeback). Tournament×year fixed effects are included by encoding each tournament-year cell; cells with no within-cell variation in the outcome are dropped. Standard errors are clustered by match.</p>
 {reg_cb_html}
 <p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-<p>No homophily variable is significant for comebacks. The modest ranking advantage of the winner team is marginally predictive (p ≈ 0.09), consistent with higher-ranked teams being better able to recover from a set down.</p>
-
-<!-- ── OLYMPIC INTERACTION ─────────────────────────────────────── -->
-<h2>5. Olympic Interaction</h2>
-
-<p><strong>Hypothesis:</strong> players may strategically choose same-country partners during Olympic preparation windows (2022–23 for Paris 2024) because Olympic doubles requires same-country pairs. If so, homophilous teams would be better-trained for this format and should outperform in Grand Slams during that period.</p>
-
-<p><strong>Specification:</strong> each homophily variable is interacted with <code>pre_olympic</code> (= 1 for 2022–23). Year fixed effects are excluded to avoid perfect collinearity with the pre_olympic dummy; tournament and round FE are retained.</p>
-
-{reg_int_html}
-<p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-
-<figure>
-  <img src="data:image/png;base64,{fig2_b64}" alt="Olympic interaction">
-  <figcaption>Figure 4. LPM marginal effects of each homophily variable, separately for non-Olympic years (blue) and the pre-Paris build-up period 2022–23 (orange). Error bars = ±1 SE.</figcaption>
-</figure>
-
-<p>None of the interaction terms are statistically significant. The pre-Olympic dummy itself is also insignificant (p = 0.55), indicating no detectable change in the baseline win rate during the build-up period. The Olympic preparation hypothesis is <strong>not supported</strong> in these data.</p>
+<p>Language proximity is not statistically significant for comebacks in this specification. Ranking controls have the expected signs: conditional on being a set down, stronger teams are more likely to complete the comeback.</p>
 
 <!-- ── DISCUSSION ─────────────────────────────────────────────── -->
-<h2>6. Discussion and Next Steps</h2>
+<h2>5. Discussion and Next Steps</h2>
 
 <div class="summary-grid">
   <div class="summary-box">
@@ -662,4 +612,9 @@ try:
     print(f'PDF written to {pdf_path}')
 except Exception as e:
     print('PDF generation failed:', e)
-    print('Open the HTML in a browser and use File > Print > Save as PDF if needed.')
+    try:
+        alt_pdf_path = f"pdf/homophily_report_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+        html_to_pdf(out_path, alt_pdf_path)
+        print(f'PDF written to {alt_pdf_path}')
+    except Exception:
+        print('Open the HTML in a browser and use File > Print > Save as PDF if needed.')
