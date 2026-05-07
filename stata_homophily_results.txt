@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\aldi\Documents\GitHub\tennis-homophily\stata_homophily_results.txt
   log type:  text
- opened on:   7 May 2026, 14:03:44
+ opened on:   7 May 2026, 14:12:10
 
 . 
 . display ""

@@ -34,7 +34,7 @@ generate byte regular_tb = tb_s1 | tb_s2
 
 * Match tiebreak / super-tiebreak (10-point, set3 ≥ 8): Olympics and Wimbledon post-2018
 generate byte tb_s3_regular = (winners_set3==7 & losers_set3==6) | (winners_set3==6 & losers_set3==7)
-generate byte match_tb = (winners_set3 >= 8)
+generate byte match_tb = (winners_set3 >= 8 & winners_set3 < .)
 generate byte any_tb = regular_tb | match_tb | tb_s3_regular
 
 * Who won each tiebreak (winner-team perspective)
