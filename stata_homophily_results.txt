@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\aldi\Documents\GitHub\tennis-homophily\stata_homophily_results.txt
   log type:  text
- opened on:   7 May 2026, 15:59:37
+ opened on:   7 May 2026, 16:10:16
 
 . 
 . display ""
@@ -76,6 +76,25 @@ opp_rank_mean |   .0032648   .0003843     8.49   0.000     .0025115    .0040181
      rank_gap |   .0018787   .0005998     3.13   0.002     .0007032    .0030542
 single_top100 |   .1580793   .1479348     1.07   0.285    -.1318675    .4480262
         _cons |   .3019131   .2127321     1.42   0.156    -.1150342    .7188604
+-------------------------------------------------------------------------------
+
+. margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
+
+Average marginal effects                        Number of obs     =      3,356
+Model VCE    : Robust
+
+Expression   : Pr(win), predict()
+dy/dx w.r.t. : ling_prox rank_mean opp_rank_mean rank_gap single_top100
+
+-------------------------------------------------------------------------------
+              |            Delta-method
+              |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+--------------+----------------------------------------------------------------
+    ling_prox |   .0587133   .0166652     3.52   0.000     .0260501    .0913765
+    rank_mean |  -.0013576   .0001644    -8.26   0.000    -.0016797   -.0010355
+opp_rank_mean |   .0007444   .0000785     9.48   0.000     .0005904    .0008983
+     rank_gap |   .0004283    .000135     3.17   0.002     .0001638    .0006928
+single_top100 |   .0360415   .0336931     1.07   0.285    -.0299957    .1020788
 -------------------------------------------------------------------------------
 
 . estimates store win_ling_prox
@@ -253,6 +272,25 @@ opp_rank_mean |   .0010313   .0004902     2.10   0.035     .0000705     .001992
      rank_gap |  -.0007162   .0006486    -1.10   0.270    -.0019874    .0005551
 single_top100 |  -.1447882   .2153165    -0.67   0.501    -.5668009    .2772244
         _cons |   .6213011   1.005945     0.62   0.537    -1.350315    2.592917
+-------------------------------------------------------------------------------
+
+. margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
+
+Average marginal effects                        Number of obs     =      1,718
+Model VCE    : Robust
+
+Expression   : Pr(won_any_tb), predict()
+dy/dx w.r.t. : ling_prox rank_mean opp_rank_mean rank_gap single_top100
+
+-------------------------------------------------------------------------------
+              |            Delta-method
+              |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+--------------+----------------------------------------------------------------
+    ling_prox |   .0156627   .0242505     0.65   0.518    -.0318674    .0631927
+    rank_mean |  -.0001462   .0001548    -0.94   0.345    -.0004496    .0001571
+opp_rank_mean |   .0002297   .0001085     2.12   0.034     .0000171    .0004424
+     rank_gap |  -.0001595   .0001443    -1.11   0.269    -.0004424    .0001233
+single_top100 |  -.0322561   .0479595    -0.67   0.501    -.1262549    .0617427
 -------------------------------------------------------------------------------
 
 . estimates store tb_ling_prox
@@ -455,6 +493,25 @@ single_top100 |   .3540075   .3607178     0.98   0.326    -.3529863    1.061001
         _cons |   1.397907   1.290871     1.08   0.279    -1.132154    3.927968
 -------------------------------------------------------------------------------
 
+. margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
+
+Average marginal effects                        Number of obs     =        724
+Model VCE    : Robust
+
+Expression   : Pr(win), predict()
+dy/dx w.r.t. : ling_prox rank_mean opp_rank_mean rank_gap single_top100
+
+-------------------------------------------------------------------------------
+              |            Delta-method
+              |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+--------------+----------------------------------------------------------------
+    ling_prox |  -.0703005   .0360852    -1.95   0.051    -.1410261    .0004251
+    rank_mean |  -.0008225   .0003193    -2.58   0.010    -.0014483   -.0001966
+opp_rank_mean |   .0001943   .0001756     1.11   0.268    -.0001498    .0005384
+     rank_gap |     .00023   .0003203     0.72   0.473    -.0003977    .0008578
+single_top100 |   .0752725   .0764674     0.98   0.325     -.074601    .2251459
+-------------------------------------------------------------------------------
+
 . estimates store cb_ling_prox
 
 . estimates table cb_ling_prox, b se stats(N ll)
@@ -555,5 +612,5 @@ single_t~100 |  .35400751
       name:  <unnamed>
        log:  C:\Users\aldi\Documents\GitHub\tennis-homophily\stata_homophily_results.txt
   log type:  text
- closed on:   7 May 2026, 15:59:38
+ closed on:   7 May 2026, 16:10:18
 ------------------------------------------------------------------------------------------------------------------------------------------

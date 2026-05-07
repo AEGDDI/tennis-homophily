@@ -391,6 +391,7 @@ display ""
 display "=== TABLE 3. Match Win — Logit ==="
 display "FE: tournament×year (as ty) + stage_code | SE clustered by match"
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store win_ling_prox
 estimates table win_ling_prox, b se stats(N ll)
 
@@ -400,6 +401,7 @@ display "Sample: matches with any tiebreak (7-pt or 10-pt)"
 count if any_tb==1
 display "  Obs with any_tb==1: " r(N)
 logit won_any_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store tb_ling_prox
 estimates table tb_ling_prox, b se stats(N ll)
 
@@ -421,6 +423,7 @@ count
 display "After dropping non-informative ty cells: " r(N) " team-obs | " r(N)/2 " matches"
 
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store cb_ling_prox
 estimates table cb_ling_prox, b se stats(N ll)
 restore
