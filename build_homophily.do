@@ -22,6 +22,46 @@ destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 los
     winners_p1_top100_within_1y winners_p2_top100_within_1y losers_p1_top100_within_1y losers_p2_top100_within_1y ///
     rank_mean_winners rank_mean_losers rank_diff_winners rank_diff_losers, replace force
 
+* Drop likely retirements/walkovers that are not explicitly flagged in the data.
+* A valid completed set is 6-0 through 6-4, 7-5, or 7-6. If the first two
+* sets are split, the third set must also be complete, either as a regular set
+* or as a match tiebreak.
+generate byte s1_complete = !missing(winners_set1, losers_set1) & ///
+    ((max(winners_set1, losers_set1)==6 & min(winners_set1, losers_set1)<=4) | ///
+     (max(winners_set1, losers_set1)==7 & inlist(min(winners_set1, losers_set1), 5, 6)))
+
+generate byte s2_complete = !missing(winners_set2, losers_set2) & ///
+    ((max(winners_set2, losers_set2)==6 & min(winners_set2, losers_set2)<=4) | ///
+     (max(winners_set2, losers_set2)==7 & inlist(min(winners_set2, losers_set2), 5, 6)))
+
+generate byte split_sets = !missing(winners_set1, losers_set1, winners_set2, losers_set2) & ///
+    ((winners_set1 > losers_set1 & winners_set2 < losers_set2) | ///
+     (winners_set1 < losers_set1 & winners_set2 > losers_set2))
+
+generate byte s3_regular_complete = !missing(winners_set3, losers_set3) & ///
+    ((max(winners_set3, losers_set3)==6 & min(winners_set3, losers_set3)<=4) | ///
+     (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)))
+
+generate byte s3_match_tb_complete = !missing(winners_set3, losers_set3) & ///
+    max(winners_set3, losers_set3) >= 10 & ///
+    max(winners_set3, losers_set3) - min(winners_set3, losers_set3) >= 2
+
+generate byte s3_complete = s3_regular_complete | s3_match_tb_complete
+generate byte retired_or_incomplete = !s1_complete | !s2_complete | ///
+    (split_sets & !s3_complete)
+
+tempfile incomplete_matches
+preserve
+keep if retired_or_incomplete
+keep match_id
+duplicates drop
+save `incomplete_matches'
+restore
+
+count if retired_or_incomplete
+display "Dropping likely retirements/walkovers: " r(N) " matches"
+drop if retired_or_incomplete
+
 * ═══════════════════════════════════════════════════════════════════════════════
 * SECTION 1: VARIABLE CONSTRUCTION
 * ═══════════════════════════════════════════════════════════════════════════════
@@ -116,6 +156,12 @@ display "Regular tiebreaks by tournament:"
 tabstat regular_tb, by(tournament) stats(sum mean) format(%9.0f)
 
 display ""
+display "Match tiebreaks by tournament:"
+tabstat match_tb, by(tournament) stats(sum mean) format(%9.0f)
+egen tourn_year = group(tournament year), label
+tabstat match_tb, by(tourn_year) stats(sum mean) format(%9.3f)
+
+display ""
 display "Comeback wins by tournament:"
 tabstat comeback, by(tournament) stats(sum mean) format(%9.0f)
 
@@ -188,18 +234,7 @@ display ""
 display "Check variable types and first row:"
 list match_id tournament year win ling_prox rank_mean in 1/1
 
-* Destring all variables
-destring _all, replace force
-
-display ""
-display "After destring - Check variable types and contents:"
-describe tournament year stage_code, short
-
-display ""
-display "Sample of tournament and year:"
-list match_id tournament year win in 1/10
-
-* If tournament is still string, encode it
+* Preserve string categorical variables before destringing numeric fields.
 capture confirm string variable tournament
 if !_rc {
     display ""
@@ -209,6 +244,70 @@ if !_rc {
     rename tourn_code tournament
     describe tournament, short
 }
+
+capture confirm string variable surface
+if !_rc {
+    encode surface, generate(surface_code)
+    drop surface
+    rename surface_code surface
+}
+
+* Destring numeric variables that may have been imported as text.
+destring _all, replace force
+
+* If Section 4 is run by itself, the tempfile from the raw-match section above
+* does not exist. Rebuild it here so the team panel is filtered consistently.
+if `"`incomplete_matches'"' == "" {
+    tempfile incomplete_matches
+    preserve
+    import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
+
+    destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 losers_set3, replace force
+
+    generate byte s1_complete = !missing(winners_set1, losers_set1) & ///
+        ((max(winners_set1, losers_set1)==6 & min(winners_set1, losers_set1)<=4) | ///
+         (max(winners_set1, losers_set1)==7 & inlist(min(winners_set1, losers_set1), 5, 6)))
+
+    generate byte s2_complete = !missing(winners_set2, losers_set2) & ///
+        ((max(winners_set2, losers_set2)==6 & min(winners_set2, losers_set2)<=4) | ///
+         (max(winners_set2, losers_set2)==7 & inlist(min(winners_set2, losers_set2), 5, 6)))
+
+    generate byte split_sets = !missing(winners_set1, losers_set1, winners_set2, losers_set2) & ///
+        ((winners_set1 > losers_set1 & winners_set2 < losers_set2) | ///
+         (winners_set1 < losers_set1 & winners_set2 > losers_set2))
+
+    generate byte s3_regular_complete = !missing(winners_set3, losers_set3) & ///
+        ((max(winners_set3, losers_set3)==6 & min(winners_set3, losers_set3)<=4) | ///
+         (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)))
+
+    generate byte s3_match_tb_complete = !missing(winners_set3, losers_set3) & ///
+        max(winners_set3, losers_set3) >= 10 & ///
+        max(winners_set3, losers_set3) - min(winners_set3, losers_set3) >= 2
+
+    generate byte s3_complete = s3_regular_complete | s3_match_tb_complete
+    generate byte retired_or_incomplete = !s1_complete | !s2_complete | ///
+        (split_sets & !s3_complete)
+
+    keep if retired_or_incomplete
+    keep match_id
+    duplicates drop
+    save `incomplete_matches'
+    restore
+}
+
+merge m:1 match_id using `incomplete_matches', keep(master match)
+drop if _merge == 3
+drop _merge
+count
+display "Team panel after dropping likely retirements/walkovers: " r(N) " obs"
+
+display ""
+display "After destring - Check variable types and contents:"
+describe tournament year stage_code, short
+
+display ""
+display "Sample of tournament and year:"
+list match_id tournament year win in 1/10
 
 * If year is string, destring it again
 capture confirm numeric variable year
@@ -245,6 +344,26 @@ display ""
 * Replace missing stage_code with 0 for regression
 replace stage_code = 0 if missing(stage_code)
 
+* Section 5 depends on numeric fixed-effect variables. If this section is run
+* after a partial import, repair common type problems here before creating ty.
+capture confirm string variable tournament
+if !_rc {
+    encode tournament, generate(tourn_code)
+    drop tournament
+    rename tourn_code tournament
+}
+
+capture confirm numeric variable year
+if _rc {
+    destring year, replace force
+}
+
+capture confirm numeric variable stage_code
+if _rc {
+    destring stage_code, replace force
+    replace stage_code = 0 if missing(stage_code)
+}
+
 display "Creating ty (tournament×year grouping)..."
 describe tournament year, short
 list tournament year in 1/5
@@ -256,6 +375,13 @@ display "After egen:"
 describe ty
 tabstat ty, stats(count mean min max)
 list match_id tournament year ty win in 1/10
+count if !missing(win, ty, stage_code, ling_prox, rank_mean, opp_rank_mean, rank_gap, single_top100)
+display "Complete cases for Table 3: " r(N)
+if r(N) == 0 {
+    display as error "No complete observations for Table 3. Check missingness below:"
+    misstable summarize win ty stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100
+    error 2000
+}
 
 display ""
 
@@ -266,7 +392,7 @@ display "=== TABLE 3. Match Win — Logit ==="
 display "FE: tournament×year (as ty) + stage_code | SE clustered by match"
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
 estimates store win_ling_prox
-estimates table win_ling_prox, b se star stats(N ll)
+estimates table win_ling_prox, b se stats(N ll)
 
 display ""
 display "=== TABLE 4. Tiebreak Win — Logit ==="
@@ -275,7 +401,7 @@ count if any_tb==1
 display "  Obs with any_tb==1: " r(N)
 logit won_any_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
 estimates store tb_ling_prox
-estimates table tb_ling_prox, b se star stats(N ll)
+estimates table tb_ling_prox, b se stats(N ll)
 
 display ""
 display "=== TABLE 5. Comeback Win — Logit ==="
@@ -296,7 +422,7 @@ display "After dropping non-informative ty cells: " r(N) " team-obs | " r(N)/2 "
 
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
 estimates store cb_ling_prox
-estimates table cb_ling_prox, b se star stats(N ll)
+estimates table cb_ling_prox, b se stats(N ll)
 restore
 
 log close
@@ -305,7 +431,7 @@ display ""
 display "Section 5 complete: Baseline regressions."
 display "Results saved to stata_homophily_results.txt"
 estimates store cb_ling_prox
-estimates table cb_ling_prox, b se star stats(N ll)
+estimates table cb_ling_prox, b se stats(N ll)
 restore
 
 log close
