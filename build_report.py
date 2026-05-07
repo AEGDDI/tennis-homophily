@@ -122,8 +122,9 @@ cdf = cdf.dropna(subset=['log_rank_diff','same_country_diff'])
 print('Data ready. Fitting models...')
 
 # ─────────────────────────── MODELS ──────────────────────────────────────────
-# Align baseline regressions with notebook (`code/analysis/homophily_analysis.ipynb`):
-# culture measure = language proximity (ethnic), plus ranking controls.
+# Align baseline regressions with notebook (`code/analysis/homophily_analysis.ipynb`).
+# Culture measure used here: language proximity (ethnic) only.
+# For STATA comparison, run build_homophily.do to estimate same_country and same_language separately.
 BASE = '+ ling_prox + rank_mean + opp_rank_mean + rank_gap + single_top100'
 FE   = '+ C(tournament):C(year) + C(stage_code)'
 FE2  = '+ C(tournament) + C(stage_code)'
@@ -346,7 +347,7 @@ vars_main = [
 reg_win_html = reg_table_html(
     [logit_win], vars_main,
     ['Logit'],
-    caption='Table 3. Match Win. Outcome = 1 if team won. Tournament×year and round FE. SE clustered by match.',
+    caption='Table 3. Match Win. Outcome = 1 if team won. Language proximity only. Tournament×year and round FE. SE clustered by match.',
     nobs_list=[int(logit_win.nobs)],
     r2_list=[f'{logit_win.prsquared:.3f}'],
 )
@@ -354,7 +355,7 @@ reg_win_html = reg_table_html(
 reg_tb_html = reg_table_html(
     [logit_tb], vars_main,
     ['Logit'],
-    caption='Table 4. Tiebreak Win — Logit (sample: matches with any tiebreak, 7p/10p). Outcome = 1 if team won any tiebreak. Tournament×year and round FE. SE clustered by match.',
+    caption='Table 4. Tiebreak Win — Logit (sample: matches with any tiebreak, 7p/10p). Outcome = 1 if team won any tiebreak. Language proximity only. Tournament×year and round FE. SE clustered by match.',
     nobs_list=[int(logit_tb.nobs)],
     r2_list=[f'{logit_tb.prsquared:.3f}'],
 )
@@ -369,7 +370,7 @@ cb_vars = [
 reg_cb_html = reg_table_html(
     [logit_cb], cb_vars,
     ['Logit'],
-    caption='Table 5. Comeback Win — Logit (3-set GS matches; conditional on losing set 1). Outcome = 1 if team wins given it lost set 1. Tournament×year FE (cells with no within-cell variation dropped). SE clustered by match.',
+    caption='Table 5. Comeback Win — Logit (3-set GS matches; conditional on losing set 1). Outcome = 1 if team wins given it lost set 1. Language proximity only. Tournament×year FE (cells with no within-cell variation dropped). SE clustered by match.',
     nobs_list=[int(logit_cb.nobs)],
     r2_list=[f'{logit_cb.prsquared:.3f}'],
 )
