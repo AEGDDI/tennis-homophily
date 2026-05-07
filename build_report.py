@@ -22,6 +22,37 @@ os.makedirs('pdf', exist_ok=True)
 
 # ─────────────────────────── DATA + VARIABLES ────────────────────────────────
 df = pd.read_excel('data/atp/men_matches_with_ranks_cleaned.xlsx')
+n_raw_matches = len(df)
+
+# Drop likely retirements/walkovers that are not explicitly flagged in the data.
+# A completed set is 6-0 through 6-4, 7-5, or 7-6. If the first two sets are
+# split, the third set must also be complete, either as a regular set or as a
+# match tiebreak.
+def regular_set_complete(w, l):
+    valid = w.notna() & l.notna()
+    hi = pd.concat([w, l], axis=1).max(axis=1)
+    lo = pd.concat([w, l], axis=1).min(axis=1)
+    return valid & (((hi == 6) & (lo <= 4)) | ((hi == 7) & lo.isin([5, 6])))
+
+def match_tiebreak_complete(w, l):
+    valid = w.notna() & l.notna()
+    hi = pd.concat([w, l], axis=1).max(axis=1)
+    lo = pd.concat([w, l], axis=1).min(axis=1)
+    return valid & (hi >= 10) & ((hi - lo) >= 2)
+
+s1_complete = regular_set_complete(df['winners_set1'], df['losers_set1'])
+s2_complete = regular_set_complete(df['winners_set2'], df['losers_set2'])
+split_sets = (
+    ((df['winners_set1'] > df['losers_set1']) & (df['winners_set2'] < df['losers_set2'])) |
+    ((df['winners_set1'] < df['losers_set1']) & (df['winners_set2'] > df['losers_set2']))
+)
+s3_complete = (
+    regular_set_complete(df['winners_set3'], df['losers_set3']) |
+    match_tiebreak_complete(df['winners_set3'], df['losers_set3'])
+)
+retired_or_incomplete = ~s1_complete | ~s2_complete | (split_sets & ~s3_complete)
+n_dropped_incomplete = int(retired_or_incomplete.sum())
+df = df.loc[~retired_or_incomplete].copy()
 
 df['tb_s1'] = ((df['winners_set1']==7)&(df['losers_set1']==6))|((df['winners_set1']==6)&(df['losers_set1']==7))
 df['tb_s2'] = ((df['winners_set2']==7)&(df['losers_set2']==6))|((df['winners_set2']==6)&(df['losers_set2']==7))
@@ -147,6 +178,10 @@ except Exception:
     logit_cb = smf.logit(f'win ~ {BASE_T5} + C(ty)', data=cb_sub).fit(
         cov_type='cluster', cov_kwds={'groups': cb_sub['match_id']}, disp=False, maxiter=200)
 
+logit_win_mfx = logit_win.get_margeff(at='overall', method='dydx', dummy=True).summary_frame()
+logit_tb_mfx = logit_tb.get_margeff(at='overall', method='dydx', dummy=True).summary_frame()
+logit_cb_mfx = logit_cb.get_margeff(at='overall', method='dydx', dummy=True).summary_frame()
+
 print('Models fitted.')
 
 # ─────────────────────────── HELPERS ─────────────────────────────────────────
@@ -224,6 +259,53 @@ def reg_table_html(results_list, var_labels, model_labels, caption='', nobs_list
     return f'''<table class="regtable">{cap}
 <thead><tr><th></th>{header}</tr></thead>
 <tbody>{rows_html}</tbody></table>'''
+
+def margin_stat(mfx, var, col):
+    if var not in mfx.index:
+        return np.nan
+    if col in mfx.columns:
+        return mfx.loc[var, col]
+    aliases = {
+        'dy/dx': ['dy/dx', 'Coef.', 'coef'],
+        'Std. Err.': ['Std. Err.', 'Std. Error', 'std err'],
+        'Pr(>|z|)': ['Pr(>|z|)', 'P>|z|', 'P>|t|'],
+    }
+    for candidate in aliases.get(col, []):
+        if candidate in mfx.columns:
+            return mfx.loc[var, candidate]
+    return np.nan
+
+def mfx_table_html(mfx, var_labels, caption='', nobs=None):
+    rows_html = ''
+    for var, lbl in var_labels:
+        dy = margin_stat(mfx, var, 'dy/dx')
+        se = margin_stat(mfx, var, 'Std. Err.')
+        p = margin_stat(mfx, var, 'Pr(>|z|)')
+        if pd.isna(dy):
+            rows_html += f'<tr><td class="varlbl">{lbl}</td><td>—</td><td></td></tr>'
+            continue
+        s = stars(p) if not pd.isna(p) else ''
+        sig = '' if pd.isna(p) else ('sig1' if p<0.01 else 'sig5' if p<0.05 else 'sig10' if p<0.10 else '')
+        rows_html += (
+            f'<tr><td class="varlbl">{lbl}</td>'
+            f'<td class="num {sig}">{100*dy:+.2f}<sup>{s}</sup></td>'
+            f'<td class="num se">({100*se:.2f})</td></tr>'
+        )
+    if nobs is not None:
+        rows_html += f'<tr class="stat"><td>Observations</td><td class="num" colspan="2">{int(nobs):,}</td></tr>'
+    cap = f'<caption>{caption}</caption>' if caption else ''
+    return f'''<table class="regtable">{cap}
+<thead><tr><th></th><th colspan="2">Average marginal effect, pp</th></tr></thead>
+<tbody>{rows_html}</tbody></table>'''
+
+def ling_mfx_sentence(mfx, outcome_label):
+    dy = margin_stat(mfx, 'ling_prox', 'dy/dx')
+    p = margin_stat(mfx, 'ling_prox', 'Pr(>|z|)')
+    if pd.isna(dy) or pd.isna(p):
+        return f'Language proximity could not be summarized as a marginal effect for {outcome_label}.'
+    direction = 'higher' if dy > 0 else 'lower'
+    sig = 'statistically significant' if p < 0.05 else ('marginally significant' if p < 0.10 else 'not statistically significant')
+    return f'Language proximity is associated with a {100*abs(dy):.1f} percentage-point {direction} probability of {outcome_label}; this estimate is {sig} (p = {p:.3f}).'
 
 # ─────────────────────────── FIGURES ─────────────────────────────────────────
 # Figure 1: Homophily trends over time
@@ -351,6 +433,11 @@ reg_win_html = reg_table_html(
     nobs_list=[int(logit_win.nobs)],
     r2_list=[f'{logit_win.prsquared:.3f}'],
 )
+reg_win_mfx_html = mfx_table_html(
+    logit_win_mfx, vars_main,
+    caption='Table 3M. Match Win — average marginal effects. Effects are percentage-point changes in Pr(win).',
+    nobs=int(logit_win.nobs),
+)
 
 reg_tb_html = reg_table_html(
     [logit_tb], vars_main,
@@ -358,6 +445,11 @@ reg_tb_html = reg_table_html(
     caption='Table 4. Tiebreak Win — Logit (sample: matches with any tiebreak, 7p/10p). Outcome = 1 if team won any tiebreak. Language proximity only. Tournament×year and round FE. SE clustered by match.',
     nobs_list=[int(logit_tb.nobs)],
     r2_list=[f'{logit_tb.prsquared:.3f}'],
+)
+reg_tb_mfx_html = mfx_table_html(
+    logit_tb_mfx, vars_main,
+    caption='Table 4M. Tiebreak Win — average marginal effects. Effects are percentage-point changes in Pr(win any tiebreak).',
+    nobs=int(logit_tb.nobs),
 )
 
 cb_vars = [
@@ -373,6 +465,11 @@ reg_cb_html = reg_table_html(
     caption='Table 5. Comeback Win — Logit (3-set GS matches; conditional on losing set 1). Outcome = 1 if team wins given it lost set 1. Language proximity only. Tournament×year FE (cells with no within-cell variation dropped). SE clustered by match.',
     nobs_list=[int(logit_cb.nobs)],
     r2_list=[f'{logit_cb.prsquared:.3f}'],
+)
+reg_cb_mfx_html = mfx_table_html(
+    logit_cb_mfx, cb_vars,
+    caption='Table 5M. Comeback Win — average marginal effects. Effects are percentage-point changes in Pr(win | lost set 1).',
+    nobs=int(logit_cb.nobs),
 )
 
 # Pressure outcomes mini-table
@@ -473,7 +570,8 @@ def sample_overview():
     yrs = sorted(df['year'].unique())
     return f"""
     <ul>
-      <li><strong>Matches:</strong> {n_all:,} total &nbsp;|&nbsp; {n_gs:,} Grand Slams &nbsp;|&nbsp; {df[df['olympics_tourn']==1].shape[0]} Olympics</li>
+      <li><strong>Matches:</strong> {n_all:,} retained from {n_raw_matches:,} raw matches &nbsp;|&nbsp; {n_gs:,} Grand Slams &nbsp;|&nbsp; {df[df['olympics_tourn']==1].shape[0]} Olympics</li>
+      <li><strong>Retirements/walkovers:</strong> {n_dropped_incomplete:,} observations dropped using the score-completion rule.</li>
       <li><strong>Years:</strong> {', '.join(str(y) for y in yrs)} (2020 excluded — COVID)</li>
       <li><strong>Tournaments:</strong> Australian Open, Roland Garros, Wimbledon, US Open, Olympics (2021, 2024)</li>
       <li><strong>Analysis sample:</strong> {n_team:,} team-level observations ({n_gs_matches:,} GS matches × 2 teams)</li>
@@ -496,7 +594,7 @@ HTML = f"""<!DOCTYPE html>
 <div class="box">
 <h4>Key Findings</h4>
 <ul>
-  <li><strong>Language proximity does not significantly predict match wins</strong> after controlling for ranking quality. Ranking variables dominate match outcomes, as expected.</li>
+  <li><strong>Language proximity positively predicts match wins</strong> in the updated filtered sample; the marginal-effect table reports the probability-scale estimate.</li>
   <li><strong>No robust pressure advantage under tiebreak stress:</strong> language proximity is not statistically significant for tiebreak outcomes in the baseline specification.</li>
   <li><strong>Homophily shares are stable pre-2024</strong> (~40% same-nationality, ~53% same-language from 2018–23), then drop sharply in 2024–25 — an artifact of expanded draw sizes (134 vs. ~62 matches per Grand Slam).</li>
   <li><strong>Ranking and career win rate dominate</strong> match outcomes, as expected.</li>
@@ -512,10 +610,10 @@ HTML = f"""<!DOCTYPE html>
 <h2>2. Pressure Outcomes</h2>
 
 <h3>2.1 Tiebreak Observations</h3>
-<p>A <strong>regular tiebreak</strong> (7-point, played at 6-6 in sets 1 or 2) occurred in <strong>44.0% of matches</strong>. A <strong>match tiebreak</strong> (10-point super-tiebreak, replacing a full third set) was played in 30 matches, all at the Olympics or Wimbledon. For regression purposes both types are combined under <em>any tiebreak</em>.</p>
+<p>A <strong>regular tiebreak</strong> (7-point, played at 6-6 in sets 1 or 2) occurred in <strong>{100*df['regular_tb'].mean():.1f}% of retained matches</strong>. A <strong>match tiebreak</strong> (10-point super-tiebreak, replacing a full third set) was played in {int(df['match_tb'].sum()):,} matches. For regression purposes both regular and match tiebreaks are combined under <em>any tiebreak</em>.</p>
 
 {po_html}
-<p class="note">N = 2,192 total matches. Regular tiebreaks are most frequent at Wimbledon (52%) and least frequent at Roland Garros (35%).</p>
+<p class="note">N = {len(df):,} retained matches after dropping {n_dropped_incomplete:,} likely retirements/walkovers.</p>
 
 <h3>2.2 By Tournament</h3>
 {tb_tourn_html}
@@ -558,20 +656,23 @@ HTML = f"""<!DOCTYPE html>
 
 <h3>4.1 Match Win</h3>
 {reg_win_html}
+{reg_win_mfx_html}
 <p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-<p>Language proximity is not statistically significant for match wins once rankings are controlled for.</p>
+<p>{ling_mfx_sentence(logit_win_mfx, 'winning the match')}</p>
 
 <h3>4.2 Tiebreak Win (pressure outcome)</h3>
-<p>Sample restricted to matches where a regular tiebreak occurred in set 1 or 2 (N = {len(tb_sub)//2:,} matches). Outcome: team won at least one tiebreak set.</p>
+<p>Sample restricted to matches with any tiebreak, regular or match tiebreak (N = {len(tb_sub)//2:,} matches). Outcome: team won at least one tiebreak.</p>
 {reg_tb_html}
+{reg_tb_mfx_html}
 <p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-<p>Language proximity is not statistically significant for tiebreak outcomes in the baseline specification.</p>
+<p>{ling_mfx_sentence(logit_tb_mfx, 'winning a tiebreak in tiebreak matches')}</p>
 
 <h3>4.3 Comeback Win (pressure outcome)</h3>
 <p>Sample: three-set Grand Slam matches <em>conditional on the team having lost set 1</em>. Outcome = 1 if the team wins the match (i.e., a comeback). Tournament×year fixed effects are included by encoding each tournament-year cell; cells with no within-cell variation in the outcome are dropped. Standard errors are clustered by match.</p>
 {reg_cb_html}
+{reg_cb_mfx_html}
 <p class="sigkey">Significance: *** p &lt; 0.01 &nbsp; ** p &lt; 0.05 &nbsp; * p &lt; 0.10 &nbsp; Standard errors in parentheses.</p>
-<p>Language proximity is not statistically significant for comebacks in this specification. Ranking controls have the expected signs: conditional on being a set down, stronger teams are more likely to complete the comeback.</p>
+<p>{ling_mfx_sentence(logit_cb_mfx, 'completing the comeback')} Ranking controls have the expected signs: conditional on being a set down, stronger teams are more likely to complete the comeback.</p>
 
 <!-- ── DISCUSSION ─────────────────────────────────────────────── -->
 <h2>5. Discussion and Next Steps</h2>
@@ -580,7 +681,7 @@ HTML = f"""<!DOCTYPE html>
   <div class="summary-box">
     <h4>What the data say</h4>
     <ul>
-      <li>Language similarity has the most consistent positive sign across all three outcomes (match win, tiebreak, comeback), but never reaches conventional significance.</li>
+      <li>Language proximity is positive and statistically significant for match wins in the updated filtered sample, but not robustly positive for the pressure-outcome models.</li>
       <li>Same nationality is actually slightly negative for match win in the descriptor (losers slightly more same-nationality), and the regression coefficient, while positive, is imprecisely estimated.</li>
       <li>Homophily shares do not rise in the run-up to the Olympics — if anything they fall in 2024–25, driven by draw expansion.</li>
     </ul>
