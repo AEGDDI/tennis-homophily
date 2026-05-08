@@ -23,16 +23,18 @@ destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 los
     rank_mean_winners rank_mean_losers rank_diff_winners rank_diff_losers, replace force
 
 * Drop likely retirements/walkovers that are not explicitly flagged in the data.
-* A valid completed set is 6-0 through 6-4, 7-5, or 7-6. If the first two
-* sets are split, the third set must also be complete, either as a regular set
-* or as a match tiebreak.
+* A valid completed set is 6-0 through 6-4, 7-5, 7-6, or an extended final set
+* score with a two-game margin (e.g. 8-6, 9-7). If the first two sets are split,
+* the third set must also be complete, either as a regular set or as a match tiebreak.
 generate byte s1_complete = !missing(winners_set1, losers_set1) & ///
     ((max(winners_set1, losers_set1)==6 & min(winners_set1, losers_set1)<=4) | ///
-     (max(winners_set1, losers_set1)==7 & inlist(min(winners_set1, losers_set1), 5, 6)))
+     (max(winners_set1, losers_set1)==7 & inlist(min(winners_set1, losers_set1), 5, 6)) | ///
+     (max(winners_set1, losers_set1)>=8 & max(winners_set1, losers_set1) - min(winners_set1, losers_set1)==2))
 
 generate byte s2_complete = !missing(winners_set2, losers_set2) & ///
     ((max(winners_set2, losers_set2)==6 & min(winners_set2, losers_set2)<=4) | ///
-     (max(winners_set2, losers_set2)==7 & inlist(min(winners_set2, losers_set2), 5, 6)))
+     (max(winners_set2, losers_set2)==7 & inlist(min(winners_set2, losers_set2), 5, 6)) | ///
+     (max(winners_set2, losers_set2)>=8 & max(winners_set2, losers_set2) - min(winners_set2, losers_set2)==2))
 
 generate byte split_sets = !missing(winners_set1, losers_set1, winners_set2, losers_set2) & ///
     ((winners_set1 > losers_set1 & winners_set2 < losers_set2) | ///
@@ -40,7 +42,8 @@ generate byte split_sets = !missing(winners_set1, losers_set1, winners_set2, los
 
 generate byte s3_regular_complete = !missing(winners_set3, losers_set3) & ///
     ((max(winners_set3, losers_set3)==6 & min(winners_set3, losers_set3)<=4) | ///
-     (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)))
+     (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)) | ///
+     (max(winners_set3, losers_set3)>=8 & max(winners_set3, losers_set3) - min(winners_set3, losers_set3)==2))
 
 generate byte s3_match_tb_complete = !missing(winners_set3, losers_set3) & ///
     max(winners_set3, losers_set3) >= 10 & ///
@@ -72,9 +75,9 @@ generate byte tb_s1 = (winners_set1==7 & losers_set1==6) | (winners_set1==6 & lo
 generate byte tb_s2 = (winners_set2==7 & losers_set2==6) | (winners_set2==6 & losers_set2==7)
 generate byte regular_tb = tb_s1 | tb_s2
 
-* Match tiebreak / super-tiebreak (10-point, set3 ≥ 8): Olympics and Wimbledon post-2018
+* Match tiebreak / super-tiebreak (10-point, set3 ≥ 10): Olympics and Wimbledon post-2018
 generate byte tb_s3_regular = (winners_set3==7 & losers_set3==6) | (winners_set3==6 & losers_set3==7)
-generate byte match_tb = (winners_set3 >= 8 & winners_set3 < .)
+generate byte match_tb = s3_match_tb_complete
 generate byte any_tb = regular_tb | match_tb | tb_s3_regular
 
 * Who won each tiebreak (winner-team perspective)

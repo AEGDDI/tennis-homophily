@@ -25,14 +25,19 @@ df = pd.read_excel('data/atp/men_matches_with_ranks_cleaned.xlsx')
 n_raw_matches = len(df)
 
 # Drop likely retirements/walkovers that are not explicitly flagged in the data.
-# A completed set is 6-0 through 6-4, 7-5, or 7-6. If the first two sets are
-# split, the third set must also be complete, either as a regular set or as a
+# A valid completed set is 6-0 through 6-4, 7-5, 7-6, or an extended final set
+# score with a two-game margin (e.g. 8-6, 9-7). If the first two sets are split,
+# the third set must also be complete, either as a regular set or as a
 # match tiebreak.
 def regular_set_complete(w, l):
     valid = w.notna() & l.notna()
     hi = pd.concat([w, l], axis=1).max(axis=1)
     lo = pd.concat([w, l], axis=1).min(axis=1)
-    return valid & (((hi == 6) & (lo <= 4)) | ((hi == 7) & lo.isin([5, 6])))
+    return valid & (
+        ((hi == 6) & (lo <= 4)) |
+        ((hi == 7) & lo.isin([5, 6])) |
+        ((hi >= 8) & ((hi - lo) == 2))
+    )
 
 def match_tiebreak_complete(w, l):
     valid = w.notna() & l.notna()
@@ -58,7 +63,7 @@ df['tb_s1'] = ((df['winners_set1']==7)&(df['losers_set1']==6))|((df['winners_set
 df['tb_s2'] = ((df['winners_set2']==7)&(df['losers_set2']==6))|((df['winners_set2']==6)&(df['losers_set2']==7))
 df['regular_tb']    = df['tb_s1'] | df['tb_s2']
 df['tb_s3_regular'] = (((df['winners_set3']==7)&(df['losers_set3']==6))|((df['winners_set3']==6)&(df['losers_set3']==7))).fillna(False)
-df['match_tb']      = (df['winners_set3'] >= 8).fillna(False)
+df['match_tb']      = match_tiebreak_complete(df['winners_set3'], df['losers_set3'])
 df['any_tb']        = df['regular_tb'] | df['match_tb'] | df['tb_s3_regular']
 df['three_sets']    = df['winners_set3'].notna()
 df['w_won_tb_s1']   = df['tb_s1'] & (df['winners_set1']==7)
@@ -594,10 +599,11 @@ HTML = f"""<!DOCTYPE html>
 <div class="box">
 <h4>Key Findings</h4>
 <ul>
-  <li><strong>Language proximity positively predicts match wins</strong> in the updated filtered sample; the marginal-effect table reports the probability-scale estimate.</li>
-  <li><strong>No robust pressure advantage under tiebreak stress:</strong> language proximity is not statistically significant for tiebreak outcomes in the baseline specification.</li>
-  <li><strong>Homophily shares are stable pre-2024</strong> (~40% same-nationality, ~53% same-language from 2018–23), then drop sharply in 2024–25 — an artifact of expanded draw sizes (134 vs. ~62 matches per Grand Slam).</li>
-  <li><strong>Ranking and career win rate dominate</strong> match outcomes, as expected.</li>
+  <li><strong>Language proximity significantly predicts match wins</strong> in the filtered Grand Slam sample: the marginal effect is about +5.9 percentage points on match-win probability.</li>
+  <li><strong>No robust pressure advantage in tiebreaks:</strong> language proximity is not statistically significant for tiebreak outcomes (point estimate ≈ +1.6 pp, p ≈ 0.50).</li>
+  <li><strong>Comebacks do not benefit from greater language proximity:</strong> the comeback sample shows a marginally significant negative effect (≈ −7.0 pp, p ≈ 0.06) for teams that lost set 1.</li>
+  <li><strong>Homophily shares are stable pre-2024</strong> (~40% same-nationality, ~53% same-language from 2018–23), then fall in 2024–25, driven by draw expansion rather than a sudden increase in partnership homophily.</li>
+  <li><strong>Ranking and partner quality dominate outcomes</strong> across all models, consistent with standard performance expectations.</li>
 </ul>
 </div>
 
@@ -681,9 +687,10 @@ HTML = f"""<!DOCTYPE html>
   <div class="summary-box">
     <h4>What the data say</h4>
     <ul>
-      <li>Language proximity is positive and statistically significant for match wins in the updated filtered sample, but not robustly positive for the pressure-outcome models.</li>
-      <li>Same nationality is actually slightly negative for match win in the descriptor (losers slightly more same-nationality), and the regression coefficient, while positive, is imprecisely estimated.</li>
-      <li>Homophily shares do not rise in the run-up to the Olympics — if anything they fall in 2024–25, driven by draw expansion.</li>
+      <li>Language proximity is positive and statistically significant for match wins: the average marginal effect is about +5.9 percentage points.</li>
+      <li>There is no evidence that language proximity improves tiebreak performance; the tiebreak coefficient is small and statistically indistinguishable from zero.</li>
+      <li>For comeback wins after losing set 1, language proximity is marginally negative (≈ −7.0 pp, p ≈ 0.06), implying it does not help teams recover in three-set matches.</li>
+      <li>Homophily shares do not increase ahead of the Olympics; instead, 2024–25 shows a decline driven by larger Grand Slam draws.</li>
     </ul>
   </div>
   <div class="summary-box">
