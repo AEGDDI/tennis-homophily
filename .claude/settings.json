@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd \"c:/Users/aldi/Documents/GitHub/tennis-homophily\"; $env:PYTHONIOENCODING='utf-8'; python \"C:\\\\Users\\\\aldi\\\\AppData\\\\Local\\\\Temp\\\\run_ranks2.py\" 2>&1)",
+      "PowerShell(cd \"c:/Users/aldi/Documents/GitHub/tennis-homophily\"; $env:PYTHONIOENCODING='utf-8'; python \"C:\\\\Users\\\\aldi\\\\AppData\\\\Local\\\\Temp\\\\run_final_ds.py\" 2>&1)"
+    ]
+  }
+}

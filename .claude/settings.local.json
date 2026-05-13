@@ -16,7 +16,22 @@
       "Read(//c/Users/aldi/anaconda3/**)",
       "Read(//c/Users/aldi/miniconda3/**)",
       "Bash(\"/c/Users/aldi/anaconda3/python\" -c \"import pandas; print\\('anaconda ok'\\)\")",
-      "Bash(\"/c/Users/aldi/AppData/Local/Programs/Python/Python310/python\" -c \"import pandas; print\\('py310 ok'\\)\")"
+      "Bash(\"/c/Users/aldi/AppData/Local/Programs/Python/Python310/python\" -c \"import pandas; print\\('py310 ok'\\)\")",
+      "PowerShell(cd \"c:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; Get-ChildItem -Recurse -Force | Where-Object { -not $_.PSIsContainer } | ForEach-Object { [PSCustomObject]@{ Path = $_.FullName.Replace\\(\"c:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\\", \"\"\\); Size = \"{0:N0} bytes\" -f $_.Length; Modified = $_.LastWriteTime } } | Sort-Object Path | Format-Table -AutoSize)",
+      "Bash(xargs ls -lh)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(sort -k2)",
+      "Bash(jupyter --version)",
+      "Bash(pip install *)",
+      "PowerShell(cd \"c:/Users/aldi/Documents/GitHub/tennis-homophily\"; $env:PYTHONIOENCODING='utf-8'; python \"C:\\\\Users\\\\aldi\\\\AppData\\\\Local\\\\Temp\\\\run_merge.py\" 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; cd \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; pip install jupyter nbconvert -q 2>&1 | Select-Object -Last 5)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; pip show jupyter nbconvert 2>&1 | Select-String \"Name|Version\")",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; python -c \"import nbformat; print\\('nbformat ok'\\)\" 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; python -c \"import nbclient; print\\('nbclient ok'\\)\" 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python run_analysis.py 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python show_outputs.py 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python audit_matches.py 2>&1)",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python run_pipeline.py 2>&1)"
     ]
   }
 }

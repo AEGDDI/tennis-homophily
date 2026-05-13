@@ -3,7 +3,7 @@
 * Run this from the project root in STATA.
 * Mirrors sections 1-5 from homophily_analysis.ipynb
 *
-* Data: Grand Slam doubles matches 2018–2025. N = 2,192 matches.
+* Data: Grand Slam doubles matches 2018–2025. N ≈ 1,795 matches after dropping retirements/walkovers.
 * Sections:
 *   1. Variable construction
 *   2. Pressure outcomes (tiebreaks, comebacks)
@@ -104,8 +104,8 @@ replace cycle_paris = "Paris Prep" if year == 2023
 replace cycle_paris = "Paris Prep" if year == 2024 & inlist(tournament, "Australian Open", "Roland Garros", "Wimbledon")
 replace cycle_paris = "Post-Paris" if (year == 2024 & tournament == "US Open") | year == 2025
 
-generate byte pre_olympic   = cycle_paris != ""
-generate byte olympic_period = cycle_paris != "" | cycle_tokyo != ""
+generate byte pre_olympic    = inlist(cycle_paris, "Pre-Paris", "Paris Prep")
+generate byte olympic_period = inlist(cycle_paris, "Pre-Paris", "Paris Prep", "Post-Paris")
 generate byte olympics_tourn = (tournament == "Olympics")
 
 * ── Match-level homophily (averaged across both teams in each match) ──────────
@@ -119,8 +119,10 @@ display "Section 1 complete: Variable construction."
 * SECTION 2: PRESSURE OUTCOMES — COUNTS AND INSPECTION
 * ═══════════════════════════════════════════════════════════════════════════════
 
+count
+local N_all = r(N)
 display ""
-display "=== TABLE 1. Pressure Outcome Counts (all matches, N=2,192) ==="
+display "=== TABLE 1. Pressure Outcome Counts (all matches, N=" `N_all' ") ==="
 display ""
 count if tb_s1 == 1
 local n_tb_s1 = r(N)
@@ -168,7 +170,6 @@ display ""
 display "Comeback wins by tournament:"
 tabstat comeback, by(tournament) stats(sum mean) format(%9.0f)
 
-display "Section 2 complete: Pressure outcomes."
 display "Section 2 complete: Pressure outcomes."
 
 * ═══════════════════════════════════════════════════════════════════════════════
@@ -427,15 +428,6 @@ display "After dropping non-informative ty cells: " r(N) " team-obs | " r(N)/2 "
 
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
 margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
-estimates store cb_ling_prox
-estimates table cb_ling_prox, b se stats(N ll)
-restore
-
-log close
-
-display ""
-display "Section 5 complete: Baseline regressions."
-display "Results saved to stata_homophily_results.txt"
 estimates store cb_ling_prox
 estimates table cb_ling_prox, b se stats(N ll)
 restore
