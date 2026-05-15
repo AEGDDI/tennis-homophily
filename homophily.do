@@ -1,7 +1,11 @@
-* build_homophily.do
+
+
+
+
+* homophily.do
 * Tennis Doubles Homophily — Main Analysis
 * Run this from the project root in STATA.
-* Mirrors sections 1-5 from homophily_analysis.ipynb
+* Mirrors sections 1-4 from homophily_analysis.ipynb
 *
 * Data: Grand Slam doubles matches 2018–2025. N ≈ 1,795 matches after dropping retirements/walkovers.
 * Sections:
@@ -282,7 +286,8 @@ if `"`incomplete_matches'"' == "" {
 
     generate byte s3_regular_complete = !missing(winners_set3, losers_set3) & ///
         ((max(winners_set3, losers_set3)==6 & min(winners_set3, losers_set3)<=4) | ///
-         (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)))
+         (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)) | ///
+         (max(winners_set3, losers_set3)>=8 & max(winners_set3, losers_set3) - min(winners_set3, losers_set3)==2))
 
     generate byte s3_match_tb_complete = !missing(winners_set3, losers_set3) & ///
         max(winners_set3, losers_set3) >= 10 & ///
@@ -393,48 +398,93 @@ log using "stata_homophily_results.txt", replace text
 
 display ""
 display "=== TABLE 3. Match Win — Logit ==="
-display "FE: tournament×year (as ty) + stage_code | SE clustered by match"
+display "FE: tournament×year (ty) + stage_code | SE clustered by match | Grand Slams only"
+display ""
+
+display "--- 3a. Same Nationality ---"
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100)
+estimates store win_same_country
+
+display ""
+display "--- 3b. Same Official Language ---"
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100)
+estimates store win_same_language
+
+display ""
+display "--- 3c. Language Proximity (ethnic) ---"
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
 margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store win_ling_prox
-estimates table win_ling_prox, b se stats(N ll)
+
+estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
 
 display ""
 display "=== TABLE 4. Tiebreak Win — Logit ==="
-display "Sample: matches with any tiebreak (7-pt or 10-pt)"
+display "Sample: Grand Slam matches with any tiebreak (7-pt or 10-pt)"
 count if any_tb==1
 display "  Obs with any_tb==1: " r(N)
+display ""
+
+display "--- 4a. Same Nationality ---"
+logit won_any_tb i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100)
+estimates store tb_same_country
+
+display ""
+display "--- 4b. Same Official Language ---"
+logit won_any_tb i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100)
+estimates store tb_same_language
+
+display ""
+display "--- 4c. Language Proximity (ethnic) ---"
 logit won_any_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
 margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store tb_ling_prox
-estimates table tb_ling_prox, b se stats(N ll)
+
+estimates table tb_same_country tb_same_language tb_ling_prox, b se stats(N ll)
 
 display ""
 display "=== TABLE 5. Comeback Win — Logit ==="
-display "Outcome: team won after losing set 1 (P(win | lost set 1, 3 sets))"
-display "Sample: 3-set Grand Slam matches, conditional on losing set 1"
+display "Outcome: P(win | lost set 1, 3-set Grand Slam matches)"
 
 preserve
 keep if three_sets==1 & lost_set1==1
 count
 display "Raw sample: " r(N) " team-obs | " r(N)/2 " matches"
 
-* Drop tournament×year cells with no outcome variation
 quietly egen minwin = min(win), by(ty)
 quietly egen maxwin = max(win), by(ty)
 drop if minwin==maxwin
 count
 display "After dropping non-informative ty cells: " r(N) " team-obs | " r(N)/2 " matches"
 
+display ""
+display "--- 5a. Same Nationality ---"
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100)
+estimates store cb_same_country
+
+display ""
+display "--- 5b. Same Official Language ---"
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100)
+estimates store cb_same_language
+
+display ""
+display "--- 5c. Language Proximity (ethnic) ---"
 logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
 margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store cb_ling_prox
-estimates table cb_ling_prox, b se stats(N ll)
+
+estimates table cb_same_country cb_same_language cb_ling_prox, b se stats(N ll)
 restore
 
 log close
 
 display ""
-display "Section 5 complete: Baseline regressions."
+display "Section 5 complete: Baseline regressions (all 3 culture measures)."
 display "Results saved to stata_homophily_results.txt"
 
