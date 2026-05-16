@@ -181,7 +181,7 @@ display "Section 2 complete: Pressure outcomes."
 * ═══════════════════════════════════════════════════════════════════════════════
 
 display ""
-display "=== TABLE 2A. Tokyo 2021 cycle — Team composition across period ==="
+display "=== TABLE 2A. Tokyo 2021 cycle — Same nat/lang/langprox by period ==="
 
 preserve
 keep if olympics_tourn==0
@@ -197,7 +197,7 @@ list cycle_tokyo N_teams same_country_avg same_language_avg ling_prox_avg, abbre
 restore
 
 display ""
-display "=== TABLE 2B. Paris 2024 cycle — Team composition across period ==="
+display "=== TABLE 2B. Paris 2024 cycle — Same nat/lang/langprox by period ==="
 
 preserve
 keep if olympics_tourn==0
@@ -213,15 +213,15 @@ list cycle_paris N_teams same_country_avg same_language_avg ling_prox_avg, abbre
 restore
 
 display ""
-display "Winner vs. loser team homophily rates (Grand Slams):"
+display "Overall same vs. diff homophily rates (Grand Slams, all teams):"
 preserve
 keep if olympics_tourn==0
-display "Same nationality:"
-tabstat same_country_winners same_country_losers, stats(mean) format(%9.3f)
-display "Same language:"
-tabstat winners_same_language losers_same_language, stats(mean) format(%9.3f)
-display "Linguistic proximity:"
-tabstat winners_linguistic_proximity losers_linguistic_proximity, stats(mean) format(%9.3f)
+display "Same nationality (same=avg, diff=1-avg):"
+tabstat same_country_avg, stats(mean) format(%9.3f)
+display "Same language (same=avg, diff=1-avg):"
+tabstat same_language_avg, stats(mean) format(%9.3f)
+display "Linguistic proximity (same=avg, diff=1-avg):"
+tabstat ling_prox_avg, stats(mean) format(%9.3f)
 restore
 
 display "Section 3 complete: Olympic cycle descriptive evidence."

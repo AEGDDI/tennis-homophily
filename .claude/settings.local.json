@@ -32,7 +32,8 @@
       "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python show_outputs.py 2>&1)",
       "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python audit_matches.py 2>&1)",
       "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python run_pipeline.py 2>&1)",
-      "Bash(Out-String)"
+      "Bash(Out-String)",
+      "PowerShell(& \"C:\\\\Users\\\\ALESSANDRO\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" \"C:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\to_pdf.py\")"
     ]
   }
 }
