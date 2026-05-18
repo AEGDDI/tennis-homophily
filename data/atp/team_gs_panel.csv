@@ -1,5 +1,6 @@
 match_id,tournament,year,surface,stage_code,any_tb,regular_tb,match_tb,tb_s3_regular,three_sets,comeback,winner_lost_s1,pre_olympic,olympic_period,olympics_tourn,same_country,same_language,ling_prox,rank_mean,wl_career_diff,rank_gap,single_top100,win,won_tb_s1,won_tb_s2,opp_rank_mean,lost_set1,won_regular_tb,won_any_tb
 0,Australian Open,2018,Hard,2,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,1.0,0.005113704012382425,0.0,0,1,0,0,67.5,0,0,0
+1,Australian Open,2018,Hard,2,0,0,0,0,0,0,0,0,0,0,1.0,1.0,1.0,166.5,0.2293972044263251,73.0,0,1,0,0,204.0,0,0,0
 2,Australian Open,2018,Hard,2,1,1,0,0,1,1,1,0,0,0,0.0,0.0,0.0,55.5,0.1229791054917854,83.0,0,1,0,0,87.5,1,0,0
 3,Australian Open,2018,Hard,2,1,1,0,0,0,0,0,0,0,0,0.0,1.0,1.0,35.0,0.1044022455747792,26.0,0,1,1,0,472.5,0,1,1
 4,Australian Open,2018,Hard,2,0,0,0,0,0,0,0,0,0,0,1.0,1.0,1.0,22.0,0.09247104247104243,4.0,0,1,0,0,47.0,0,0,0
@@ -1598,6 +1599,7 @@ match_id,tournament,year,surface,stage_code,any_tb,regular_tb,match_tb,tb_s3_reg
 1995,Wimbledon,2025,Grass,6,0,0,0,0,0,0,0,0,1,0,1.0,1.0,1.0,11.0,0.001288926372070121,2.0,0,1,0,0,7.5,0,0,0
 1996,Wimbledon,2025,Grass,7,1,1,0,0,0,0,0,0,1,0,1.0,1.0,1.0,11.0,0.001288926372070121,2.0,0,1,0,1,115.5,0,1,1
 0,Australian Open,2018,Hard,2,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,67.5,0.1231476750127747,35.0,1,0,0,0,1.0,1,0,0
+1,Australian Open,2018,Hard,2,0,0,0,0,0,0,0,0,0,0,1.0,1.0,1.0,204.0,0.1016483516483516,228.0,0,0,0,0,166.5,1,0,0
 2,Australian Open,2018,Hard,2,1,1,0,0,1,0,1,0,0,0,1.0,1.0,1.0,87.5,0.05743243243243251,13.0,0,0,1,0,55.5,0,1,1
 3,Australian Open,2018,Hard,2,1,1,0,0,0,0,0,0,0,0,0.0,0.0,0.0,472.5,0.0935314685314686,749.0,0,0,0,0,35.0,1,0,0
 4,Australian Open,2018,Hard,2,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,47.0,0.06562677841585185,20.0,0,0,0,0,22.0,1,0,0
