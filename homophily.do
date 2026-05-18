@@ -7,7 +7,8 @@
 * Run this from the project root in STATA.
 * Mirrors sections 1-4 from homophily_analysis.ipynb
 *
-* Data: Grand Slam doubles matches 2018–2025. N ≈ 1,795 matches after dropping retirements/walkovers.
+* Data: Grand Slam doubles matches 2018–2025. 1,793 matches after dropping retirements/walkovers.
+*       Regression sample: 1,598 GS matches, 3,196 team-obs (complete ranking + nationality/language).
 * Sections:
 *   1. Variable construction
 *   2. Pressure outcomes (tiebreaks, comebacks)
@@ -422,60 +423,66 @@ estimates table win_same_country win_same_language win_ling_prox, b se stats(N l
 
 display ""
 display "=== TABLE 4. Tiebreak Win — Logit ==="
-display "Sample: Grand Slam matches with any tiebreak (7-pt or 10-pt)"
-count if any_tb==1
-display "  Obs with any_tb==1: " r(N)
+display "Sample: Grand Slam matches with a 7-pt regular tiebreak in sets 1 or 2"
+count if regular_tb==1
+display "  Obs with regular_tb==1: " r(N)
 display ""
 
 display "--- 4a. Same Nationality ---"
-logit won_any_tb i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
+logit won_regular_tb i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100 if regular_tb==1, cluster(match_id)
 margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100)
 estimates store tb_same_country
 
 display ""
 display "--- 4b. Same Official Language ---"
-logit won_any_tb i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
+logit won_regular_tb i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100 if regular_tb==1, cluster(match_id)
 margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100)
 estimates store tb_same_language
 
 display ""
 display "--- 4c. Language Proximity (ethnic) ---"
-logit won_any_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100 if any_tb==1, cluster(match_id)
+logit won_regular_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100 if regular_tb==1, cluster(match_id)
 margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store tb_ling_prox
 
 estimates table tb_same_country tb_same_language tb_ling_prox, b se stats(N ll)
 
 display ""
-display "=== TABLE 5. Comeback Win — Logit ==="
-display "Outcome: P(win | lost set 1, 3-set Grand Slam matches)"
+display "=== TABLE 5. Comeback Win — Logit (Adversity Sample) ==="
+display "Outcome: P(win | team lost set 1)  — one obs per match (comeback, 3-set loss, or swept)"
+display "SE: HC3 robust (no within-match clustering — 1 obs/match by construction)"
 
 preserve
-keep if three_sets==1 & lost_set1==1
+* Adversity sample: all teams that lost set 1, regardless of whether match went to 3 sets.
+* This gives one observation per match:
+*   0|1|1 = comeback win  (win=1)
+*   0|1|0 = 3-set loss    (win=0)
+*   0|0   = swept         (win=0)
+keep if lost_set1==1
 count
-display "Raw sample: " r(N) " team-obs | " r(N)/2 " matches"
+display "Adversity obs (= matches): " r(N)
 
 quietly egen minwin = min(win), by(ty)
 quietly egen maxwin = max(win), by(ty)
 drop if minwin==maxwin
 count
-display "After dropping non-informative ty cells: " r(N) " team-obs | " r(N)/2 " matches"
+display "After dropping non-informative ty cells: " r(N)
 
 display ""
 display "--- 5a. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100, vce(robust)
 margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100)
 estimates store cb_same_country
 
 display ""
 display "--- 5b. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100, vce(robust)
 margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100)
 estimates store cb_same_language
 
 display ""
 display "--- 5c. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, vce(robust)
 margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store cb_ling_prox
 

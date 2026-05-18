@@ -33,7 +33,18 @@
       "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python audit_matches.py 2>&1)",
       "PowerShell($env:PYTHONIOENCODING='utf-8'; Set-Location \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\"; python run_pipeline.py 2>&1)",
       "Bash(Out-String)",
-      "PowerShell(& \"C:\\\\Users\\\\ALESSANDRO\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" \"C:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\to_pdf.py\")"
+      "PowerShell(& \"C:\\\\Users\\\\ALESSANDRO\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" \"C:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\to_pdf.py\")",
+      "Bash(\"code/.venv/Scripts/python.exe\" analysis_revised.py)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(jupyter kernelspec *)",
+      "PowerShell(py *)",
+      "Bash(py -3 -c \"import jupyter; print\\(jupyter.__version__\\)\")",
+      "Bash(py -3 -m jupyter nbconvert --version)",
+      "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/merging/matches_ranks.ipynb\" --ExecutePreprocessor.timeout=600)",
+      "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/cleaning/final_ds.ipynb\" --ExecutePreprocessor.timeout=600)",
+      "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/merging/pairs.ipynb\" --ExecutePreprocessor.timeout=600)",
+      "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/analysis/homophily_analysis.ipynb\" --ExecutePreprocessor.timeout=600)",
+      "Bash(py *)"
     ]
   }
 }
