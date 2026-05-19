@@ -22,6 +22,7 @@ We test whether teams whose players share **nationality**, **official language**
 
 - **Coverage:** Australian Open, Roland Garros, Wimbledon, US Open — 2018–2025 (excl. 2020); Olympics 2021 and 2024 included separately
 - **Final sample:** 1,793 completed matches (1,840 raw; 47 dropped: 20 walkovers, 27 retirements)
+- **Regression sample:** 1,599 GS matches, 3,198 team-obs (138 further dropped: 14 for ranking, 124 for nationality/language; Olympics excluded)
 - **Unit of analysis:** team-match pair (two observations per match: winner team = 1, loser team = 0)
 
 ---
@@ -64,9 +65,9 @@ Team composition at Grand Slams shifts markedly in the lead-up to the Olympics, 
 
 | Period | Window | Same Nationality | Same Language | Ling. Proximity |
 |---|---|---|---|---|
-| Pre-Paris | AO22–USO22 | 37.4% | 51.2% | 52.3% |
-| Paris Prep | AO23–Wim24 | 41.0% | 55.6% | 56.0% |
-| Post-Paris | USO24–USO25 | 43.1% | 54.8% | 56.2% |
+| Pre-Paris | AO22–USO22 | 39.3% | 54.2% | 55.1% |
+| Paris Prep | AO23–Wim24 | 42.5% | 59.1% | 59.6% |
+| Post-Paris | USO24–USO25 | 45.3% | 57.7% | 59.1% |
 
 **Winner vs. loser comparison (Grand Slams):**
 
@@ -80,33 +81,52 @@ Team composition at Grand Slams shifts markedly in the lead-up to the Olympics, 
 
 All models: logit, tournament×year fixed effects, round fixed effects, standard errors clustered by match. Culture measure: linguistic proximity (ethnic). Controls: team average ranking, opponent average ranking, teammate rank gap, top-100 singles indicator.
 
-**Table 3 — Match Win** (N = 3,436 team-obs, 1,718 matches):
+**Table 3 — Match Win** (N = 3,198 team-obs, 1,599 matches):
 
 | Variable | Coeff | SE | p |
 |---|---|---|---|
-| Language proximity | +0.155** | 0.073 | 0.034 |
+| Same nationality | +0.058 | 0.079 | 0.466 |
+| Same language | +0.116 | 0.077 | 0.129 |
+| Language proximity | +0.097 | 0.076 | 0.205 |
 | Team avg. ranking | −0.004*** | 0.001 | <0.001 |
 | Opponent avg. ranking | +0.003*** | 0.000 | <0.001 |
 
-**Table 4 — Tiebreak Win** (N = 1,717, restricted to matches with any tiebreak):
+**Table 4 — Tiebreak Win** (N = 1,424 team-obs, 712 matches; 7-pt regular tiebreaks, sets 1–2):
 
 | Variable | Coeff | SE | p |
 |---|---|---|---|
-| Language proximity | −0.026 | 0.108 | 0.808 |
+| Same nationality | +0.104 | 0.120 | 0.384 |
+| Same language | +0.059 | 0.116 | 0.610 |
+| Language proximity | +0.041 | 0.116 | 0.723 |
 
-**Table 5 — Comeback Win** (N = 762, restricted to 3-set matches where team lost set 1):
+**Table 5 — Comeback Win** (N = 1,599 obs, 1 per match; all teams that lost set 1):
 
 | Variable | Coeff | SE | p |
 |---|---|---|---|
-| Language proximity | −0.398** | 0.171 | 0.020 |
+| Same nationality | −0.237* | 0.137 | 0.083 |
+| Same language | −0.326** | 0.132 | 0.014 |
+| Language proximity | −0.332** | 0.133 | 0.012 |
 
 ### Interpretation
 
-- Linguistic proximity **positively predicts match wins** overall, consistent with a communication or coordination advantage.
-- The effect **does not extend to tiebreaks** — in sudden-pressure situations (7-point tiebreak), cultural similarity offers no measurable edge.
-- Counterintuitively, linguistically similar teams are **less likely to mount a comeback** after losing the first set, suggesting the homophily advantage may reflect a playing style that is more dominant-set-heavy and less resilient when behind.
+- Cultural similarity (nationality, language, linguistic proximity) **does not predict overall match wins** once ranking controls and fixed effects are included.
+- No effect in tiebreaks — culturally similar teams show no advantage or disadvantage in 7-point sudden-death situations.
+- Culturally similar teams are **less likely to mount a comeback** after losing the first set (same language p = 0.014; language proximity p = 0.012), suggesting they are more dominant-set-heavy and less resilient when behind.
 
 ---
+
+## Observation Breakdown
+
+| Step | Description | Matches | Team-obs |
+|---|---|---|---|
+| 1 | Raw dataset (2018–2025, excl. 2020) | 1,840 | 3,680 |
+| 2 | Drop retirements / walkovers (20 WO · 9 ret. S1 · 18 ret. S2+) | 1,793 | 3,586 |
+| 3 | Drop: ranking incomplete for ≥1 player | 1,779 | 3,558 |
+| 4 | Drop: nationality/language missing for ≥1 player (birthplace fallback applied first) | 1,655 | 3,310 |
+| 5 | Exclude Olympic matches (Tokyo 2021 · Paris 2024) | **1,599** | **3,198** |
+| → | **Grand Slams regression sample (Tables 3–5)** | **1,599** | **3,198** |
+
+Regression sub-samples: Table 4 — 712 matches, 1,424 team-obs (regular tiebreaks). Table 5 — 1,599 obs, 1 per match (all teams that lost set 1).
 
 ## Pressure Outcome Frequencies
 

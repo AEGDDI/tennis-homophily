@@ -7,9 +7,13 @@
 * Run this from the project root in STATA.
 * Mirrors sections 1-4 from homophily_analysis.ipynb
 *
-* Data: Grand Slam doubles matches 2018–2025. 1,793 matches after dropping retirements/walkovers.
-*       Regression sample: 1,598 GS matches, 3,196 team-obs (complete ranking + nationality/language).
+* Data: Grand Slam doubles matches 2018–2025 (excl. 2020).
+*       Raw: 1,840 matches. After dropping 47 retirements/walkovers: 1,793 matches.
+*       Regression sample: 1,599 GS matches, 3,198 team-obs
+*         (complete doubles ranking + nationality/language; Olympics excluded).
+*       Country filled from birthplace-country for players with missing nationality.
 * Sections:
+*   0. Observation breakdown (funnel from raw data to regression sample)
 *   1. Variable construction
 *   2. Pressure outcomes (tiebreaks, comebacks)
 *   3. Olympic cycle descriptive evidence
@@ -397,7 +401,52 @@ display ""
 
 log using "stata_homophily_results.txt", replace text
 
+* ═══════════════════════════════════════════════════════════════════════════════
+* SECTION 0: OBSERVATION BREAKDOWN
+* ═══════════════════════════════════════════════════════════════════════════════
+* Numbers in steps 1-5 are fixed from the Python pipeline (homophily_analysis.ipynb).
+* Steps 6-7 are verified dynamically from the loaded team panel.
+
 display ""
+display "=== SECTION 0. OBSERVATION BREAKDOWN ==="
+display "(from raw scraped data to regression sample)"
+display ""
+display "  Step 1  Raw dataset (scraped + merged, 2018-2025 excl. 2020):  1,840 matches"
+display "  Step 2  Drop retirements / walkovers:                         -47 matches"
+display "          (20 walkovers | 9 retired in set 1 | 18 retired in set 2+)"
+display "  ─────────────────────────────────────────────────────────────────────────────"
+display "          Clean match dataset:                                  1,793 matches"
+display ""
+display "  Step 3  Expand to team-level (2 obs per match):               3,586 obs"
+display "  Step 4  Drop: ranking incomplete for >=1 player:              -14 matches  (-28 obs)"
+display "  Step 5  Drop: country/language missing for >=1 player:        -124 matches (-248 obs)"
+display "          (birthplace-country used as fallback before this step)"
+display "  ─────────────────────────────────────────────────────────────────────────────"
+display "          After completeness filter (incl. Olympics):           3,310 obs | 1,655 matches"
+display ""
+display "  Step 6  Exclude Olympic matches (2021 Tokyo + 2024 Paris):    -56 matches  (-112 obs)"
+display "  ─────────────────────────────────────────────────────────────────────────────"
+
+count
+local n_panel = r(N)
+local n_matches = `n_panel' / 2
+display "          Grand Slams regression sample:  `n_panel' obs | `n_matches' matches"
+display ""
+
+count if missing(win, ty, stage_code, same_country, rank_mean, opp_rank_mean, rank_gap, single_top100)
+display "  Records with any missing regression variable: " r(N) " (should be 0)"
+display ""
+
+display "  Regression sub-samples:"
+count if regular_tb == 1
+local n_tb   = r(N)
+local n_tb_m = `n_tb' / 2
+display "    Table 4  regular tiebreaks (sets 1-2, 7-pt):   `n_tb' obs | `n_tb_m' matches"
+count if lost_set1 == 1
+local n_adv = r(N)
+display "    Table 5  adversity sample (lost set 1):        `n_adv' obs = `n_adv' matches"
+display ""
+
 display "=== TABLE 3. Match Win — Logit ==="
 display "FE: tournament×year (ty) + stage_code | SE clustered by match | Grand Slams only"
 display ""

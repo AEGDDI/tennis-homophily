@@ -101,7 +101,7 @@
 <p class="subtitle">
   ATP Men's Grand Slam Doubles, 2018–2025 &nbsp;·&nbsp;
   1,793 matches after dropping 47 retirements / walkovers &nbsp;·&nbsp;
-  Regression sample: 1,598 GS matches, 3,196 team-obs
+  Regression sample: 1,599 GS matches, 3,198 team-obs
   (complete ranking and nationality/language for all 4 players)
 </p>
 
@@ -122,16 +122,66 @@
   teammate rank gap, top-100 singles indicator (either player).
   Culture measures enter one at a time.
   Matches are excluded if either team lacks a valid doubles ranking or if any player's
-  nationality / language data is missing (143 matches dropped: 14 for ranking, 129 for
-  nationality / language).
-  An earlier version of this analysis coded missing country / language as "different"
-  (NaN → 0), which spuriously inflated the culture coefficients in Table 3
-  (same language p = 0.023 → p = 0.129 after fix) and diluted the adversity effect
-  in Table 5 (same language p = 0.035 → p = 0.014 after fix).
+  nationality / language data is missing after all imputation (138 matches dropped:
+  14 for ranking, 124 for nationality / language).
+  Where a player's registered country is unavailable, birthplace country is used
+  as a fallback before coding any remaining unknowns as missing (NaN, not zero).
 </p>
 
 <!-- ══════════════════════════════════════════════════════════════════════════ -->
-<h2>2. Pressure Outcome Counts</h2>
+<h2>2. Observation Breakdown</h2>
+<p>
+  The table below shows how the raw scraped data reduce to the regression sample
+  used in Tables 3–5.
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Description</th>
+      <th class="num">Matches</th>
+      <th class="num">Change</th>
+      <th class="num">Team-obs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td><td>Raw scraped dataset (2018–2025, excl. 2020)</td>
+      <td class="num">1,840</td><td class="num">—</td><td class="num">3,680</td>
+    </tr>
+    <tr>
+      <td>2</td><td>Drop retirements / walkovers
+        <span class="se">(20 walkovers · 9 retired in set 1 · 18 retired in set 2+)</span></td>
+      <td class="num">1,793</td><td class="num">−47</td><td class="num">3,586</td>
+    </tr>
+    <tr>
+      <td>3</td><td>Drop matches: doubles ranking incomplete for ≥1 player</td>
+      <td class="num">1,779</td><td class="num">−14</td><td class="num">3,558</td>
+    </tr>
+    <tr>
+      <td>4</td><td>Drop matches: nationality / language missing for ≥1 player
+        <span class="se">(birthplace-country used as fallback before this step)</span></td>
+      <td class="num">1,655</td><td class="num">−124</td><td class="num">3,310</td>
+    </tr>
+    <tr>
+      <td>5</td><td>Exclude Olympic matches (Tokyo 2021 · Paris 2024)</td>
+      <td class="num"><strong>1,599</strong></td><td class="num">−56</td>
+      <td class="num"><strong>3,198</strong></td>
+    </tr>
+    <tr class="bg">
+      <td colspan="2"><strong>→ Grand Slams regression sample (Tables 3–5)</strong></td>
+      <td class="num"><strong>1,599</strong></td><td class="num"></td>
+      <td class="num"><strong>3,198</strong></td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">
+  Regression sub-samples: Table 4 (regular tiebreaks, sets 1–2) — 712 matches, 1,424 team-obs.
+  Table 5 (adversity: all teams that lost set 1) — 1,599 obs, one per match.
+</p>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<h2>3. Pressure Outcome Counts</h2>
 
 <table>
   <thead>
@@ -150,7 +200,7 @@
 <p class="note">All matches (GS + Olympics, N=1,793). Match tiebreaks concentrated in Olympics (N=20) and Wimbledon post-2018 (N=4).</p>
 
 <!-- ══════════════════════════════════════════════════════════════════════════ -->
-<h2>3. Olympic Cycle Descriptive Evidence</h2>
+<h2>4. Olympic Cycle Descriptive Evidence</h2>
 
 <h3>Table 2A — Tokyo 2021 cycle (Grand Slams only, Olympics excluded)</h3>
 <table>
@@ -170,21 +220,21 @@
   <tbody>
     <tr>
       <td>Pre-Tokyo</td><td>AO18 – USO19</td><td class="num">1,006</td>
-      <td class="num">41.4%</td><td class="num">58.6%</td>
-      <td class="num">55.6%</td><td class="num">44.4%</td>
-      <td class="num">56.5%</td><td class="num">43.5%</td>
+      <td class="num">40.1%</td><td class="num">59.9%</td>
+      <td class="num">55.1%</td><td class="num">44.9%</td>
+      <td class="num">55.9%</td><td class="num">44.1%</td>
     </tr>
     <tr>
       <td>Tokyo Prep</td><td>AO20 – Wim21 (ex Wim20)</td><td class="num">364</td>
       <td class="num">42.0%</td><td class="num">58.0%</td>
-      <td class="num">56.2%</td><td class="num">43.8%</td>
-      <td class="num">56.2%</td><td class="num">43.8%</td>
+      <td class="num">56.1%</td><td class="num">43.9%</td>
+      <td class="num">56.1%</td><td class="num">43.9%</td>
     </tr>
     <tr>
       <td>Post-Tokyo</td><td>USO21 – USO22</td><td class="num">604</td>
-      <td class="num">39.7%</td><td class="num">60.3%</td>
-      <td class="num">54.9%</td><td class="num">45.1%</td>
-      <td class="num">55.4%</td><td class="num">44.6%</td>
+      <td class="num">39.2%</td><td class="num">60.8%</td>
+      <td class="num">54.8%</td><td class="num">45.2%</td>
+      <td class="num">55.5%</td><td class="num">44.5%</td>
     </tr>
   </tbody>
 </table>
@@ -208,21 +258,21 @@
   <tbody>
     <tr>
       <td>Pre-Paris</td><td>AO22 – USO22</td><td class="num">486</td>
-      <td class="num">40.1%</td><td class="num">59.9%</td>
-      <td class="num">54.3%</td><td class="num">45.7%</td>
-      <td class="num">55.0%</td><td class="num">45.0%</td>
+      <td class="num">39.3%</td><td class="num">60.7%</td>
+      <td class="num">54.2%</td><td class="num">45.8%</td>
+      <td class="num">55.1%</td><td class="num">44.9%</td>
     </tr>
     <tr>
       <td>Paris Prep</td><td>AO23 – Wim24</td><td class="num">860</td>
-      <td class="num">43.5%</td><td class="num">56.5%</td>
-      <td class="num">59.5%</td><td class="num">40.5%</td>
-      <td class="num">60.0%</td><td class="num">40.0%</td>
+      <td class="num">42.5%</td><td class="num">57.5%</td>
+      <td class="num">59.1%</td><td class="num">40.9%</td>
+      <td class="num">59.6%</td><td class="num">40.4%</td>
     </tr>
     <tr>
       <td>Post-Paris</td><td>USO24 – USO25</td><td class="num">626</td>
-      <td class="num">46.2%</td><td class="num">53.8%</td>
-      <td class="num">58.5%</td><td class="num">41.5%</td>
-      <td class="num">60.0%</td><td class="num">40.0%</td>
+      <td class="num">45.3%</td><td class="num">54.7%</td>
+      <td class="num">57.7%</td><td class="num">42.3%</td>
+      <td class="num">59.1%</td><td class="num">40.9%</td>
     </tr>
   </tbody>
 </table>
@@ -247,17 +297,17 @@
 </figure>
 
 <!-- ══════════════════════════════════════════════════════════════════════════ -->
-<h2>4. Regression Results</h2>
+<h2>5. Regression Results</h2>
 <p>
   Logit coefficients (log-odds). Each column is a separate model.
   Standard errors in parentheses, clustered by match.
   Fixed effects: tournament × year and round (stage code).
   Sample: Grand Slams only, excluding matches with incomplete ranking or
-  nationality / language data (N = 1,569 matches, 3,138 team-obs).
+  nationality / language data (N = 1,599 matches, 3,198 team-obs; see Section 2).
 </p>
 
 <!-- Table 3 -->
-<h3>Table 3 — Outcome: Match Win &nbsp;|&nbsp; N = 3,196 team-obs (1,598 matches)</h3>
+<h3>Table 3 — Outcome: Match Win &nbsp;|&nbsp; N = 3,198 team-obs (1,599 matches)</h3>
 <table>
   <thead>
     <tr>
@@ -427,12 +477,14 @@
   Standard errors clustered by match. FE: tournament × year, round.
   Sample restricted to matches with a 7-pt regular tiebreak in sets 1 or 2
   (excludes 10-pt super-tiebreaks in Olympics and Wimbledon).
+  Of the 1,599 baseline matches, 712 (44.5%) had a regular tiebreak;
+  each contributes two team-observations → 712 × 2 = 1,424 obs.
   Including all tiebreak types (N = 1,594 obs, 797 matches) gives near-identical
   culture coefficients (+0.024, +0.023, +0.001; all p &gt; 0.80).
 </p>
 
 <!-- Table 5 -->
-<h3>Table 5 — Outcome: Comeback Win (Adversity Sample) &nbsp;|&nbsp; N = 1,598 obs (1,598 matches, 1 obs per match)</h3>
+<h3>Table 5 — Outcome: Comeback Win (Adversity Sample) &nbsp;|&nbsp; N = 1,599 obs (1,599 matches, 1 obs per match)</h3>
 <table>
   <thead>
     <tr>
@@ -445,15 +497,15 @@
   <tbody>
     <tr>
       <td>Culture measure</td>
-      <td class="num">−0.2350<sup>*</sup></td>
-      <td class="num">−0.3243<sup>**</sup></td>
-      <td class="num">−0.3301<sup>**</sup></td>
+      <td class="num">−0.2371<sup>*</sup></td>
+      <td class="num">−0.3257<sup>**</sup></td>
+      <td class="num">−0.3316<sup>**</sup></td>
     </tr>
     <tr class="se">
       <td></td>
-      <td class="num">(0.1366)<br>p=0.085</td>
+      <td class="num">(0.1365)<br>p=0.083</td>
       <td class="num">(0.1324)<br>p=0.014</td>
-      <td class="num">(0.1325)<br>p=0.013</td>
+      <td class="num">(0.1327)<br>p=0.012</td>
     </tr>
     <tr>
       <td>Team avg. doubles rank</td>
@@ -515,9 +567,10 @@
   <sup>***</sup>&nbsp;p&lt;0.01 &nbsp; <sup>**</sup>&nbsp;p&lt;0.05 &nbsp; <sup>*</sup>&nbsp;p&lt;0.10.
   HC3 heteroskedasticity-robust standard errors (one observation per match, no within-match clustering).
   FE: tournament × year, round.
-  Sample: all GS teams that lost set 1 — adversity scenarios: comeback win (0|1|1, N=310, 19.4%),
-  3-set loss (0|1|0, N=392, 24.5%), straight-set loss (0|0, N=896, 56.1%).
-  Each match contributes exactly one observation (the team that lost set 1).
+  Every match has exactly one team that lost set 1, so the adversity sample spans
+  all 1,599 baseline matches (N = 1,599 obs = 1 per match).
+  Outcome breakdown: comeback win (0|1|1, N=310, 19.4%),
+  3-set loss (0|1|0, N=392, 24.5%), straight-set loss (0|0, N=897, 56.1%).
   Tournament × year cells with no outcome variation dropped.
 </p>
 
