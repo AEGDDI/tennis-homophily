@@ -44,7 +44,9 @@
       "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/cleaning/final_ds.ipynb\" --ExecutePreprocessor.timeout=600)",
       "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/merging/pairs.ipynb\" --ExecutePreprocessor.timeout=600)",
       "Bash(py -3 -m jupyter nbconvert --to notebook --execute --inplace \"code/analysis/homophily_analysis.ipynb\" --ExecutePreprocessor.timeout=600)",
-      "Bash(py *)"
+      "Bash(py *)",
+      "Bash(code/.venv/Scripts/python.exe -c ' *)",
+      "Bash(git restore *)"
     ]
   }
 }
