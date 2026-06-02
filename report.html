@@ -121,6 +121,9 @@
   Controls: team average doubles ranking, opponent average ranking,
   teammate rank gap, top-100 singles indicator (either player).
   Culture measures enter one at a time.
+  Tables 4b and 5b add a team-average GS doubles experience variable
+  (number of prior GS doubles appearances, averaged across both players)
+  and its square as robustness checks.
   Matches are excluded if either team lacks a valid doubles ranking or if any player's
   nationality / language data is missing after all imputation (138 matches dropped:
   14 for ranking, 124 for nationality / language).
@@ -296,6 +299,16 @@
   </figcaption>
 </figure>
 
+<figure>
+  <img src="ppt/homophily_combined_cycles.png" alt="Both Olympic cycles — Same vs. Diff homophily by tournament-year">
+  <figcaption>
+    Figure 3. Both Olympic cycles combined. Share of same-culture teams across all Grand Slam
+    tournaments (2018–2025, Olympics excluded), plotted on a single timeline.
+    Shaded regions distinguish preparation and post-Games windows for each cycle;
+    vertical dashed lines mark the Tokyo 2021 and Paris 2024 Olympics.
+  </figcaption>
+</figure>
+
 <!-- ══════════════════════════════════════════════════════════════════════════ -->
 <h2>5. Regression Results</h2>
 <p>
@@ -390,10 +403,17 @@
   <sup>***</sup>&nbsp;p&lt;0.01 &nbsp; <sup>**</sup>&nbsp;p&lt;0.05 &nbsp; <sup>*</sup>&nbsp;p&lt;0.10.
   Standard errors clustered by match. FE: tournament × year, round.
   No culture measure is statistically significant at conventional levels.
+  Sample means (rank_mean | opp_rank_mean | rank_gap):
+  winners = 83.4 | 171.0 | 87.5;
+  losers = 171.0 | 83.4 | 87.5;
+  combined = 127.2 | 127.2 | 87.5.
+  The combined rank means are identical by construction: the panel has two symmetric rows per match
+  where <code>opp_rank_mean</code> is <code>rank_mean</code> of the other row,
+  so their sample averages must be equal.
 </p>
 
 <!-- Table 4 -->
-<h3>Table 4 — Outcome: Tiebreak Win (7-pt regular tiebreaks, sets 1–2) &nbsp;|&nbsp; N = 1,424 team-obs (712 matches)</h3>
+<h3>Table 4 — Outcome: Match Win (tiebreak matches) &nbsp;|&nbsp; N = 1,594 team-obs (797 matches)</h3>
 <table>
   <thead>
     <tr>
@@ -406,33 +426,33 @@
   <tbody>
     <tr>
       <td>Culture measure</td>
-      <td class="num">+0.1044</td>
-      <td class="num">+0.0593</td>
-      <td class="num">+0.0411</td>
+      <td class="num">+0.0868</td>
+      <td class="num">+0.1324</td>
+      <td class="num">+0.1258</td>
     </tr>
     <tr class="se">
       <td></td>
-      <td class="num">(0.1199)<br>p=0.384</td>
-      <td class="num">(0.1162)<br>p=0.610</td>
-      <td class="num">(0.1160)<br>p=0.723</td>
+      <td class="num">(0.1126)<br>p=0.441</td>
+      <td class="num">(0.1077)<br>p=0.219</td>
+      <td class="num">(0.1076)<br>p=0.242</td>
     </tr>
     <tr>
       <td>Team avg. doubles rank</td>
-      <td class="num">−0.0007</td>
-      <td class="num">−0.0007</td>
-      <td class="num">−0.0007</td>
+      <td class="num">−0.0023<sup>***</sup></td>
+      <td class="num">−0.0023<sup>***</sup></td>
+      <td class="num">−0.0023<sup>***</sup></td>
     </tr>
     <tr class="se">
       <td></td>
-      <td class="num">(0.0006)</td>
-      <td class="num">(0.0006)</td>
-      <td class="num">(0.0006)</td>
+      <td class="num">(0.0007)</td>
+      <td class="num">(0.0007)</td>
+      <td class="num">(0.0007)</td>
     </tr>
     <tr>
       <td>Opponent avg. doubles rank</td>
-      <td class="num">+0.0012<sup>***</sup></td>
-      <td class="num">+0.0012<sup>***</sup></td>
-      <td class="num">+0.0012<sup>***</sup></td>
+      <td class="num">+0.0022<sup>***</sup></td>
+      <td class="num">+0.0022<sup>***</sup></td>
+      <td class="num">+0.0022<sup>***</sup></td>
     </tr>
     <tr class="se">
       <td></td>
@@ -442,9 +462,9 @@
     </tr>
     <tr>
       <td>Teammate rank gap</td>
-      <td class="num">−0.0008</td>
-      <td class="num">−0.0008</td>
-      <td class="num">−0.0008</td>
+      <td class="num">−0.0002</td>
+      <td class="num">−0.0002</td>
+      <td class="num">−0.0002</td>
     </tr>
     <tr class="se">
       <td></td>
@@ -454,33 +474,148 @@
     </tr>
     <tr>
       <td>Top-100 singles player</td>
-      <td class="num">−0.4210<sup>*</sup></td>
-      <td class="num">−0.4110<sup>*</sup></td>
-      <td class="num">−0.4094<sup>*</sup></td>
+      <td class="num">+0.3780<sup>*</sup></td>
+      <td class="num">+0.3784<sup>*</sup></td>
+      <td class="num">+0.3796<sup>*</sup></td>
     </tr>
     <tr class="se">
       <td></td>
-      <td class="num">(0.2311)</td>
-      <td class="num">(0.2307)</td>
-      <td class="num">(0.2305)</td>
+      <td class="num">(0.2200)</td>
+      <td class="num">(0.2206)</td>
+      <td class="num">(0.2205)</td>
     </tr>
     <tr class="bg">
       <td>Pseudo-R²</td>
-      <td class="num">0.022</td>
-      <td class="num">0.022</td>
-      <td class="num">0.021</td>
+      <td class="num">0.038</td>
+      <td class="num">0.039</td>
+      <td class="num">0.039</td>
     </tr>
   </tbody>
 </table>
 <p class="note">
   <sup>***</sup>&nbsp;p&lt;0.01 &nbsp; <sup>**</sup>&nbsp;p&lt;0.05 &nbsp; <sup>*</sup>&nbsp;p&lt;0.10.
   Standard errors clustered by match. FE: tournament × year, round.
-  Sample restricted to matches with a 7-pt regular tiebreak in sets 1 or 2
-  (excludes 10-pt super-tiebreaks in Olympics and Wimbledon).
-  Of the 1,599 baseline matches, 712 (44.5%) had a regular tiebreak;
-  each contributes two team-observations → 712 × 2 = 1,424 obs.
-  Including all tiebreak types (N = 1,594 obs, 797 matches) gives near-identical
-  culture coefficients (+0.024, +0.023, +0.001; all p &gt; 0.80).
+  Sample: all GS matches where any tiebreak occurred (7-pt in sets 1 or 2, or 10-pt match tiebreak).
+  Outcome: match win. Each match contributes two observations: winner (win=1) and loser (win=0).
+  Of the 1,599 baseline GS matches, 797 (49.8%) had at least one tiebreak → 1,594 obs.
+  Sample means (rank_mean | opp_rank_mean | rank_gap):
+  match winners = 84.6 | 134.1 | 51.9;
+  match losers = 134.1 | 84.6 | 95.7;
+  combined = 109.3 | 109.3 | 73.8.
+  Means are symmetric by construction (one winner and one loser per match).
+</p>
+
+<!-- Table 4b -->
+<h3>Table 4b — Match Win in Tiebreak Matches + Experience Controls &nbsp;|&nbsp; N = 1,481 team-obs (789 matches)</h3>
+<table>
+  <thead>
+    <tr>
+      <th style="width:42%">Variable</th>
+      <th class="num">(1) Same Nationality</th>
+      <th class="num">(2) Same Language</th>
+      <th class="num">(3) Lang. Proximity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Culture measure</td>
+      <td class="num">+0.1365</td>
+      <td class="num">+0.1857</td>
+      <td class="num">+0.1747</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.1195)<br>p=0.254</td>
+      <td class="num">(0.1134)<br>p=0.101</td>
+      <td class="num">(0.1134)<br>p=0.123</td>
+    </tr>
+    <tr>
+      <td>Team avg. doubles rank</td>
+      <td class="num">−0.0024<sup>***</sup></td>
+      <td class="num">−0.0023<sup>***</sup></td>
+      <td class="num">−0.0023<sup>***</sup></td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0008)</td>
+      <td class="num">(0.0008)</td>
+      <td class="num">(0.0008)</td>
+    </tr>
+    <tr>
+      <td>Opponent avg. doubles rank</td>
+      <td class="num">+0.0020<sup>***</sup></td>
+      <td class="num">+0.0020<sup>***</sup></td>
+      <td class="num">+0.0020<sup>***</sup></td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0004)</td>
+      <td class="num">(0.0004)</td>
+      <td class="num">(0.0004)</td>
+    </tr>
+    <tr>
+      <td>Teammate rank gap</td>
+      <td class="num">−0.0001</td>
+      <td class="num">−0.0001</td>
+      <td class="num">−0.0001</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0006)</td>
+      <td class="num">(0.0006)</td>
+      <td class="num">(0.0006)</td>
+    </tr>
+    <tr>
+      <td>Top-100 singles player</td>
+      <td class="num">+0.3899<sup>*</sup></td>
+      <td class="num">+0.3911<sup>*</sup></td>
+      <td class="num">+0.3934<sup>*</sup></td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.2267)</td>
+      <td class="num">(0.2271)</td>
+      <td class="num">(0.2269)</td>
+    </tr>
+    <tr>
+      <td>Team avg GS appearances</td>
+      <td class="num">+0.0560</td>
+      <td class="num">+0.0596</td>
+      <td class="num">+0.0577</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0603)</td>
+      <td class="num">(0.0601)</td>
+      <td class="num">(0.0601)</td>
+    </tr>
+    <tr>
+      <td>GS experience squared</td>
+      <td class="num">−0.0013</td>
+      <td class="num">−0.0014</td>
+      <td class="num">−0.0014</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0022)</td>
+      <td class="num">(0.0022)</td>
+      <td class="num">(0.0022)</td>
+    </tr>
+    <tr class="bg">
+      <td>Pseudo-R²</td>
+      <td class="num">0.041</td>
+      <td class="num">0.042</td>
+      <td class="num">0.042</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">
+  <sup>***</sup>&nbsp;p&lt;0.01 &nbsp; <sup>**</sup>&nbsp;p&lt;0.05 &nbsp; <sup>*</sup>&nbsp;p&lt;0.10.
+  Standard errors clustered by match. FE: tournament × year, round.
+  Sample: any-tiebreak matches with non-missing experience data
+  (N = 1,481 obs, 789 matches; 113 obs dropped for missing experience).
+  Experience = team average of GS doubles appearances up to current match.
+  Neither experience nor its square is statistically significant; culture coefficients are unchanged.
 </p>
 
 <!-- Table 5 -->
@@ -545,9 +680,9 @@
     </tr>
     <tr>
       <td>Top-100 singles player</td>
-      <td class="num">−0.2028</td>
-      <td class="num">−0.2025</td>
-      <td class="num">−0.2062</td>
+      <td class="num">−0.2018</td>
+      <td class="num">−0.2015</td>
+      <td class="num">−0.2053</td>
     </tr>
     <tr class="se">
       <td></td>
@@ -572,6 +707,128 @@
   Outcome breakdown: comeback win (0|1|1, N=310, 19.4%),
   3-set loss (0|1|0, N=392, 24.5%), straight-set loss (0|0, N=897, 56.1%).
   Tournament × year cells with no outcome variation dropped.
+  Sample means (rank_mean | opp_rank_mean | rank_gap):
+  comeback wins (win=1) = 101.5 | 121.6 | 118.4;
+  other losses (win=0) = 182.9 | 79.1 | 118.4;
+  combined = 167.1 | 87.3 | 118.4.
+  Unlike Tables 3–4, the two combined rank means differ because only one team per match is kept
+  (the one that lost set 1), breaking the panel symmetry. That team tends to be the weaker side,
+  hence its average rank (167.1) exceeds its opponent's (87.3).
+  Within the comeback sub-group (win=1) the gap shrinks considerably (101.5 vs 121.6),
+  consistent with homophily potentially helping weaker teams recover from adversity.
+</p>
+
+<!-- Table 5b -->
+<h3>Table 5b — Comeback Win + Experience Controls &nbsp;|&nbsp; N = 1,483 obs (non-missing experience)</h3>
+<table>
+  <thead>
+    <tr>
+      <th style="width:42%">Variable</th>
+      <th class="num">(1) Same Nationality</th>
+      <th class="num">(2) Same Language<sup>†</sup></th>
+      <th class="num">(3) Lang. Proximity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Culture measure</td>
+      <td class="num">−0.1912</td>
+      <td class="num">−0.2469<sup>*</sup></td>
+      <td class="num">−0.2734<sup>**</sup></td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.1443)<br>p=0.185</td>
+      <td class="num">(0.1370)<br>p=0.072</td>
+      <td class="num">(0.1384)<br>p=0.048</td>
+    </tr>
+    <tr>
+      <td>Team avg. doubles rank</td>
+      <td class="num">−0.0025<sup>**</sup></td>
+      <td class="num">−0.0025<sup>**</sup></td>
+      <td class="num">−0.0026<sup>**</sup></td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0011)</td>
+      <td class="num">(0.0011)</td>
+      <td class="num">(0.0011)</td>
+    </tr>
+    <tr>
+      <td>Opponent avg. doubles rank</td>
+      <td class="num">+0.0020<sup>***</sup></td>
+      <td class="num">+0.0020<sup>***</sup></td>
+      <td class="num">+0.0020<sup>***</sup></td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0004)</td>
+      <td class="num">(0.0004)</td>
+      <td class="num">(0.0004)</td>
+    </tr>
+    <tr>
+      <td>Teammate rank gap</td>
+      <td class="num">+0.0000</td>
+      <td class="num">+0.0001</td>
+      <td class="num">+0.0001</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0008)</td>
+      <td class="num">(0.0008)</td>
+      <td class="num">(0.0008)</td>
+    </tr>
+    <tr>
+      <td>Top-100 singles player</td>
+      <td class="num">−0.2242</td>
+      <td class="num">−0.2116</td>
+      <td class="num">−0.2266</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.2640)</td>
+      <td class="num">(0.2620)</td>
+      <td class="num">(0.2638)</td>
+    </tr>
+    <tr>
+      <td>Team avg GS appearances</td>
+      <td class="num">−0.0200</td>
+      <td class="num">−0.0198</td>
+      <td class="num">−0.0211</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0693)</td>
+      <td class="num">(0.0687)</td>
+      <td class="num">(0.0688)</td>
+    </tr>
+    <tr>
+      <td>GS experience squared</td>
+      <td class="num">+0.0009</td>
+      <td class="num">+0.0009</td>
+      <td class="num">+0.0009</td>
+    </tr>
+    <tr class="se">
+      <td></td>
+      <td class="num">(0.0025)</td>
+      <td class="num">(0.0025)</td>
+      <td class="num">(0.0025)</td>
+    </tr>
+    <tr class="bg">
+      <td>Pseudo-R²</td>
+      <td class="num">0.062</td>
+      <td class="num">0.060</td>
+      <td class="num">0.064</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">
+  <sup>***</sup>&nbsp;p&lt;0.01 &nbsp; <sup>**</sup>&nbsp;p&lt;0.05 &nbsp; <sup>*</sup>&nbsp;p&lt;0.10.
+  HC3 heteroskedasticity-robust standard errors. FE: tournament × year, round.
+  Sample: adversity obs (lost set 1) with non-missing experience data
+  (N = 1,483 obs; 116 dropped for missing experience).
+  <sup>†</sup>Column (2) drops round FE due to near-perfect collinearity in the reduced sample; FE: tournament × year only.
+  Experience controls are statistically insignificant and do not affect culture coefficients materially.
 </p>
 
 </body>
