@@ -474,6 +474,41 @@ estimates store win_ling_prox
 estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
 
 display ""
+display "=== TABLE 3b. Match Win + Experience Controls — Logit ==="
+display "Full GS sample. Adds team avg GS doubles appearances (exp_mean) and its square."
+display "Obs with missing experience for both players are dropped from this spec only."
+display "FE: tournament×year (ty) + stage_code | SE clustered by match"
+display ""
+
+preserve
+keep if !missing(exp_mean)
+count
+display "  Full-sample obs with experience data: " r(N) " obs | " r(N)/2 " matches"
+
+quietly replace exp_mean_sq = exp_mean ^ 2
+
+display ""
+display "--- 3ba. Same Nationality ---"
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100 exp_mean exp_mean_sq)
+estimates store win_exp_same_country
+
+display ""
+display "--- 3bb. Same Official Language ---"
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100 exp_mean exp_mean_sq)
+estimates store win_exp_same_language
+
+display ""
+display "--- 3bc. Language Proximity (ethnic) ---"
+logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100 exp_mean exp_mean_sq)
+estimates store win_exp_ling_prox
+
+estimates table win_exp_same_country win_exp_same_language win_exp_ling_prox, b se stats(N ll)
+restore
+
+display ""
 display "=== TABLE 4. Match Win in Tiebreak Matches — Logit ==="
 display "Sample: GS matches with any tiebreak (7-pt set 1/2 or 10-pt match-TB)"
 display "Outcome: match win. Two obs per match: winner (win=1) and loser (win=0)."
@@ -499,6 +534,38 @@ margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
 estimates store tb_ling_prox
 
 estimates table tb_same_country tb_same_language tb_ling_prox, b se stats(N ll)
+
+display ""
+display "=== TABLE 4c. Match Win, Last-Set Tiebreak Only — Logit ==="
+display "Sample: GS matches decided by a last-set tiebreak (set-3 regular 7-pt or 10-pt match TB)."
+display "Outcome: match win. FE: tournament×year (ty) + stage_code | SE clustered by match"
+display ""
+
+preserve
+keep if tb_s3_regular==1 | match_tb==1
+count
+display "  Last-set TB obs: " r(N) " obs | " r(N)/2 " matches"
+
+display ""
+display "--- 4ca. Same Nationality ---"
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean rank_gap single_top100)
+estimates store tb_last_same_country
+
+display ""
+display "--- 4cb. Same Official Language ---"
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean rank_gap single_top100)
+estimates store tb_last_same_language
+
+display ""
+display "--- 4cc. Language Proximity (ethnic) ---"
+logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean rank_gap single_top100, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean rank_gap single_top100)
+estimates store tb_last_ling_prox
+
+estimates table tb_last_same_country tb_last_same_language tb_last_ling_prox, b se stats(N ll)
+restore
 
 display ""
 display "=== TABLE 5. Comeback Win — Logit (Adversity Sample) ==="
