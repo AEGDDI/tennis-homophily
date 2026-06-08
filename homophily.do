@@ -8,7 +8,7 @@
 * Data: Grand Slam doubles matches 2018–2025 (excl. 2020).
 *       Raw: 1,840 matches. After dropping 47 retirements/walkovers: 1,793 matches.
 *       GS panel (complete ranking + nationality/language): 1,716 matches, 3,432 team-obs.
-*       Regression sample (adds GS experience): 3,222 team-obs.
+*       Regression sample: 3,432 team-obs (exp_mean imputed to 0 for 210 first-time GS participants).
 *       Nationality/language filled from pipeline (birthplace, surname lookup, Monaco fix,
 *       manual overrides in manual_nationality.csv).
 * Sections:
@@ -378,13 +378,14 @@ if _rc {
     replace stage_code = 0 if missing(stage_code)
 }
 
-* Generate experience squared
+* Impute exp_mean = 0 for first-time GS participants (no prior appearances in dataset)
+replace exp_mean = 0 if missing(exp_mean)
+
+* Generate experience squared (may already exist in CSV; drop first to be safe)
+capture drop exp_mean_sq
 generate double exp_mean_sq = exp_mean ^ 2
 
-* Drop observations with missing GS experience (applied to all main regressions)
-display "Obs before experience filter: " _N
-keep if !missing(exp_mean)
-display "Obs after experience filter:  " _N " (used in Tables 3-5)"
+display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 0 for first-timers)"
 
 display "Creating ty (tournament×year grouping)..."
 capture drop ty
@@ -484,303 +485,242 @@ estimates store win_ling_prox
 estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
 
 * ─────────────────────────────────────────────────────────────────────────────
-* TABLE 3b: MATCH WIN — SENSITIVITY: WITH TEAMMATE RANK GAP
-* Same sample and controls as Table 3 plus rank_gap.
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 3b. Sensitivity: Match Win with Teammate Rank Gap — Logit ==="
-display "Same sample and controls as Table 3. Adds rank_gap to verify stability."
-display "FE: tournament×year (ty) + stage_code | SE clustered by match"
+* SECTION 6: HETEROGENEITY ANALYSIS
+* =============================================================================
+* Three sets of interactions, each applied to the match-win logit (team panel).
+*   6a. Culture x GS experience (exp_mean)
+*   6b. Culture x surface (clay / grass; hardcourt = baseline)
+*   6c. Culture x Hofstede individualism score, team-level, demeaned (ic_team_dm)
+*       Spec 1: C + C*IC + controls + FE   (no main IC effect)
+*       Spec 2: C + IC + C*IC + controls + FE
+*
+* Sample: same 3,432 obs as Tables 3-4 (exp_mean imputed to 0 for first-timers).
+* Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
+* =============================================================================
+
+display "=== SECTION 6. HETEROGENEITY ANALYSIS ==="
 display ""
 
-display "--- 3ba. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store win_rg_same_country
+* Surface dummies from the encoded surface variable (Clay=1, Grass=2, Hard=3)
+* Use decode to safely generate string-based dummies.
+decode surface, generate(surface_str)
+generate byte clay  = (surface_str == "Clay")
+generate byte grass = (surface_str == "Grass")
+drop surface_str
+
+display "Surface distribution:"
+tabstat clay grass, stats(sum mean) format(%9.0f)
+
+* ic_team_dm: demeaned Hofstede individualism score (mean = 0 by construction)
+summarize ic_team_dm
+display "ic_team_dm mean (should be ~0): " r(mean)
+
+* ---------------------------------------------------------------------------
+* TABLE 6a: Culture x GS Experience
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 6a. Heterogeneity: Culture x GS Experience (exp_mean) ==="
+display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq"
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+display "--- 6a-i. Same Nationality x exp_mean ---"
+generate double int_sc_exp  = same_country  * exp_mean
+generate double int_sl_exp  = same_language * exp_mean
+generate double int_lp_exp  = ling_prox     * exp_mean
+
+logit win i.ty i.stage_code same_country  int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_country int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_exp_sc
 
 display ""
-display "--- 3bb. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store win_rg_same_language
+display "--- 6a-ii. Same Language x exp_mean ---"
+logit win i.ty i.stage_code same_language  int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_language int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_exp_sl
 
 display ""
-display "--- 3bc. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store win_rg_ling_prox
+display "--- 6a-iii. Language Proximity x exp_mean ---"
+logit win i.ty i.stage_code ling_prox  int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_exp_lp
 
-estimates table win_rg_same_country win_rg_same_language win_rg_ling_prox, b se stats(N ll)
+estimates table het_exp_sc het_exp_sl het_exp_lp, b se stats(N ll)
 
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 4: MATCH WIN IN TIEBREAK MATCHES — LOGIT
-* Sample: GS matches with any tiebreak (7-pt sets 1-2, or 10-pt match TB)
-* ─────────────────────────────────────────────────────────────────────────────
+* ---------------------------------------------------------------------------
+* TABLE 6b: Culture x Surface
+* ---------------------------------------------------------------------------
 display ""
-display "=== TABLE 4. Match Win in Tiebreak Matches — Logit ==="
-display "Sample: GS matches with any tiebreak (7-pt set 1/2 or 10-pt match-TB)"
-display "Outcome: match win. Two obs per match: winner (win=1) and loser (win=0)."
-count if any_tb==1
-display "  Obs with any_tb==1: " r(N)
+display "=== TABLE 6b. Heterogeneity: Culture x Surface ==="
+display "Hardcourt (AO + USO) = baseline; clay = Roland Garros; grass = Wimbledon."
+display "Note: surface is collinear with tournament but the interaction C x surface"
+display "  is identified by cross-surface variation in cultural homophily."
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+generate double int_sc_clay  = same_country  * clay
+generate double int_sc_grass = same_country  * grass
+generate double int_sl_clay  = same_language * clay
+generate double int_sl_grass = same_language * grass
+generate double int_lp_clay  = ling_prox     * clay
+generate double int_lp_grass = ling_prox     * grass
+
+display "--- 6b-i. Same Nationality x surface ---"
+logit win i.ty i.stage_code same_country clay grass int_sc_clay int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_country clay grass int_sc_clay int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_surf_sc
+
+display ""
+display "--- 6b-ii. Same Language x surface ---"
+logit win i.ty i.stage_code same_language clay grass int_sl_clay int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_language clay grass int_sl_clay int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_surf_sl
+
+display ""
+display "--- 6b-iii. Language Proximity x surface ---"
+logit win i.ty i.stage_code ling_prox clay grass int_lp_clay int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(ling_prox clay grass int_lp_clay int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_surf_lp
+
+estimates table het_surf_sc het_surf_sl het_surf_lp, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* TABLE 6c: Culture x Hofstede Individualism (team-level, demeaned)
+* Hypothesis: high-individualism teams rely less on in-group bonding
+*             => negative interaction theta.
+* Spec 1: Y = beta*C + theta*(C*IC_dm) + controls + FE
+* Spec 2: Y = beta*C + gamma*IC_dm + theta*(C*IC_dm) + controls + FE
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 6c. Heterogeneity: Culture x Hofstede Individualism (demeaned) ==="
+display "ic_team_dm = team-avg IDV score - sample mean (demean so beta is at mean IC)"
+display "Spec 1: no main IC effect  |  Spec 2: includes main IC effect"
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+generate double int_sc_ic = same_country  * ic_team_dm
+generate double int_sl_ic = same_language * ic_team_dm
+generate double int_lp_ic = ling_prox     * ic_team_dm
+
+* --- Spec 1: Same Nationality ---
+display "--- 6c-i. Same Nationality, Spec 1 (no main IC) ---"
+logit win i.ty i.stage_code same_country int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_country int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_ic_sc_s1
+
+display ""
+display "--- 6c-ii. Same Nationality, Spec 2 (main IC included) ---"
+logit win i.ty i.stage_code same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_ic_sc_s2
+
+display ""
+display "--- 6c-iii. Same Language, Spec 1 (no main IC) ---"
+logit win i.ty i.stage_code same_language int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_language int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_ic_sl_s1
+
+display ""
+display "--- 6c-iv. Same Language, Spec 2 (main IC included) ---"
+logit win i.ty i.stage_code same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_ic_sl_s2
+
+display ""
+display "--- 6c-v. Language Proximity, Spec 1 (no main IC) ---"
+logit win i.ty i.stage_code ling_prox int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_ic_lp_s1
+
+display ""
+display "--- 6c-vi. Language Proximity, Spec 2 (main IC included) ---"
+logit win i.ty i.stage_code ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
+margins, dydx(ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+estimates store het_ic_lp_s2
+
+estimates table het_ic_sc_s1 het_ic_sc_s2, b se stats(N ll)
+estimates table het_ic_sl_s1 het_ic_sl_s2, b se stats(N ll)
+estimates table het_ic_lp_s1 het_ic_lp_s2, b se stats(N ll)
+
+display ""
+display "Section 6 complete: Heterogeneity analysis."
+
+* =============================================================================
+* SECTION 7: TABLE 4 — TIEBREAK WIN
+* =============================================================================
+* Unit of observation: one team in one specific tiebreak (2 obs per tiebreak).
+* Outcome: won_tb — did this team win this tiebreak?
+* Source: data/atp/tiebreak_panel.csv
+*   940 tiebreaks | 1,880 team-obs (from 1,517 complete match pairs in GS sample)
+* FE: tournament x year (ty) + stage_code | SE: clustered by match
+* =============================================================================
+
+display ""
+display "=== SECTION 7. TABLE 4: TIEBREAK WIN ==="
+display "Loading tiebreak panel..."
+
+clear
+import delimited "data/atp/tiebreak_panel.csv", clear
+
+* Surface dummies before encoding
+generate byte clay  = (surface == "Clay")
+generate byte grass = (surface == "Grass")
+
+* Encode string variables
+encode tournament, generate(tourn_code)
+drop tournament
+rename tourn_code tournament
+
+encode tb_type, generate(tb_type_code)
+drop tb_type
+rename tb_type_code tb_type
+
+destring _all, replace force
+replace stage_code = 0 if missing(stage_code)
+replace exp_mean = 0 if missing(exp_mean)
+capture drop exp_mean_sq
+generate double exp_mean_sq = exp_mean ^ 2
+quietly egen ty = group(tournament year)
+
+count
+display "Tiebreak team-obs loaded: " r(N)
+display ""
+
+display "Breakdown by tiebreak type:"
+tabulate tb_type
+
+display ""
+display "=== TABLE 4. Tiebreak Win — Logit (all tiebreak types) ==="
+display "Outcome: won_tb | Unit: team x tiebreak | Sample: GS only (no Olympics)"
+display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq"
+display "FE: tournament x year (ty) + stage_code | SE: clustered by match"
 display ""
 
 display "--- 4a. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if any_tb==1, cluster(match_id)
+logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
 margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb_same_country
+estimates store tbn_same_country
 
 display ""
 display "--- 4b. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if any_tb==1, cluster(match_id)
+logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
 margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb_same_language
+estimates store tbn_same_language
 
 display ""
 display "--- 4c. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if any_tb==1, cluster(match_id)
+logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
 margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb_ling_prox
+estimates store tbn_ling_prox
 
-estimates table tb_same_country tb_same_language tb_ling_prox, b se stats(N ll)
+estimates table tbn_same_country tbn_same_language tbn_ling_prox, b se stats(N ll)
 
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 4b: TIEBREAK SAMPLE — SENSITIVITY: WITH RANK GAP
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 4b. Sensitivity: Tiebreak Sample, With Rank Gap — Logit ==="
-display "Same sample as Table 4. Adds rank_gap to verify stability."
-display ""
-
-display "--- 4ba. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap if any_tb==1, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store tb_rg_same_country
 
 display ""
-display "--- 4bb. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap if any_tb==1, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store tb_rg_same_language
-
-display ""
-display "--- 4bc. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap if any_tb==1, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store tb_rg_ling_prox
-
-estimates table tb_rg_same_country tb_rg_same_language tb_rg_ling_prox, b se stats(N ll)
-
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 4c: MATCH WIN, LAST-SET TIEBREAK ONLY
-* Sample: GS matches decided by a last-set tiebreak (set-3 7-pt or 10-pt match TB)
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 4c. Match Win, Last-Set Tiebreak Only — Logit ==="
-display "Sample: GS matches decided by a last-set tiebreak (set-3 regular 7-pt or 10-pt match TB)."
-display "Outcome: match win. FE: tournament×year (ty) + stage_code | SE clustered by match"
-display ""
-
-preserve
-keep if tb_s3_regular==1 | match_tb==1
-count
-display "  Last-set TB obs: " r(N) " obs | " r(N)/2 " matches"
-
-display ""
-display "--- 4ca. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb_last_same_country
-
-display ""
-display "--- 4cb. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb_last_same_language
-
-display ""
-display "--- 4cc. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb_last_ling_prox
-
-estimates table tb_last_same_country tb_last_same_language tb_last_ling_prox, b se stats(N ll)
-restore
-
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 4d: MATCH WIN, 7-POINT TIEBREAKS ONLY
-* Sample: GS matches with a regular 7-pt tiebreak in sets 1 or 2 only
-* (excludes 10-pt match tiebreaks so the tiebreak type is homogeneous)
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 4d. Match Win, 7-Point Tiebreaks Only — Logit ==="
-display "Sample: GS matches with a regular 7-pt tiebreak in set 1 or set 2 (no 10-pt match TB)."
-display "Outcome: match win. FE: tournament×year (ty) + stage_code | SE clustered by match"
-display ""
-
-count if regular_tb == 1
-display "  7-pt TB obs: " r(N) " obs | " r(N)/2 " matches"
-display ""
-
-display "--- 4da. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if regular_tb==1, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb7_same_country
-
-display ""
-display "--- 4db. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if regular_tb==1, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb7_same_language
-
-display ""
-display "--- 4dc. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if regular_tb==1, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store tb7_ling_prox
-
-estimates table tb7_same_country tb7_same_language tb7_ling_prox, b se stats(N ll)
-
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 5: COMEBACK WIN — LOGIT (ADVERSITY SAMPLE)
-* Sample: all GS teams that lost set 1 (one obs per match)
-* Outcome: comeback win (win=1) vs. any loss (win=0)
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 5. Comeback Win (Adversity Sample) — Logit ==="
-display "Outcome: P(win | team lost set 1) — one obs per match (comeback, 3-set loss, or swept)"
-display "SE: HC3 robust (no within-match clustering — 1 obs/match by construction)"
-
-preserve
-keep if lost_set1==1
-count
-display "Adversity obs (= matches): " r(N)
-
-* Mean ranks by outcome group (0|1|1 vs 0|1|0 vs 0|0)
-display ""
-display "=== Mean ranks by adversity group ==="
-display "  0|1|1 = comeback win  |  0|1|0 = 3-set loss  |  0|0 = straight-set loss"
-generate byte adv_group = 0  // 0|0 straight loss
-replace adv_group = 1 if win==0 & three_sets==1  // 0|1|0
-replace adv_group = 2 if win==1                  // 0|1|1
-label define adv_lbl 0 "0|0 straight" 1 "0|1|0 3-set" 2 "0|1|1 comeback"
-label values adv_group adv_lbl
-tabstat rank_mean opp_rank_mean rank_gap, by(adv_group) stats(mean n) format(%9.1f)
-
-quietly egen minwin = min(win), by(ty)
-quietly egen maxwin = max(win), by(ty)
-drop if minwin==maxwin
-count
-display "After dropping non-informative ty cells: " r(N)
-
-display ""
-display "--- 5a. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, vce(robust)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store cb_same_country
-
-display ""
-display "--- 5b. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, vce(robust)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store cb_same_language
-
-display ""
-display "--- 5c. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, vce(robust)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store cb_ling_prox
-
-estimates table cb_same_country cb_same_language cb_ling_prox, b se stats(N ll)
-restore
-
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 5c: COMEBACK WIN, CONTESTED MATCHES ONLY (0|1|1 + 0|1|0)
-* Drops straight-set losses (0|0) to balance the two comparison groups.
-* SE: HC3 robust
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 5c. Comeback Win, Contested Matches Only (0|1|1 + 0|1|0) — Logit ==="
-display "Drops 0|0 (straight-set losses after losing set 1) to compare balanced groups."
-display "SE: HC3 robust"
-
-preserve
-keep if lost_set1==1 & three_sets==1
-count
-display "Contested adversity obs: " r(N) " | comeback wins: " (win==1) " (computed below)"
-count if win==1
-display "  Comeback wins (0|1|1): " r(N)
-count if win==0
-display "  Three-set losses (0|1|0): " r(N)
-
-quietly egen minwin_c = min(win), by(ty)
-quietly egen maxwin_c = max(win), by(ty)
-drop if minwin_c==maxwin_c
-count
-display "After dropping non-informative ty cells: " r(N)
-
-display ""
-display "--- 5ca. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, vce(robust)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store cb_ct_same_country
-
-display ""
-display "--- 5cb. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, vce(robust)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store cb_ct_same_language
-
-display ""
-display "--- 5cc. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, vce(robust)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
-estimates store cb_ct_ling_prox
-
-estimates table cb_ct_same_country cb_ct_same_language cb_ct_ling_prox, b se stats(N ll)
-restore
-
-* ─────────────────────────────────────────────────────────────────────────────
-* TABLE 5b: ADVERSITY SAMPLE — SENSITIVITY: WITH RANK GAP
-* ─────────────────────────────────────────────────────────────────────────────
-display ""
-display "=== TABLE 5b. Sensitivity: Adversity Sample, With Rank Gap — Logit ==="
-display "Same sample as Table 5. Adds rank_gap to verify stability."
-display "SE: HC3 robust"
-
-preserve
-keep if lost_set1==1
-count
-display "  Adversity obs: " r(N)
-
-quietly egen minwin2 = min(win), by(ty)
-quietly egen maxwin2 = max(win), by(ty)
-drop if minwin2 == maxwin2
-count
-display "  After dropping non-informative ty cells: " r(N) " obs"
-
-display ""
-display "--- 5ba. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap, vce(robust)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store cb_rg_same_country
-
-display ""
-display "--- 5bb. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap, vce(robust)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store cb_rg_same_language
-
-display ""
-display "--- 5bc. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap, vce(robust)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq rank_gap)
-estimates store cb_rg_ling_prox
-
-estimates table cb_rg_same_country cb_rg_same_language cb_rg_ling_prox, b se stats(N ll)
-restore
+display "Section 7 complete: Tiebreak win regressions (new Table 4)."
 
 log close
 
 display ""
-display "Section 5 complete: All baseline regressions (Tables 3–5, sensitivity checks, new sub-samples)."
-display "Results saved to stata_homophily_results.txt"
+display "All sections complete. Results saved to stata_homophily_results.txt"
+

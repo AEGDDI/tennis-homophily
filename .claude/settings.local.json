@@ -47,7 +47,25 @@
       "Bash(py *)",
       "Bash(code/.venv/Scripts/python.exe -c ' *)",
       "Bash(git restore *)",
-      "Bash(del _patch_notebook.py)"
+      "Bash(del _patch_notebook.py)",
+      "Bash(del fix_hofstede.py build_merge_hofstede.py patch_do.py run_het_regressions.py run_het2.py patch_report.py het_results.json)",
+      "PowerShell(python -m pip install weasyprint --quiet 2>&1)",
+      "PowerShell(& \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" --headless --print-to-pdf=\"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\report.pdf\" \"C:\\\\Users\\\\aldi\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\report.html\" 2>&1)",
+      "Bash(grep -E \"\\\\.\\(log|smcl|dta|txt\\)$\")",
+      "Bash(sed -n '380,400p' homophily.do)",
+      "Bash(sed -n '460,485p' homophily.do)",
+      "Bash(awk 'NR>=100 && NR<=200')",
+      "Bash(sed -n '4220,4250p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/stata_homophily_results.txt\")",
+      "Bash(sed -n '4316,4346p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/stata_homophily_results.txt\")",
+      "Bash(sed -n '2877,2900p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/stata_homophily_results.txt\")",
+      "Bash(sed -n '2960,2990p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/stata_homophily_results.txt\")",
+      "Bash(sed -n '5000,5050p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/stata_homophily_results.txt\")",
+      "Bash(sed -n '5080,5140p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/stata_homophily_results.txt\")",
+      "Bash(awk -F: '$1>=5020 && $1<=5540')",
+      "Bash(sed -n '488,491p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/homophily.do\")",
+      "Bash(sed -n '786,792p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/homophily.do\")",
+      "Bash(jupyter nbconvert *)",
+      "Bash(pip show *)"
     ]
   }
 }
