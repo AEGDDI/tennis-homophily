@@ -5,10 +5,9 @@
 * Run this from the project root in STATA.
 * Mirrors sections 1-5 from homophily_analysis.ipynb
 *
-* Data: Grand Slam doubles matches 2018–2025 (excl. 2020).
-*       Raw: 1,840 matches. After dropping 47 retirements/walkovers: 1,793 matches.
-*       GS panel (complete ranking + nationality/language): 1,716 matches, 3,432 team-obs.
-*       Regression sample: 3,432 team-obs (exp_mean imputed to 0 for 210 first-time GS participants).
+* Data: Grand Slam doubles matches 2018–2025.
+*       Note: Wimbledon 2020 was cancelled; AO/RG/USO 2020 are included.
+*       Raw matches, retirements/walkovers, GS panel size: updated after pipeline re-run.
 *       Nationality/language filled from pipeline (birthplace, surname lookup, Monaco fix,
 *       manual overrides in manual_nationality.csv).
 * Sections:
@@ -411,25 +410,20 @@ display ""
 display "=== SECTION 0. OBSERVATION BREAKDOWN ==="
 display "(from raw scraped data to regression sample)"
 display ""
-display "  Step 1  Raw dataset (scraped + merged, 2018-2025 excl. 2020):  1,840 matches"
-display "  Step 2  Drop retirements / walkovers:                         -47 matches"
-display "          (20 walkovers | 9 retired in set 1 | 18 retired in set 2+)"
+display "  Step 1  Raw dataset (scraped + merged, 2018-2025; Wimbledon 2020 cancelled, AO/RG/USO 2020 included)"
+display "  Step 2  Drop retirements / walkovers (see count below)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
-display "          Clean match dataset:                                  1,793 matches"
+display "          Clean match dataset: see count below"
 display ""
-display "  Step 3  Expand to team-level (2 obs per match):               3,586 obs"
-display "  Step 4  Drop: ranking incomplete for >=1 player:              -14 matches  (-28 obs)"
+display "  Step 3  Expand to team-level (2 obs per match)"
+display "  Step 4  Drop: ranking incomplete for >=1 player"
 display "  Step 5  Drop: nationality/language missing for >=1 player:    0 matches"
 display "          (pipeline fully resolves via birthplace, surname lookup, Monaco fix,"
-display "           and manual_nationality.csv — 1 NaN-surname slot in a walkover, dropped in Step 2)"
+display "           and manual_nationality.csv)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
-display "          After completeness filter (incl. Olympics):           3,558 obs | 1,779 matches"
-display ""
-display "  Step 6  Exclude Olympic matches (2021 Tokyo + 2024 Paris):    -63 matches  (-126 obs)"
+display "  Step 6  Exclude Olympic matches (2021 Tokyo + 2024 Paris)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
-display "          Grand Slams only (pre-experience filter):             3,432 obs | 1,716 matches"
-display ""
-display "  Step 7  Drop: GS experience missing for >=1 player:           -210 obs"
+display "  Step 7  Drop: GS experience missing for >=1 player (imputed to 0 for first-timers)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
 
 count

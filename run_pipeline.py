@@ -21,4 +21,5 @@ run_nb("code/merging/merge_matches.ipynb",  cwd=os.path.join(root, "code", "merg
 run_nb("code/cleaning/matches_doubles.ipynb", cwd=os.path.join(root, "code", "cleaning"))
 run_nb("code/merging/matches_ranks.ipynb",  cwd=os.path.join(root, "code", "merging"))
 run_nb("code/cleaning/final_ds.ipynb",       cwd=os.path.join(root, "code", "cleaning"))
-run_nb("code/analysis/homophily_analysis.ipynb", cwd=os.path.join(root, "code", "analysis"))
+run_nb("code/cleaning/tiebreak_panel.ipynb", cwd=os.path.join(root, "code", "cleaning"))
+run_nb("code/analysis/homophily.ipynb", cwd=os.path.join(root, "code", "analysis"))

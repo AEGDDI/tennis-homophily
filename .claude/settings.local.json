@@ -65,7 +65,9 @@
       "Bash(sed -n '488,491p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/homophily.do\")",
       "Bash(sed -n '786,792p' \"c:/Users/aldi/Documents/GitHub/tennis-homophily/homophily.do\")",
       "Bash(jupyter nbconvert *)",
-      "Bash(pip show *)"
+      "Bash(pip show *)",
+      "Bash(Out-File -FilePath \"c:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\cell_list.txt\" -Encoding utf8)",
+      "Bash(Get-Content \"c:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\cell_list.txt\")"
     ]
   }
 }
