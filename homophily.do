@@ -488,7 +488,7 @@ estimates table win_same_country win_same_language win_ling_prox, b se stats(N l
 *       Spec 1: C + C*IC + controls + FE   (no main IC effect)
 *       Spec 2: C + IC + C*IC + controls + FE
 *
-* Sample: same 3,432 obs as Tables 3-4 (exp_mean imputed to 0 for first-timers).
+* Sample: same 3,744 obs as Tables 3-4 (exp_mean imputed to 0 for first-timers).
 * Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
 * =============================================================================
 
@@ -645,7 +645,7 @@ display "Section 6 complete: Heterogeneity analysis."
 * Unit of observation: one team in one specific tiebreak (2 obs per tiebreak).
 * Outcome: won_tb — did this team win this tiebreak?
 * Source: data/atp/tiebreak_panel.csv
-*   940 tiebreaks | 1,880 team-obs (from 1,517 complete match pairs in GS sample)
+*   1,148 tiebreaks | 2,296 team-obs (919 unique matches in GS sample)
 * FE: tournament x year (ty) + stage_code | SE: clustered by match
 * =============================================================================
 
