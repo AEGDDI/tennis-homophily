@@ -26,39 +26,42 @@ clear
 import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
 
 destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 losers_set3 ///
+    winners_set4 losers_set4 winners_set5 losers_set5 ///
     winners_p1_top100_within_1y winners_p2_top100_within_1y losers_p1_top100_within_1y losers_p2_top100_within_1y ///
     rank_mean_winners rank_mean_losers rank_diff_winners rank_diff_losers, replace force
 
 * Drop likely retirements/walkovers that are not explicitly flagged in the data.
-* A valid completed set is 6-0 through 6-4, 7-5, 7-6, or an extended final set
-* score with a two-game margin (e.g. 8-6, 9-7). If the first two sets are split,
-* the third set must also be complete, either as a regular set or as a match tiebreak.
-generate byte s1_complete = !missing(winners_set1, losers_set1) & ///
-    ((max(winners_set1, losers_set1)==6 & min(winners_set1, losers_set1)<=4) | ///
-     (max(winners_set1, losers_set1)==7 & inlist(min(winners_set1, losers_set1), 5, 6)) | ///
-     (max(winners_set1, losers_set1)>=8 & max(winners_set1, losers_set1) - min(winners_set1, losers_set1)==2))
+* A valid completed set is 6-0 through 6-4, 7-5, 7-6, an extended final set score
+* with a two-game margin (e.g. 8-6, 9-7, or a genuine 10-pt super-tiebreak score
+* like 10-5), OR a 12-12-breaker finish (e.g. 13-12, a real historical Wimbledon
+* final-set rule -- a 1-game margin, so distinct from the two-game-margin case).
+* If the first two sets are split, the third set must also be complete under the
+* same rule. Sets 4-5 (best-of-5 matches), if played, must also be complete.
+capture program drop valid_set_score
+program define valid_set_score, rclass
+    args wvar lvar outvar
+    generate byte `outvar' = !missing(`wvar', `lvar') & ///
+        ((max(`wvar', `lvar')==6 & min(`wvar', `lvar')<=4) | ///
+         (max(`wvar', `lvar')==7 & inlist(min(`wvar', `lvar'), 5, 6)) | ///
+         (max(`wvar', `lvar')>=8 & max(`wvar', `lvar') - min(`wvar', `lvar')>=2) | ///
+         (min(`wvar', `lvar')==12 & max(`wvar', `lvar') - min(`wvar', `lvar')==1))
+end
 
-generate byte s2_complete = !missing(winners_set2, losers_set2) & ///
-    ((max(winners_set2, losers_set2)==6 & min(winners_set2, losers_set2)<=4) | ///
-     (max(winners_set2, losers_set2)==7 & inlist(min(winners_set2, losers_set2), 5, 6)) | ///
-     (max(winners_set2, losers_set2)>=8 & max(winners_set2, losers_set2) - min(winners_set2, losers_set2)==2))
+valid_set_score winners_set1 losers_set1 s1_complete
+valid_set_score winners_set2 losers_set2 s2_complete
+valid_set_score winners_set3 losers_set3 s3_complete
 
 generate byte split_sets = !missing(winners_set1, losers_set1, winners_set2, losers_set2) & ///
     ((winners_set1 > losers_set1 & winners_set2 < losers_set2) | ///
      (winners_set1 < losers_set1 & winners_set2 > losers_set2))
 
-generate byte s3_regular_complete = !missing(winners_set3, losers_set3) & ///
-    ((max(winners_set3, losers_set3)==6 & min(winners_set3, losers_set3)<=4) | ///
-     (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)) | ///
-     (max(winners_set3, losers_set3)>=8 & max(winners_set3, losers_set3) - min(winners_set3, losers_set3)==2))
+valid_set_score winners_set4 losers_set4 _s4_complete
+generate byte s4_valid = missing(winners_set4) | _s4_complete
+valid_set_score winners_set5 losers_set5 _s5_complete
+generate byte s5_valid = missing(winners_set5) | _s5_complete
 
-generate byte s3_match_tb_complete = !missing(winners_set3, losers_set3) & ///
-    max(winners_set3, losers_set3) >= 10 & ///
-    max(winners_set3, losers_set3) - min(winners_set3, losers_set3) >= 2
-
-generate byte s3_complete = s3_regular_complete | s3_match_tb_complete
 generate byte retired_or_incomplete = !s1_complete | !s2_complete | ///
-    (split_sets & !s3_complete)
+    (split_sets & !s3_complete) | !s4_valid | !s5_valid
 
 tempfile incomplete_matches
 preserve
@@ -82,14 +85,39 @@ generate byte tb_s1 = (winners_set1==7 & losers_set1==6) | (winners_set1==6 & lo
 generate byte tb_s2 = (winners_set2==7 & losers_set2==6) | (winners_set2==6 & losers_set2==7)
 generate byte regular_tb = tb_s1 | tb_s2
 
-* Match tiebreak / super-tiebreak (10-point, set3 >= 10): Olympics and Wimbledon post-2018
+* Sets 4-5 only occur in the 103 best-of-5 Wimbledon matches (2018/2019/2021/2022).
+* Same 7-point standard-tiebreak pattern as sets 1-3.
 generate byte tb_s3_regular = (winners_set3==7 & losers_set3==6) | (winners_set3==6 & losers_set3==7)
-generate byte match_tb = s3_match_tb_complete
-generate byte any_tb = regular_tb | match_tb | tb_s3_regular
+generate byte tb_s4 = (winners_set4==7 & losers_set4==6) | (winners_set4==6 & losers_set4==7)
+generate byte tb_s5 = (winners_set5==7 & losers_set5==6) | (winners_set5==6 & losers_set5==7)
+replace tb_s4 = 0 if missing(tb_s4)
+replace tb_s5 = 0 if missing(tb_s5)
+
+* Match tiebreak / advantage-set decider (no 6-6 breaker; hi>=8, margin>=2): can
+* occur as the deciding set, which is set 3 for a best-of-3 match but set 4 or
+* set 5 for a best-of-5 match.
+generate byte match_tb_s3 = (max(winners_set3, losers_set3)>=8) & ///
+    (max(winners_set3, losers_set3) - min(winners_set3, losers_set3)>=2) & !missing(winners_set3, losers_set3)
+generate byte match_tb_s4 = (max(winners_set4, losers_set4)>=8) & ///
+    (max(winners_set4, losers_set4) - min(winners_set4, losers_set4)>=2) & !missing(winners_set4, losers_set4)
+generate byte match_tb_s5 = (max(winners_set5, losers_set5)>=8) & ///
+    (max(winners_set5, losers_set5) - min(winners_set5, losers_set5)>=2) & !missing(winners_set5, losers_set5)
+generate byte match_tb = match_tb_s3 | match_tb_s4 | match_tb_s5
+generate byte match_tb_set = 3 if match_tb_s3==1
+replace match_tb_set = 4 if match_tb_s4==1
+replace match_tb_set = 5 if match_tb_s5==1
+
+* any_std_tb: every literal 7-6 standard tiebreak, any set (1-5). any_tb
+* additionally folds in the match_tb / advantage-set-decider category.
+generate byte any_std_tb = tb_s1 | tb_s2 | tb_s3_regular | tb_s4 | tb_s5
+generate byte any_tb = any_std_tb | match_tb
 
 * Who won each tiebreak (winner-team perspective)
 generate byte w_won_tb_s1 = tb_s1 & (winners_set1==7)
 generate byte w_won_tb_s2 = tb_s2 & (winners_set2==7)
+generate byte w_won_tb_s3 = tb_s3_regular & (winners_set3==7)
+generate byte w_won_tb_s4 = tb_s4 & (winners_set4==7)
+generate byte w_won_tb_s5 = tb_s5 & (winners_set5==7)
 
 * ── Match structure ───────────────────────────────────────────────────────────
 generate byte three_sets = !missing(winners_set3)
@@ -125,65 +153,103 @@ display "Section 1 complete: Variable construction."
 * ═══════════════════════════════════════════════════════════════════════════════
 * SECTION 2: PRESSURE OUTCOMES — COUNTS AND INSPECTION
 * ═══════════════════════════════════════════════════════════════════════════════
+* All descriptive stats in this section (Table 1, 2.1, 2.2, 2.3) are computed on the
+* SAME 1,872-match regression sample used in Tables 3-6, not the broader post-
+* retirement-drop set -- so these numbers reconcile exactly with the regression
+* tables. See 2.4 for how 1,872 relates to 1,886 and the raw data.
+* ═══════════════════════════════════════════════════════════════════════════════
 
-count
+* Regression-sample flag: same ranking/nationality completeness filter used later
+* in Section 4 (team panel construction), replicated here so Table 1 below matches
+* the actual regression sample exactly.
+capture drop reg_sample
+generate byte reg_sample = (olympics_tourn == 0) & ///
+    !missing(rank_mean_winners) & !missing(rank_mean_losers) & ///
+    !missing(same_country_winners) & !missing(same_country_losers) & ///
+    !missing(winners_same_language) & !missing(losers_same_language) & ///
+    !missing(winners_linguistic_proximity) & !missing(losers_linguistic_proximity)
+
+count if reg_sample == 1
 local N_all = r(N)
 display ""
-display "=== TABLE 1. Pressure Outcome Counts (all matches, N=" `N_all' ") ==="
+display "=== TABLE 1. Pressure Outcome Counts (Grand Slams regression sample, N=" `N_all' ") ==="
 display ""
-count if tb_s1 == 1
+count if tb_s1 == 1 & reg_sample == 1
 local n_tb_s1 = r(N)
 display "  Set-1 tiebreak (7-pt):                                 N=" %4.0f `n_tb_s1'
 
-count if tb_s2 == 1
+count if tb_s2 == 1 & reg_sample == 1
 local n_tb_s2 = r(N)
 display "  Set-2 tiebreak (7-pt):                                 N=" %4.0f `n_tb_s2'
 
-count if tb_s3_regular == 1
+count if tb_s3_regular == 1 & reg_sample == 1
 local n_tb_s3 = r(N)
-display "  Set-3 regular tiebreak (7-pt):                         N=" %4.0f `n_tb_s3'
+display "  Set-3 tiebreak (7-pt):                                 N=" %4.0f `n_tb_s3'
 
-count if match_tb == 1
+count if tb_s4 == 1 & reg_sample == 1
+local n_tb_s4 = r(N)
+display "  Set-4 tiebreak (7-pt):                                 N=" %4.0f `n_tb_s4'
+
+count if tb_s5 == 1 & reg_sample == 1
+local n_tb_s5 = r(N)
+display "  Set-5 tiebreak (7-pt):                                 N=" %4.0f `n_tb_s5'
+
+count if match_tb == 1 & reg_sample == 1
 local n_match_tb = r(N)
-display "  Match tiebreak / super-tb (10-pt, set3 >= 10):         N=" %4.0f `n_match_tb'
+display "  Advantage-set / 12-12-breaker decider:                 N=" %4.0f `n_match_tb'
 
-count if regular_tb == 1
+count if regular_tb == 1 & reg_sample == 1
 local n_regular_tb = r(N)
 display "  Any regular tiebreak (sets 1 or 2):                    N=" %4.0f `n_regular_tb'
 
-count if any_tb == 1
+count if any_tb == 1 & reg_sample == 1
 local n_any_tb = r(N)
-display "  Any tiebreak (all types):                              N=" %4.0f `n_any_tb'
+display "  Any tiebreak (all types, any set):                     N=" %4.0f `n_any_tb'
 
-count if three_sets == 1
+count if three_sets == 1 & reg_sample == 1
 local n_three_sets = r(N)
 display "  Match went to 3 sets:                                  N=" %4.0f `n_three_sets'
 
-count if comeback == 1
+count if comeback == 1 & reg_sample == 1
 local n_comeback = r(N)
 display "  Comeback wins (winner lost set 1):                     N=" %4.0f `n_comeback'
 
+local n_sum_std = `n_tb_s1' + `n_tb_s2' + `n_tb_s3' + `n_tb_s4' + `n_tb_s5'
 display ""
-display "Regular tiebreaks by tournament:"
-tabstat regular_tb, by(tournament) stats(sum mean) format(%9.0f)
+display "Sum of set-1..5 standard (7-pt) tiebreaks: " %4.0f `n_tb_s1' " + " %4.0f `n_tb_s2' " + " %4.0f `n_tb_s3' " + " %4.0f `n_tb_s4' " + " %4.0f `n_tb_s5' " = " %4.0f `n_sum_std'
+display "(This matches Table 4's main-spec tiebreak count exactly, since both are now"
+display " computed on the identical 1,872-match regression sample.)"
+display ""
+display `""Any regular tiebreak (sets 1 or 2)" counts a MATCH once if it had a 7-pt tiebreak"'
+display "in set 1 and/or set 2 (a match with both still counts once, not twice) -- this is"
+display "why it is less than tb_s1 + tb_s2 (which double-counts matches with both)."
+display `""Any tiebreak (all types, any set)" is the broadest category: a match counts once"'
+display "if it had a standard 7-pt tiebreak in ANY of sets 1-5, OR an advantage-set/12-12-"
+display "breaker decider. It therefore includes (not adds to) the ""any regular tiebreak"""
+display "matches, plus matches whose only tiebreak was in set 3/4/5 or was a decider."
 
 display ""
-display "Match tiebreaks by tournament:"
-tabstat match_tb, by(tournament) stats(sum mean) format(%9.0f)
+display "Regular tiebreaks by tournament:"
+tabstat regular_tb if reg_sample==1, by(tournament) stats(sum mean) format(%9.0f)
+
+display ""
+display "Advantage-set / 12-12-breaker deciders by tournament/year:"
+tabstat match_tb if reg_sample==1, by(tournament) stats(sum mean) format(%9.0f)
 egen tourn_year = group(tournament year), label
-tabstat match_tb, by(tourn_year) stats(sum mean) format(%9.3f)
+tabstat match_tb if reg_sample==1, by(tourn_year) stats(sum mean) format(%9.3f)
 
 display ""
 display "Comeback wins by tournament:"
-tabstat comeback, by(tournament) stats(sum mean) format(%9.0f)
+tabstat comeback if reg_sample==1, by(tournament) stats(sum mean) format(%9.0f)
 
 * ─────────────────────────────────────────────────────────────────────────────
 * 2.1 MATCH FORMAT: BEST-OF-3 VS BEST-OF-5
 * ─────────────────────────────────────────────────────────────────────────────
 display ""
-display "=== Match Format by Tournament-Year ==="
+display "=== Match Format by Tournament-Year (regression sample) ==="
 display "Wimbledon 2018/2019/2021/2022 played best-of-5; all other tournament-years"
-display "  (AO/RG/USO always, Wimbledon 2023+, both Olympics) are best-of-3."
+display "  (AO/RG/USO always, Wimbledon 2023+) are best-of-3. Olympics (best-of-3"
+display "  throughout) is not part of the regression sample -- see 2.5."
 display ""
 
 capture confirm numeric variable winners_set4
@@ -195,9 +261,9 @@ capture drop reaches_4 reaches_5
 generate byte reaches_4 = !missing(winners_set4)
 generate byte reaches_5 = !missing(winners_set5)
 
-tabstat reaches_4 reaches_5, by(tournament) stats(sum) format(%9.0f)
+tabstat reaches_4 reaches_5 if reg_sample==1, by(tournament) stats(sum) format(%9.0f)
 
-count if reaches_4 == 1
+count if reaches_4 == 1 & reg_sample == 1
 local n_bo5_extended = r(N)
 display ""
 display "Matches that actually required a 4th or 5th set: " %4.0f `n_bo5_extended' " (the rest of Wimbledon 2018/19/21/22 finished in straight sets)"
@@ -206,12 +272,12 @@ display "Matches that actually required a 4th or 5th set: " %4.0f `n_bo5_extende
 * 2.2 TIEBREAKS AND DECIDING-SET OUTCOMES BY SET (1-5)
 * ─────────────────────────────────────────────────────────────────────────────
 display ""
-display "=== Tiebreak / Deciding-Set Outcomes by Set Number ==="
+display "=== Tiebreak / Deciding-Set Outcomes by Set Number (regression sample) ==="
 display "Standard tiebreak = set ends 7-6/6-7 (7-pt breaker at 6-6); the only outcome ever"
 display "  observed at AO/RG/USO. 12-12 breaker = deciding set reaches 12-12, then a breaker"
 display "  decides it (e.g. 13-12). Advantage set (no breaker) = deciding set won by a"
 display "  natural 2-game margin at 8+ games (e.g. 8-6, 11-9, 22-20). The latter two are"
-display "  observed only at Wimbledon (pre-2023) and Olympics."
+display "  observed only at Wimbledon (pre-2023)."
 display ""
 
 forvalues s = 1/5 {
@@ -224,23 +290,28 @@ forvalues s = 1/5 {
         generate byte breaker1212_s`s' = (lo_s`s'==12 & (hi_s`s'-lo_s`s')==1) if !missing(winners_set`s')
         generate byte advset_s`s'      = (hi_s`s'>=8 & (hi_s`s'-lo_s`s')==2) if !missing(winners_set`s')
 
-        count if !missing(winners_set`s')
+        count if !missing(winners_set`s') & reg_sample==1
         local n_played = r(N)
-        count if std_tb_s`s' == 1
+        count if std_tb_s`s' == 1 & reg_sample==1
         local n_std = r(N)
-        count if breaker1212_s`s' == 1
+        count if breaker1212_s`s' == 1 & reg_sample==1
         local n_brk = r(N)
-        count if advset_s`s' == 1
+        count if advset_s`s' == 1 & reg_sample==1
         local n_adv = r(N)
         display "  Set `s':  N reaching=" %5.0f `n_played' "   Standard 7-6 TB=" %4.0f `n_std' "   12-12 breaker=" %3.0f `n_brk' "   Advantage(no brk)=" %3.0f `n_adv'
     }
 }
 
+display ""
+display %4.0f `n_tb_s1' " + " %4.0f `n_tb_s2' " + " %4.0f `n_tb_s3' " + " %4.0f `n_tb_s4' " + " %4.0f `n_tb_s5' " = " %4.0f `n_sum_std' "  <- sum of standard (7-6) tiebreaks across all sets"
+display "Note: this matches Table 4's main-spec tiebreak count exactly, since both are"
+display "  now computed on the identical 1,872-match regression sample."
+
 * Cross-check against the fully raw (pre-retirement-filter) data: the working
 * dataset here has already had the sets-1-3-only retirement filter applied
 * (top of this do-file), which silently drops match_id 903 and 927 -- both
 * genuine 12-12-breaker deciders finishing 13-12 in set 3. They are real,
-* complete matches, not retirements; see the Section 4 reconciliation note.
+* complete matches, not retirements; see the 2.4 reconciliation note.
 preserve
 import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
 destring winners_set3 losers_set3, replace force
@@ -250,11 +321,71 @@ count if _lo3==12 & (_hi3-_lo3)==1
 display ""
 display "Cross-check on fully raw data (before any retirement filtering): " r(N) " true 12-12-breaker"
 display "  deciders in set 3. The 2 missing from the table above (match_id 903, 927) are"
-display "  dropped upstream by the retirement-filter bug -- see Section 4 reconciliation note."
+display "  dropped upstream by the retirement-filter bug -- see 2.4 reconciliation note."
 restore
+
+* ─────────────────────────────────────────────────────────────────────────────
+* 2.3 TIEBREAKS PER MATCH
+* How many standard (7-pt) tiebreaks does a single match contain? A match can
+* have more than one (e.g. set 1 and set 2), so this is a genuine distribution.
+* The advantage-set/12-12-breaker deciders are excluded here (different category,
+* and always at most one per match since it can only be the final set played).
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== Matches by Number of Standard (7-pt) Tiebreaks ==="
+capture drop tb_count
+generate byte tb_count = tb_s1 + tb_s2 + tb_s3_regular + tb_s4 + tb_s5
+tabulate tb_count if reg_sample==1
+
+quietly summarize tb_count if reg_sample==1
+local tb_count_sum = r(mean) * r(N)
+display ""
+display "Check: sum of tb_count across matches = " %4.0f `tb_count_sum' "  (matches the " %4.0f `n_sum_std' " total above)"
 
 display ""
 display "Section 2 complete: Pressure outcomes."
+
+* ─────────────────────────────────────────────────────────────────────────────
+* 2.5 OLYMPICS: PRESSURE OUTCOME COUNTS
+* Reported separately rather than pooled into Table 1 above, since Olympic tennis
+* follows different rules in this dataset and Olympic matches are excluded from
+* the regression sample entirely (Tables 3-6).
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== 2.5 Olympics: Pressure Outcome Counts ==="
+count if olympics_tourn == 1
+local n_oly = r(N)
+display "N=" `n_oly' " matches (Tokyo 2021 + Paris 2024)"
+display ""
+
+count if tb_s1 == 1 & olympics_tourn == 1
+display "  Set-1 tiebreak (7-pt):                                 N=" %4.0f r(N)
+count if tb_s2 == 1 & olympics_tourn == 1
+display "  Set-2 tiebreak (7-pt):                                 N=" %4.0f r(N)
+count if regular_tb == 1 & olympics_tourn == 1
+display "  Any regular tiebreak (sets 1 or 2):                    N=" %4.0f r(N)
+count if match_tb == 1 & olympics_tourn == 1
+display "  Advantage-set / 12-12-breaker decider:                 N=" %4.0f r(N)
+count if any_tb == 1 & olympics_tourn == 1
+display "  Any tiebreak (all types, any set):                     N=" %4.0f r(N)
+count if three_sets == 1 & olympics_tourn == 1
+display "  Match went to 3 sets:                                  N=" %4.0f r(N)
+count if comeback == 1 & olympics_tourn == 1
+display "  Comeback wins (winner lost set 1):                     N=" %4.0f r(N)
+
+display ""
+display "By Olympic year:"
+tabstat olympics_tourn if olympics_tourn==1, by(year) stats(sum) format(%9.0f)
+display ""
+display "Advantage-set / 12-12-breaker deciders by year:"
+tabstat match_tb if olympics_tourn==1, by(year) stats(sum) format(%9.0f)
+
+count if reaches_4 == 1 & olympics_tourn == 1
+display ""
+display "Matches reaching a 4th set: " %4.0f r(N) " (Olympics is best-of-3 throughout)."
+
+display ""
+display "Section 2.5 complete: Olympics pressure outcomes."
 
 * ═══════════════════════════════════════════════════════════════════════════════
 * SECTION 3: OLYMPIC CYCLE DESCRIPTIVE EVIDENCE
@@ -345,37 +476,30 @@ destring _all, replace force
 
 * If Section 4 is run by itself, the tempfile from the raw-match section above
 * does not exist. Rebuild it here so the team panel is filtered consistently.
+* Uses the same valid_set_score program defined at the top of this do-file.
 if `"`incomplete_matches'"' == "" {
     tempfile incomplete_matches
     preserve
     import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
 
-    destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 losers_set3, replace force
+    destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 losers_set3 ///
+        winners_set4 losers_set4 winners_set5 losers_set5, replace force
 
-    generate byte s1_complete = !missing(winners_set1, losers_set1) & ///
-        ((max(winners_set1, losers_set1)==6 & min(winners_set1, losers_set1)<=4) | ///
-         (max(winners_set1, losers_set1)==7 & inlist(min(winners_set1, losers_set1), 5, 6)))
-
-    generate byte s2_complete = !missing(winners_set2, losers_set2) & ///
-        ((max(winners_set2, losers_set2)==6 & min(winners_set2, losers_set2)<=4) | ///
-         (max(winners_set2, losers_set2)==7 & inlist(min(winners_set2, losers_set2), 5, 6)))
+    valid_set_score winners_set1 losers_set1 s1_complete
+    valid_set_score winners_set2 losers_set2 s2_complete
+    valid_set_score winners_set3 losers_set3 s3_complete
 
     generate byte split_sets = !missing(winners_set1, losers_set1, winners_set2, losers_set2) & ///
         ((winners_set1 > losers_set1 & winners_set2 < losers_set2) | ///
          (winners_set1 < losers_set1 & winners_set2 > losers_set2))
 
-    generate byte s3_regular_complete = !missing(winners_set3, losers_set3) & ///
-        ((max(winners_set3, losers_set3)==6 & min(winners_set3, losers_set3)<=4) | ///
-         (max(winners_set3, losers_set3)==7 & inlist(min(winners_set3, losers_set3), 5, 6)) | ///
-         (max(winners_set3, losers_set3)>=8 & max(winners_set3, losers_set3) - min(winners_set3, losers_set3)==2))
+    valid_set_score winners_set4 losers_set4 _s4_complete
+    generate byte s4_valid = missing(winners_set4) | _s4_complete
+    valid_set_score winners_set5 losers_set5 _s5_complete
+    generate byte s5_valid = missing(winners_set5) | _s5_complete
 
-    generate byte s3_match_tb_complete = !missing(winners_set3, losers_set3) & ///
-        max(winners_set3, losers_set3) >= 10 & ///
-        max(winners_set3, losers_set3) - min(winners_set3, losers_set3) >= 2
-
-    generate byte s3_complete = s3_regular_complete | s3_match_tb_complete
     generate byte retired_or_incomplete = !s1_complete | !s2_complete | ///
-        (split_sets & !s3_complete)
+        (split_sets & !s3_complete) | !s4_valid | !s5_valid
 
     keep if retired_or_incomplete
     keep match_id
@@ -416,7 +540,7 @@ display ""
 display "Section 4 complete: Team panel loaded."
 
 * ─────────────────────────────────────────────────────────────────────────────
-* 4.1 RECONCILIATION: PRESSURE-OUTCOME COUNTS VS. REGRESSION SAMPLE
+* 4.1 (== notebook section 2.4) WHERE 1,872 AND 1,886 COME FROM
 * One known gap remains in the current pipeline, left as-is pending further review:
 *   The retirement filter (top of this do-file) only inspects sets 1-3.
 *   match_id 903, 927 (2021 Wimbledon, valid 13-12 set-3 finish) are wrongly
@@ -425,6 +549,17 @@ display "Section 4 complete: Team panel loaded."
 * (The previous gap -- sets 4-5 tiebreaks missing from tiebreak_panel.csv -- is
 *  now fixed: tiebreak_panel.ipynb covers sets 1-5, see Section 7.)
 * ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== Where 1,872 and 1,886 Come From ==="
+display "1,997 raw scraped matches (Grand Slams + Olympics)."
+display "Drop 48 retirements/walkovers -> 1,949 remain (47 GS + 1 Olympics)."
+display "Of the 1,949: 63 are Olympic matches; 1,886 are Grand Slam matches -- this is"
+display "  where 1,886 comes from (GS matches after dropping retirements, BEFORE the"
+display "  ranking/nationality filters below). Section 2's Table 1 above uses 1,872,"
+display "  not 1,886."
+display "From 1,886, a further 14 matches are dropped for incomplete doubles ranking"
+display "  (0 more for nationality/language) -> 1,872 Grand Slam matches: the final"
+display "  regression sample, matching team_gs_panel.csv exactly."
 display ""
 display "=== Reconciliation: Pressure-Outcome Counts vs. Regression Sample ==="
 foreach mid in 903 927 504 1204 {

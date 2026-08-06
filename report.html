@@ -100,45 +100,63 @@
   </tbody>
 </table>
 <p class="note">
-  Table 4 (tiebreak win): 1,189 tiebreaks × 2 = 2,378 team-obs (930 unique matches),
-  covering sets 1–5 (main spec: the 1,181 standard 7pt tiebreaks; robustness spec adds
-  8 advantage-set/12-12-breaker deciders).
+  Table 4 (tiebreak win): 1,194 tiebreaks × 2 = 2,388 team-obs (932 unique matches),
+  covering sets 1–5 (main spec: the 1,179 standard 7pt tiebreaks; robustness spec adds
+  15 advantage-set/12-12-breaker deciders).
 </p>
 
 <!-- ══════════════════════════════════════════════════════════════════════════ -->
 <h2>3. Pressure Outcome Counts</h2>
+<p>
+  Computed on the <strong>same 1,872-match regression sample</strong> used in Tables
+  3–6 (not a broader pre-filter set), so every number below reconciles exactly with the
+  regression tables. See §3.4 for how 1,872 relates to the raw data.
+</p>
 <table>
   <thead>
     <tr><th>Outcome</th><th class="num">N</th><th class="num">Share of matches</th></tr>
   </thead>
   <tbody>
-    <tr><td>Set-1 tiebreak (7-pt)</td><td class="num">464</td><td class="num">24.6%</td></tr>
-    <tr><td>Set-2 tiebreak (7-pt)</td><td class="num">475</td><td class="num">25.2%</td></tr>
-    <tr><td>Any regular tiebreak (sets 1–2)</td><td class="num">830</td><td class="num">44.0%</td></tr>
-    <tr><td>Advantage-set / 12-12-breaker decider (set 3)</td><td class="num">8</td><td class="num">0.4%</td></tr>
-    <tr><td>Any tiebreak (all types)</td><td class="num">936</td><td class="num">49.6%</td></tr>
-    <tr><td>Match went to 3 sets</td><td class="num">832</td><td class="num">44.1%</td></tr>
-    <tr><td>Comeback wins (winner lost set 1)</td><td class="num">371</td><td class="num">19.7%</td></tr>
+    <tr><td>Set-1 tiebreak (7-pt)</td><td class="num">462</td><td class="num">24.7%</td></tr>
+    <tr><td>Set-2 tiebreak (7-pt)</td><td class="num">470</td><td class="num">25.1%</td></tr>
+    <tr><td>Set-3 tiebreak (7-pt)</td><td class="num">210</td><td class="num">11.2%</td></tr>
+    <tr><td>Set-4 tiebreak (7-pt)</td><td class="num">31</td><td class="num">1.7%</td></tr>
+    <tr><td>Set-5 tiebreak (7-pt)</td><td class="num">6</td><td class="num">0.3%</td></tr>
+    <tr><td>Advantage-set / 12-12-breaker decider</td><td class="num">15</td><td class="num">0.8%</td></tr>
+    <tr><td>Any regular tiebreak (sets 1–2)</td><td class="num">823</td><td class="num">44.0%</td></tr>
+    <tr><td>Any tiebreak (all types, any set)</td><td class="num">932</td><td class="num">49.8%</td></tr>
+    <tr><td>Match went to 3 sets</td><td class="num">827</td><td class="num">44.2%</td></tr>
+    <tr><td>Comeback wins (winner lost set 1)</td><td class="num">367</td><td class="num">19.6%</td></tr>
   </tbody>
 </table>
 <p class="note">
-  Grand Slams only, Olympics excluded (N=1,886) — see §3.4 for the Olympics figures,
-  reported separately since Olympic tennis follows different rules and isn't part of the
-  regression sample. The set-3 row above is relabeled from the original "match tiebreak /
-  super-tb (10-pt)": on inspection, no tournament in this dataset ever records a genuine
-  10-point super-tiebreak as a set score — AO/RG/USO's set-3 score never exceeds 7 games.
-  All 8 cases are long advantage-set finishes at Wimbledon (e.g. 16–14, 13–11, 12–10),
-  broken out precisely in §3.2 below.
+  Grand Slams regression sample, Olympics excluded (N=1,872) — see §3.5 for the
+  Olympics figures, reported separately since Olympic tennis follows different rules
+  and isn't part of the regression sample. Sum of the five set-by-set standard-tiebreak
+  rows: 462 + 470 + 210 + 31 + 6 = <strong>1,179</strong> — this matches Table 4's
+  main-spec tiebreak count exactly, since both are now computed on the identical
+  1,872-match sample. <strong>Any regular tiebreak (sets 1–2)</strong> counts a match
+  once if it had a tiebreak in set 1 and/or set 2 (a match with both counts once, not
+  twice) — that's why it's less than 462+470. <strong>Any tiebreak (all types, any
+  set)</strong> is the broadest category: a match counts once if it had a standard
+  tiebreak in <em>any</em> of sets 1–5, or an advantage-set/12-12-breaker decider — it
+  includes (doesn't add to) the "any regular tiebreak" matches, plus matches whose only
+  tiebreak was in set 3/4/5 or was a decider. The set-3+ rows are relabeled from the
+  original "match tiebreak / super-tb (10-pt)": on inspection, no tournament in this
+  dataset ever records a genuine 10-point super-tiebreak as a set score — AO/RG/USO's
+  set-3 score never exceeds 7 games. All 15 advantage-set/12-12-breaker cases are at
+  Wimbledon (e.g. 16–14, 13–11, 12–10, 13–12), broken out precisely in §3.2 below.
 </p>
 
 <h3>3.1 Match Format: Best-of-3 vs. Best-of-5</h3>
 <p>
   Wimbledon played men's doubles as <strong>best-of-5 sets in 2018, 2019, 2021, and
-  2022</strong> (253 matches played under that rule, of which 103 actually required a
-  4th or 5th set — the rest finished in straight sets). Every other tournament-year in
-  the Grand Slams — Australian Open, Roland Garros, and US Open in every year, and
-  Wimbledon from 2023 onward — is best-of-3, with no match ever recording a 4th set.
-  (Olympics is likewise best-of-3 throughout — see §3.4.)
+  2022</strong> (252 matches played under that rule within the regression sample, of
+  which 101 actually required a 4th or 5th set — the rest finished in straight sets).
+  Every other tournament-year in the Grand Slams — Australian Open, Roland Garros, and
+  US Open in every year, and Wimbledon from 2023 onward — is best-of-3, with no match
+  ever recording a 4th set. (Olympics is likewise best-of-3 throughout — see §3.5;
+  Olympics is not part of the regression sample.)
 </p>
 <table>
   <thead>
@@ -148,11 +166,16 @@
   </thead>
   <tbody>
     <tr><td>Wimbledon</td><td>2018, 2019, 2021, 2022</td>
-        <td class="num">253</td><td class="num">103</td><td class="num">50</td></tr>
+        <td class="num">252</td><td class="num">101</td><td class="num">50</td></tr>
     <tr><td>All other tournament-years</td><td>—</td>
         <td class="num">Best-of-3 throughout</td><td class="num">0</td><td class="num">0</td></tr>
   </tbody>
 </table>
+<p class="note">
+  101, not 103: two matches previously counted as "reaching a 4th set" (match_id 504,
+  1204) are genuine mid-set-4 retirements, now correctly excluded from the sample —
+  see §3.4.
+</p>
 
 <h3>3.2 Tiebreaks and Deciding-Set Outcomes by Set (1–5)</h3>
 <p>
@@ -171,46 +194,107 @@
         <th class="num">Advantage (no breaker)</th></tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td class="num">1,886</td><td class="num">464</td><td class="num">0</td><td class="num">0</td></tr>
-    <tr><td>2</td><td class="num">1,886</td><td class="num">475</td><td class="num">0</td><td class="num">0</td></tr>
-    <tr><td>3</td><td class="num">832</td><td class="num">211</td><td class="num">0<sup>†</sup></td><td class="num">8</td></tr>
-    <tr><td>4</td><td class="num">103</td><td class="num">31</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>1</td><td class="num">1,872</td><td class="num">462</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>2</td><td class="num">1,872</td><td class="num">470</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>3</td><td class="num">827</td><td class="num">210</td><td class="num">2</td><td class="num">8</td></tr>
+    <tr><td>4</td><td class="num">101</td><td class="num">31</td><td class="num">0</td><td class="num">0</td></tr>
     <tr><td>5</td><td class="num">50</td><td class="num">6</td><td class="num">1</td><td class="num">7</td></tr>
-    <tr class="bg"><td>Total</td><td class="num">—</td><td class="num">1,187</td><td class="num">1<sup>†</sup></td><td class="num">15</td></tr>
+    <tr class="bg"><td>Sum: 462 + 470 + 210 + 31 + 6</td><td class="num">—</td><td class="num"><strong>1,179</strong></td><td class="num">3</td><td class="num">15</td></tr>
   </tbody>
 </table>
 <p class="note">
-  <sup>†</sup>Set 3 should show 2 twelve-twelve-breaker deciders (match_id 903, 927 —
-  2021 Wimbledon, both finished 13–12), confirmed present in the raw data. They read as
-  0 here because the retirement filter used to build the working sample (which only
-  checks sets 1–3 for completeness) misreads a 1-game-margin breaker finish as
-  incomplete and drops both matches — see §3.3 below for the reconciliation and why
-  this is not fixed in the current pass.
+  The 1,179 total exactly matches Table 4's main-spec tiebreak count, and the 1,872
+  matches reaching set 1 matches Section 2's regression sample size — both are computed
+  on the identical sample. Set 3 now correctly shows both 12-12-breaker deciders
+  (match_id 903, 927 — 2021 Wimbledon, both finished 13–12): a retirement-filter fix
+  (§3.4) means the completeness check now recognizes a 1-game-margin breaker finish as
+  valid, rather than misreading it as an incomplete/retired match.
 </p>
 
-<h3>3.3 Reconciliation with the Regression Sample</h3>
+<h3>3.3 Tiebreaks per Match</h3>
+<p>
+  How many <em>standard</em> (7-pt) tiebreaks does a single match contain? A match can
+  have more than one — e.g. a tiebreak in set 1 and another in set 2 — so this is a
+  genuine distribution, not a binary yes/no. (The 15 advantage-set/12-12-breaker
+  deciders are excluded here since they're a different category, and each can only
+  ever be the very last set of a match, so they never combine with each other; a match
+  can still have, e.g., a set-1 tiebreak <em>and</em> a 12-12-breaker decider in set 3.)
+</p>
+<table>
+  <thead>
+    <tr><th class="num">Tiebreaks in match</th><th class="num">N matches</th><th class="num">Share</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="num">0</td><td class="num">947</td><td class="num">50.6%</td></tr>
+    <tr><td class="num">1</td><td class="num">704</td><td class="num">37.6%</td></tr>
+    <tr><td class="num">2</td><td class="num">190</td><td class="num">10.1%</td></tr>
+    <tr><td class="num">3</td><td class="num">29</td><td class="num">1.5%</td></tr>
+    <tr><td class="num">4</td><td class="num">2</td><td class="num">0.1%</td></tr>
+    <tr class="bg"><td class="num">Total</td><td class="num">1,872</td><td class="num">100.0%</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Check: 0×947 + 1×704 + 2×190 + 3×29 + 4×2 = 1,179 — matches the sum in §3.2 above
+  exactly. Just over half of all matches (947, 50.6%) have no standard tiebreak at
+  all; only 31 matches (1.7%) have three or more.
+</p>
+
+<h3>3.4 Where 1,872 and 1,886 Come From</h3>
+<p>
+  All descriptive stats above (§3, 3.1–3.3) are computed on the exact 1,872-match
+  regression sample, so they already reconcile with Tables 3–6 by construction. This
+  section explains how that 1,872 relates to the raw data and the 48 dropped
+  retirements/walkovers, and confirms a fix applied to the retirement filter.
+</p>
+<table>
+  <thead>
+    <tr><th>Step</th><th class="num">Matches</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Raw scraped matches (Grand Slams + Olympics)</td><td class="num">1,997</td></tr>
+    <tr><td>Drop 48 retirements/walkovers (47 GS + 1 Olympics)</td><td class="num">1,949</td></tr>
+    <tr><td>&nbsp;&nbsp;↳ of which Olympic matches (Tokyo 2021 + Paris 2024)</td><td class="num">63</td></tr>
+    <tr><td>&nbsp;&nbsp;↳ of which Grand Slam matches — this is where <strong>1,886</strong> comes from</td><td class="num">1,886</td></tr>
+    <tr><td>Drop 14 more GS matches: incomplete doubles ranking (0 more for nationality/language)</td><td class="num">−14</td></tr>
+    <tr class="bg"><td><strong>Final regression sample — this is <strong>1,872</strong>, matching <code>team_gs_panel.csv</code></strong></td><td class="num"><strong>1,872</strong></td></tr>
+  </tbody>
+</table>
+<p class="note">
+  <strong>1,886</strong> = Grand Slam matches after dropping retirements/walkovers, but
+  <em>before</em> the ranking/nationality-completeness filters — an intermediate count
+  in the funnel, not used as the base for §3/3.1/3.2/3.3 above (those use 1,872).
+  <strong>1,872</strong> = the final regression sample after also dropping the 14
+  ranking-incomplete matches — this is the number §3/3.1/3.2/3.3 are built on.
+</p>
+<p class="note">
+  <strong>Fix applied to the retirement filter</strong> (previously flagged as a known,
+  unfixed gap): the completeness check only inspected sets 1–3, and only recognized a
+  2-game-margin finish (e.g. 8–6) as valid — not a 1-game-margin breaker finish (e.g.
+  13–12). Two Wimbledon 2021 matches (match_id 903, 927) that legitimately finished
+  13–12 in the third set were misread as incomplete and wrongly excluded; two other
+  matches with a genuine retirement in the <em>4th</em> set — Wimbledon 2019 (match_id
+  504, retired at 4–3) and Wimbledon 2022 (match_id 1204, retired at 1–1) — were
+  invisible to a filter that never looked past set 3, and were wrongly included. Both
+  issues are now fixed: the completeness check recognizes the 12-12-breaker pattern as
+  valid, and sets 4–5 are now also checked when present. Net effect on the 1,872 count
+  is a wash (2 matches swapped for 2 others), but the sample now contains the
+  <em>correct</em> 2 in each direction. The advantage-set/12-12-breaker (<code>match_tb</code>)
+  threshold was also widened from <code>hi≥10</code> to <code>hi≥8</code>, since genuine
+  long advantage-set finishes like 8–6 or 9–7 were being missed by the old threshold
+  (7 such matches added: 4 at set 3, 3 at set 5).
+</p>
 <table>
   <thead>
     <tr><th>Sample</th><th class="num">Matches</th><th class="num">Team-obs / tiebreaks</th></tr>
   </thead>
   <tbody>
-    <tr><td>Pressure-outcome counts above (GS only)</td><td class="num">1,886</td><td class="num">—</td></tr>
+    <tr><td>Pressure-outcome counts above (§3–3.3, GS regression sample)</td><td class="num">1,872</td><td class="num">—</td></tr>
     <tr><td>team_gs_panel.csv (Table 3 sample, GS only)</td><td class="num">1,872</td><td class="num">3,744 team-obs</td></tr>
-    <tr><td>tiebreak_panel.csv (Table 4 sample, sets 1–5)</td><td class="num">1,189 tiebreaks</td><td class="num">2,378 team-obs</td></tr>
+    <tr><td>tiebreak_panel.csv (Table 4 sample, sets 1–5)</td><td class="num">1,194 tiebreaks</td><td class="num">2,388 team-obs</td></tr>
   </tbody>
 </table>
-<p class="note">
-  One known gap is documented but <strong>not fixed in this pass</strong> (pending
-  further review): the retirement filter only inspects sets 1–3, so match_id 903 and
-  927 (valid 13–12 set-3 finishes) are wrongly excluded from <code>team_gs_panel.csv</code>
-  while match_id 504 and 1204 (genuine set-4 retirements, incomplete scores 4–3 and 1–1)
-  are wrongly included — net effect on N is a wash, but it is not the same 2 matches the
-  filter's own logic intends to keep. (A previous gap — sets 4–5 tiebreaks missing from
-  <code>tiebreak_panel.csv</code> — is now fixed: it covers sets 1–5, and Table 4's main
-  spec uses all of them.)
-</p>
 
-<h3>3.4 Olympics: Pressure Outcome Counts</h3>
+<h3>3.5 Olympics: Pressure Outcome Counts</h3>
 <p>
   Reported separately rather than pooled into §3 above, since Olympic tennis follows
   different rules in this dataset and Olympic matches are excluded from the regression
@@ -318,13 +402,13 @@
   </thead>
   <tbody>
     <tr><td>Culture measure</td>
-        <td class="num">+0.0368<sup>**</sup></td>
-        <td class="num">+0.0460<sup>***</sup></td>
-        <td class="num">+0.0426<sup>***</sup></td></tr>
+        <td class="num">+0.0374<sup>**</sup></td>
+        <td class="num">+0.0471<sup>***</sup></td>
+        <td class="num">+0.0437<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0163)<br>p=0.024</td>
+        <td class="num">(0.0163)<br>p=0.022</td>
         <td class="num">(0.0156)<br>p=0.003</td>
-        <td class="num">(0.0156)<br>p=0.006</td></tr>
+        <td class="num">(0.0156)<br>p=0.005</td></tr>
     <tr><td>Team avg. doubles rank</td>
         <td class="num">−0.0007<sup>***</sup></td>
         <td class="num">−0.0007<sup>***</sup></td>
@@ -338,14 +422,14 @@
     <tr class="se"><td></td>
         <td class="num">(0.0001)</td><td class="num">(0.0001)</td><td class="num">(0.0001)</td></tr>
     <tr><td>Top-100 singles player</td>
-        <td class="num">−0.0050</td><td class="num">−0.0038</td><td class="num">−0.0032</td></tr>
+        <td class="num">−0.0053</td><td class="num">−0.0040</td><td class="num">−0.0034</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0318)<br>p=0.874</td>
-        <td class="num">(0.0318)<br>p=0.906</td>
-        <td class="num">(0.0318)<br>p=0.920</td></tr>
+        <td class="num">(0.0317)<br>p=0.868</td>
+        <td class="num">(0.0318)<br>p=0.900</td>
+        <td class="num">(0.0318)<br>p=0.914</td></tr>
     <tr><td>Team avg GS appearances</td>
         <td class="num">+0.0200<sup>***</sup></td>
-        <td class="num">+0.0197<sup>***</sup></td>
+        <td class="num">+0.0198<sup>***</sup></td>
         <td class="num">+0.0195<sup>***</sup></td></tr>
     <tr class="se"><td></td>
         <td class="num">(0.0051)<br>p=0.000</td>
@@ -360,13 +444,13 @@
         <td class="num">(0.0002)<br>p=0.002</td>
         <td class="num">(0.0002)<br>p=0.002</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
-        <td class="num">0.096</td><td class="num">0.096</td><td class="num">0.096</td></tr>
+        <td class="num">0.095</td><td class="num">0.096</td><td class="num">0.096</td></tr>
   </tbody>
 </table>
 <p class="note">
   <sup>***</sup>&nbsp;p&lt;0.01 &nbsp;<sup>**</sup>&nbsp;p&lt;0.05 &nbsp;<sup>*</sup>&nbsp;p&lt;0.10.
   Clustered SE. FE: tournament×year, round.
-  All three culture measures statistically significant at the 5% level (nationality p=0.024, language p=0.003, proximity p=0.006).
+  All three culture measures statistically significant at the 5% level (nationality p=0.022, language p=0.003, proximity p=0.005).
   Experience shows a concave effect: positive linear (p&lt;0.01), negative quadratic (p&lt;0.01).
   Top-100 singles indicator is not significant: within-GS doubles, having a top singles player does not
   predict match win once ranking and experience are controlled.
@@ -375,8 +459,8 @@
 <h3>Table 4 — Outcome: Tiebreak Win &nbsp;|&nbsp; Unit: team × tiebreak &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
 <p>
   <strong>Main specification</strong>: 7pt standard tiebreaks only, any set (1–5) —
-  N = 2,362 team-obs (1,181 tiebreaks). <strong>Robustness</strong>: adds the 8
-  advantage-set/12-12-breaker match-tiebreak deciders — N = 2,378 team-obs (1,189
+  N = 2,358 team-obs (1,179 tiebreaks). <strong>Robustness</strong>: adds the 15
+  advantage-set/12-12-breaker match-tiebreak deciders — N = 2,388 team-obs (1,194
   tiebreaks). Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq
   (same as Table 3). FE: tournament×year + round. SE clustered by match.
 </p>
@@ -393,13 +477,13 @@
   </thead>
   <tbody>
     <tr><td>Culture measure</td>
-        <td class="num">+0.0284</td><td class="num">+0.0280</td>
-        <td class="num">+0.0065</td><td class="num">+0.0092</td>
-        <td class="num">+0.0018</td><td class="num">+0.0045</td></tr>
+        <td class="num">+0.0296</td><td class="num">+0.0305</td>
+        <td class="num">+0.0074</td><td class="num">+0.0127</td>
+        <td class="num">+0.0027</td><td class="num">+0.0080</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0223)<br>p=0.202</td><td class="num">(0.0222)<br>p=0.207</td>
-        <td class="num">(0.0218)<br>p=0.766</td><td class="num">(0.0217)<br>p=0.673</td>
-        <td class="num">(0.0217)<br>p=0.934</td><td class="num">(0.0216)<br>p=0.835</td></tr>
+        <td class="num">(0.0223)<br>p=0.185</td><td class="num">(0.0222)<br>p=0.169</td>
+        <td class="num">(0.0218)<br>p=0.733</td><td class="num">(0.0217)<br>p=0.559</td>
+        <td class="num">(0.0217)<br>p=0.900</td><td class="num">(0.0216)<br>p=0.711</td></tr>
     <tr><td>Team avg. doubles rank</td>
         <td class="num">−0.0003<sup>***</sup></td><td class="num">−0.0003<sup>***</sup></td>
         <td class="num">−0.0003<sup>***</sup></td><td class="num">−0.0003<sup>***</sup></td>
@@ -417,37 +501,37 @@
         <td class="num">(0.0001)</td><td class="num">(0.0001)</td>
         <td class="num">(0.0001)</td><td class="num">(0.0001)</td></tr>
     <tr><td>Top-100 singles player</td>
-        <td class="num">−0.0642</td><td class="num">−0.0594</td>
-        <td class="num">−0.0616</td><td class="num">−0.0571</td>
-        <td class="num">−0.0615</td><td class="num">−0.0569</td></tr>
+        <td class="num">−0.0640</td><td class="num">−0.0573</td>
+        <td class="num">−0.0613</td><td class="num">−0.0547</td>
+        <td class="num">−0.0612</td><td class="num">−0.0545</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0432)<br>p=0.137</td><td class="num">(0.0430)<br>p=0.167</td>
-        <td class="num">(0.0431)<br>p=0.153</td><td class="num">(0.0429)<br>p=0.183</td>
-        <td class="num">(0.0431)<br>p=0.154</td><td class="num">(0.0429)<br>p=0.184</td></tr>
+        <td class="num">(0.0433)<br>p=0.139</td><td class="num">(0.0429)<br>p=0.182</td>
+        <td class="num">(0.0432)<br>p=0.155</td><td class="num">(0.0428)<br>p=0.201</td>
+        <td class="num">(0.0431)<br>p=0.156</td><td class="num">(0.0428)<br>p=0.203</td></tr>
     <tr><td>Team avg GS appearances</td>
-        <td class="num">+0.0014</td><td class="num">+0.0011</td>
-        <td class="num">+0.0006</td><td class="num">+0.0004</td>
-        <td class="num">+0.0005</td><td class="num">+0.0003</td></tr>
+        <td class="num">+0.0014</td><td class="num">+0.0018</td>
+        <td class="num">+0.0006</td><td class="num">+0.0011</td>
+        <td class="num">+0.0005</td><td class="num">+0.0009</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0068)<br>p=0.836</td><td class="num">(0.0067)<br>p=0.865</td>
-        <td class="num">(0.0068)<br>p=0.930</td><td class="num">(0.0067)<br>p=0.952</td>
-        <td class="num">(0.0068)<br>p=0.943</td><td class="num">(0.0067)<br>p=0.966</td></tr>
+        <td class="num">(0.0068)<br>p=0.836</td><td class="num">(0.0068)<br>p=0.791</td>
+        <td class="num">(0.0068)<br>p=0.932</td><td class="num">(0.0067)<br>p=0.876</td>
+        <td class="num">(0.0068)<br>p=0.946</td><td class="num">(0.0067)<br>p=0.892</td></tr>
     <tr><td>GS experience squared</td>
-        <td class="num">+0.0000</td><td class="num">+0.0001</td>
-        <td class="num">+0.0001</td><td class="num">+0.0001</td>
+        <td class="num">+0.0000</td><td class="num">+0.0000</td>
+        <td class="num">+0.0001</td><td class="num">+0.0000</td>
         <td class="num">+0.0001</td><td class="num">+0.0001</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0003)<br>p=0.865</td><td class="num">(0.0003)<br>p=0.846</td>
-        <td class="num">(0.0003)<br>p=0.812</td><td class="num">(0.0003)<br>p=0.797</td>
-        <td class="num">(0.0003)<br>p=0.804</td><td class="num">(0.0003)<br>p=0.787</td></tr>
+        <td class="num">(0.0003)<br>p=0.860</td><td class="num">(0.0003)<br>p=0.912</td>
+        <td class="num">(0.0003)<br>p=0.807</td><td class="num">(0.0003)<br>p=0.862</td>
+        <td class="num">(0.0003)<br>p=0.798</td><td class="num">(0.0003)<br>p=0.851</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
         <td class="num">0.014</td><td class="num">0.013</td>
         <td class="num">0.013</td><td class="num">0.013</td>
-        <td class="num">0.013</td><td class="num">0.013</td></tr>
+        <td class="num">0.013</td><td class="num">0.012</td></tr>
     <tr><td>N</td>
-        <td class="num">2,362</td><td class="num">2,378</td>
-        <td class="num">2,362</td><td class="num">2,378</td>
-        <td class="num">2,362</td><td class="num">2,378</td></tr>
+        <td class="num">2,358</td><td class="num">2,388</td>
+        <td class="num">2,358</td><td class="num">2,388</td>
+        <td class="num">2,358</td><td class="num">2,388</td></tr>
   </tbody>
 </table>
 <p class="note">
@@ -505,29 +589,29 @@
   </thead>
   <tbody>
     <tr><td>Culture (C) — pooled baseline</td>
-        <td class="num">+0.0390<sup>**</sup></td><td class="num">+0.0364<sup>*</sup></td>
-        <td class="num">+0.0435<sup>**</sup></td><td class="num">+0.0482<sup>***</sup></td>
-        <td class="num">+0.0420<sup>**</sup></td><td class="num">+0.0414<sup>**</sup></td></tr>
+        <td class="num">+0.0390<sup>**</sup></td><td class="num">+0.0372<sup>**</sup></td>
+        <td class="num">+0.0435<sup>**</sup></td><td class="num">+0.0497<sup>***</sup></td>
+        <td class="num">+0.0420<sup>**</sup></td><td class="num">+0.0429<sup>**</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0183)<br>p=0.033</td><td class="num">(0.0188)<br>p=0.053</td>
-        <td class="num">(0.0176)<br>p=0.013</td><td class="num">(0.0181)<br>p=0.008</td>
-        <td class="num">(0.0176)<br>p=0.017</td><td class="num">(0.0180)<br>p=0.022</td></tr>
+        <td class="num">(0.0183)<br>p=0.033</td><td class="num">(0.0188)<br>p=0.048</td>
+        <td class="num">(0.0176)<br>p=0.013</td><td class="num">(0.0181)<br>p=0.006</td>
+        <td class="num">(0.0176)<br>p=0.017</td><td class="num">(0.0180)<br>p=0.017</td></tr>
     <tr><td>Surface (grass in (a) / clay in (b))</td>
-        <td class="num">+0.0073</td><td class="num">−0.0009</td>
-        <td class="num">−0.0036</td><td class="num">+0.0053</td>
-        <td class="num">+0.0008</td><td class="num">−0.0025</td></tr>
+        <td class="num">+0.0063</td><td class="num">−0.0006</td>
+        <td class="num">−0.0063</td><td class="num">+0.0062</td>
+        <td class="num">−0.0020</td><td class="num">−0.0017</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0149)<br>p=0.626</td><td class="num">(0.0142)<br>p=0.949</td>
-        <td class="num">(0.0206)<br>p=0.863</td><td class="num">(0.0188)<br>p=0.776</td>
-        <td class="num">(0.0208)<br>p=0.970</td><td class="num">(0.0194)<br>p=0.896</td></tr>
+        <td class="num">(0.0149)<br>p=0.673</td><td class="num">(0.0142)<br>p=0.967</td>
+        <td class="num">(0.0206)<br>p=0.760</td><td class="num">(0.0188)<br>p=0.742</td>
+        <td class="num">(0.0208)<br>p=0.924</td><td class="num">(0.0194)<br>p=0.931</td></tr>
     <tr><td>C × Surface</td>
-        <td class="num">−0.0108</td><td class="num">+0.0002</td>
-        <td class="num">+0.0093</td><td class="num">−0.0096</td>
-        <td class="num">+0.0021</td><td class="num">+0.0040</td></tr>
+        <td class="num">−0.0082</td><td class="num">−0.0006</td>
+        <td class="num">+0.0141</td><td class="num">−0.0111</td>
+        <td class="num">+0.0069</td><td class="num">+0.0025</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0374)<br>p=0.772</td><td class="num">(0.0346)<br>p=0.995</td>
-        <td class="num">(0.0362)<br>p=0.798</td><td class="num">(0.0340)<br>p=0.777</td>
-        <td class="num">(0.0363)<br>p=0.953</td><td class="num">(0.0344)<br>p=0.907</td></tr>
+        <td class="num">(0.0373)<br>p=0.825</td><td class="num">(0.0346)<br>p=0.986</td>
+        <td class="num">(0.0362)<br>p=0.697</td><td class="num">(0.0340)<br>p=0.743</td>
+        <td class="num">(0.0363)<br>p=0.848</td><td class="num">(0.0344)<br>p=0.942</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
         <td class="num">0.095</td><td class="num">0.095</td>
         <td class="num">0.096</td><td class="num">0.096</td>
@@ -541,7 +625,7 @@
 <p class="note">
   Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq. FE: round
   only (no tournament×year FE). SE clustered by match. All surface main effects and
-  interactions are insignificant (p &gt; 0.62 throughout) in both specs. The culture
+  interactions are insignificant (p &gt; 0.69 throughout) in both specs. The culture
   advantage documented in Table 3 does not vary significantly by surface, consistent
   with the earlier three-surface specification.
 </p>
@@ -562,31 +646,31 @@
   </thead>
   <tbody>
     <tr><td>Culture (C)</td>
-        <td class="num">+0.0297<sup>*</sup></td>
-        <td class="num">+0.0386<sup>**</sup></td>
-        <td class="num">+0.0351<sup>**</sup></td></tr>
+        <td class="num">+0.0302<sup>*</sup></td>
+        <td class="num">+0.0397<sup>**</sup></td>
+        <td class="num">+0.0363<sup>**</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0166)<br>p=0.074</td>
-        <td class="num">(0.0162)<br>p=0.018</td>
-        <td class="num">(0.0162)<br>p=0.031</td></tr>
+        <td class="num">(0.0166)<br>p=0.069</td>
+        <td class="num">(0.0162)<br>p=0.014</td>
+        <td class="num">(0.0162)<br>p=0.025</td></tr>
     <tr><td>IC_team_dm</td>
-        <td class="num">+0.0012<sup>**</sup></td>
+        <td class="num">+0.0011<sup>*</sup></td>
         <td class="num">+0.0008</td>
         <td class="num">+0.0008</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0006)<br>p=0.045</td>
-        <td class="num">(0.0008)<br>p=0.272</td>
-        <td class="num">(0.0008)<br>p=0.275</td></tr>
+        <td class="num">(0.0006)<br>p=0.051</td>
+        <td class="num">(0.0008)<br>p=0.277</td>
+        <td class="num">(0.0008)<br>p=0.280</td></tr>
     <tr><td>C × IC_team_dm (θ)</td>
-        <td class="num">−0.00054</td>
+        <td class="num">−0.00049</td>
         <td class="num">−0.00004</td>
-        <td class="num">−0.00001</td></tr>
+        <td class="num">−0.00000</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.00079)<br>p=0.490</td>
-        <td class="num">(0.00089)<br>p=0.960</td>
-        <td class="num">(0.00089)<br>p=0.990</td></tr>
+        <td class="num">(0.00079)<br>p=0.533</td>
+        <td class="num">(0.00089)<br>p=0.967</td>
+        <td class="num">(0.00089)<br>p=0.997</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
-        <td class="num">0.097</td><td class="num">0.097</td><td class="num">0.097</td></tr>
+        <td class="num">0.096</td><td class="num">0.097</td><td class="num">0.097</td></tr>
     <tr><td>N</td>
         <td class="num">3,744</td><td class="num">3,744</td><td class="num">3,744</td></tr>
   </tbody>
@@ -595,16 +679,17 @@
   Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq. FE:
   tournament×year + round. SE clustered by match. The culture main effects are
   consistent with Table 3. The interaction θ is small and insignificant across all three
-  measures (p &gt; 0.49), providing no evidence that individualism moderates the cultural
-  homophily advantage. The main IC_team_dm coefficient is positive and significant for
-  same nationality (p=0.045) — teams with higher individualism scores perform better
-  overall — but is insignificant for the language measures (p&gt;0.27).
+  measures (p &gt; 0.53), providing no evidence that individualism moderates the cultural
+  homophily advantage. The main IC_team_dm coefficient is positive and marginally
+  significant for same nationality (p=0.051) — teams with higher individualism scores
+  perform somewhat better overall — but is insignificant for the language measures
+  (p&gt;0.27).
 </p>
 
-<h4>Table 6 robustness — dropping Tier-2 Hofstede-proxy countries &nbsp;|&nbsp; N = 3,590</h4>
+<h4>Table 6 robustness — dropping Tier-2 Hofstede-proxy countries &nbsp;|&nbsp; N = 3,589</h4>
 <p>
   Team-obs involving a player whose IDV score relies on a Tier-2 (moderate-confidence)
-  proxy — BLR, BOL, DOM, GEO, KAZ, LBN, TUN, UKR, UZB — are dropped (154 of 3,744 team-obs),
+  proxy — BLR, BOL, DOM, GEO, KAZ, LBN, TUN, UKR, UZB — are dropped (155 of 3,744 team-obs),
   leaving only direct Hofstede matches and Tier-1 (high-confidence) proxies.
 </p>
 <table>
@@ -616,42 +701,42 @@
   </thead>
   <tbody>
     <tr><td>Culture (C)</td>
-        <td class="num">+0.0202</td>
-        <td class="num">+0.0296<sup>*</sup></td>
-        <td class="num">+0.0262</td></tr>
+        <td class="num">+0.0212</td>
+        <td class="num">+0.0312<sup>*</sup></td>
+        <td class="num">+0.0277<sup>*</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0170)<br>p=0.235</td>
-        <td class="num">(0.0166)<br>p=0.075</td>
-        <td class="num">(0.0166)<br>p=0.115</td></tr>
+        <td class="num">(0.0170)<br>p=0.212</td>
+        <td class="num">(0.0166)<br>p=0.061</td>
+        <td class="num">(0.0166)<br>p=0.095</td></tr>
     <tr><td>IC_team_dm</td>
         <td class="num">+0.0007</td>
         <td class="num">+0.0001</td>
         <td class="num">+0.0001</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0006)<br>p=0.219</td>
-        <td class="num">(0.0008)<br>p=0.903</td>
-        <td class="num">(0.0008)<br>p=0.915</td></tr>
+        <td class="num">(0.0006)<br>p=0.238</td>
+        <td class="num">(0.0008)<br>p=0.912</td>
+        <td class="num">(0.0008)<br>p=0.924</td></tr>
     <tr><td>C × IC_team_dm (θ)</td>
-        <td class="num">+0.00004</td>
+        <td class="num">+0.00008</td>
         <td class="num">+0.00082</td>
         <td class="num">+0.00086</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.00081)<br>p=0.957</td>
-        <td class="num">(0.00093)<br>p=0.374</td>
-        <td class="num">(0.00093)<br>p=0.351</td></tr>
+        <td class="num">(0.00081)<br>p=0.923</td>
+        <td class="num">(0.00093)<br>p=0.377</td>
+        <td class="num">(0.00093)<br>p=0.354</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
-        <td class="num">0.097</td><td class="num">0.097</td><td class="num">0.097</td></tr>
+        <td class="num">0.096</td><td class="num">0.097</td><td class="num">0.097</td></tr>
     <tr><td>N</td>
-        <td class="num">3,590</td><td class="num">3,590</td><td class="num">3,590</td></tr>
+        <td class="num">3,589</td><td class="num">3,589</td><td class="num">3,589</td></tr>
   </tbody>
 </table>
 <p class="note">
   Same controls and FE as Table 6 above, estimated on the Tier-2-excluded subsample.
   Point estimates on C shrink somewhat relative to the full-sample spec (e.g. same
-  nationality: +0.0297 → +0.0202, no longer significant), consistent with the smaller,
+  nationality: +0.0302 → +0.0212, no longer significant), consistent with the smaller,
   more homogeneous sample rather than a change in sign or a qualitatively different
   story. The IC_team_dm main effect for same nationality also loses significance
-  (p=0.045 → p=0.219) once the weaker-confidence proxy countries are dropped, so that
+  (p=0.051 → p=0.238) once the weaker-confidence proxy countries are dropped, so that
   result should be treated as sensitive to the Tier-2 approximations. The θ interaction
   remains small and insignificant throughout, matching the full-sample conclusion that
   individualism does not moderate the cultural homophily advantage.
@@ -659,7 +744,7 @@
 
 <h3>Table 6a — Heterogeneity: Culture × GS Experience &nbsp;|&nbsp; N = 3,744</h3>
 <p>
-  exp_mean is demeaned (exp_mean_dm = exp_mean − sample mean of 11.85 appearances,
+  exp_mean is demeaned (exp_mean_dm = exp_mean − sample mean of 11.84 appearances,
   SD = 5.30), consistent with how ic_team_dm is demeaned for Table 6. The main effect of
   culture (C) is therefore evaluated at the sample-average level of GS experience, not at
   zero; the interaction captures how the marginal effect changes per additional Grand Slam
@@ -676,23 +761,23 @@
   </thead>
   <tbody>
     <tr><td>Culture (C) — mean experience</td>
-        <td class="num">+0.0369<sup>**</sup></td>
-        <td class="num">+0.0437<sup>***</sup></td>
-        <td class="num">+0.0403<sup>***</sup></td></tr>
+        <td class="num">+0.0374<sup>**</sup></td>
+        <td class="num">+0.0448<sup>***</sup></td>
+        <td class="num">+0.0413<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0164)<br>p=0.024</td>
-        <td class="num">(0.0156)<br>p=0.005</td>
-        <td class="num">(0.0156)<br>p=0.010</td></tr>
+        <td class="num">(0.0163)<br>p=0.022</td>
+        <td class="num">(0.0156)<br>p=0.004</td>
+        <td class="num">(0.0156)<br>p=0.008</td></tr>
     <tr><td>C × exp_mean_dm</td>
-        <td class="num">+0.0001</td>
-        <td class="num">+0.0060<sup>*</sup></td>
-        <td class="num">+0.0060<sup>*</sup></td></tr>
+        <td class="num">+0.0002</td>
+        <td class="num">+0.0061<sup>**</sup></td>
+        <td class="num">+0.0061<sup>*</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0032)<br>p=0.963</td>
-        <td class="num">(0.0031)<br>p=0.054</td>
-        <td class="num">(0.0031)<br>p=0.055</td></tr>
+        <td class="num">(0.0032)<br>p=0.943</td>
+        <td class="num">(0.0031)<br>p=0.050</td>
+        <td class="num">(0.0031)<br>p=0.051</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
-        <td class="num">0.096</td><td class="num">0.097</td><td class="num">0.097</td></tr>
+        <td class="num">0.095</td><td class="num">0.097</td><td class="num">0.097</td></tr>
     <tr><td>N</td>
         <td class="num">3,744</td><td class="num">3,744</td><td class="num">3,744</td></tr>
   </tbody>
@@ -701,10 +786,10 @@
   Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_sq (full
   Table 3 control set). FE: tournament×year + round. SE clustered by match. With
   exp_mean_sq back in the model, the culture main effects at mean experience are close to
-  Table 3's own estimates (+0.0368/+0.0460/+0.0426) and all significant. The positive and
-  marginally significant interaction for language/proximity (p≈0.054–0.055) implies that
+  Table 3's own estimates (+0.0374/+0.0471/+0.0437) and all significant. The positive and
+  marginally significant interaction for language/proximity (p≈0.050–0.051) implies that
   advantage grows further with experience above the mean; nationality homophily shows no
-  significant experience gradient (p=0.963).
+  significant experience gradient (p=0.943).
 </p>
 
 </body>

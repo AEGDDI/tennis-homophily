@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "PowerShell(cd \"c:/Users/aldi/Documents/GitHub/tennis-homophily\"; $env:PYTHONIOENCODING='utf-8'; python \"C:\\\\Users\\\\aldi\\\\AppData\\\\Local\\\\Temp\\\\run_ranks2.py\" 2>&1)",
-      "PowerShell(cd \"c:/Users/aldi/Documents/GitHub/tennis-homophily\"; $env:PYTHONIOENCODING='utf-8'; python \"C:\\\\Users\\\\aldi\\\\AppData\\\\Local\\\\Temp\\\\run_final_ds.py\" 2>&1)"
+      "PowerShell(cd \"c:/Users/aldi/Documents/GitHub/tennis-homophily\"; $env:PYTHONIOENCODING='utf-8'; python \"C:\\\\Users\\\\aldi\\\\AppData\\\\Local\\\\Temp\\\\run_final_ds.py\" 2>&1)",
+      "Bash(PYTHONIOENCODING=utf-8 py -c ' *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\claude\\c--Users-ALESSANDRO-Documents-GitHub-tennis-homophily\\2ee1a64d-ab60-4cae-a4e5-58a86b4ddfc8\\scratchpad"
     ]
   }
 }
