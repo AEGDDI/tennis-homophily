@@ -18,7 +18,8 @@ Never update one file without updating the others. After any model change, run a
 ## Current specification (as of 2026-06)
 
 **Sample:** Grand Slams only (Olympics excluded), N = 3,744 team-obs, 1,872 matches (2018–2025 incl. 2020).  
-`exp_mean` imputed to 0 for 216 first-time GS participants (no prior appearances in dataset window).
+`exp_mean` imputed to 0 for 216 first-time GS participants (no prior appearances in dataset window),
+then demeaned against each estimation sample's own mean to form `exp_mean_dm` (see Controls below).
 
 **Outcome variables:**
 - Table 3: `win` (match win, binary)
@@ -29,7 +30,11 @@ Never update one file without updating the others. After any model change, run a
 - `same_language` — same official language (binary)
 - `ling_prox` — ethnolinguistic proximity 0–1 (continuous)
 
-**Controls:** `rank_mean`, `opp_rank_mean`, `single_top100`, `exp_mean`, `exp_mean_sq`
+**Controls:** `rank_mean`, `opp_rank_mean`, `single_top100`, `exp_mean_dm`, `exp_mean_dm_sq`
+(`exp_mean_dm = exp_mean − mean`; `exp_mean_dm_sq = exp_mean_dm²`; demeaning is a pure
+reparameterization of the quadratic and leaves the culture AMEs, other controls' AMEs, and
+fitted model unchanged — it only shifts what the linear "GS appearances" AME represents, from
+the effect at zero appearances to the effect at mean appearances)
 
 **Fixed effects:** `C(tournament):C(year)` + `C(stage_code)` (tournament×year + round)
 

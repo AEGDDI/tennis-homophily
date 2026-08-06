@@ -616,6 +616,17 @@ replace exp_mean = 0 if missing(exp_mean)
 capture drop exp_mean_sq
 generate double exp_mean_sq = exp_mean ^ 2
 
+* Demean exp_mean (used in place of the raw variable everywhere below) and build its
+* square from the demeaned variable, so 'GS appearances' AMEs are evaluated at mean
+* experience, not at zero appearances, in every table (Table 3/5/6/6a).
+* (May already exist in the imported CSV; drop first to be safe, same as exp_mean_sq above.)
+capture drop exp_mean_dm
+capture drop exp_mean_dm_sq
+quietly summarize exp_mean
+generate double exp_mean_dm = exp_mean - r(mean)
+generate double exp_mean_dm_sq = exp_mean_dm ^ 2
+display "exp_mean_dm: mean GS appearances = " r(mean) " (demeaned control, all main-panel tables)"
+
 display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 0 for first-timers)"
 
 display "Creating ty (tournament×year grouping)..."
@@ -683,29 +694,29 @@ display ""
 
 * ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3: MATCH WIN — LOGIT (Main specification)
-* Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq
+* Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq
 * No rank_gap; see Table 3b for sensitivity with rank_gap.
 * ─────────────────────────────────────────────────────────────────────────────
 display "=== TABLE 3. Match Win — Logit ==="
 display "FE: tournament×year (ty) + stage_code | SE clustered by match | Grand Slams only"
-display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq"
+display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
 display ""
 
 display "--- 3a. Same Nationality ---"
-logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store win_same_country
 
 display ""
 display "--- 3b. Same Official Language ---"
-logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store win_same_language
 
 display ""
 display "--- 3c. Language Proximity (ethnic) ---"
-logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store win_ling_prox
 
 estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
@@ -745,37 +756,33 @@ display "ic_team_dm mean (should be ~0): " r(mean)
 * ---------------------------------------------------------------------------
 display ""
 display "=== TABLE 6a. Heterogeneity: Culture x GS Experience (exp_mean, demeaned) ==="
-display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_sq"
-display "  (exp_mean_sq is the same non-demeaned quadratic control as in Table 3, kept"
-display "  alongside exp_mean_dm per the blanket 'all controls as in Table 3/4' rule.)"
+display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
+display "  (exp_mean_dm_sq = exp_mean_dm^2, the demeaned quadratic control used consistently"
+display "  across every table in this report, per the blanket 'all controls as in Table 3/4' rule.)"
 display "exp_mean_dm = exp_mean - sample mean, so C is evaluated at mean GS experience"
 display "  (consistent with how ic_team_dm is demeaned for Table 6)."
 display "FE: ty + stage_code | SE: clustered by match"
 display ""
-
-quietly summarize exp_mean
-generate double exp_mean_dm = exp_mean - r(mean)
-display "exp_mean_dm: mean GS appearances = " r(mean) "  SD = " r(sd)
 
 display "--- 6a-i. Same Nationality x exp_mean ---"
 generate double int_sc_exp  = same_country  * exp_mean_dm
 generate double int_sl_exp  = same_language * exp_mean_dm
 generate double int_lp_exp  = ling_prox     * exp_mean_dm
 
-logit win i.ty i.stage_code same_country  int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_sq, cluster(match_id)
-margins, dydx(same_country int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_sq)
+logit win i.ty i.stage_code same_country  int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_exp_sc
 
 display ""
 display "--- 6a-ii. Same Language x exp_mean ---"
-logit win i.ty i.stage_code same_language  int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_sq, cluster(match_id)
-margins, dydx(same_language int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_sq)
+logit win i.ty i.stage_code same_language  int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_exp_sl
 
 display ""
 display "--- 6a-iii. Language Proximity x exp_mean ---"
-logit win i.ty i.stage_code ling_prox  int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_sq)
+logit win i.ty i.stage_code ling_prox  int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_exp_lp
 
 estimates table het_exp_sc het_exp_sl het_exp_lp, b se stats(N ll)
@@ -794,7 +801,7 @@ display "Hardcourt = AO + USO; clay = Roland Garros; grass = Wimbledon."
 display "Spec (a): grass + C x grass, baseline = hardcourt+clay pooled"
 display "Spec (b): clay + C x clay, baseline = hardcourt+grass pooled"
 display "FE: stage_code only (no tournament x year FE) | SE: clustered by match"
-display "Controls: same as Table 3 -- rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq"
+display "Controls: same as Table 3 -- rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
 display ""
 
 generate double int_sc_clay  = same_country  * clay
@@ -805,38 +812,38 @@ generate double int_lp_clay  = ling_prox     * clay
 generate double int_lp_grass = ling_prox     * grass
 
 display "--- 5a. Same Nationality: Spec (a) grass vs. rest ---"
-logit win i.stage_code same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.stage_code same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_surf_sc_grass
 
 display ""
 display "--- 5a. Same Nationality: Spec (b) clay vs. rest ---"
-logit win i.stage_code same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.stage_code same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_surf_sc_clay
 
 display ""
 display "--- 5b. Same Language: Spec (a) grass vs. rest ---"
-logit win i.stage_code same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.stage_code same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_surf_sl_grass
 
 display ""
 display "--- 5b. Same Language: Spec (b) clay vs. rest ---"
-logit win i.stage_code same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.stage_code same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_surf_sl_clay
 
 display ""
 display "--- 5c. Language Proximity: Spec (a) grass vs. rest ---"
-logit win i.stage_code ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.stage_code ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_surf_lp_grass
 
 display ""
 display "--- 5c. Language Proximity: Spec (b) clay vs. rest ---"
-logit win i.stage_code ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.stage_code ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_surf_lp_clay
 
 display ""
@@ -863,20 +870,20 @@ generate double int_sl_ic = same_language * ic_team_dm
 generate double int_lp_ic = ling_prox     * ic_team_dm
 
 display "--- 6a. Same Nationality ---"
-logit win i.ty i.stage_code same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_ic_sc_s2
 
 display ""
 display "--- 6b. Same Language ---"
-logit win i.ty i.stage_code same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_ic_sl_s2
 
 display ""
 display "--- 6c. Language Proximity ---"
-logit win i.ty i.stage_code ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_ic_lp_s2
 
 estimates table het_ic_sc_s2 het_ic_sl_s2 het_ic_lp_s2, b se stats(N ll)
@@ -918,20 +925,20 @@ display "Team-obs dropped for Tier-2 proxy robustness: " r(N)
 
 display ""
 display "--- 6a, ex-Tier2. Same Nationality ---"
-logit win i.ty i.stage_code same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if tier2_flag == 0, cluster(match_id)
-margins, dydx(same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq if tier2_flag == 0, cluster(match_id)
+margins, dydx(same_country ic_team_dm int_sc_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_ic_sc_s2_ex2
 
 display ""
 display "--- 6b, ex-Tier2. Same Language ---"
-logit win i.ty i.stage_code same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if tier2_flag == 0, cluster(match_id)
-margins, dydx(same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq if tier2_flag == 0, cluster(match_id)
+margins, dydx(same_language ic_team_dm int_sl_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_ic_sl_s2_ex2
 
 display ""
 display "--- 6c, ex-Tier2. Language Proximity ---"
-logit win i.ty i.stage_code ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if tier2_flag == 0, cluster(match_id)
-margins, dydx(ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit win i.ty i.stage_code ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq if tier2_flag == 0, cluster(match_id)
+margins, dydx(ling_prox ic_team_dm int_lp_ic rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 estimates store het_ic_lp_s2_ex2
 
 display ""
@@ -976,9 +983,20 @@ destring stage_code same_country same_language ling_prox rank_mean opp_rank_mean
     rank_gap single_top100 exp_mean win pre_olympic olympic_period tb_set won_tb year, replace force
 replace stage_code = 0 if missing(stage_code)
 replace exp_mean = 0 if missing(exp_mean)
-capture drop exp_mean_sq
-generate double exp_mean_sq = exp_mean ^ 2
 quietly egen ty = group(tournament year)
+
+* Demean exp_mean separately for the main (7pt-only) and robustness (7pt+10pt)
+* estimation samples, each against its own sample mean (mirrors Table 3/5/6/6a's
+* use of exp_mean_dm, but this panel is a different sample so it needs its own mean).
+quietly summarize exp_mean if tb_type=="7pt"
+generate double exp_mean_dm_main = exp_mean - r(mean)
+generate double exp_mean_dm_sq_main = exp_mean_dm_main ^ 2
+display "exp_mean_dm_main: mean GS appearances (7pt-only sample) = " r(mean)
+
+quietly summarize exp_mean
+generate double exp_mean_dm_rob = exp_mean - r(mean)
+generate double exp_mean_dm_sq_rob = exp_mean_dm_rob ^ 2
+display "exp_mean_dm_rob: mean GS appearances (7pt+10pt sample) = " r(mean)
 
 count
 display "Tiebreak team-obs loaded (7pt + 10pt, all sets 1-5): " r(N)
@@ -992,43 +1010,44 @@ display ""
 display "=== TABLE 4. Tiebreak Win — Logit ==="
 display "Outcome: won_tb | Unit: team x tiebreak | Sample: GS only (no Olympics)"
 display "Main spec: 7pt standard tiebreaks only, any set. Robustness: adds 10pt/advantage-set deciders."
-display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean, exp_mean_sq (same as Table 3)"
+display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq (same as Table 3;"
+display "  exp_mean_dm demeaned against each spec's own estimation-sample mean)"
 display "FE: tournament x year (ty) + stage_code | SE: clustered by match"
 display ""
 
 display "--- 4a. Same Nationality: Main (7pt only) ---"
-logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if tb_type=="7pt", cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main if tb_type=="7pt", cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main)
 estimates store tbn_same_country_main
 
 display ""
 display "--- 4a. Same Nationality: Robustness (7pt + 10pt) ---"
-logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob)
 estimates store tbn_same_country_rob
 
 display ""
 display "--- 4b. Same Official Language: Main (7pt only) ---"
-logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if tb_type=="7pt", cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main if tb_type=="7pt", cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main)
 estimates store tbn_same_language_main
 
 display ""
 display "--- 4b. Same Official Language: Robustness (7pt + 10pt) ---"
-logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob)
 estimates store tbn_same_language_rob
 
 display ""
 display "--- 4c. Language Proximity: Main (7pt only) ---"
-logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq if tb_type=="7pt", cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main if tb_type=="7pt", cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main)
 estimates store tbn_ling_prox_main
 
 display ""
 display "--- 4c. Language Proximity: Robustness (7pt + 10pt) ---"
-logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean exp_mean_sq)
+logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob)
 estimates store tbn_ling_prox_rob
 
 display ""
