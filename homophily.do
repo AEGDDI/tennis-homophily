@@ -154,9 +154,9 @@ display "Section 1 complete: Variable construction."
 * SECTION 2: PRESSURE OUTCOMES — COUNTS AND INSPECTION
 * ═══════════════════════════════════════════════════════════════════════════════
 * All descriptive stats in this section (Table 1, 2.1, 2.2, 2.3) are computed on the
-* SAME 1,872-match regression sample used in Tables 3-6, not the broader post-
+* SAME 1,876-match regression sample used in Tables 3-6, not the broader post-
 * retirement-drop set -- so these numbers reconcile exactly with the regression
-* tables. See 2.4 for how 1,872 relates to 1,886 and the raw data.
+* tables. See 2.4 for how 1,876 relates to 1,886 and the raw data.
 * ═══════════════════════════════════════════════════════════════════════════════
 
 * Regression-sample flag: same ranking/nationality completeness filter used later
@@ -218,7 +218,7 @@ local n_sum_std = `n_tb_s1' + `n_tb_s2' + `n_tb_s3' + `n_tb_s4' + `n_tb_s5'
 display ""
 display "Sum of set-1..5 standard (7-pt) tiebreaks: " %4.0f `n_tb_s1' " + " %4.0f `n_tb_s2' " + " %4.0f `n_tb_s3' " + " %4.0f `n_tb_s4' " + " %4.0f `n_tb_s5' " = " %4.0f `n_sum_std'
 display "(This matches Table 4's main-spec tiebreak count exactly, since both are now"
-display " computed on the identical 1,872-match regression sample.)"
+display " computed on the identical 1,876-match regression sample.)"
 display ""
 display `""Any regular tiebreak (sets 1 or 2)" counts a MATCH once if it had a 7-pt tiebreak"'
 display "in set 1 and/or set 2 (a match with both still counts once, not twice) -- this is"
@@ -305,13 +305,12 @@ forvalues s = 1/5 {
 display ""
 display %4.0f `n_tb_s1' " + " %4.0f `n_tb_s2' " + " %4.0f `n_tb_s3' " + " %4.0f `n_tb_s4' " + " %4.0f `n_tb_s5' " = " %4.0f `n_sum_std' "  <- sum of standard (7-6) tiebreaks across all sets"
 display "Note: this matches Table 4's main-spec tiebreak count exactly, since both are"
-display "  now computed on the identical 1,872-match regression sample."
+display "  now computed on the identical 1,876-match regression sample."
 
 * Cross-check against the fully raw (pre-retirement-filter) data: the working
-* dataset here has already had the sets-1-3-only retirement filter applied
-* (top of this do-file), which silently drops match_id 903 and 927 -- both
-* genuine 12-12-breaker deciders finishing 13-12 in set 3. They are real,
-* complete matches, not retirements; see the 2.4 reconciliation note.
+* dataset's retirement filter (top of this do-file) now recognizes the
+* 12-12-breaker pattern as valid, so match_id 903 and 927 -- both genuine
+* 12-12-breaker deciders finishing 13-12 in set 3 -- are correctly retained.
 preserve
 import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
 destring winners_set3 losers_set3, replace force
@@ -320,8 +319,8 @@ generate double _lo3 = min(winners_set3, losers_set3)
 count if _lo3==12 & (_hi3-_lo3)==1
 display ""
 display "Cross-check on fully raw data (before any retirement filtering): " r(N) " true 12-12-breaker"
-display "  deciders in set 3. The 2 missing from the table above (match_id 903, 927) are"
-display "  dropped upstream by the retirement-filter bug -- see 2.4 reconciliation note."
+display "  deciders in set 3. Both (match_id 903, 927) are present above -- fix confirmed,"
+display "  see 2.4 reconciliation note."
 restore
 
 * ─────────────────────────────────────────────────────────────────────────────
@@ -540,26 +539,32 @@ display ""
 display "Section 4 complete: Team panel loaded."
 
 * ─────────────────────────────────────────────────────────────────────────────
-* 4.1 (== notebook section 2.4) WHERE 1,872 AND 1,886 COME FROM
-* One known gap remains in the current pipeline, left as-is pending further review:
-*   The retirement filter (top of this do-file) only inspects sets 1-3.
-*   match_id 903, 927 (2021 Wimbledon, valid 13-12 set-3 finish) are wrongly
-*   EXCLUDED from this panel; match_id 504, 1204 (genuine set-4 retirements,
-*   2019/2022 Wimbledon) are wrongly INCLUDED.
-* (The previous gap -- sets 4-5 tiebreaks missing from tiebreak_panel.csv -- is
-*  now fixed: tiebreak_panel.ipynb covers sets 1-5, see Section 7.)
+* 4.1 (== notebook section 2.4) WHERE 1,876 AND 1,886 COME FROM
+* The retirement filter (top of this do-file) has been fixed to recognize the
+* 12-12-breaker pattern (e.g. 13-12) as a valid finish and to check sets 4-5 when
+* present, so match_id 903, 927 (2021 Wimbledon, valid 13-12 set-3 finish) are
+* correctly INCLUDED, and match_id 504, 1204 (genuine set-4 retirements,
+* 2019/2022 Wimbledon) are correctly EXCLUDED. tiebreak_panel.ipynb covers sets
+* 1-5, see Section 7.
+* Of the 14 matches originally dropped for incomplete doubles ranking, 4 were
+* retrieved and restored: 3 (match_id 6, 35, 49) failed only on an accented-
+* surname merge mismatch for Guillermo Garcia-Lopez; 1 (match_id 913, 2021
+* Wimbledon) had a genuinely blank partner slot for Alejandro Davidovich
+* Fokina, whose profile was reconstructed from public sources. The remaining
+* 10 could not be reliably retrieved and stay dropped.
 * ─────────────────────────────────────────────────────────────────────────────
 display ""
-display "=== Where 1,872 and 1,886 Come From ==="
+display "=== Where 1,876 and 1,886 Come From ==="
 display "1,997 raw scraped matches (Grand Slams + Olympics)."
 display "Drop 48 retirements/walkovers -> 1,949 remain (47 GS + 1 Olympics)."
 display "Of the 1,949: 63 are Olympic matches; 1,886 are Grand Slam matches -- this is"
 display "  where 1,886 comes from (GS matches after dropping retirements, BEFORE the"
-display "  ranking/nationality filters below). Section 2's Table 1 above uses 1,872,"
+display "  ranking/nationality filters below). Section 2's Table 1 above uses 1,876,"
 display "  not 1,886."
-display "From 1,886, a further 14 matches are dropped for incomplete doubles ranking"
-display "  (0 more for nationality/language) -> 1,872 Grand Slam matches: the final"
-display "  regression sample, matching team_gs_panel.csv exactly."
+display "From 1,886, a further 10 matches are dropped for incomplete doubles ranking"
+display "  (4 of the original 14 were retrieved and restored; 0 more for"
+display "  nationality/language) -> 1,876 Grand Slam matches: the final regression"
+display "  sample, matching team_gs_panel.csv exactly."
 display ""
 display "=== Reconciliation: Pressure-Outcome Counts vs. Regression Sample ==="
 foreach mid in 903 927 504 1204 {
@@ -568,7 +573,7 @@ foreach mid in 903 927 504 1204 {
     display "  match_id `mid': present in team_gs_panel.csv = " `present'
 }
 display ""
-display "This discrepancy is left as-is in this pass pending further guidance."
+display "Retirement-filter fix confirmed: 903/927 present, 504/1204 absent."
 
 * ═══════════════════════════════════════════════════════════════════════════════
 * SECTION 5: BASELINE REGRESSIONS
@@ -576,7 +581,7 @@ display "This discrepancy is left as-is in this pass pending further guidance."
 * Each match contributes two observations (winner team = 1, loser team = 0)
 * Culture measure: language proximity (ling_prox) entered one at a time
 * Controls: team avg doubles rank, opponent rank, top-100 singles indicator,
-*           team avg GS appearances (exp_mean) and its square
+*           team avg years since turning pro (exp_mean) and its square
 * Fixed effects: tournament×year interaction, round (stage_code)
 * Standard errors: clustered by match (Tables 3–4); HC3 robust (Table 5, one obs/match)
 * Sensitivity tables (3b, 4b, 5b) add teammate rank gap to verify stability
@@ -609,7 +614,7 @@ if _rc {
     replace stage_code = 0 if missing(stage_code)
 }
 
-* Impute exp_mean = 0 for first-time GS participants (no prior appearances in dataset)
+* Impute exp_mean = 0 for rookies (raw tenure <= 0, i.e. turned pro in/after tournament year)
 replace exp_mean = 0 if missing(exp_mean)
 
 * Generate experience squared (may already exist in CSV; drop first to be safe)
@@ -617,7 +622,7 @@ capture drop exp_mean_sq
 generate double exp_mean_sq = exp_mean ^ 2
 
 * Demean exp_mean (used in place of the raw variable everywhere below) and build its
-* square from the demeaned variable, so 'GS appearances' AMEs are evaluated at mean
+* square from the demeaned variable, so 'years since turning pro' AMEs are evaluated at mean
 * experience, not at zero appearances, in every table (Table 3/5/6/6a).
 * (May already exist in the imported CSV; drop first to be safe, same as exp_mean_sq above.)
 capture drop exp_mean_dm
@@ -625,9 +630,9 @@ capture drop exp_mean_dm_sq
 quietly summarize exp_mean
 generate double exp_mean_dm = exp_mean - r(mean)
 generate double exp_mean_dm_sq = exp_mean_dm ^ 2
-display "exp_mean_dm: mean GS appearances = " r(mean) " (demeaned control, all main-panel tables)"
+display "exp_mean_dm: mean yrs since turning pro = " r(mean) " (demeaned control, all main-panel tables)"
 
-display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 0 for first-timers)"
+display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 0 for rookies)"
 
 display "Creating ty (tournament×year grouping)..."
 capture drop ty
@@ -666,7 +671,7 @@ display "           and manual_nationality.csv)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
 display "  Step 6  Exclude Olympic matches (2021 Tokyo + 2024 Paris)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
-display "  Step 7  Drop: GS experience missing for >=1 player (imputed to 0 for first-timers)"
+display "  Step 7  Drop: years-since-turning-pro missing for >=1 player (imputed to 0 for rookies)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
 
 count
@@ -725,12 +730,12 @@ estimates table win_same_country win_same_language win_ling_prox, b se stats(N l
 * SECTION 6: HETEROGENEITY ANALYSIS
 * =============================================================================
 * Three sets of interactions, each applied to the match-win logit (team panel).
-*   Table 6a. Culture x GS experience (exp_mean, demeaned), FE: ty + stage_code
+*   Table 6a. Culture x Years Since Turning Pro (exp_mean, demeaned), FE: ty + stage_code
 *   Table 5.  Culture x surface (clay / grass vs. rest, two specs), no ty FE
 *   Table 6.  Culture x Hofstede individualism score, demeaned (ic_team_dm),
 *             Spec 2 only (C + IC + C*IC + controls + FE)
 *
-* Sample: same 3,744 obs as Tables 3-4 (exp_mean imputed to 0 for first-timers).
+* Sample: same 3,752 obs as Tables 3-4 (exp_mean imputed to 0 for rookies).
 * Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
 * =============================================================================
 
@@ -752,14 +757,14 @@ summarize ic_team_dm
 display "ic_team_dm mean (should be ~0): " r(mean)
 
 * ---------------------------------------------------------------------------
-* TABLE 6a: Culture x GS Experience
+* TABLE 6a: Culture x Years Since Turning Pro
 * ---------------------------------------------------------------------------
 display ""
-display "=== TABLE 6a. Heterogeneity: Culture x GS Experience (exp_mean, demeaned) ==="
+display "=== TABLE 6a. Heterogeneity: Culture x Years Since Turning Pro (exp_mean, demeaned) ==="
 display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
 display "  (exp_mean_dm_sq = exp_mean_dm^2, the demeaned quadratic control used consistently"
 display "  across every table in this report, per the blanket 'all controls as in Table 3/4' rule.)"
-display "exp_mean_dm = exp_mean - sample mean, so C is evaluated at mean GS experience"
+display "exp_mean_dm = exp_mean - sample mean, so C is evaluated at mean years since turning pro"
 display "  (consistent with how ic_team_dm is demeaned for Table 6)."
 display "FE: ty + stage_code | SE: clustered by match"
 display ""
@@ -991,12 +996,12 @@ quietly egen ty = group(tournament year)
 quietly summarize exp_mean if tb_type=="7pt"
 generate double exp_mean_dm_main = exp_mean - r(mean)
 generate double exp_mean_dm_sq_main = exp_mean_dm_main ^ 2
-display "exp_mean_dm_main: mean GS appearances (7pt-only sample) = " r(mean)
+display "exp_mean_dm_main: mean yrs since turning pro (7pt-only sample) = " r(mean)
 
 quietly summarize exp_mean
 generate double exp_mean_dm_rob = exp_mean - r(mean)
 generate double exp_mean_dm_sq_rob = exp_mean_dm_rob ^ 2
-display "exp_mean_dm_rob: mean GS appearances (7pt+10pt sample) = " r(mean)
+display "exp_mean_dm_rob: mean yrs since turning pro (7pt+10pt sample) = " r(mean)
 
 count
 display "Tiebreak team-obs loaded (7pt + 10pt, all sets 1-5): " r(N)
