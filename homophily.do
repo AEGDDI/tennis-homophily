@@ -173,6 +173,10 @@ count if reg_sample == 1
 local N_all = r(N)
 display ""
 display "=== TABLE 1. Pressure Outcome Counts (Grand Slams regression sample, N=" `N_all' ") ==="
+display "Only genuine tiebreaks: a standard 7-pt tiebreak (sets 1-5). Advantage-set deciders"
+display "without a breaker (e.g. 8-6) are NOT tiebreaks -- no breaker was ever played, confirmed"
+display "by the raw tiebreak-score columns being null for all 15 such cases (see 2.2 for the 3"
+display "separate cases where a real breaker WAS played at 12-12, e.g. 13-12)."
 display ""
 count if tb_s1 == 1 & reg_sample == 1
 local n_tb_s1 = r(N)
@@ -194,53 +198,14 @@ count if tb_s5 == 1 & reg_sample == 1
 local n_tb_s5 = r(N)
 display "  Set-5 tiebreak (7-pt):                                 N=" %4.0f `n_tb_s5'
 
-count if match_tb == 1 & reg_sample == 1
-local n_match_tb = r(N)
-display "  Advantage-set / 12-12-breaker decider:                 N=" %4.0f `n_match_tb'
-
-count if regular_tb == 1 & reg_sample == 1
-local n_regular_tb = r(N)
-display "  Any regular tiebreak (sets 1 or 2):                    N=" %4.0f `n_regular_tb'
-
-count if any_tb == 1 & reg_sample == 1
-local n_any_tb = r(N)
-display "  Any tiebreak (all types, any set):                     N=" %4.0f `n_any_tb'
-
-count if three_sets == 1 & reg_sample == 1
-local n_three_sets = r(N)
-display "  Match went to 3 sets:                                  N=" %4.0f `n_three_sets'
-
-count if comeback == 1 & reg_sample == 1
-local n_comeback = r(N)
-display "  Comeback wins (winner lost set 1):                     N=" %4.0f `n_comeback'
-
 local n_sum_std = `n_tb_s1' + `n_tb_s2' + `n_tb_s3' + `n_tb_s4' + `n_tb_s5'
 display ""
 display "Sum of set-1..5 standard (7-pt) tiebreaks: " %4.0f `n_tb_s1' " + " %4.0f `n_tb_s2' " + " %4.0f `n_tb_s3' " + " %4.0f `n_tb_s4' " + " %4.0f `n_tb_s5' " = " %4.0f `n_sum_std'
-display "(This matches Table 4's main-spec tiebreak count exactly, since both are now"
-display " computed on the identical 1,876-match regression sample.)"
+display "(This matches Table 4's tiebreak count exactly, since both are computed on the"
+display " identical regression sample.)"
 display ""
-display `""Any regular tiebreak (sets 1 or 2)" counts a MATCH once if it had a 7-pt tiebreak"'
-display "in set 1 and/or set 2 (a match with both still counts once, not twice) -- this is"
-display "why it is less than tb_s1 + tb_s2 (which double-counts matches with both)."
-display `""Any tiebreak (all types, any set)" is the broadest category: a match counts once"'
-display "if it had a standard 7-pt tiebreak in ANY of sets 1-5, OR an advantage-set/12-12-"
-display "breaker decider. It therefore includes (not adds to) the ""any regular tiebreak"""
-display "matches, plus matches whose only tiebreak was in set 3/4/5 or was a decider."
-
-display ""
-display "Regular tiebreaks by tournament:"
-tabstat regular_tb if reg_sample==1, by(tournament) stats(sum mean) format(%9.0f)
-
-display ""
-display "Advantage-set / 12-12-breaker deciders by tournament/year:"
-tabstat match_tb if reg_sample==1, by(tournament) stats(sum mean) format(%9.0f)
-egen tourn_year = group(tournament year), label
-tabstat match_tb if reg_sample==1, by(tourn_year) stats(sum mean) format(%9.3f)
-
-display ""
-display "Comeback wins by tournament:"
-tabstat comeback if reg_sample==1, by(tournament) stats(sum mean) format(%9.0f)
+display "Advantage-set deciders with no breaker played are excluded entirely from every count"
+display "above -- they are not tiebreaks."
 
 * ─────────────────────────────────────────────────────────────────────────────
 * 2.1 MATCH FORMAT: BEST-OF-3 VS BEST-OF-5
@@ -614,8 +579,8 @@ if _rc {
     replace stage_code = 0 if missing(stage_code)
 }
 
-* Impute exp_mean = 0 for rookies (raw tenure <= 0, i.e. turned pro in/after tournament year)
-replace exp_mean = 0 if missing(exp_mean)
+* Impute exp_mean = 1 for rookies (raw tenure <= 0, i.e. turned pro in/after tournament year)
+replace exp_mean = 1 if missing(exp_mean)
 
 * Generate experience squared (may already exist in CSV; drop first to be safe)
 capture drop exp_mean_sq
@@ -632,7 +597,7 @@ generate double exp_mean_dm = exp_mean - r(mean)
 generate double exp_mean_dm_sq = exp_mean_dm ^ 2
 display "exp_mean_dm: mean yrs since turning pro = " r(mean) " (demeaned control, all main-panel tables)"
 
-display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 0 for rookies)"
+display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 1 for rookies)"
 
 display "Creating ty (tournament×year grouping)..."
 capture drop ty
@@ -658,7 +623,10 @@ display ""
 display "=== SECTION 0. OBSERVATION BREAKDOWN ==="
 display "(from raw scraped data to regression sample)"
 display ""
-display "  Step 1  Raw dataset (scraped + merged, 2018-2025; Wimbledon 2020 cancelled, AO/RG/USO 2020 included)"
+display "  Step 1  Raw scraped GS matches (2018-2025; Wimbledon 2020 cancelled, AO/RG/USO 2020"
+display "          included). Olympics is loaded alongside GS in this working dataset but is"
+display "          excluded from every count below via reg_sample / olympics_tourn==0 --"
+display "          Part 1 of this report is GS-only throughout."
 display "  Step 2  Drop retirements / walkovers (see count below)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
 display "          Clean match dataset: see count below"
@@ -669,9 +637,8 @@ display "  Step 5  Drop: nationality/language missing for >=1 player:    0 match
 display "          (pipeline fully resolves via birthplace, surname lookup, Monaco fix,"
 display "           and manual_nationality.csv)"
 display "  ─────────────────────────────────────────────────────────────────────────────"
-display "  Step 6  Exclude Olympic matches (2021 Tokyo + 2024 Paris)"
-display "  ─────────────────────────────────────────────────────────────────────────────"
-display "  Step 7  Drop: years-since-turning-pro missing for >=1 player (imputed to 0 for rookies)"
+display "  Step 6  Years since turning pro missing for >=1 player: imputed to 1 for rookies,"
+display "          no observations dropped"
 display "  ─────────────────────────────────────────────────────────────────────────────"
 
 count
@@ -735,7 +702,7 @@ estimates table win_same_country win_same_language win_ling_prox, b se stats(N l
 *   Table 6.  Culture x Hofstede individualism score, demeaned (ic_team_dm),
 *             Spec 2 only (C + IC + C*IC + controls + FE)
 *
-* Sample: same 3,752 obs as Tables 3-4 (exp_mean imputed to 0 for rookies).
+* Sample: same 3,752 obs as Tables 3-4 (exp_mean imputed to 1 for rookies).
 * Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
 * =============================================================================
 
@@ -960,10 +927,13 @@ display "Section 6 complete: Heterogeneity analysis."
 * =============================================================================
 * Unit of observation: one team in one specific tiebreak (2 obs per tiebreak).
 * Outcome: won_tb — did this team win this tiebreak?
-* Source: data/atp/tiebreak_panel.csv (now covers sets 1-5; rebuilt via
+* Source: data/atp/tiebreak_panel.csv (sets 1-5, rebuilt via
 *   code/cleaning/tiebreak_panel.ipynb)
-* Main spec:        7pt standard tiebreaks only, any set (1-5)
-* Robustness spec:  adds the 10pt / advantage-set match-tiebreak decider category
+* Spec: standard 7pt tiebreaks only, any set (1-5). Advantage-set deciders with no
+*   breaker played are not tiebreaks and are excluded entirely (confirmed by the raw
+*   tiebreak-score columns being null for all such cases); no genuine 10-point
+*   super-tiebreak exists anywhere in this GS dataset, so tiebreak_panel.csv is 7pt-only
+*   and there is currently nothing valid to add as a robustness spec.
 * Controls: same as Table 3 | FE: tournament x year (ty) + stage_code | SE: clustered by match
 * =============================================================================
 
@@ -978,8 +948,6 @@ import delimited "data/atp/tiebreak_panel.csv", clear
 generate byte clay  = (surface == "Clay")
 generate byte grass = (surface == "Grass")
 
-* Encode tournament; keep tb_type as a STRING so it can be used to split the
-* main (7pt-only) sample from the robustness (7pt+10pt) sample below.
 encode tournament, generate(tourn_code)
 drop tournament
 rename tourn_code tournament
@@ -987,79 +955,53 @@ rename tourn_code tournament
 destring stage_code same_country same_language ling_prox rank_mean opp_rank_mean ///
     rank_gap single_top100 exp_mean win pre_olympic olympic_period tb_set won_tb year, replace force
 replace stage_code = 0 if missing(stage_code)
-replace exp_mean = 0 if missing(exp_mean)
+replace exp_mean = 1 if missing(exp_mean)
 quietly egen ty = group(tournament year)
 
-* Demean exp_mean separately for the main (7pt-only) and robustness (7pt+10pt)
-* estimation samples, each against its own sample mean (mirrors Table 3/5/6/6a's
-* use of exp_mean_dm, but this panel is a different sample so it needs its own mean).
-quietly summarize exp_mean if tb_type=="7pt"
-generate double exp_mean_dm_main = exp_mean - r(mean)
-generate double exp_mean_dm_sq_main = exp_mean_dm_main ^ 2
-display "exp_mean_dm_main: mean yrs since turning pro (7pt-only sample) = " r(mean)
-
+* Demean exp_mean against this panel's own estimation-sample mean (mirrors Table
+* 3/5/6/6a's use of exp_mean_dm, but this panel is a different sample so it needs
+* its own mean).
 quietly summarize exp_mean
-generate double exp_mean_dm_rob = exp_mean - r(mean)
-generate double exp_mean_dm_sq_rob = exp_mean_dm_rob ^ 2
-display "exp_mean_dm_rob: mean yrs since turning pro (7pt+10pt sample) = " r(mean)
+generate double exp_mean_dm = exp_mean - r(mean)
+generate double exp_mean_dm_sq = exp_mean_dm ^ 2
+display "exp_mean_dm: mean yrs since turning pro (tiebreak sample) = " r(mean)
 
 count
-display "Tiebreak team-obs loaded (7pt + 10pt, all sets 1-5): " r(N)
+display "Tiebreak team-obs loaded (7pt, all sets 1-5): " r(N)
 display ""
 
-display "Breakdown by tiebreak type and set:"
-tabulate tb_type
-tabulate tb_set tb_type
+display "Breakdown by set:"
+tabulate tb_set
 
 display ""
 display "=== TABLE 4. Tiebreak Win — Logit ==="
 display "Outcome: won_tb | Unit: team x tiebreak | Sample: GS only (no Olympics)"
-display "Main spec: 7pt standard tiebreaks only, any set. Robustness: adds 10pt/advantage-set deciders."
+display "Spec: standard 7pt tiebreaks only, any set (1-5)."
 display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq (same as Table 3;"
-display "  exp_mean_dm demeaned against each spec's own estimation-sample mean)"
+display "  exp_mean_dm demeaned against this panel's own estimation-sample mean)"
 display "FE: tournament x year (ty) + stage_code | SE: clustered by match"
 display ""
 
-display "--- 4a. Same Nationality: Main (7pt only) ---"
-logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main if tb_type=="7pt", cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main)
-estimates store tbn_same_country_main
+display "--- 4a. Same Nationality ---"
+logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store tbn_same_country
 
 display ""
-display "--- 4a. Same Nationality: Robustness (7pt + 10pt) ---"
-logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob, cluster(match_id)
-margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob)
-estimates store tbn_same_country_rob
+display "--- 4b. Same Official Language ---"
+logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store tbn_same_language
 
 display ""
-display "--- 4b. Same Official Language: Main (7pt only) ---"
-logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main if tb_type=="7pt", cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main)
-estimates store tbn_same_language_main
+display "--- 4c. Language Proximity ---"
+logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store tbn_ling_prox
 
 display ""
-display "--- 4b. Same Official Language: Robustness (7pt + 10pt) ---"
-logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob, cluster(match_id)
-margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob)
-estimates store tbn_same_language_rob
-
-display ""
-display "--- 4c. Language Proximity: Main (7pt only) ---"
-logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main if tb_type=="7pt", cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_main exp_mean_dm_sq_main)
-estimates store tbn_ling_prox_main
-
-display ""
-display "--- 4c. Language Proximity: Robustness (7pt + 10pt) ---"
-logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob, cluster(match_id)
-margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm_rob exp_mean_dm_sq_rob)
-estimates store tbn_ling_prox_rob
-
-display ""
-display "--- Comparison: Main (7pt) vs. Robustness (7pt+10pt) ---"
-estimates table tbn_same_country_main tbn_same_country_rob, b se stats(N ll)
-estimates table tbn_same_language_main tbn_same_language_rob, b se stats(N ll)
-estimates table tbn_ling_prox_main tbn_ling_prox_rob, b se stats(N ll)
+display "--- Table 4 summary ---"
+estimates table tbn_same_country tbn_same_language tbn_ling_prox, b se stats(N ll)
 
 
 display ""
