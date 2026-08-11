@@ -760,6 +760,127 @@ estimates store het_exp_lp
 estimates table het_exp_sc het_exp_sl het_exp_lp, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
+* TABLE 6a ROBUSTNESS: adding Culture x exp_mean_dm^2 (per reviewer request 2026-08-11)
+* Checks the linear-interaction finding isn't an artefact of a curved true relationship.
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 6a ROBUSTNESS. Culture x exp_mean_dm + Culture x exp_mean_dm^2 ==="
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+generate double int_sc_exp_sq = same_country  * exp_mean_dm_sq
+generate double int_sl_exp_sq = same_language * exp_mean_dm_sq
+generate double int_lp_exp_sq = ling_prox     * exp_mean_dm_sq
+
+display "--- 6a-rob-i. Same Nationality x exp_mean + exp_mean^2 ---"
+logit win i.ty i.stage_code same_country  int_sc_exp int_sc_exp_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_exp int_sc_exp_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp2_sc
+
+display ""
+display "--- 6a-rob-ii. Same Language x exp_mean + exp_mean^2 ---"
+logit win i.ty i.stage_code same_language  int_sl_exp int_sl_exp_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_exp int_sl_exp_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp2_sl
+
+display ""
+display "--- 6a-rob-iii. Language Proximity x exp_mean + exp_mean^2 ---"
+logit win i.ty i.stage_code ling_prox  int_lp_exp int_lp_exp_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_exp int_lp_exp_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp2_lp
+
+estimates table het_exp2_sc het_exp2_sl het_exp2_lp, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* TABLE 6b: Culture x Within-Team Experience Gap (new, per reviewer request 2026-08-11)
+* exp_gap = |exp_i - exp_j|, the two teammates' OWN tenure (not the team average exp_mean).
+* Rationale: shared culture/language may substitute for shared experience when one teammate
+* is a veteran and the other is new. Individual tenure imputed to 1 yr for rookies, same
+* rule as exp_mean. Demeaned like every other interaction table. exp_gap_dm is also included
+* as a plain control alongside its interaction, per the request.
+* Requires re-merging individual player experience (winners/losers p1/p2 experience_double)
+* since team_gs only carries the team-average exp_mean, not each player's own tenure.
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 6b. Heterogeneity: Culture x Within-Team Experience Gap ==="
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+preserve
+import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
+keep match_id winners_p1_experience_double winners_p2_experience_double ///
+    losers_p1_experience_double losers_p2_experience_double
+duplicates drop match_id, force
+tempfile exp_gap_lookup
+save `exp_gap_lookup'
+restore
+
+merge m:1 match_id using `exp_gap_lookup', keep(master match) nogen
+
+destring winners_p1_experience_double winners_p2_experience_double ///
+    losers_p1_experience_double losers_p2_experience_double, replace force
+
+generate double _e1 = winners_p1_experience_double if win == 1
+replace       _e1 = losers_p1_experience_double  if win == 0
+generate double _e2 = winners_p2_experience_double if win == 1
+replace       _e2 = losers_p2_experience_double  if win == 0
+replace _e1 = 1 if missing(_e1) | _e1 <= 0
+replace _e2 = 1 if missing(_e2) | _e2 <= 0
+
+generate double exp_gap = abs(_e1 - _e2)
+quietly summarize exp_gap
+generate double exp_gap_dm = exp_gap - r(mean)
+generate double exp_gap_dm_sq = exp_gap_dm ^ 2
+display "exp_gap_dm: mean = " r(mean) "  SD = " r(sd)
+drop _e1 _e2
+
+generate double int_sc_gap = same_country  * exp_gap_dm
+generate double int_sl_gap = same_language * exp_gap_dm
+generate double int_lp_gap = ling_prox     * exp_gap_dm
+
+display "--- 6b-i. Same Nationality x exp_gap ---"
+logit win i.ty i.stage_code same_country  int_sc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_sc
+
+display ""
+display "--- 6b-ii. Same Language x exp_gap ---"
+logit win i.ty i.stage_code same_language  int_sl_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_sl
+
+display ""
+display "--- 6b-iii. Language Proximity x exp_gap ---"
+logit win i.ty i.stage_code ling_prox  int_lp_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_lp
+
+estimates table het_gap_sc het_gap_sl het_gap_lp, b se stats(N ll)
+
+* --- Table 6b robustness: adding Culture x exp_gap_dm^2 ---
+display ""
+display "=== TABLE 6b ROBUSTNESS. + Culture x exp_gap_dm^2 ==="
+display ""
+
+generate double int_sc_gap_sq = same_country  * exp_gap_dm_sq
+generate double int_sl_gap_sq = same_language * exp_gap_dm_sq
+generate double int_lp_gap_sq = ling_prox     * exp_gap_dm_sq
+
+logit win i.ty i.stage_code same_country  int_sc_gap int_sc_gap_sq exp_gap_dm exp_gap_dm_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_gap int_sc_gap_sq exp_gap_dm exp_gap_dm_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap2_sc
+
+logit win i.ty i.stage_code same_language  int_sl_gap int_sl_gap_sq exp_gap_dm exp_gap_dm_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_gap int_sl_gap_sq exp_gap_dm exp_gap_dm_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap2_sl
+
+logit win i.ty i.stage_code ling_prox  int_lp_gap int_lp_gap_sq exp_gap_dm exp_gap_dm_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_gap int_lp_gap_sq exp_gap_dm exp_gap_dm_sq rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap2_lp
+
+estimates table het_gap2_sc het_gap2_sl het_gap2_lp, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
 * TABLE 5: Culture x Surface (was Table 6b)
 * Spec (a): grass + C*grass, baseline = hardcourt + clay pooled
 * Spec (b): clay + C*clay, baseline = hardcourt + grass pooled
@@ -823,6 +944,37 @@ display "--- Comparison: Spec (a) grass vs. Spec (b) clay ---"
 estimates table het_surf_sc_grass het_surf_sc_clay, b se stats(N ll)
 estimates table het_surf_sl_grass het_surf_sl_clay, b se stats(N ll)
 estimates table het_surf_lp_grass het_surf_lp_clay, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* TABLE 5 ROBUSTNESS: tournament x year FE restored, interaction only, no separate
+* surface main effect (per reviewer request 2026-08-11). Mirror image of the main Table 5
+* spec's tradeoff: T x Y FE comes back, but the surface main effect can no longer be
+* separately identified from the tournament dummies it's nested in.
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 5 ROBUSTNESS. T x Y FE, Culture x Surface interaction only ==="
+display "No separate surface main effect -- hardcourt is the implicit baseline."
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+display "--- 5-rob-i. Same Nationality ---"
+logit win i.ty i.stage_code same_country int_sc_grass int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_grass int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surfty_sc
+
+display ""
+display "--- 5-rob-ii. Same Language ---"
+logit win i.ty i.stage_code same_language int_sl_grass int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_grass int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surfty_sl
+
+display ""
+display "--- 5-rob-iii. Language Proximity ---"
+logit win i.ty i.stage_code ling_prox int_lp_grass int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_grass int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surfty_lp
+
+estimates table het_surfty_sc het_surfty_sl het_surfty_lp, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
 * TABLE 6: Culture x Hofstede Individualism (team-level, demeaned) (was Table 6c)

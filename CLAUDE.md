@@ -69,10 +69,35 @@ the effect at mean tenure)
 **Estimator:** logit; report Average Marginal Effects (AME, dP/dx) — NOT logit coefficients
 
 **Heterogeneity tables:**
-- Table 5: culture × surface (two specs: grass-vs-rest, clay-vs-rest; no tournament×year FE)
+- Table 5: culture × surface (two specs: grass-vs-rest, clay-vs-rest; no tournament×year FE),
+  plus a robustness spec restoring tournament×year FE with only Culture×grass/Culture×clay
+  (no separate surface main effect) — the two specs agree (interactions insignificant throughout)
 - Table 6: culture × `ic_team_dm` (Hofstede IDV, demeaned; mean = 62.98, SD = 20.85), spec 2 only,
   plus a Tier-2-proxy-excluded robustness cut (N = 3,597; drops 155 team-obs)
-- Table 6a: culture × `exp_mean` (years since turning pro, demeaned; mean = 11.90, SD = 5.17)
+- Table 6a: culture × `exp_mean` (years since turning pro, demeaned; mean = 11.90, SD = 5.17),
+  plus a robustness spec adding the quadratic interaction Culture × `exp_mean_dm_sq`
+  (insignificant throughout — linear-interaction finding holds)
+- Table 6b (new, per reviewer request 2026-08-11): culture × `exp_gap_dm` (within-team
+  experience gap, `|exp_i − exp_j|` between the two teammates' own tenure, demeaned; mean =
+  5.48, SD = 4.92), plus a quadratic-interaction robustness spec. Interaction is positive
+  throughout but insignificant (p 0.24–0.34) — no evidence culture compensates for an
+  experience mismatch within a team.
+
+**Section 6 (new, per reviewer request 2026-08-11): partner-selection sorting check.**
+Descriptive comparison of actual vs. random-matching-benchmark same-nationality/language/
+ling_prox rates among realized doubles partnerships (deduped to one row per tournament×team,
+N = 2,101), split by All / both-top-100 / both-top-50 (ranking at time of tournament).
+Random benchmark is closed-form (not simulated): Σ over C(n,2) pairs in that tournament's
+actual field, using the same CEPII `comlang_off`/`comlang_ethno` country-pair lookup that
+`same_language`/`ling_prox` are themselves built from. Finding: partner selection is far more
+culturally assortative than chance at every skill level (6–8× benchmark for nationality,
+3–4× for language), but the degree of excess is essentially flat across brackets — elite
+players are not disproportionately more assortative. A follow-up continuous test (§6.1,
+logit/OLS of same_country/same_language/ling_prox on the ego player's own ranking, 4,202
+ego-rows, clustered by partnership) confirms this: the coefficient on own rank is positive
+and significant for all three outcomes, meaning *worse*-ranked players sort into
+same-culture partnerships slightly *more*, not less — the reverse of the "stronger players
+have more choice and sort more" concern.
 
 ## Key file locations
 - Data (GS panel): `data/atp/team_gs_panel.csv`

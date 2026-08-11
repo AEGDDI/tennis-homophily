@@ -318,13 +318,15 @@
 
 <h2>5. Heterogeneity Analysis</h2>
 <p>
-  Three sets of interactions are estimated on the main match-win sample (N = 3,752 team-obs),
+  Four sets of interactions are estimated on the main match-win sample (N = 3,752 team-obs),
   all with the full Table 3 control set (rank_mean, opp_rank_mean, single_top100, exp_mean_dm,
   exp_mean_dm_sq): <strong>Table 5</strong>, culture × surface, testing surface-specific
   coordination demands; <strong>Table 6</strong>, culture × Hofstede individualism score
   (team-level, demeaned), testing whether collectivist teams gain more from cultural
-  homophily; and <strong>Table 6a</strong>, culture × years since turning pro, testing whether
-  experienced teams benefit more from cultural alignment.
+  homophily; <strong>Table 6a</strong>, culture × years since turning pro (team average),
+  testing whether experienced teams benefit more from cultural alignment; and
+  <strong>Table 6b</strong>, culture × within-team experience gap, testing whether
+  mismatched-experience teammates benefit more from cultural alignment.
 </p>
 <p>
   Hofstede individualism scores (IDV) are taken from Geert Hofstede's official
@@ -439,6 +441,104 @@
   only (no tournament×year FE). SE clustered by match. All surface main effects and
   interactions are insignificant (p &gt; 0.67 throughout) in both specs. The culture
   advantage documented in Table 3 does not vary significantly by surface.
+</p>
+
+<h4>Table 5 robustness — tournament×year FE, interaction only (no surface main effect) &nbsp;|&nbsp; N = 3,752</h4>
+<p>
+  Restores the full <strong>tournament×year FE</strong> (rather than dropping to round-only)
+  and drops the separate surface main effect, keeping only Culture × grass and Culture × clay
+  together in one spec (hardcourt is the implicit baseline for both interactions, all three
+  surfaces entering through the interactions alone). This is the mirror image of the main
+  Table 5 spec's tradeoff: T×Y FE is restored, but the surface main effect can no longer be
+  separately identified from the tournament dummies it's nested in.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture (C) — hardcourt baseline</td>
+        <td class="num">+0.0405<sup>*</sup></td>
+        <td class="num">+0.0466<sup>**</sup></td>
+        <td class="num">+0.0394<sup>*</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0230)<br>p=0.078</td>
+        <td class="num">(0.0222)<br>p=0.036</td>
+        <td class="num">(0.0221)<br>p=0.075</td></tr>
+    <tr><td>C × grass</td>
+        <td class="num">−0.0093</td>
+        <td class="num">+0.0112</td>
+        <td class="num">+0.0095</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0403)<br>p=0.816</td>
+        <td class="num">(0.0388)<br>p=0.773</td>
+        <td class="num">(0.0388)<br>p=0.806</td></tr>
+    <tr><td>C × clay</td>
+        <td class="num">−0.0026</td>
+        <td class="num">−0.0070</td>
+        <td class="num">+0.0070</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0375)<br>p=0.944</td>
+        <td class="num">(0.0368)<br>p=0.850</td>
+        <td class="num">(0.0370)<br>p=0.850</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0049</td>
+        <td class="num">−0.0036</td>
+        <td class="num">−0.0030</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0315)<br>p=0.875</td>
+        <td class="num">(0.0315)<br>p=0.910</td>
+        <td class="num">(0.0315)<br>p=0.925</td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0045<sup>***</sup></td>
+        <td class="num">+0.0043<sup>***</sup></td>
+        <td class="num">+0.0043<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0017)<br>p=0.008</td>
+        <td class="num">(0.0017)<br>p=0.010</td>
+        <td class="num">(0.0017)<br>p=0.011</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0002)<br>p=0.001</td>
+        <td class="num">(0.0002)<br>p=0.001</td>
+        <td class="num">(0.0002)<br>p=0.001</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.095</td><td class="num">0.096</td><td class="num">0.096</td></tr>
+    <tr><td>N</td>
+        <td class="num">3,752</td><td class="num">3,752</td><td class="num">3,752</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Controls: same as Table 5 above. FE: tournament×year + round (T×Y FE restored). SE
+  clustered by match. The culture main effect (evaluated at hardcourt) is somewhat larger
+  and more significant here than in the round-FE spec (e.g. same nationality: +0.0392 →
+  +0.0405; same language: +0.0438 → +0.0466), but both C×grass and C×clay interactions
+  remain small and insignificant across all three culture measures (p &gt; 0.77 throughout) —
+  the same conclusion as the round-FE spec. The two specifications agree: the cultural
+  homophily advantage does not vary meaningfully by surface, regardless of whether
+  tournament×year FE or a surface main effect is used to absorb tournament-level variation.
 </p>
 
 <h3>Table 6 — Heterogeneity: Culture × Hofstede Individualism (demeaned) &nbsp;|&nbsp; N = 3,752</h3>
@@ -724,6 +824,442 @@
   significant interaction for language/proximity (p≈0.045–0.049) implies that
   advantage grows further with experience above the mean; nationality homophily shows no
   significant experience gradient (p=0.925).
+</p>
+
+<h4>Table 6a robustness — adding Culture × exp_mean_dm² &nbsp;|&nbsp; N = 3,752</h4>
+<p>
+  Adds a quadratic interaction term, Culture × exp_mean_dm_sq, alongside the linear
+  Culture × exp_mean_dm interaction reported above, to check the linear-interaction finding
+  isn't an artefact of a curved true relationship. Same controls, FE, and clustering as the
+  main Table 6a spec.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture (C) — mean experience</td>
+        <td class="num">+0.0444<sup>**</sup></td>
+        <td class="num">+0.0371<sup>*</sup></td>
+        <td class="num">+0.0333<sup>*</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0196)<br>p=0.024</td>
+        <td class="num">(0.0194)<br>p=0.056</td>
+        <td class="num">(0.0194)<br>p=0.086</td></tr>
+    <tr><td>C × exp_mean_dm</td>
+        <td class="num">+0.0002</td>
+        <td class="num">+0.0066<sup>**</sup></td>
+        <td class="num">+0.0065<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0033)<br>p=0.953</td>
+        <td class="num">(0.0032)<br>p=0.040</td>
+        <td class="num">(0.0032)<br>p=0.044</td></tr>
+    <tr><td>C × exp_mean_dm² (quadratic)</td>
+        <td class="num">−0.0003</td>
+        <td class="num">+0.0003</td>
+        <td class="num">+0.0003</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0005)<br>p=0.559</td>
+        <td class="num">(0.0005)<br>p=0.507</td>
+        <td class="num">(0.0005)<br>p=0.516</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0064</td>
+        <td class="num">−0.0053</td>
+        <td class="num">−0.0048</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0316)<br>p=0.840</td>
+        <td class="num">(0.0314)<br>p=0.865</td>
+        <td class="num">(0.0314)<br>p=0.880</td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0043<sup>*</sup></td>
+        <td class="num">+0.0003</td>
+        <td class="num">+0.0003</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0022)<br>p=0.055</td>
+        <td class="num">(0.0025)<br>p=0.889</td>
+        <td class="num">(0.0025)<br>p=0.889</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0006<sup>*</sup></td>
+        <td class="num">−0.0009<sup>**</sup></td>
+        <td class="num">−0.0009<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0003)<br>p=0.066</td>
+        <td class="num">(0.0004)<br>p=0.012</td>
+        <td class="num">(0.0004)<br>p=0.013</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.095</td><td class="num">0.097</td><td class="num">0.097</td></tr>
+    <tr><td>N</td>
+        <td class="num">3,752</td><td class="num">3,752</td><td class="num">3,752</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  The quadratic interaction term is small and insignificant for all three culture measures
+  (p &gt; 0.5 throughout), so the curved-relationship concern doesn't hold up — the linear
+  interaction finding from the main Table 6a spec stands. The linear C × exp_mean_dm term is
+  essentially unchanged in sign, magnitude, and significance (language/proximity still
+  positive and significant at p≈0.04; nationality still flat), confirming the main spec is
+  not mis-specified by omitting the square.
+</p>
+
+<h3>Table 6b — Heterogeneity: Culture × Within-Team Experience Gap &nbsp;|&nbsp; N = 3,752</h3>
+<p>
+  Tests a different hypothesis from Table 6a: rather than whether more <em>experienced</em>
+  teams benefit more from cultural alignment, this asks whether <em>mismatched</em> teams do —
+  the idea being that shared culture/language substitutes for shared on-court experience when
+  one teammate is a veteran and the other is new. exp_gap = |exp_i − exp_j|, the absolute
+  difference in each teammate's own years since turning pro (not the team average used
+  elsewhere). Individual player tenure is imputed to 1 year for rookies (raw tenure ≤0),
+  matching the exp_mean imputation rule; a team of two rookies has exp_gap = 0. Demeaned
+  (exp_gap_dm = exp_gap − sample mean of 5.48 years, SD = 4.92) for the same reason every
+  other interaction table is demeaned — so the culture main effect is evaluated at the
+  average gap, not at a perfectly-matched (zero-gap) team. Controls: full Table 3 set
+  (rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq — team-average
+  tenure and its square, same as every other table) plus exp_gap_dm itself as an added
+  control, per the request that the gap variable be included alongside its interaction.
+  FE: tournament×year + round. SE clustered by match.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture (C) — mean gap</td>
+        <td class="num">+0.0373<sup>**</sup></td>
+        <td class="num">+0.0462<sup>***</sup></td>
+        <td class="num">+0.0425<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0163)<br>p=0.022</td>
+        <td class="num">(0.0156)<br>p=0.003</td>
+        <td class="num">(0.0156)<br>p=0.006</td></tr>
+    <tr><td>C × exp_gap_dm</td>
+        <td class="num">+0.0032</td>
+        <td class="num">+0.0038</td>
+        <td class="num">+0.0036</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0033)<br>p=0.344</td>
+        <td class="num">(0.0032)<br>p=0.240</td>
+        <td class="num">(0.0032)<br>p=0.271</td></tr>
+    <tr><td>exp_gap_dm (main)</td>
+        <td class="num">−0.0036<sup>*</sup></td>
+        <td class="num">−0.0045<sup>*</sup></td>
+        <td class="num">−0.0044<sup>*</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0021)<br>p=0.083</td>
+        <td class="num">(0.0025)<br>p=0.068</td>
+        <td class="num">(0.0025)<br>p=0.070</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0083</td>
+        <td class="num">−0.0069</td>
+        <td class="num">−0.0061</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0314)<br>p=0.792</td>
+        <td class="num">(0.0314)<br>p=0.827</td>
+        <td class="num">(0.0314)<br>p=0.846</td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0050<sup>***</sup></td>
+        <td class="num">+0.0051<sup>***</sup></td>
+        <td class="num">+0.0051<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0018)<br>p=0.006</td>
+        <td class="num">(0.0018)<br>p=0.004</td>
+        <td class="num">(0.0018)<br>p=0.004</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0002)<br>p=0.001</td>
+        <td class="num">(0.0002)<br>p=0.001</td>
+        <td class="num">(0.0002)<br>p=0.001</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.096</td><td class="num">0.097</td><td class="num">0.096</td></tr>
+    <tr><td>N</td>
+        <td class="num">3,752</td><td class="num">3,752</td><td class="num">3,752</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  The interaction is positive throughout — pointing in the direction the "communication
+  substitutes for experience mismatch" hypothesis predicts — but is not statistically
+  significant for any of the three culture measures (p = 0.24–0.34). The experience-gap main
+  effect itself is negative and marginally significant (p≈0.07–0.08): teams with a bigger
+  tenure mismatch between teammates do somewhat worse on average, independent of culture.
+  So while the direction is consistent with the hypothesis, there isn't enough statistical
+  power here to say cultural alignment specifically compensates for an experience mismatch —
+  this is a different (and so far null) result from Table 6a's finding that cultural
+  advantage grows with a team's own average experience.
+</p>
+
+<h4>Table 6b robustness — adding Culture × exp_gap_dm² &nbsp;|&nbsp; N = 3,752</h4>
+<p>
+  Adds a quadratic interaction (Culture × exp_gap_dm²) and its corresponding control
+  (exp_gap_dm²) alongside the linear terms above, per the same "add the squared interaction
+  as a robustness check" request applied to Table 6a.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture (C) — mean gap</td>
+        <td class="num">+0.0419<sup>**</sup></td>
+        <td class="num">+0.0437<sup>**</sup></td>
+        <td class="num">+0.0362<sup>*</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0193)<br>p=0.030</td>
+        <td class="num">(0.0192)<br>p=0.022</td>
+        <td class="num">(0.0190)<br>p=0.057</td></tr>
+    <tr><td>C × exp_gap_dm</td>
+        <td class="num">+0.0041</td>
+        <td class="num">+0.0030</td>
+        <td class="num">+0.0020</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0043)<br>p=0.350</td>
+        <td class="num">(0.0043)<br>p=0.476</td>
+        <td class="num">(0.0043)<br>p=0.648</td></tr>
+    <tr><td>C × exp_gap_dm² (quadratic)</td>
+        <td class="num">−0.0002</td>
+        <td class="num">+0.0001</td>
+        <td class="num">+0.0003</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0005)<br>p=0.741</td>
+        <td class="num">(0.0005)<br>p=0.799</td>
+        <td class="num">(0.0005)<br>p=0.553</td></tr>
+    <tr><td>exp_gap_dm (main)</td>
+        <td class="num">−0.0030</td>
+        <td class="num">−0.0032</td>
+        <td class="num">−0.0025</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0029)<br>p=0.299</td>
+        <td class="num">(0.0035)<br>p=0.360</td>
+        <td class="num">(0.0035)<br>p=0.463</td></tr>
+    <tr><td>exp_gap_dm² (quadratic control)</td>
+        <td class="num">−0.0001</td>
+        <td class="num">−0.0002</td>
+        <td class="num">−0.0004</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0004)<br>p=0.782</td>
+        <td class="num">(0.0004)<br>p=0.581</td>
+        <td class="num">(0.0004)<br>p=0.412</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td>
+        <td class="num">(0.0001)<br>p&lt;0.001</td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0079</td>
+        <td class="num">−0.0063</td>
+        <td class="num">−0.0055</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0314)<br>p=0.802</td>
+        <td class="num">(0.0314)<br>p=0.841</td>
+        <td class="num">(0.0314)<br>p=0.861</td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0052<sup>***</sup></td>
+        <td class="num">+0.0053<sup>***</sup></td>
+        <td class="num">+0.0053<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0019)<br>p=0.005</td>
+        <td class="num">(0.0018)<br>p=0.004</td>
+        <td class="num">(0.0018)<br>p=0.004</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0007<sup>**</sup></td>
+        <td class="num">−0.0007<sup>**</sup></td>
+        <td class="num">−0.0007<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0003)<br>p=0.023</td>
+        <td class="num">(0.0003)<br>p=0.022</td>
+        <td class="num">(0.0003)<br>p=0.023</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.096</td><td class="num">0.097</td><td class="num">0.097</td></tr>
+    <tr><td>N</td>
+        <td class="num">3,752</td><td class="num">3,752</td><td class="num">3,752</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  The quadratic interaction and quadratic gap control are both small and insignificant
+  throughout (p &gt; 0.55), and the linear interaction stays positive but insignificant,
+  matching the main spec's conclusion — no curved relationship being masked, and no evidence
+  that cultural homophily specifically compensates for an experience mismatch within a team.
+</p>
+
+<h2>6. Partner Selection: Testing the Sorting Concern</h2>
+<p>
+  The regressions above estimate the effect of cultural homophily on <em>performance</em>,
+  conditional on a partnership having already formed. A separate concern is <em>selection</em>:
+  if stronger players have more choice over who they partner with, and if they systematically
+  choose culturally similar partners, that alone could produce the observed same-culture
+  win advantage without cultural fit doing anything causal on court. This section tests
+  whether partner selection is more assortative by culture among stronger players than
+  among the field as a whole.
+</p>
+<p>
+  <strong>Unit of analysis</strong>: one row per <em>distinct partnership</em> — the same
+  two players advancing through multiple rounds of one tournament are counted once, not once
+  per round, since the partner choice was made at the start of the event (2,101 partnerships
+  with complete ranking data across the four Grand Slams, 2018–2025, Olympics excluded).
+  Doubles ranking is each player's own ranking as of that tournament (the same source
+  `rank_mean` is built from). <strong>Random-matching benchmark</strong>: for each
+  tournament-year, the closed-form expected rate under random pairing of that event's actual
+  field, Σ<sub>pairs</sub> 1[same country] / C(<em>n</em>,2) — and the parallel calculation
+  for same-language and ling_prox, using the same CEPII `comlang_off`/`comlang_ethno`
+  country-pair lookup that `same_language`/`ling_prox` are themselves built from (so the
+  benchmark is on the identical scale as the actual rate, not a different measure). This is
+  a closed-form expectation, not a simulation — deterministic and exactly reproducible.
+  Missing country pairs not covered by the CEPII table (mostly very small nations) are
+  imputed to 0 (not same-language / zero proximity) in the benchmark, a conservative choice
+  that if anything pushes the benchmark rate <em>down</em> — so it does not overstate the
+  actual-vs-random gap reported below.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:22%">Player pool</th>
+        <th class="num">N partnerships</th>
+        <th class="num" colspan="2">Same nationality</th>
+        <th class="num" colspan="2">Same language</th>
+        <th class="num" colspan="2">Mean ling_prox</th></tr>
+    <tr><th></th><th></th>
+        <th class="num">Actual</th><th class="num">Random benchmark</th>
+        <th class="num">Actual</th><th class="num">Random benchmark</th>
+        <th class="num">Actual</th><th class="num">Random benchmark</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>All ranked players</td>
+        <td class="num">2,101</td>
+        <td class="num">42.2%</td><td class="num">5.2%</td>
+        <td class="num">55.9%</td><td class="num">16.2%</td>
+        <td class="num">0.567</td><td class="num">0.198</td></tr>
+    <tr><td>Both partners top-100</td>
+        <td class="num">1,212</td>
+        <td class="num">32.6%</td><td class="num">4.1%</td>
+        <td class="num">49.7%</td><td class="num">15.5%</td>
+        <td class="num">0.506</td><td class="num">0.189</td></tr>
+    <tr><td>Both partners top-50</td>
+        <td class="num">712</td>
+        <td class="num">35.5%</td><td class="num">4.5%</td>
+        <td class="num">56.3%</td><td class="num">15.8%</td>
+        <td class="num">0.565</td><td class="num">0.189</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Two things stand out. First, <strong>actual partner selection is far more culturally
+  assortative than chance at every skill level</strong> — same-nationality rates run
+  6–8× the random-matching benchmark, same-language rates 3–4×, throughout. Sorting by
+  culture is real and substantial; Lingqing's concern that this could contaminate the
+  performance regressions is well-founded and worth keeping in mind when interpreting
+  Tables 3–6b as effects of culture on winning, rather than pure causal estimates.
+  Second, and less expected: <strong>elite players are not more assortative than the field
+  as a whole</strong> — the actual/benchmark ratio for same nationality is ≈8.1× overall,
+  ≈7.9× for top-100, ≈7.9× for top-50, essentially flat across brackets (same-language ratio
+  is similarly flat: ≈3.5×, ≈3.2×, ≈3.6×). If anything, the raw same-nationality rate is
+  <em>lower</em> among top-50/100 pairs (32.6–35.5%) than in the full field (42.2%) — top
+  players draw from a smaller, more international pool of plausible partners, which
+  mechanically dilutes same-country pairing even though same-language pairing holds
+  roughly steady. This doesn't support the specific "stronger players sort more" version of
+  the selection concern — the sorting appears to be a broad feature of how doubles pairs
+  form at every level, not something concentrated among top-ranked players with more
+  partner choice.
+</p>
+
+<h3>6.1 Direct test: does a player's own ranking predict partner-culture similarity?</h3>
+<p>
+  The bracket comparison above is a threshold test (top-50, top-100 vs. the field); this
+  tests the same mechanism continuously. Each of the two players in a partnership is treated
+  as an "ego" with the other as "partner" (2 ego-rows per partnership, 4,202 rows from the
+  2,101 partnerships), and the ego's <strong>own</strong> doubles ranking (at that tournament)
+  is regressed on whether the partnership is same-nationality / same-language (logit AME) or
+  on ling_prox (OLS), with tournament×year FE and SE clustered by partnership (so both
+  ego-rows from the same team don't count as independent observations).
+</p>
+<table>
+  <thead>
+    <tr><th style="width:40%">Outcome</th>
+        <th class="num">Effect of own_rank</th>
+        <th class="num">SE</th>
+        <th class="num">p</th>
+        <th class="num">N (ego-rows)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Same nationality (AME)</td>
+        <td class="num">+0.000271<sup>***</sup></td>
+        <td class="num">0.000055</td>
+        <td class="num">&lt;0.001</td>
+        <td class="num">4,202</td></tr>
+    <tr><td>Same language (AME)</td>
+        <td class="num">+0.000148<sup>**</sup></td>
+        <td class="num">0.000058</td>
+        <td class="num">0.011</td>
+        <td class="num">4,202</td></tr>
+    <tr><td>Ling. proximity (OLS coef.)</td>
+        <td class="num">+0.000141<sup>***</sup></td>
+        <td class="num">0.000053</td>
+        <td class="num">0.008</td>
+        <td class="num">4,202</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Doubles ranking runs the opposite direction from skill (rank 1 = best), so a
+  <strong>positive</strong> coefficient means a <em>worse</em>-ranked player is <em>more</em>
+  likely to have a culturally similar partner — the reverse of what the "stronger players
+  sort more" concern predicts. All three outcomes point the same way, and each is
+  statistically significant. This is the same conclusion as the bracket comparison in the
+  table above, now shown as a continuous, statistically-tested relationship rather than a
+  three-bucket comparison: the data give no support for the mechanism that stronger players'
+  greater partner choice is what generates the observed cultural homophily. If anything,
+  weaker-ranked players sort into same-culture partnerships slightly more, plausibly because
+  players with less market power to attract a foreign/elite partner default to whoever is
+  available in their own federation or language community.
 </p>
 
 </body>

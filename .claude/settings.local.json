@@ -67,7 +67,9 @@
       "Bash(jupyter nbconvert *)",
       "Bash(pip show *)",
       "Bash(Out-File -FilePath \"c:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\cell_list.txt\" -Encoding utf8)",
-      "Bash(Get-Content \"c:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\cell_list.txt\")"
+      "Bash(Get-Content \"c:\\\\Users\\\\ALESSANDRO\\\\Documents\\\\GitHub\\\\tennis-homophily\\\\cell_list.txt\")",
+      "Bash(python \"C:/Users/aldi/AppData/Local/Temp/claude/c--Users-aldi-Documents-GitHub-tennis-homophily/489030c5-0586-4c55-a5b7-fc4f2900cbc9/scratchpad/nb_batch1.py\")",
+      "Bash(python \"C:/Users/aldi/AppData/Local/Temp/claude/c--Users-aldi-Documents-GitHub-tennis-homophily/489030c5-0586-4c55-a5b7-fc4f2900cbc9/scratchpad/nb_batch2.py\")"
     ]
   }
 }

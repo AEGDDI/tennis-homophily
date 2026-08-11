@@ -1,0 +1,14 @@
+Thanks, Alessandro. I have some further thoughts below:
+
+So far only the experience is significant in the heterogeneity analysis. I would like to see an additional analysis looking at the experience gap within the team. The rational is, communication would benefit a team consists of an inexperienced and an experienced player more. So the model is to interact Culture x ExperienceGap, where Experience Gap is measured by |exp_i-_exp_j| within the team. Don’t forget to add the |exp_i-_exp_j|  itself in the regression. Moreover, it would be good if you can do a robustness specification where you also add the interaction Culture x ExperienceGap^2, same for the average team experience model where you have both culture x Experience + culture x experience ^2. 
+
+An important concern is, suppose stronger players (say top 50/100) have  more choices over partner selection, and if they systematically choose partners with same nationality/language/sim language, it would produce the observed results. I think we have done a similar descriptive ranking breakout, but it’s no longer in the report. Basically, I would like to see a table with two comparisons: top 50/100 doubles players’ partner selection by same nationality/language/similar language in %, compared to randomly matched teams as a benchmark.
+
+If you have ideas how to test the mechanism "whether stronger players prefer culturally similar partners", please test them as well.
+
+Finally, for the surface heterogeneity, currently, we drop the T-Y FE and added the surface variable itself. We also need the robustness specification where we have the tournaments x year FE and the interaction of Culture x grass/ Culture x clay. That is, with the T-Y FE, we don’t need to add the surface variable itself in the regression, but just the interaction itself. I would like to see whether these two specifications are similar.
+
+Let me know if anything is unclear, if so, we can have a brief zoom meeting to clarify. I am drafting a coherent story of the paper at the meanwhile.
+
+Best,
+Lingqing
