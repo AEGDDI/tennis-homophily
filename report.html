@@ -1220,7 +1220,14 @@
   2,101 partnerships), and the ego's <strong>own</strong> doubles ranking (at that tournament)
   is regressed on whether the partnership is same-nationality / same-language (logit AME) or
   on ling_prox (OLS), with tournament×year FE and SE clustered by partnership (so both
-  ego-rows from the same team don't count as independent observations).
+  ego-rows from the same team don't count as independent observations). The model is
+  deliberately bivariate — <code>own_rank + C(tourn_year)</code>, no further controls — since
+  the point is to test whether own ranking alone predicts partner-culture similarity net of
+  which event/year (which differ in nationality mix), not to explain partner-culture
+  similarity fully; several of the Tables-3–6b controls don't have a meaningful analogue here
+  (e.g. <code>opp_rank_mean</code> presumes a match opponent, which doesn't exist for a
+  partner-formation outcome). The table below therefore already shows the complete
+  specification, not an abridged one.
 </p>
 <table>
   <thead>
