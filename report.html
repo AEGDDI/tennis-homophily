@@ -316,6 +316,167 @@
   are not significant in the tiebreak sample.
 </p>
 
+<h2>4.1 Robustness: Age at Tournament vs. Years Since Turning Pro</h2>
+<p>
+  <code>age_mean</code> (team average player age at the tournament, from date of birth) is a
+  second natural proxy for career maturity alongside <code>exp_mean</code> (years since turning
+  pro). The two are highly correlated — <strong>corr(age_mean, exp_mean) = 0.83</strong>; a
+  regression of age_mean_dm on exp_mean_dm + exp_mean_dm² gives R² = 0.70, i.e. an
+  <strong>implied VIF of 3.30</strong> for age if entered alongside experience. Entering both
+  together (Table 3-JOINT below) destabilizes each tenure term's own coefficient — both become
+  statistically insignificant even though each is significant on its own (Table 3 vs. Table
+  3-AGE) — so age is estimated in its own separate specification rather than added alongside
+  experience in the Table 3/4 main specs. Age coverage is complete (0 missing) in both the
+  match-win and tiebreak-win samples, so no rookie-style imputation is needed for age the way
+  exp_mean requires for 213 rookie team-obs.
+</p>
+
+<h3>Table 3-AGE — Outcome: Match Win, age_mean replacing exp_mean &nbsp;|&nbsp; N = 3,752</h3>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture measure</td>
+        <td class="num">+0.0355<sup>**</sup></td>
+        <td class="num">+0.0467<sup>***</sup></td>
+        <td class="num">+0.0428<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0164)<br>p=0.030</td>
+        <td class="num">(0.0157)<br>p=0.003</td>
+        <td class="num">(0.0157)<br>p=0.006</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">+0.0067</td><td class="num">+0.0076</td><td class="num">+0.0080</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">p=0.830</td><td class="num">p=0.807</td><td class="num">p=0.798</td></tr>
+    <tr><td>Team avg. age at tournament</td>
+        <td class="num">+0.0055<sup>**</sup></td>
+        <td class="num">+0.0054<sup>**</sup></td>
+        <td class="num">+0.0052<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0023)<br>p=0.018</td>
+        <td class="num">(0.0023)<br>p=0.020</td>
+        <td class="num">(0.0023)<br>p=0.024</td></tr>
+    <tr><td>Age, squared</td>
+        <td class="num">−0.0006</td><td class="num">−0.0006</td><td class="num">−0.0006</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">p=0.130</td><td class="num">p=0.118</td><td class="num">p=0.122</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.093</td><td class="num">0.094</td><td class="num">0.094</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Same sample, FE (tournament×year + round), and clustering (by match) as Table 3.
+  Culture AMEs are essentially unchanged from Table 3 (e.g. same nationality: +0.0377 →
+  +0.0355, both p&lt;0.05), confirming the core finding is not an artefact of which
+  career-maturity proxy is used. Age itself is positive and significant, concave (like
+  experience), but the quadratic term is not significant here (p&gt;0.11).
+</p>
+
+<h4>Table 3-JOINT — age_mean and exp_mean entered together (diagnostic, not a preferred spec) &nbsp;|&nbsp; N = 3,752</h4>
+<table>
+  <thead>
+    <tr><th style="width:32%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture measure</td>
+        <td class="num">+0.0396<sup>**</sup></td>
+        <td class="num">+0.0485<sup>***</sup></td>
+        <td class="num">+0.0443<sup>***</sup></td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0025</td><td class="num">+0.0025</td><td class="num">+0.0026</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0029)<br>p=0.388</td>
+        <td class="num">(0.0029)<br>p=0.395</td>
+        <td class="num">(0.0029)<br>p=0.373</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td></tr>
+    <tr><td>Team avg. age at tournament</td>
+        <td class="num">+0.0032</td><td class="num">+0.0030</td><td class="num">+0.0027</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0040)<br>p=0.430</td>
+        <td class="num">(0.0040)<br>p=0.459</td>
+        <td class="num">(0.0040)<br>p=0.503</td></tr>
+    <tr><td>Age, squared</td>
+        <td class="num">+0.0001</td><td class="num">+0.0000</td><td class="num">+0.0000</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Diagnostic only. With both tenure proxies in the model, neither the linear experience
+  term nor the linear age term remains statistically significant (p&gt;0.37 for both, in
+  every culture spec), and their standard errors roughly double relative to their
+  single-proxy specs (e.g. exp_mean_dm SE: 0.0017 → 0.0029). This is the expected
+  signature of near-collinear regressors, not evidence that career maturity stops
+  mattering — Table 3 and Table 3-AGE each show a significant, similarly-sized tenure
+  effect on its own. The culture AMEs themselves are robust throughout (+0.0396 to
+  +0.0485, still significant at 5% or better in every spec across Tables 3, 3-AGE, and
+  3-JOINT).
+</p>
+
+<h3>Table 4-AGE — Outcome: Tiebreak Win, age_mean replacing exp_mean &nbsp;|&nbsp; N = 2,364</h3>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) Same Nationality</th>
+        <th class="num">(2) Same Language</th>
+        <th class="num">(3) Lang. Proximity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture measure</td>
+        <td class="num">+0.0243</td>
+        <td class="num">+0.0036</td>
+        <td class="num">−0.0020</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0227)<br>p=0.283</td>
+        <td class="num">(0.0220)<br>p=0.871</td>
+        <td class="num">(0.0219)<br>p=0.927</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0003<sup>***</sup></td>
+        <td class="num">−0.0003<sup>***</sup></td>
+        <td class="num">−0.0003<sup>***</sup></td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0003<sup>***</sup></td>
+        <td class="num">+0.0003<sup>***</sup></td>
+        <td class="num">+0.0003<sup>***</sup></td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0679</td><td class="num">−0.0662</td><td class="num">−0.0661</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">p=0.113</td><td class="num">p=0.122</td><td class="num">p=0.122</td></tr>
+    <tr><td>Team avg. age at tournament</td>
+        <td class="num">−0.0004</td><td class="num">−0.0010</td><td class="num">−0.0011</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0030)<br>p=0.902</td>
+        <td class="num">(0.0030)<br>p=0.737</td>
+        <td class="num">(0.0030)<br>p=0.711</td></tr>
+    <tr><td>Age, squared</td>
+        <td class="num">+0.0002</td><td class="num">+0.0002</td><td class="num">+0.0002</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.014</td><td class="num">0.013</td><td class="num">0.013</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Same tiebreak sample, FE, and clustering as Table 4. As with experience, age is not
+  significantly associated with tiebreak win (p&gt;0.7 throughout), and — as in Table
+  4 — none of the three culture measures reach significance either. The null tiebreak
+  result is not an artefact of which career-maturity proxy is used.
+</p>
+
 <h2>5. Heterogeneity Analysis</h2>
 <p>
   Four sets of interactions are estimated on the main match-win sample (N = 3,752 team-obs),

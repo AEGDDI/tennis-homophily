@@ -597,6 +597,17 @@ generate double exp_mean_dm = exp_mean - r(mean)
 generate double exp_mean_dm_sq = exp_mean_dm ^ 2
 display "exp_mean_dm: mean yrs since turning pro = " r(mean) " (demeaned control, all main-panel tables)"
 
+* Team-level age at tournament (age_mean) is built upstream in homophily.ipynb from each
+* player's date of birth and imported here directly from team_gs_panel.csv (no rookie-style
+* imputation needed: dob coverage is complete for every team-obs in this sample). Demean and
+* square it exactly like exp_mean, for the Table 3-AGE spec below.
+capture drop age_mean_dm
+capture drop age_mean_dm_sq
+quietly summarize age_mean
+generate double age_mean_dm = age_mean - r(mean)
+generate double age_mean_dm_sq = age_mean_dm ^ 2
+display "age_mean_dm: mean team age at tournament = " r(mean) " (demeaned control, Table 3-AGE)"
+
 display "Obs in Grand Slams panel: " _N " (exp_mean imputed to 1 for rookies)"
 
 display "Creating ty (tournament×year grouping)..."
@@ -692,6 +703,61 @@ margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_me
 estimates store win_ling_prox
 
 estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
+
+* ─────────────────────────────────────────────────────────────────────────────
+* TABLE 3-AGE: MATCH WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)
+* age_mean (team avg. player age at the tournament) is highly correlated with exp_mean
+* (years since turning pro) -- both proxy career maturity. corr(age_mean, exp_mean) = 0.83,
+* implied VIF for age if entered alongside exp_mean_dm/exp_mean_dm_sq = 3.30 (see Python
+* notebook cell for the full diagnostic). Entering both together destabilizes each tenure
+* term's own coefficient (TABLE 3-JOINT below), so age is estimated in its own separate
+* specification here rather than added alongside experience in the Table 3 main spec.
+* ─────────────────────────────────────────────────────────────────────────────
+display "=== TABLE 3-AGE. Match Win — Logit, age_mean replacing exp_mean ==="
+display "FE: tournament×year (ty) + stage_code | SE clustered by match | Grand Slams only"
+display "Controls: rank_mean, opp_rank_mean, single_top100, age_mean_dm, age_mean_dm_sq"
+display ""
+
+display "--- 3-age-i. Same Nationality ---"
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq)
+estimates store win_same_country_age
+
+display ""
+display "--- 3-age-ii. Same Official Language ---"
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq)
+estimates store win_same_language_age
+
+display ""
+display "--- 3-age-iii. Language Proximity (ethnic) ---"
+logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq)
+estimates store win_ling_prox_age
+
+estimates table win_same_country_age win_same_language_age win_ling_prox_age, b se stats(N ll)
+
+* ─────────────────────────────────────────────────────────────────────────────
+* TABLE 3-JOINT: MATCH WIN — LOGIT, AGE + EXPERIENCE TOGETHER (diagnostic only)
+* Not a main or robustness spec -- shown only to document why age and experience are
+* estimated separately: entering both together destabilizes each tenure term's own AME.
+* ─────────────────────────────────────────────────────────────────────────────
+display "=== TABLE 3-JOINT. Match Win — Logit, age_mean_dm and exp_mean_dm together (diagnostic) ==="
+display ""
+
+display "--- 3-joint-i. Same Nationality ---"
+logit win i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq)
+
+display ""
+display "--- 3-joint-ii. Same Official Language ---"
+logit win i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq)
+
+display ""
+display "--- 3-joint-iii. Language Proximity (ethnic) ---"
+logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq)
 
 * ─────────────────────────────────────────────────────────────────────────────
 * SECTION 6: HETEROGENEITY ANALYSIS
@@ -1105,7 +1171,7 @@ drop tournament
 rename tourn_code tournament
 
 destring stage_code same_country same_language ling_prox rank_mean opp_rank_mean ///
-    rank_gap single_top100 exp_mean win pre_olympic olympic_period tb_set won_tb year, replace force
+    rank_gap single_top100 exp_mean age_mean win pre_olympic olympic_period tb_set won_tb year, replace force
 replace stage_code = 0 if missing(stage_code)
 replace exp_mean = 1 if missing(exp_mean)
 quietly egen ty = group(tournament year)
@@ -1117,6 +1183,12 @@ quietly summarize exp_mean
 generate double exp_mean_dm = exp_mean - r(mean)
 generate double exp_mean_dm_sq = exp_mean_dm ^ 2
 display "exp_mean_dm: mean yrs since turning pro (tiebreak sample) = " r(mean)
+
+* Same demeaning for age_mean, for the Table 4-AGE robustness spec below.
+quietly summarize age_mean
+generate double age_mean_dm = age_mean - r(mean)
+generate double age_mean_dm_sq = age_mean_dm ^ 2
+display "age_mean_dm: mean team age at tournament (tiebreak sample) = " r(mean)
 
 count
 display "Tiebreak team-obs loaded (7pt, all sets 1-5): " r(N)
@@ -1155,9 +1227,39 @@ display ""
 display "--- Table 4 summary ---"
 estimates table tbn_same_country tbn_same_language tbn_ling_prox, b se stats(N ll)
 
+* ─────────────────────────────────────────────────────────────────────────────
+* TABLE 4-AGE: TIEBREAK WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)
+* Same age-vs-experience substitution as Table 3-AGE, applied to the tiebreak-win outcome.
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== TABLE 4-AGE. Tiebreak Win — Logit, age_mean replacing exp_mean ==="
+display "Controls: rank_mean, opp_rank_mean, single_top100, age_mean_dm, age_mean_dm_sq"
+display ""
+
+display "--- 4-age-i. Same Nationality ---"
+logit won_tb i.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq)
+estimates store tbn_same_country_age
 
 display ""
-display "Section 7 complete: Tiebreak win regressions (Table 4)."
+display "--- 4-age-ii. Same Official Language ---"
+logit won_tb i.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq)
+estimates store tbn_same_language_age
+
+display ""
+display "--- 4-age-iii. Language Proximity ---"
+logit won_tb i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 age_mean_dm age_mean_dm_sq)
+estimates store tbn_ling_prox_age
+
+display ""
+display "--- Table 4-AGE summary ---"
+estimates table tbn_same_country_age tbn_same_language_age tbn_ling_prox_age, b se stats(N ll)
+
+
+display ""
+display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE)."
 
 log close
 
