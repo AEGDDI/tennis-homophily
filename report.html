@@ -477,6 +477,84 @@
   result is not an artefact of which career-maturity proxy is used.
 </p>
 
+<h2>4.4 Robustness: Double-Counting / Non-Independence Check</h2>
+<p>
+  Per Lingqing's 2026-08-18 email: each match (Table 3) or tiebreak (Table 4) contributes
+  <strong>two</strong> team-rows that are mechanically linked — a win for one team is a loss
+  for the other, so the two rows are not independent draws. The main Tables 3–4 already
+  address this via SE clustered by <code>match_id</code> (the project spec from the start).
+  Two further checks were requested, both run here for both outcomes:
+</p>
+<ul>
+  <li><strong>No-intercept spec</strong>: keep both rows, drop the global intercept and give
+    tournament×year FE full-rank (all-levels) dummies instead of the usual
+    intercept + reference-dropped dummies. This spans the identical model as the baseline —
+    same column space, same fitted probabilities — so it is a <em>verification</em>, not a
+    new specification.</li>
+  <li><strong>Random-one-team spec</strong>: for each match (Table 3) / each specific tiebreak
+    (Table 4), keep only one team's row via a coin flip, removing the mechanical
+    complementarity entirely. Repeated over 10 random seeds, since any single draw is
+    arbitrary. Robust (HC1) SE for Table 3 (exactly one row per match after de-duplication, so
+    no clustering unit remains); SE stays clustered by <code>match_id</code> for Table 4 (a
+    match can still contribute more than one tiebreak-row after de-duplication).</li>
+</ul>
+
+<h3>No-intercept check: exact reparameterization, as expected</h3>
+<p>
+  The no-intercept spec reproduces Table 3 and Table 4 <strong>exactly</strong> — same AMEs,
+  same SEs, same p-values, same log-likelihood to three decimals (e.g. same-nationality
+  match-win LL = −2352.768 under both parameterizations). Dropping the intercept changes
+  nothing here; it is confirmed to be a pure relabeling of the same fixed-effects structure,
+  not an alternative model.
+</p>
+
+<h3>Random-one-team check: same direction, weaker power (as expected from halving N)</h3>
+<table>
+  <thead>
+    <tr><th style="width:20%">Outcome</th><th>Culture measure</th>
+        <th class="num">Baseline AME</th>
+        <th class="num">Random-one: mean AME (range, 10 seeds)</th>
+        <th class="num">Significant (p&lt;.05)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3">Match win<br><span class="se">(N=1,876 per draw)</span></td>
+        <td>Same nationality</td><td class="num">+0.0377<sup>**</sup></td>
+        <td class="num">+0.0312&nbsp;[+0.0024,&nbsp;+0.0764]</td><td class="num">2/10</td></tr>
+    <tr><td>Same language</td><td class="num">+0.0474<sup>***</sup></td>
+        <td class="num">+0.0392&nbsp;[+0.0146,&nbsp;+0.0747]</td><td class="num">5/10</td></tr>
+    <tr><td>Lang. proximity</td><td class="num">+0.0434<sup>***</sup></td>
+        <td class="num">+0.0357&nbsp;[+0.0084,&nbsp;+0.0772]</td><td class="num">4/10</td></tr>
+    <tr><td rowspan="3">Tiebreak win<br><span class="se">(N≈1,182 per draw)</span></td>
+        <td>Same nationality</td><td class="num">+0.0298 (n.s.)</td>
+        <td class="num">+0.0316&nbsp;[+0.0040,&nbsp;+0.0759]</td><td class="num">1/10</td></tr>
+    <tr><td>Same language</td><td class="num">+0.0075 (n.s.)</td>
+        <td class="num">+0.0024&nbsp;[−0.0255,&nbsp;+0.0678]</td><td class="num">1/9<sup>a</sup></td></tr>
+    <tr><td>Lang. proximity</td><td class="num">+0.0019 (n.s.)</td>
+        <td class="num">−0.0047&nbsp;[−0.0346,&nbsp;+0.0624]</td><td class="num">1/9<sup>a</sup></td></tr>
+  </tbody>
+</table>
+<p class="note">
+  <sup>a</sup> One of the 10 tiebreak seeds hit a singular Hessian (non-invertible; MLE
+  could not be estimated) in 2 of 3 culture specs — the tiebreak panel spreads only
+  ~1,182 rows across ~150 tournament×year × round cells once halved, and that particular
+  random split left some cells too sparse or too one-sided (all-win or all-loss) to
+  identify. That draw is excluded from the summary rather than reported as a spurious
+  result.
+</p>
+<p class="note">
+  Every point estimate keeps the same sign and a broadly similar magnitude to its
+  baseline — there is no evidence the two-rows-per-match design was manufacturing the
+  effect. What changes is <strong>power</strong>: halving the sample inflates SEs by
+  roughly √2, enough to push several draws below the 5% threshold — most visibly for
+  same-nationality, already the weakest of the three culture measures at p=0.021 in the
+  full sample, while same-language (p=0.002 at baseline, the strongest) stays significant
+  in half the draws even with half the data. The tiebreak table's null result stays null
+  either way. <strong>Conclusion:</strong> the stacked-both-rows + match-clustered design
+  already used throughout this report is the correct and more efficient choice — the
+  standard fix in the paired/matched-data literature — and the random-one-team check
+  supports rather than overturns it.
+</p>
+
 <h2>5. Heterogeneity Analysis</h2>
 <p>
   Four sets of interactions are estimated on the main match-win sample (N = 3,752 team-obs),

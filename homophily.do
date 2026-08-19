@@ -760,6 +760,97 @@ logit win i.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_
 margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq age_mean_dm age_mean_dm_sq)
 
 * ─────────────────────────────────────────────────────────────────────────────
+* TABLE 3-NOINT: MATCH WIN — LOGIT, NO INTERCEPT (double-counting check, per
+* Lingqing's 2026-08-18 email, Option 2 detail)
+* Drops the global constant and gives tournament x year FE full-rank (all-levels)
+* indicators (ibn.ty) instead of the usual reference-dropped i.ty; stage_code stays
+* reduced-rank (i.stage_code) to keep the design full column rank -- giving BOTH FE
+* terms full rank with no constant would make them collinear (each set of dummies
+* sums to 1 for every row). This spans the identical model as Table 3 (same column
+* space, just reparameterized), so the AMEs below should match Table 3 exactly --
+* verified in the Python notebook (log-likelihood matches to 3dp under both
+* parameterizations) -- this is a check, not a new spec. Same clustering as Table 3.
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== TABLE 3-NOINT. Match Win — Logit, no intercept (full-rank tournament x year FE) ==="
+display "Expect: AMEs, SEs, and log-likelihood identical to Table 3 (reparameterization check)."
+display ""
+
+display "--- 3-noint-i. Same Nationality ---"
+logit win ibn.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id) noconstant
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+
+display ""
+display "--- 3-noint-ii. Same Official Language ---"
+logit win ibn.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id) noconstant
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+
+display ""
+display "--- 3-noint-iii. Language Proximity (ethnic) ---"
+logit win ibn.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id) noconstant
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+
+* ─────────────────────────────────────────────────────────────────────────────
+* TABLE 3-RANDONE: MATCH WIN — LOGIT, ONE RANDOMLY-SELECTED TEAM PER MATCH
+* (double-counting check, Option 1 from Lingqing's 2026-08-18 email)
+* For each match, keep only one team's row (coin flip) -- removes the mechanical
+* win/lose complementarity entirely, so no clustering is needed; robust (vce(robust),
+* HC1-style) SE used instead. Repeated over 10 seeds since a single draw is arbitrary.
+* Draw is one random uniform PER MATCH (generated on one row, then propagated to both
+* rows of that match via egen max), not one per row -- otherwise the two rows of a
+* match could independently both survive or both be dropped, which is not what
+* "keep exactly one team per match" means.
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== TABLE 3-RANDONE. Match Win — Logit, one randomly-selected team per match ==="
+display "Each match contributes exactly one row (winner or loser, 50/50 coin flip); no"
+display "clustering needed (one row per match). Robust SE. 10 random seeds."
+display ""
+
+tempfile randone_results
+tempname rr
+postfile `rr' str24 cvar seed double ame double pval using "`randone_results'", replace
+
+foreach cvar in same_country same_language ling_prox {
+    forvalues seed = 0/9 {
+        preserve
+        set seed `seed'
+        tempvar u u_match keep_row
+        bysort match_id (win): generate double `u' = runiform() if _n==1
+        bysort match_id: egen double `u_match' = max(`u')
+        generate byte `keep_row' = (win==1 & `u_match'>0.5) | (win==0 & `u_match'<=0.5)
+        keep if `keep_row'
+
+        quietly logit win `cvar' rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq i.ty i.stage_code, vce(robust)
+        quietly margins, dydx(`cvar')
+        matrix b = r(b)
+        matrix V = r(V)
+        local ame_ = b[1,1]
+        local se_  = sqrt(V[1,1])
+        local p_   = 2*(1 - normal(abs(`ame_'/`se_')))
+        post `rr' ("`cvar'") (`seed') (`ame_') (`p_')
+        restore
+    }
+}
+postclose `rr'
+
+display ""
+display "--- Table 3-RANDONE summary across 10 random draws ---"
+preserve
+use "`randone_results'", clear
+foreach cvar in same_country same_language ling_prox {
+    quietly summarize ame if cvar=="`cvar'"
+    local mean_a = r(mean)
+    local sd_a   = r(sd)
+    local min_a  = r(min)
+    local max_a  = r(max)
+    quietly count if cvar=="`cvar'" & pval<0.05
+    local nsig = r(N)
+    display "`cvar': mean AME=" %6.4f `mean_a' "  sd=" %6.4f `sd_a' "  range=[" %6.4f `min_a' ", " %6.4f `max_a' "]  significant in `nsig'/10 draws"
+}
+restore
+
+* ─────────────────────────────────────────────────────────────────────────────
 * SECTION 6: HETEROGENEITY ANALYSIS
 * =============================================================================
 * Three sets of interactions, each applied to the match-win logit (team panel).
@@ -1257,9 +1348,104 @@ display ""
 display "--- Table 4-AGE summary ---"
 estimates table tbn_same_country_age tbn_same_language_age tbn_ling_prox_age, b se stats(N ll)
 
+* ─────────────────────────────────────────────────────────────────────────────
+* TABLE 4-NOINT: TIEBREAK WIN — LOGIT, NO INTERCEPT (double-counting check)
+* Same reparameterization check as Table 3-NOINT, applied to the tiebreak panel.
+* Expect AMEs identical to Table 4.
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== TABLE 4-NOINT. Tiebreak Win — Logit, no intercept (full-rank tournament x year FE) ==="
+display ""
+
+display "--- 4-noint-i. Same Nationality ---"
+logit won_tb ibn.ty i.stage_code same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id) noconstant
+margins, dydx(same_country rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
 
 display ""
-display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE)."
+display "--- 4-noint-ii. Same Official Language ---"
+logit won_tb ibn.ty i.stage_code same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id) noconstant
+margins, dydx(same_language rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+
+display ""
+display "--- 4-noint-iii. Language Proximity ---"
+logit won_tb ibn.ty i.stage_code ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id) noconstant
+margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+
+* ─────────────────────────────────────────────────────────────────────────────
+* TABLE 4-RANDONE: TIEBREAK WIN — LOGIT, ONE RANDOMLY-SELECTED TEAM PER TIEBREAK
+* Pair unit here is one specific tiebreak (match_id x tb_set x tb_type), NOT the
+* match -- a match can contain several tiebreaks (sets 1-5). SE stays clustered by
+* match_id (a match can still contribute >1 tiebreak-row after de-duplication),
+* unlike Table 3-RANDONE where de-duplication leaves exactly one row per match and
+* no clustering unit remains. Sparse tournament x year x round cells after halving
+* the sample (~1,182 vs 2,364) can produce a singular Hessian for some draws --
+* caught with capture/`_rc' and skipped rather than left to crash the do-file.
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== TABLE 4-RANDONE. Tiebreak Win — Logit, one randomly-selected team per tiebreak ==="
+display ""
+
+capture drop tb_key
+egen long tb_key = group(match_id tb_set tb_type)
+
+tempfile randone_results_tb
+tempname rr2
+postfile `rr2' str24 cvar seed double ame double pval using "`randone_results_tb'", replace
+
+foreach cvar in same_country same_language ling_prox {
+    forvalues seed = 0/9 {
+        preserve
+        set seed `seed'
+        tempvar u u_tb keep_row
+        bysort tb_key (won_tb): generate double `u' = runiform() if _n==1
+        bysort tb_key: egen double `u_tb' = max(`u')
+        generate byte `keep_row' = (won_tb==1 & `u_tb'>0.5) | (won_tb==0 & `u_tb'<=0.5)
+        keep if `keep_row'
+
+        capture noisily logit won_tb `cvar' rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq i.ty i.stage_code, cluster(match_id)
+        if _rc == 0 {
+            capture noisily margins, dydx(`cvar')
+            if _rc == 0 {
+                matrix b = r(b)
+                matrix V = r(V)
+                local ame_ = b[1,1]
+                local se_  = sqrt(V[1,1])
+                local p_   = 2*(1 - normal(abs(`ame_'/`se_')))
+                post `rr2' ("`cvar'") (`seed') (`ame_') (`p_')
+            }
+            else {
+                display "  [`cvar'] seed `seed': margins failed -- skipped"
+            }
+        }
+        else {
+            display "  [`cvar'] seed `seed': logit failed to converge (likely singular Hessian, sparse FE cell) -- skipped"
+        }
+        restore
+    }
+}
+postclose `rr2'
+
+display ""
+display "--- Table 4-RANDONE summary across converged random draws ---"
+preserve
+use "`randone_results_tb'", clear
+foreach cvar in same_country same_language ling_prox {
+    quietly count if cvar=="`cvar'"
+    local nok = r(N)
+    quietly summarize ame if cvar=="`cvar'"
+    local mean_a = r(mean)
+    local sd_a   = r(sd)
+    local min_a  = r(min)
+    local max_a  = r(max)
+    quietly count if cvar=="`cvar'" & pval<0.05
+    local nsig = r(N)
+    display "`cvar': `nok'/10 converged  mean AME=" %6.4f `mean_a' "  sd=" %6.4f `sd_a' "  range=[" %6.4f `min_a' ", " %6.4f `max_a' "]  significant in `nsig'/`nok' draws"
+}
+restore
+
+
+display ""
+display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE, Table 4-NOINT, Table 4-RANDONE)."
 
 log close
 
