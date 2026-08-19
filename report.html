@@ -542,6 +542,21 @@
   result.
 </p>
 <p class="note">
+  <strong>Note on cross-checking against Stata:</strong> the no-intercept check above is a
+  deterministic reparameterization and reproduces exactly in Stata (same AMEs, same LL to
+  three decimals). The random-one-team draws, however, use each engine's own RNG (Stata's
+  native generator vs. numpy's <code>default_rng</code>), so a given seed does not select
+  the same rows in both — the specific mean AMEs, ranges, and per-seed significance counts
+  reported here are Python-run numbers and are not expected to reproduce bit-for-bit in
+  Stata. Re-running the check in Stata (2026-08-19) confirms the same qualitative pattern —
+  match-win estimates stay positive-signed with reduced power, and the tiebreak result stays
+  null throughout — but with different individual draws (e.g. Stata hit zero convergence
+  failures across its 10 tiebreak seeds, and its tiebreak same-language mean AME came out
+  slightly negative rather than slightly positive). Since the tiebreak baseline itself is a
+  null, near-zero estimate, this sign wobble across engines is noise around zero, not a
+  disagreement about the finding.
+</p>
+<p class="note">
   Every point estimate keeps the same sign and a broadly similar magnitude to its
   baseline — there is no evidence the two-rows-per-match design was manufacturing the
   effect. What changes is <strong>power</strong>: halving the sample inflates SEs by

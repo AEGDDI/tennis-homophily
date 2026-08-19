@@ -17,13 +17,18 @@ Never update one file without updating the others. After any model change, run a
 
 ## Current specification (as of 2026-08)
 
-**Report scope:** The report is split into **Part 1 (Grand Slams only)** and a deferred
-**Part 2 (Olympics)**. Per reviewer feedback, Part 1 must contain zero Olympic data —
-not just excluded from the regression sample, but never mixed into any Part-1 count,
-table, or cross-reference (the Observation Breakdown funnel starts from a GS-only raw
-count, not a GS+Olympics combined one). Olympics analysis is deferred until Part 1 is
-signed off, at which point it will cover descriptive team-formation only (nationality/
-language composition), not performance outcomes.
+**Report scope (updated 2026-08-19):** `report.html`/`report.pdf` (the Grand-Slams
+regression report) remain **Part 1, Grand Slams only** — zero Olympic data mixed into
+any count, table, or cross-reference there (the Observation Breakdown funnel starts
+from a GS-only raw count, not a GS+Olympics combined one).
+
+The overleaf paper (`overleaf/main.tex`) is broader than `report.html` and now
+**does** include Olympic-cycle descriptive team-formation evidence (Tables 2A/2B,
+Tokyo and Paris cycles — nationality/language/ling_prox composition around each
+Games, no performance outcomes) in its main-text §6.3, per Lingqing's 2026-08-19
+rewrite. This supersedes the earlier "Olympics deferred entirely" rule for the paper
+specifically; `report.html` itself is unaffected and still excludes Olympics
+entirely, since it is Part 1 in the narrower sense (the regression tables only).
 
 **Sample:** Grand Slams only, N = 3,752 team-obs, 1,876 matches (2018–2025 incl. 2020).
 Of the 14 matches originally dropped for incomplete doubles ranking, 4 were retrieved and restored
