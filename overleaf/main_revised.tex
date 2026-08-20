@@ -700,6 +700,68 @@ $N$ & 2,364 & 2,364 & 2,364 \\
 \end{threeparttable}
 \end{table}
 
+\section{Appendix: Heterogeneity by Cultural Individualism (Hofstede IDV)}
+\textcolor{blue}{As a further heterogeneity test, we interact each culture measure with the team-average Hofstede individualism score (\textit{IC\_team\_dm}, demeaned; mean = 62.98, SD = 20.85), testing whether teams from more individualist cultures rely less on in-group cultural bonding, so that the culture-performance association would be smaller for them.}
+
+\begin{table}[htbp]
+\color{blue}
+\centering
+\caption{Heterogeneity: Culture $\times$ Hofstede Individualism (Demeaned) \label{tab:ta4}}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+ & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
+\midrule
+Culture (C) & 0.0306* & 0.0401** & 0.0360** \\
+ & (0.0166) & (0.0162) & (0.0162) \\
+IC\_team\_dm & 0.0011* & 0.0008 & 0.0008 \\
+ & (0.0006) & (0.0008) & (0.0008) \\
+C $\times$ IC\_team\_dm ($\theta$) & $-$0.00049 & $-$0.00003 & $-$0.00001 \\
+ & (0.00079) & (0.00089) & (0.00089) \\
+\midrule
+Controls (Table~\ref{tab:t3} set) & Yes & Yes & Yes \\
+Tournament $\times$ year FE & Yes & Yes & Yes \\
+Round FE & Yes & Yes & Yes \\
+Pseudo-$R^2$ & 0.096 & 0.097 & 0.097 \\
+$N$ & 3,752 & 3,752 & 3,752 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Hofstede IDV scores are taken from the official 6-dimension dataset (2015 release); countries not directly covered are assigned tiered proxy scores (direct cultural/linguistic kin, or same-region closest available). The interaction $\theta$ is small and statistically insignificant for all three measures (p$>$0.53), providing no evidence that individualism moderates the cultural homophily advantage. A robustness spec dropping team-obs relying on the lower-confidence regional proxy countries ($N=3{,}597$) leaves this conclusion unchanged.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\section{Appendix: Robustness to Non-Independence of Team-Rows within a Match}
+\textcolor{blue}{Each match (tiebreak) contributes two team-rows that are mechanically linked -- a win for one team is a loss for the other -- so the two rows are not independent draws. The main specifications already address this via standard errors clustered by \textit{match\_id}. We verify this further with two additional checks. First, a no-intercept specification that gives tournament$\times$year fixed effects full-rank (all-levels) dummies instead of the usual intercept plus reference-dropped dummies reproduces Tables~\ref{tab:t3} and \ref{tab:t4} exactly (identical AMEs, SEs, and log-likelihood to three decimals), confirming it is a pure reparameterization rather than a different model. Second, we re-estimate both outcomes keeping only one randomly-selected team's row per match (Table~\ref{tab:t3}) or per tiebreak (Table~\ref{tab:t4}), removing the mechanical complementarity entirely; repeated over 10 random seeds since any single draw is arbitrary.}
+
+\begin{table}[htbp]
+\color{blue}
+\centering
+\caption{Robustness: One Randomly-Selected Team per Match/Tiebreak (10 Random Seeds) \label{tab:ta5}}
+\begin{threeparttable}
+\begin{tabular}{llccc}
+\toprule
+Outcome & Culture measure & Baseline AME & Random-one: mean AME [range] & Sig.\ ($p<.05$) \\
+\midrule
+Match win & Same nationality & 0.0377** & 0.0312~[0.0024, 0.0764] & 2/10 \\
+($N$=1,876/draw) & Same language & 0.0474*** & 0.0392~[0.0146, 0.0747] & 5/10 \\
+ & Lang.\ proximity & 0.0434*** & 0.0357~[0.0084, 0.0772] & 4/10 \\
+\midrule
+Tiebreak win & Same nationality & 0.0298 (n.s.) & 0.0316~[0.0040, 0.0759] & 1/10 \\
+($N\approx$1,182/draw) & Same language & 0.0075 (n.s.) & 0.0024~[$-$0.0255, 0.0678] & 1/9\tnote{a} \\
+ & Lang.\ proximity & 0.0019 (n.s.) & $-$0.0047~[$-$0.0346, 0.0624] & 1/9\tnote{a} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item[a] One of the 10 tiebreak seeds produced a singular Hessian (non-identified MLE) in 2 of 3 culture specs, due to sparse tournament$\times$year$\times$round cells once the sample is halved; that draw is excluded from the summary rather than reported as spurious.
+\item Every point estimate keeps the same sign and a broadly similar magnitude to baseline; halving the sample inflates SEs by roughly $\sqrt{2}$, enough to push several draws below the 5\% threshold, most visibly for same-nationality (already the weakest measure at baseline). The stacked-both-rows, match-clustered design used throughout the paper remains the preferred specification.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \bibliographystyle{apalike}
 \bibliography{reference}
 

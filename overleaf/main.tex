@@ -1,0 +1,333 @@
+
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsthm} 
+
+\newtheorem{hypothesis}{Hypothesis} 
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{rotating}
+\usepackage{color}
+\usepackage{placeins}
+%\usepackage{paralist}
+\usepackage{graphicx}
+%\usepackage[retainorgcmds]{IEEEtrantools}
+%\usepackage{hyperref}
+\usepackage{comment} 
+\usepackage{caption}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{natbib}
+ \usepackage{tikz}
+ \usepackage{changes}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{longtable}
+\usepackage[flushleft]{threeparttable}
+\usepackage{framed}
+%\usepackage{soul}
+\usepackage{subfiles}
+\bibpunct{(}{)}{;}{a}{}{,}
+\graphicspath{{./plot/}}
+\usepackage{array}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+
+\makeatletter
+\newcommand*{\textoverline}[1]{$\overline{\hbox{#1}}\m@th$}
+\makeatother
+
+%%% PAGE DIMENSIONS
+ %%% PAGE DIMENSIONS
+ \usepackage[margin=1.5in]{geometry}
+ \geometry{a4paper}
+\usepackage{setspace}
+\doublespacing
+
+\title{Culture, Coordination, and Team Performance}
+\author{}
+\date{\today}
+
+\begin{document}
+
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+
+xxx
+\end{abstract}
+\section{Introduction}
+Organizations increasingly rely on culturally diverse teams to solve complex tasks and compete in global markets. While diversity expands the range of knowledge, perspectives, and expertise available within teams, it may also create communication barriers and increase coordination costs. Consequently, whether cultural diversity ultimately enhances or hinders team performance remains a central question in management and economics. %Economic theory emphasizes the trade-off between the informational benefits of diversity and the communication frictions arising from heterogeneous backgrounds (Lazear, 1999), while organizational research similarly concludes that multicultural teams simultaneously benefit from broader informational resources but face greater communication difficulties and social integration challenges (Stahl et al., 2010). 
+Organizational research suggests that effective coordination depends not only on communication itself but also on the emergence of shared mental models—compatible understandings of the task, the environment, and teammates’ likely actions that allow individuals to anticipate one another without constant explicit communication (Cannon-Bowers, Salas and Converse, 1993; Klimoski and Mohammed, 1994; Mathieu et al., 2000). Cultural similarity may facilitate the development of such shared understandings by reducing communication frictions and providing teammates with more compatible expectations about one another’s behaviour. Recent evidence from professional football similarly shows that cultural homophily is associated with greater collaboration between players, measured through passing behavior, suggesting that cultural similarity may shape how team members work together (Békés and Ottaviano, 2025). Yet despite extensive evidence on how culture influences communication and collaboration within organizations, comparatively little is known about whether cultural similarity ultimately translates into superior team performance.
+
+In this paper, we study whether cultural similarity is associated with the performance of small teams. We use professional men's Grand Slam doubles tennis as an empirical model of organizational coordination, where two players with distinct individual abilities must repeatedly coordinate their actions to produce a joint outcome.  Many organizations rely on dyadic or small-team collaboration, including project teams, surgical teams, military units, emergency response teams, and entrepreneurial partnerships. Although these settings differ substantially in purpose and context, they share a common organizational challenge: team members must repeatedly coordinate their actions under time constraints while adapting to rapidly changing environments. Doubles tennis captures these fundamental features in a particularly transparent way. Every point requires two teammates to coordinate positioning, movement, tactical decisions, and responses to their opponents, while success depends not only on individual ability but also on how effectively partners anticipate and complement each other's actions. At the same time, performance is measured objectively, tasks are standardized across teams, and teammates operate under strong incentives to maximize joint success. These characteristics make doubles tennis an informative empirical model of organizational coordination in environments where communication and mutual understanding are essential to collective performance.
+
+We collect data from all men's doubles matches in the Grand Slam tournaments between 2018 and 2025. We measure cultural similarity along three complementary dimensions: shared nationality, shared official language, and linguistic proximity. These measures capture different aspects of common cultural and communicative background. We examine whether cultural similarity is associated with match outcomes as well as tiebreak outcomes as a boundary condition. Tiebreaks are short and closely contested games in which relatively few points determine the outcome and teammates have fewer opportunities to communicate and adjust during play.
+
+We find that culturally similar teams are \textcolor{blue}{3.8 to 4.7 percentage points} more likely to win Grand Slam matches. The association is positive and statistically significant across all three measures, with the strongest and most precisely estimated associations observed for shared language and linguistic proximity. However, these associations disappear in
+tiebreaks.  This difference is consistent with cultural similarity being related to coordination processes that have greater scope to operate over the course of a full match than within a short, closely contested sequence, where communication opportunities are more limited and point-level variation plays a greater role in determining the outcome. 
+
+We next conduct a specificity check by examining whether the observed association between cultural similarity and match performance varies across playing surfaces. We find no significant heterogeneity across surfaces, providing no evidence that the main association is driven by a particular playing environment within tennis. 
+
+We then investigate potential underlying mechanisms. We consider two distinct roles of professional experience. First, if cultural and linguistic similarity facilitates the development of effective coordination, its association with performance may become stronger as teammates accumulate professional experience. Second, if shared culture instead facilitates knowledge transfer between teammates with different levels of experience, the association should be stronger when the experience gap within a team is larger. We find that the association between shared language and linguistic proximity and match performance becomes significantly stronger with team average experience, while there is no evidence that cultural similarity is particularly valuable when teammates differ more in experience. The results are therefore more consistent with a role for accumulated experience and coordination than with a simple knowledge-transfer mechanism from experienced to inexperienced teammates.
+
+Finally, we examine partnership formation to assess whether the performance association could reflect cultural sorting rather than differences in coordination within established teams. Cultural similarity is substantially more common among observed partnerships than under random matching, confirming that doubles teams are strongly sorted by nationality and language. However, this sorting is not more pronounced among higher-ranked players, and a player's own ranking is, if anything, negatively associated with having a culturally similar partner. We therefore find no evidence for the specific selection mechanism in which stronger players systematically choose culturally similar partners, although these descriptive analyses cannot rule out all forms of endogenous partner selection.
+
+ 
+Our study relates to four strands of literature. First, it contributes to the literature on cultural diversity and organizational performance. Economic models emphasize the trade-off between diversity's informational benefits and its communication costs (Lazear, 1999), while organizational research documents that cultural diversity simultaneously enhances creativity and knowledge variety but also creates coordination challenges and interpersonal conflict (Stahl et al., 2010; Harrison and Klein, 2007). Although numerous studies examine workforce diversity and firm outcomes, relatively few identify the role of cultural similarity within small teams performing highly interdependent tasks.
+
+Second, our paper contributes to the literature on language, communication, and organizational coordination. Language has been recognized as a fundamental organizational resource that facilitates information exchange, knowledge integration, and collective decision-making (Wernerfelt, 2004). In international business and organizational research, language differences have been shown to impede knowledge transfer and collaboration across multinational organizations (Marschan-Piekkari, Welch and Welch, 1999; Feely and Harzing, 2003). Related evidence from economics shows that linguistic similarity reduces communication frictions and facilitates economic interaction, including trade, migration, and cross-border collaboration (e.g., Melitz and Toubal, 2014). Our analysis extends this literature by examining whether shared language is associated with performance in teams whose success depends on continuous real-time coordination rather than one-off communication.
+
+Third, we relate to the literature on shared mental models and team coordination. Organizational researchers argue that high-performing teams develop common understandings of tasks and teammates that enable implicit coordination, particularly in environments characterized by repeated interaction and rapidly changing conditions (Cannon-Bowers et al., 1993; Klimoski and Mohammed, 1994; Mathieu et al., 2000). While this literature has primarily relied on laboratory experiments and organizational settings, our study provides evidence from elite professional teams performing under naturally occurring competitive conditions, where coordination quality is reflected directly in objective performance outcomes.
+
+Finally, our paper builds on the emerging literature examining cultural homophily in professional sports. Most closely related is the recent  study by Békés and Ottaviano (2025), which shows that professional football players exhibit systematic cultural homophily in passing behaviour, indicating that cultural similarity shapes patterns of collaboration even within highly professional organizations. Whereas that study focuses on who collaborates with whom, we examine whether cultural similarity is associated with how successfully teams perform once formed. By distinguishing collaboration from performance, we address a complementary question about the organizational consequences of cultural homophily.
+
+This paper makes three contributions. First, it extends the literature on cultural homophily from collaboration to objective team performance. Second, it shows that the association between cultural similarity and performance becomes stronger with teammates' professional experience, consistent with coordination benefits developing through repeated interaction. Third, it identifies a boundary condition: the association disappears in short, closely contested tiebreaks, suggesting that cultural similarity matters most when teammates have sufficient opportunity for coordination advantages to accumulate.
+\section{Data}
+\subsection{Empirical Setting and Sample}
+Our empirical setting consists of men's doubles matches from the four Grand Slam tournaments, the Australian Open, Roland Garros, Wimbledon, and the US Open, between 2018 and 2025. The dataset contains 1,876 completed Grand Slam doubles matches.\footnote{From the initial dataset with 1,933  matches we exclude retirements and walkovers because these outcomes do not reflect normal competitive performance. We further remove matches with incomplete doubles ranking information that cannot be reliably recovered, resulting in a final estimation sample of 1,876 matches.} \textcolor{red}{DOUBLE CHECK: Since each match contributes one winning and one losing team,  the main analysis contains 3,752 units of team-match observations.}
+
+Player information is collected by combining official tournament records from the Association of Tennis Professionals (ATP)  and supplementary public sources. Nationality and language information are fully harmonized through a multi-stage validation procedure that resolves inconsistencies arising from spelling variants, accented characters, and historical nationality changes. %Only observations for which all four players have complete ranking and cultural information are retained.
+
+\textcolor{red}{Table 1: Observation Breakdown by Grand Slams and Year and descriptive stats with average age, experience, ranking at both individual level and team level}
+
+
+Table 1 reports the match-level observation and descriptive statistics at both individual and team level. 
+
+\subsection{Measuring Cultural Similarity}
+We examine three complementary measures of cultural similarity that capture different dimensions of communication and shared background.
+
+The first measure, Same Nationality, equals one if both teammates represent the same country and zero otherwise. The second measure, Same Language, equals one if both teammates share an official national language. The third measure, Language Proximity, is a continuous measure ranging from zero to one that captures the linguistic similarity between teammates' native languages, with larger values indicating greater linguistic proximity.
+
+These measures reflect increasingly broad notions of cultural similarity. Shared nationality captures common institutional and cultural background. Shared language more directly captures communication potential. Linguistic proximity recognizes that communication costs may also be lower between speakers of closely related languages even when they do not share the same official language.
+
+\textcolor{red}{Table 2: Shares of three Cultural Similarity Measures}
+Approximately X\% of teams consist of players sharing the same nationality,  X\% share an official language, and X\% share linguistic promixity.
+\section{Theory and Hypotheses}
+\subsection{Cultural Similarity and Team Coordination}
+A central concept in the organizational literature is the idea of shared mental models. Teams develop shared representations of tasks, roles, priorities, and appropriate responses to different situations. When team members hold sufficiently similar understandings of these dimensions, they can anticipate one another's actions and coordinate without having to communicate every decision explicitly. Related work on implicit coordination emphasizes that effective teams can rely on shared expectations when responding to recurring situations. Transactive memory systems provide a complementary perspective: through repeated interaction, team members develop an understanding of what their teammates know and how knowledge and responsibilities are distributed within the team.
+
+These perspectives suggest that coordination depends partly on reducing the cognitive and communication costs of joint action. Culture and language can affect these costs. Teammates who share a language may communicate intentions more easily and interpret verbal and non-verbal cues more consistently. Shared nationality may capture additional dimensions of cultural familiarity, including norms, expectations, and common social experiences. More generally, linguistic proximity may reduce communication barriers even when teammates do not share a nationality or an official language.
+
+The implication is not that cultural similarity directly makes individual players better. Rather, cultural similarity may make it easier for teammates to combine their individual abilities into effective joint performance. This distinction is central to our analysis. We are interested in the coordination return to cultural similarity, rather than in differences in individual ability associated with nationality, language, or culture. We therefore propose:
+\begin{hypothesis}
+ Teams with greater cultural similarity are more like to win matches  than culturally dissimilar teams.
+\end{hypothesis}
+\subsection{Boundary Condition:  Tiebreaks}
+The coordination benefits associated with cultural similarity should not necessarily be equally observable in every part of a match. Coordination is a process that can develop through repeated interaction: teammates communicate, adjust their behavior, learn one another's tendencies, and build shared expectations. A full match provides many opportunities for these processes to operate.
+
+Tiebreaks provide a particularly informative boundary condition. \added{Add a short definition of tiebreaks here.} First, they are short relative to the match as a whole, leaving less time for a coordination advantage to accumulate. Second, a tiebreak is reached only when the two teams have performed sufficiently similarly to reach a closely contested stage of the set. Its outcome is therefore determined in a setting where relatively small differences in performance can be decisive and where point-level randomness is likely to play a larger role.
+
+The communication environment also differs. During a set, teammates have repeated opportunities to communicate during changeovers, allowing them to exchange information, adjust tactics, and coordinate subsequent play. A tiebreak substantially compresses these opportunities. Once the tiebreak begins, teammates have very limited scope for formal discussion before the decisive points are played, with the principal changeover occurring only after the score reaches 6–6. Thus, a tiebreak provides not only a shorter horizon over which coordination can operate but also fewer opportunities to communicate and update a shared understanding during that period.
+
+These features make the tiebreak a useful test of the coordination interpretation. If cultural similarity improves team performance partly by facilitating communication, shared expectations, and coordinated action, its advantage should be less apparent in a short, closely contested sequence in which there are fewer opportunities for communication and greater scope for point-level randomness. This leads to our second hypothesis:
+
+\begin{hypothesis}
+The performance advantage associated with cultural similarity is weaker in tiebreaks than in overall match outcomes.
+\end{hypothesis}
+
+\section{Empirical Analysis}
+
+\subsection{Baseline Performance Effects}
+We begin by testing Hypothesis 1 by examining whether culturally similar teams outperform culturally dissimilar teams in Grand Slam doubles. Our baseline specification estimates the association between cultural similarity of the two players within a team and the probability of winning a match. Specifically, we estimate
+\begin{align}
+  \operatorname{Pr}(W_{ijt} = 1) = f(\beta C_{ijt} + \gamma X_{ijt} + \delta_{ty} + \lambda_r) , 
+\end{align}
+
+
+where $W_{ijt}$ equals one if team $i$ wins match $j$ in tournament-year $t$, $C$ denotes one of our three measures of cultural similarity: same nationality, same language, and language proximity. %$X$ contains team and opponent characteristics which we elaborate further below, $\delta_{ty}$ denotes tournament-by-year fixed effects, and $\lambda_r$ denotes round fixed effects.
+
+
+The variables in X  represent observable team and opponent qualities. Team quality is measured using the average ATP doubles ranking of the two teammates together with the average ranking of the opposing team. Lower ranking values indicate stronger players. We additionally include an indicator for whether either teammate has previously been ranked inside the ATP Top 100 in singles, capturing exceptional individual talent that may not be reflected fully in doubles rankings. Professional experience is measured as the average number of years since the two teammates turned professional. To allow for diminishing returns, we include both the demeaned experience measure and its squared term. Demeaning facilitates interpretation of interaction models while leaving the fitted values unchanged.
+
+Throughout the analysis we include tournament-by-year fixed effects $\delta_{ty}$ and round fixed effects $\lambda_r$ to absorb common variation across tournaments and stages of competition. Standard errors are clustered at the match level.
+
+
+
+\textcolor{red}{Regression Table: Match win}
+
+Table X report average marginal effects (AMEs) estimated in logit models. which can be interpreted as percentage-point changes in the probability of winning associated with each explanatory variable. 
+
+Across all three specifications, culturally similar teams are significantly more likely to win Grand Slam matches. The estimated effects range from 3.8 to 4.7 percentage points and are strongest when cultural similarity is measured through shared language rather than shared nationality. Team quality remains the dominant predictor of success, as expected: stronger doubles rankings significantly increase the probability of winning, while more experienced teams also perform better, although the experience-performance relationship is concave.
+
+These findings provide consistent evidence that cultural similarity is positively associated with team performance after accounting for observable differences in team quality, opponent strength, experience, and tournament characteristics.
+
+\subsection{A Boundary Condition: Tiebreak Performance} 
+%Tiebreaks provide a particularly demanding boundary test because they are both short and conditional on the two teams having reached a closely contested state. The limited number of points leaves less scope for coordination advantages to accumulate, while the outcome of a short sequence is more sensitive to point-level variation.
+
+
+%\begin{itemize}
+%\item Compression: there are relatively few points over which coordination advantages can accumulate.
+%\item Selection into a close contest: the tiebreak is reached when the two teams have been sufficiently evenly matched in that part of the match.
+%\item Greater outcome variance: A short sequence of points is more susceptible to individual point-level events, so even if cultural similarity improves coordination, that advantage may be harder to detect in the winner of one tiebreak.
+%\end{itemize}
+
+To test Hypothesis 2, we estimate the same empirical specification using individual tiebreaks as the unit of observation.
+
+\textcolor{red}{Regression Table: Tiebreaks win}
+
+In contrast to the baseline analysis, none of the three measures of cultural similarity is significantly associated with the probability of winning a tiebreak. The estimated coefficients are economically small and statistically indistinguishable from zero. Importantly, the ranking controls remain highly significant, indicating that the specification continues to capture underlying differences in team quality.
+
+Taken together, these findings suggest that the performance advantage associated with cultural similarity is not universal. Instead, it appears to emerge primarily over the course of an entire match, where teammates repeatedly coordinate across many points, rather than within short, closely contested episodes where relatively few points determine the outcome.
+%A coordination advantage need not translate into a detectable advantage when the outcome is determined over a very short sequence.
+
+
+
+\subsection{Robustness check: Testing Tennis-Specific Explanations} 
+
+
+One concern is that the observed relationship reflects strategic characteristics unique to particular playing surfaces rather than general coordination processes. Grass courts reward shorter rallies and faster exchanges, whereas clay courts involve longer rallies and different tactical patterns. 
+If the observed association were driven by a particular tactical or environmental feature of doubles tennis, we might expect the return to cultural similarity to vary across surfaces, which differ substantially in their playing characteristics. We therefore test whether the association differs between grass and other surfaces and between clay and other surfaces.
+
+
+We interact each cultural similarity measure with surface. 
+
+
+The coordination advantage associated with cultural similarity is remarkably stable across playing environments. The result is not driven by any specific physical environment of the tournament.
+
+\section{Mechanisms}
+\subsection{Coordination Through Shared Experience} 
+
+
+On the one hand, experienced professionals have developed richer tactical knowledge and communication routines, allowing them to exploit shared language more effectively. 
+
+\begin{itemize}
+
+\item Does cultural similarity become more valuable as teams accumulate experience? 
+\end{itemize}
+We test this mechanism by augmenting the baseline specification by interacting each measure of cultural similarity with average years since turning professional.
+
+We estimate the equation 
+\begin{align}
+\operatorname{Pr}(\text{Win}) = f(\beta_1 C + \beta_2 \text{AvgTeamExp} + \beta_3 (C \times \text{AvgTeamExp}) + \gamma X + \delta_{ty} + \lambda_r)
+\end{align}
+\subsection{Knowledge Transfer with Experience Gaps} 
+
+On the other hand, shared language becomes especially valuable when teammates differ substantially in expertise because communication and knowledge transfer become more demanding. Large experience gaps imply asymmetric knowledge, asymmetric decision authority, coaching/mentoring,
+ and more need to transfer tacit knowledge. That is exactly where shared language may matter most.
+\begin{itemize}
+\item Does cultural similarity matter particularly when teammates differ substantially in experience?
+\end{itemize}
+The estimating equation becomes
+\begin{align}
+\operatorname{Pr}(\text{Win}) = f(\beta_1 C + \beta_2 \text{TeamExpGap} + \beta_3 (C \times \text{TeamExpGap}) + \gamma X + \delta_{ty} + \lambda_r)
+\end{align}
+%There may be greater uncertainty about: how the less experienced player behaves; tactical preferences; positioning; risk-taking; communication; expectations about the partner. Shared language could potentially reduce those coordination frictions.
+
+NEW
+
+The preceding results establish an association between cultural similarity and match performance and show that this association is concentrated in outcomes that provide greater scope for coordination to matter. We next examine two distinct mechanisms through which cultural similarity could be related to coordination. The first concerns accumulated professional experience: more experienced teammates may have developed greater ability to anticipate one another's actions and communicate efficiently, allowing cultural and linguistic similarity to become more valuable as professional experience accumulates. The second concerns within-team experience differences: cultural and linguistic similarity may instead be particularly valuable when teammates differ substantially in experience, because a common cultural and linguistic background could facilitate the transfer of knowledge and expectations from a more experienced player to a less experienced teammate. These mechanisms make different predictions. The first implies that the association between cultural similarity and performance should strengthen with the team's average professional experience; the second implies that it should strengthen with the experience gap between teammates.
+
+5.1 Accumulated Professional Experience
+
+We first test whether the association between cultural similarity and match performance varies with team average experience. For each team, we calculate the average number of years since the two players turned professional. We interact this measure with each of the three cultural-similarity measures while retaining the full set of controls and fixed effects from the main match-win specification. Team average experience is demeaned at its sample mean of 11.90 years, so the coefficient on cultural similarity represents its association with match performance for a team at the average level of professional experience. The specification also includes the linear and quadratic terms for average experience used in the main analysis.
+
+The results are reported in Table 6. The interaction between cultural similarity and average experience is positive for all three measures. For same nationality, however, the interaction is very small and statistically insignificant (0.0003, p=0.925). For the two language-based measures, the interaction is positive and statistically significant: 0.0064 for shared language (p=0.045) and 0.0063 for linguistic proximity (p=0.049). Thus, the association between language-related cultural similarity and match performance becomes stronger as team members have more professional experience.
+
+The result is robust to allowing the interaction to vary nonlinearly with experience. When we additionally include the interaction between cultural similarity and squared demeaned experience, the quadratic interactions are small and statistically insignificant for all three measures (p>0.50), while the linear interactions for shared language and linguistic proximity remain positive and statistically significant. The finding therefore does not appear to be driven by an omitted nonlinear relationship.
+
+This pattern is consistent with a mechanism based on accumulated professional experience and the development of effective coordination. More experienced players may be better able to anticipate teammates' actions and establish efficient communication routines. Cultural and linguistic similarity may make these coordination processes more effective, so that their association with performance becomes stronger among more experienced teams. The fact that the result is concentrated in the language-based measures is particularly consistent with a communication-based interpretation.
+
+Importantly, our measure captures players' individual professional experience, rather than the number of matches a particular pair has played together. We therefore do not directly observe the development of pair-specific shared mental models or communication routines. The evidence should consequently be interpreted as consistent with, rather than establishing, a process in which professional experience strengthens the performance relevance of cultural and linguistic similarity.
+
+5.2 Within-Team Experience Differences
+
+The second mechanism makes a different prediction. Cultural similarity may matter particularly when teammates have different levels of professional experience. An experienced player may possess greater knowledge of the demands of elite doubles competition, while an inexperienced teammate may need to learn unfamiliar routines and expectations. Under this knowledge-transfer interpretation, a common cultural and linguistic background could facilitate communication between teammates with different levels of experience. The value of cultural similarity should therefore increase with the experience gap within the team, rather than with the average experience of the two players.
+
+We test this prediction using the absolute difference between the two teammates' years since turning professional, ExperienceGap
+ij
+	​
+
+=∣Experience
+i
+	​
+
+−Experience
+j
+	​
+
+∣. We interact this measure with each cultural-similarity measure and additionally control for team average experience and its quadratic term. The experience gap is demeaned at its sample mean of 5.48 years, so the cultural-similarity coefficient is evaluated at the average experience gap rather than at zero. The models otherwise retain the specification used in the main analysis.
+
+The results provide no evidence that cultural similarity becomes more strongly associated with performance as the experience gap increases. The interaction is positive for all three measures—0.0032 for same nationality (p=0.344), 0.0038 for same language (p=0.240), and 0.0036 for linguistic proximity (p=0.271)—but none is statistically significant. Allowing for a quadratic relationship between the experience gap and cultural similarity produces the same conclusion: the quadratic interactions are small and statistically insignificant, while the linear interactions remain insignificant.
+
+The results therefore distinguish the two proposed mechanisms. We find evidence that the association between cultural similarity and performance becomes stronger among more experienced teams, particularly for language-related measures, but no evidence that cultural similarity is especially valuable when teammates differ more substantially in experience. The findings are consequently more consistent with an interpretation based on accumulated professional experience and coordination than with a simple knowledge-transfer mechanism from experienced to inexperienced teammates.
+
+This distinction is important for interpreting the mechanism. We do not find evidence that cultural similarity primarily helps an experienced player transmit knowledge to a less experienced teammate. Instead, the results point toward a setting in which the value of cultural and linguistic compatibility is greater among teams whose members have accumulated more professional experience. While this pattern is consistent with the gradual development of shared expectations and coordination routines, the available data do not allow us to observe those processes directly.
+
+ 
+
+\section{Team Formation and Cultural Sorting}
+The analysis so far examines the performance of partnerships conditional on their formation. This raises a separate selection concern: players do not randomly form doubles teams. In particular, stronger players may have greater opportunities to choose their teammates. If stronger players systematically select culturally similar partners, the positive association between cultural similarity and match performance could partly reflect the composition of teams rather than differences in coordination within established teams. We therefore provide descriptive evidence on partnership formation directly. 
+
+ This analysis does not attempt to identify the causal determinants of partner choice. Instead, it asks two narrower questions: first, how prevalent is cultural sorting in doubles partnerships relative to random matching? And second, is such sorting particularly pronounced among stronger players?
+
+\subsection{Cultural Sorting in Partnership Formation}
+
+We construct a partnership-level sample containing each distinct men's doubles partnership appearing in the Grand Slams between 2018 and 2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds, because partner formation occurs before the subsequent match outcomes. The resulting sample contains 2,101 partnerships with complete ranking information.
+
+We compare the observed prevalence of cultural similarity with the rate expected under random matching within each tournament-year. The random-matching benchmark is calculated directly from the composition of the actual player field: for each tournament-year, we calculate the share of all possible player pairs that would satisfy the relevant cultural criterion. This produces a deterministic benchmark that accounts for the nationality and language composition of each tournament field.
+
+The results in Table X show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with 5.2\% under random matching. Similarly, 55.9\% of partnerships share an official language, compared with 16.2\% under random matching. Mean linguistic proximity is 0.567 among observed partnerships, compared with 0.198 under random matching. Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
+
+This finding is important for interpreting the performance results. Cultural similarity is clearly not randomly distributed across partnerships: players who form teams are much more culturally similar than would be expected from the composition of the tournament field alone. The match-performance estimates should therefore not be interpreted as if cultural similarity were randomly assigned. Rather, they describe an association between the cultural composition of an already formed partnership and its subsequent performance.
+
+At the same time, the sorting does not appear to be concentrated among the strongest players. Among partnerships in which both players are ranked in the top 100, 32.6\% are same-nationality partnerships, compared with 4.1\% under random matching. Among partnerships with both players in the top 50, the corresponding figures are 35.5\% and 4.5\%. The corresponding actual-to-random ratios are therefore remarkably similar across groups. The same pattern is evident for shared language and linguistic proximity. Indeed, the raw prevalence of same-nationality partnerships is lower among top-50 and top-100 partnerships than in the full sample, while same-language sorting remains broadly similar.
+
+These comparisons provide no evidence that the cultural sorting observed in doubles is disproportionately driven by the strongest players.
+
+\subsection{Player Ranking and Cultural Partner Selection}
+
+We next examine the relationship between a player's own ranking and the cultural similarity of the partnership more directly. For each partnership, we treat each player in turn as the focal player, generating two player-level observations per partnership. This produces 4,202 player-partnership observations from the 2,101 partnerships. Because the same partnership contributes two observations, standard errors are clustered at the partnership level.
+
+We regress each cultural-similarity measure on the focal player's own doubles ranking, including tournament-by-year fixed effects. The specification is deliberately parsimonious: the purpose is not to explain partner selection comprehensively, but to test whether a player's own ranking predicts the cultural similarity of the partner within a given tournament-year.
+
+The results are reported in Table X. The coefficient on own ranking is positive and statistically significant for all three measures: 0.000271 for same nationality (p<0.001), 0.000148 for same language (p=0.011), and 0.000141 for linguistic proximity (p=0.008). Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
+
+This result is the opposite of what would be expected if the performance association were primarily generated by stronger players having greater partner choice and systematically selecting culturally similar teammates. Together with the bracket comparisons, the evidence therefore provides no support for the specific selection mechanism in which stronger players disproportionately sort into culturally similar partnerships. It does not, however, eliminate other forms of endogenous partnership formation, and the performance estimates remain associations rather than causal effects.
+
+\subsection{Team Formation Around the Olympic Cycle}
+
+Finally, we provide a  descriptive perspective on partnership formation by examining whether cultural sorting changes around the Olympic Games. \added{Add description about the new sample collection} The Olympic Games provide a separate setting in which the incentives surrounding partner formation are particularly salient. Unlike Grand Slam doubles competition, Olympic participation is organized around national representation, creating a direct incentive for players seeking to compete together at the Games to form partnerships with compatriots. We therefore examine whether the composition of Grand Slam partnerships changes during the preparation periods surrounding the Tokyo 2021 and Paris 2024 Olympic Games. The analysis is descriptive and is intended to provide additional evidence on how partnership formation responds to the institutional environment surrounding elite competition.
+
+For the Tokyo cycle, we divide the Grand Slam sample into three periods: a pre-Tokyo period covering the Australian Open 2018 through the US Open 2019; a Tokyo preparation period covering the Australian Open 2020 through Wimbledon 2021, excluding the cancelled 2020 Wimbledon; and a post-Tokyo period covering the US Open 2021 through the US Open 2022. The share of same-nationality teams is remarkably stable across these periods, at 40.0%, 40.3%, and 39.0%, respectively. The corresponding shares for shared official language are 54.8%, 55.0%, and 54.8%, while mean linguistic proximity is 0.557, 0.551, and 0.556.
+
+The absence of an increase during the Tokyo preparation period is noteworthy because the Tokyo cycle took place during the COVID-19 pandemic. International travel and cross-border interaction were unusually difficult during this period, potentially increasing the relative attractiveness of partnering with compatriots or players from nearby linguistic communities. Nevertheless, the descriptive composition of teams does not show an increase in same-nationality or language-based partnerships during the preparation period.
+
+The Paris cycle provides a contrasting pattern. The pre-Paris period covers the 2022 Grand Slams, the Paris preparation period covers the Australian Open 2023 through Wimbledon 2024, and the post-Paris period covers the US Open 2024 through the US Open 2025. Same-nationality partnerships account for 39.3\% of teams before the Paris Games, 42.6\% during the preparation period, and 43.9\% afterwards. Shared-language partnerships increase from 54.1\% to 57.6\% and then 58.8\%, while mean linguistic proximity rises from 0.552 to 0.580 and then 0.602.
+
+The contrast between the two Olympic cycles should not be interpreted as a causal estimate of Olympic incentives on partner formation. The two periods differ in many dimensions, most importantly the extraordinary conditions surrounding the Tokyo Games. Instead, the descriptive evidence illustrates that the composition of doubles partnerships can vary with the broader institutional and competitive environment. It also reinforces the broader conclusion from this section: partnership formation involves substantial cultural sorting, but that sorting is not simply a consequence of the strongest players systematically selecting culturally similar teammates.
+
+Overall, the evidence in this section provides useful context for interpreting the main performance results. Cultural sorting is clearly present, but the data do not support the specific hypothesis that stronger players are disproportionately responsible for that sorting. At the same time, partnerships are formed through a mixture of deliberate choice and circumstances that can constrain partner selection. We therefore do not interpret the main estimates as causal effects of cultural similarity. Rather, the team-formation evidence helps assess the plausibility of one important alternative explanation for the observed association between cultural similarity and team performance.
+
+%Taken together, the partnership-formation evidence provides two useful qualifications to the performance analysis. First, cultural sorting in doubles is substantial: culturally similar partnerships are much more common than random matching would imply. Second, the sorting does not appear to be disproportionately concentrated among higher-ranked players, and the Tokyo preparation period provides no evidence of a sharp increase in national sorting despite unusually strong incentives for nationally aligned preparation. These findings do not eliminate selection as a possible source of the performance association, but they make the specific explanation that stronger players systematically select culturally similar partners less consistent with the data.
+
+\begin{comment}
+\subsection{Evidence from the Olympics}
+
+If cultural similarity is associated with better performance, an important question is whether players appear to sort toward culturally similar partners when the incentives to coordinate are particularly salient. We therefore examine team composition around the Tokyo and Paris Olympic cycles.  
+
+\textcolor{red}{Table X reports the composition of teams across Olympic preparation cycles.} Despite widespread speculation that Olympic eligibility may encourage players to form same-nationality partnerships, the share of same-nationality teams remains remarkably stable during the Tokyo Olympic cycle. The Tokyo preparation period coincides with the covid period. During that period, international travel and international interaction were unusually constrained.
+
+If anything, this creates a plausible setting in which same-nationality partnering could have been especially attractive: easier travel; fewer international logistical complications; greater opportunities to train together; potentially greater value from existing social/professional networks. Even in a period when practical constraints may have made same-nationality partnering particularly convenient, we do not observe an increase in same-nationality team formation.
+
+
+During the Paris cycle, same-nationality and same-language partnerships become modestly more common, although the increase occurs gradually rather than as a discrete shift during the Olympic preparation period. These patterns do not provide evidence of systematic optimization.
+\end{comment}
+
+\section{Conclusion}
+Cultural diversity is increasingly a feature of how organizations assemble teams, but the organizational value of diversity depends not only on what individuals bring to a team but also on how effectively they can combine those resources. %This paper highlights one component of that process: the coordination costs associated with cultural differences. 
+Our findings suggests that cultural similarity is associated with better team performance, but that this association is neither universal nor mechanical. Its relevance appears to depend on whether teammates have sufficient opportunity to communicate, develop shared understandings, and translate those understandings into coordinated action.
+
+This perspective complements the recent finding that cultural homophily shapes collaboration even among highly skilled professionals in multinational football teams (Békés and Ottaviano, 2025). Their evidence shows that cultural similarity affects how teammates interact; our evidence suggests that such differences in interaction can also be reflected in collective performance. The distinction is important for management research. If cultural similarity matters partly because it lowers coordination costs, then its organizational consequences should depend on the structure of the task. Teams performing highly interdependent work, working under substantial time pressure, or relying on repeated interaction may be particularly sensitive to these costs. Conversely, organizations may be able to capture the informational benefits of cultural diversity when tasks allow greater time for communication, clearer division of responsibilities, or other mechanisms that reduce the need for implicit coordination.
+
+The findings also suggest a more nuanced view of team composition. A natural managerial response to evidence of coordination costs would be to favor culturally similar employees when assembling teams. Our results do not justify such a prescription. Cultural similarity is strongly associated with partnership formation, but the evidence does not indicate that the strongest players are disproportionately responsible for this sorting. More importantly, our analysis is observational and cannot establish that cultural similarity itself causes superior performance. Cultural similarity may proxy for other dimensions of compatibility, partnership history, social networks, or unobserved characteristics that influence both team formation and performance. The evidence on experience is consistent with a role for accumulated shared experience, but it does not identify the precise process through which communication advantages develop.
+
+These limitations point toward an important agenda for future research. The central challenge is to move from observing cultural similarity to identifying the coordination process through which similarity affects team production. Experimental or quasi-experimental variation in team composition could help separate cultural compatibility from selection into partnerships. Richer longitudinal data could distinguish shared experience with a particular teammate from general professional experience and examine whether coordination routines develop through repeated interaction. Direct measures of communication—such as verbal exchanges, shared decision-making, or behavioral measures of anticipation—could provide an even more direct test of whether cultural and linguistic similarity operate through communication costs and shared mental models.
+
+More broadly, the paper suggests that the consequences of diversity should be understood as a property of the interaction between team composition and task design, rather than as an inherent feature of diversity itself. Cultural differences may provide organizations with access to heterogeneous knowledge, perspectives, and networks, while simultaneously increasing the effort required to integrate those resources. Whether the balance is favorable depends on the extent to which an organization's production process relies on rapid, repeated, and interdependent coordination. Understanding this interaction is important for managers designing teams, but also for economists and organizational scholars seeking to explain when diversity becomes an asset, when it becomes a coordination challenge, and how organizations can reduce the costs of bringing different people together.
+\end{document}
