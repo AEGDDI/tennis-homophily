@@ -16,7 +16,6 @@
 \usepackage{graphicx}
 %\usepackage[retainorgcmds]{IEEEtrantools}
 %\usepackage{hyperref}
-\usepackage{comment} 
 \usepackage{caption}
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
@@ -116,33 +115,20 @@ Player information is collected by combining official tournament records from th
 \label{tab:t1}
 \begin{threeparttable}
 \textbf{Panel A: Matches by Tournament and Year (regression sample)}\\[2pt]
-\begin{tabular}{lc}
+\textcolor{red}{
+\begin{tabular}{lccccccccc}
 \toprule
-Tournament & Matches \\
+Tournament & 2018 & 2019 & 2020 & 2021 & 2022 & 2023 & 2024 & 2025 & \textbf{Total} \\
 \midrule
-Australian Open & 490 \\
-Roland Garros & 491 \\
-Wimbledon & 437 \\
-US Open & 458 \\
+Australian Open & 60 & 62 & 63 & 62 & 59 & 63 & 60 & 61 & \textbf{490} \\
+Roland Garros    & 63 & 60 & 62 & 62 & 62 & 61 & 58 & 63 & \textbf{491} \\
+Wimbledon        & 73 & 61 & 0  & 60 & 59 & 61 & 61 & 62 & \textbf{437} \\
+US Open          & 63 & 60 & 31 & 59 & 62 & 61 & 63 & 59 & \textbf{458} \\
 \midrule
-\textbf{Total} & \textbf{1,876} \\
+\textbf{Total} & \textbf{259} & \textbf{243} & \textbf{156} & \textbf{243} & \textbf{242} & \textbf{246} & \textbf{242} & \textbf{245} & \textbf{1,876} \\
 \bottomrule
 \end{tabular}
-\hspace{1cm}
-\begin{tabular}{lc}
-\toprule
-Year & Matches \\
-\midrule
-2018 & 259 \\
-2019 & 243 \\
-2020 & 156 \\
-2021 & 243 \\
-2022 & 242 \\
-2023 & 246 \\
-2024 & 242 \\
-2025 & 245 \\
-\bottomrule
-\end{tabular}
+}
 
 \vspace{10pt}
 \textbf{Panel B: Descriptive Statistics}\\[2pt]
@@ -180,20 +166,21 @@ These measures reflect increasingly broad notions of cultural similarity. Shared
 \caption{Shares of the Three Cultural Similarity Measures, and Unique Teams by Tournament}
 \label{tab:t2}
 \begin{threeparttable}
-\textbf{Panel A: Shares of the Three Cultural Similarity Measures (N = 3,752 team-obs)}\\[2pt]
 \begin{tabular}{lc}
+\toprule
+\multicolumn{2}{l}{\textbf{Panel A: Cultural Similarity Shares (N = 2,101 partnerships)}} \\[2pt]
 \toprule
 Measure of cultural similarity& Share \\
 \midrule
-Same nationality  & 41.2\% \\
-Same official language  & 56.2\% \\
-Language proximity (0--1 scale) & 0.569 \\
+Same nationality  & 42.2\% \\
+Same official language  & 55.9\% \\
+Language proximity (0--1 scale) & 0.567 \\
 \bottomrule
 \end{tabular}
-
-\vspace{10pt}
-\textbf{Panel B: Unique Teams (Partnerships) by Tournament}\\[2pt]
+\hspace{1cm}
 \begin{tabular}{lc}
+\toprule
+\multicolumn{2}{l}{\textbf{Panel B: Unique Teams (Partnerships) by Tournament}} \\[2pt]
 \toprule
 Tournament & Teams \\
 \midrule
@@ -207,13 +194,13 @@ US Open & 517 \\
 \end{tabular}
 \begin{tablenotes}
 \small
-\item Note: Panel B counts distinct tournament$\times$partnership pairings with complete ranking data (Section~\ref{sec:sorting} sample), not team-match observations -- a pair advancing through several rounds of the same event is counted once.
+\item Note: Panel A reports shares over the 2,101 distinct tournament$\times$partnership pairings with complete ranking data (same rank-complete sample as Panel B and Section~\ref{sec:sorting}'s Table~\ref{tab:t7} ``All'' row) -- a pair advancing through several rounds of the same event is counted once, not once per match played. Panel B counts the same 2,101 pairings, broken down by tournament.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-In our sample,  \textcolor{blue}{41.2\%} of teams consist of players sharing the same nationality, \textcolor{blue}{56.2\%} share an official language, and the mean linguistic proximity is \textcolor{blue}{0.569} on the 0--1 scale.
+In our sample,  \textcolor{red}{42.2\%} of teams consist of players sharing the same nationality, \textcolor{red}{55.9\%} share an official language, and the mean linguistic proximity is \textcolor{red}{0.567} on the 0--1 scale.
 
 \section{Theory and Hypotheses}
 \subsection{Cultural Similarity and Team Performance}
@@ -688,7 +675,7 @@ Overall, the evidence in this section provides useful context for interpreting t
 
 %Taken together, the partnership-formation evidence provides two useful qualifications to the performance analysis. First, cultural sorting in doubles is substantial: culturally similar partnerships are much more common than random matching would imply. Second, the sorting does not appear to be disproportionately concentrated among higher-ranked players, and the Tokyo preparation period provides no evidence of a sharp increase in national sorting despite unusually strong incentives for nationally aligned preparation. These findings do not eliminate selection as a possible source of the performance association, but they make the specific explanation that stronger players systematically select culturally similar partners less consistent with the data.
 
-\begin{comment}
+\iffalse
 \subsection{Evidence from the Olympics}
 
 If cultural similarity is associated with better performance, an important question is whether players appear to sort toward culturally similar partners when the incentives to coordinate are particularly salient. We therefore examine team composition around the Tokyo and Paris Olympic cycles.  
@@ -699,7 +686,7 @@ If anything, this creates a plausible setting in which same-nationality partneri
 
 
 During the Paris cycle, same-nationality and same-language partnerships become modestly more common, although the increase occurs gradually rather than as a discrete shift during the Olympic preparation period. These patterns do not provide evidence of systematic optimization.
-\end{comment}
+\fi
 
 \section{Conclusion}
 Cultural diversity is increasingly a feature of how organizations assemble teams, but the organizational value of diversity depends not only on what individuals bring to a team but also on how effectively they can combine those resources. %This paper highlights one component of that process: the coordination costs associated with cultural differences. 

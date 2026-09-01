@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\aldi\Documents\GitHub\tennis-homophily\stata_homophily_results.txt
   log type:  text
- opened on:  19 Aug 2026, 12:02:27
+ opened on:   1 Sep 2026, 15:07:46
 
 . 
 . * ═══════════════════════════════════════════════════════════════════════════════
@@ -1605,7 +1605,7 @@ clustering needed (one row per match). Robust SE. 10 random seeds.
 . tempname rr
 
 . postfile `rr' str24 cvar seed double ame double pval using "`randone_results'", replace
-(note: file C:\Users\aldi\AppData\Local\Temp\ST_5408_000007.tmp not found)
+(note: file C:\Users\aldi\AppData\Local\Temp\ST_5900_000007.tmp not found)
 
 . 
 . foreach cvar in same_country same_language ling_prox {
@@ -2704,7 +2704,7 @@ Duplicates in terms of match_id
 . tempfile exp_gap_lookup
 
 . save `exp_gap_lookup'
-file C:\Users\aldi\AppData\Local\Temp\ST_5408_000016.tmp saved
+file C:\Users\aldi\AppData\Local\Temp\ST_5900_000016.tmp saved
 
 . restore
 
@@ -5172,7 +5172,7 @@ Duplicates in terms of match_id
 . tempfile iso_lookup
 
 . save `iso_lookup'
-file C:\Users\aldi\AppData\Local\Temp\ST_5408_000018.tmp saved
+file C:\Users\aldi\AppData\Local\Temp\ST_5900_000018.tmp saved
 
 . restore
 
@@ -7154,7 +7154,7 @@ exp_mean_dm_sq |   .0000564   .0003031     0.19   0.852    -.0005376    .0006504
 . tempname rr2
 
 . postfile `rr2' str24 cvar seed double ame double pval using "`randone_results_tb'", replace
-(note: file C:\Users\aldi\AppData\Local\Temp\ST_5408_000019.tmp not found)
+(note: file C:\Users\aldi\AppData\Local\Temp\ST_5900_000019.tmp not found)
 
 . 
 . foreach cvar in same_country same_language ling_prox {
@@ -9775,9 +9775,1104 @@ ling_prox: 10/10 converged  mean AME=-0.0123  sd=0.0229  range=[-0.0663, 0.0099]
 Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE, Table 4-NOINT, Table 4-RANDONE).
 
 . 
+. * ═══════════════════════════════════════════════════════════════════════════════
+. * SECTION 8: PARTNER SELECTION — OWN COUNTRY AND TOURNAMENT-FIELD COMPOSITION
+. * (new, per Lingqing's meeting notes / main.tex red comment: extend the Section 6.1
+. * "does own ranking predict partner-culture similarity?" ego-row regression with own
+. * nationality and field-composition controls.)
+. *
+. * IMPORTANT: the underlying Section 6 "Partner Selection" pipeline (deduplicating
+. * partnerships by tournament x team, the closed-form random-matching benchmark, and
+. * the tournament-field composition calculation) exists ONLY in the Python notebook
+. * (code/analysis/homophily.ipynb, cells ~51-56) and has never previously been mirrored
+. * in Stata -- unlike every other section of this do-file, which mirrors an existing
+. * Stata-equivalent computation. Re-deriving that dedup/composition logic from scratch
+. * in Stata, unexecuted, would carry real risk of a subtle, uncaught bug (string-based
+. * team-key construction, per-tournament-year field aggregation, etc.). Instead, this
+. * section imports data/atp/partner_selection_ego.csv, which was exported directly from
+. * the EXECUTED and verified Python ego2 dataframe (4,202 ego-rows; identical
+. * construction to homophily.ipynb) -- so the regressions below run on real, correct
+. * data even though, like the rest of this do-file, they have not been run through
+. * Stata itself in this environment.
+. * ═══════════════════════════════════════════════════════════════════════════════
+. 
+. display ""
+
+
+. display "=== SECTION 8. Partner Selection: Own Country and Field Composition ==="
+=== SECTION 8. Partner Selection: Own Country and Field Composition ===
+
+. display "Data: data/atp/partner_selection_ego.csv (exported from the executed Python ego2 sample)"
+Data: data/atp/partner_selection_ego.csv (exported from the executed Python ego2 sample)
+
+. display ""
+
+
+. 
+. import delimited "data/atp/partner_selection_ego.csv", clear varnames(1) stringcols(1)
+(11 vars, 4,202 obs)
+
+. 
+. encode tourn_year, generate(ty8)
+
+. encode own_iso3, generate(own_iso3_code)
+
+. encode own_iso3_grp, generate(own_iso3_grp_code)
+
+. egen team_id = group(team_key)
+
+. 
+. destring own_rank same_country same_language ling_prox composition_nat composition_lang composition_ling, replace force
+own_rank already numeric; no replace
+same_country already numeric; no replace
+same_language already numeric; no replace
+ling_prox already numeric; no replace
+composition_nat already numeric; no replace
+composition_lang already numeric; no replace
+composition_ling already numeric; no replace
+
+. 
+. count
+  4,202
+
+. display "Ego-rows loaded: " r(N) " (expect 4,202)"
+Ego-rows loaded: 4202 (expect 4,202)
+
+. display ""
+
+
+. 
+. * --- Spec 1: own_rank alone (reproduces Section 6.1's original result) ---
+. display "--- Spec 1: own_rank + tourn_year FE ---"
+--- Spec 1: own_rank + tourn_year FE ---
+
+. foreach outcome in same_country same_language {
+  2.     display "  [`outcome']"
+  3.     quietly logit `outcome' own_rank i.ty8, cluster(team_id)
+  4.     margins, dydx(own_rank)
+  5. }
+  [same_country]
+
+Average marginal effects                        Number of obs     =      4,202
+Model VCE    : Robust
+
+Expression   : Pr(same_country), predict()
+dy/dx w.r.t. : own_rank
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    own_rank |   .0002714   .0000552     4.92   0.000     .0001632    .0003796
+------------------------------------------------------------------------------
+  [same_language]
+
+Average marginal effects                        Number of obs     =      4,202
+Model VCE    : Robust
+
+Expression   : Pr(same_language), predict()
+dy/dx w.r.t. : own_rank
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    own_rank |   .0001481   .0000579     2.56   0.011     .0000347    .0002616
+------------------------------------------------------------------------------
+
+. display "  [ling_prox, OLS]"
+  [ling_prox, OLS]
+
+. regress ling_prox own_rank i.ty8, cluster(team_id)
+
+Linear regression                               Number of obs     =      4,202
+                                                F(31, 1262)       =       0.69
+                                                Prob > F          =     0.9015
+                                                R-squared         =     0.0114
+                                                Root MSE          =     .49451
+
+                                     (Std. Err. adjusted for 1,263 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+            ling_prox |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+             own_rank |   .0001409   .0000532     2.65   0.008     .0000365    .0002453
+                      |
+                  ty8 |
+Australian Open_2019  |  -.0182427   .0837498    -0.22   0.828    -.1825468    .1460614
+Australian Open_2020  |  -.0841287   .0852039    -0.99   0.324    -.2512857    .0830283
+Australian Open_2021  |  -.0438066   .0855041    -0.51   0.609    -.2115525    .1239394
+Australian Open_2022  |   .0214511   .0801836     0.27   0.789    -.1358569     .178759
+Australian Open_2023  |   .0168078   .0846505     0.20   0.843    -.1492633     .182879
+Australian Open_2024  |  -.0299179   .0838086    -0.36   0.721    -.1943376    .1345017
+Australian Open_2025  |   .0176302   .0823943     0.21   0.831    -.1440148    .1792751
+  Roland Garros_2018  |  -.0127272   .0834316    -0.15   0.879    -.1764071    .1509527
+  Roland Garros_2019  |  -.0390656    .083473    -0.47   0.640    -.2028266    .1246955
+  Roland Garros_2020  |  -.0574799   .0853757    -0.67   0.501    -.2249738     .110014
+  Roland Garros_2021  |  -.0020381   .0784129    -0.03   0.979     -.155872    .1517958
+  Roland Garros_2022  |  -.1294892   .0815596    -1.59   0.113    -.2894964    .0305181
+  Roland Garros_2023  |   .0153545    .085187     0.18   0.857    -.1517693    .1824783
+  Roland Garros_2024  |  -.0025753   .0829758    -0.03   0.975    -.1653609    .1602103
+  Roland Garros_2025  |   .0053968   .0821005     0.07   0.948    -.1556716    .1664653
+        US Open_2018  |  -.0716695   .0843237    -0.85   0.396    -.2370996    .0937606
+        US Open_2019  |   .0141355   .0763754     0.19   0.853    -.1357012    .1639721
+        US Open_2020  |  -.1064944   .1041439    -1.02   0.307    -.3108087    .0978199
+        US Open_2021  |  -.0149603   .0798703    -0.19   0.851    -.1716535    .1417329
+        US Open_2022  |  -.0468546   .0849833    -0.55   0.581    -.2135788    .1198696
+        US Open_2023  |  -.0537628   .0826009    -0.65   0.515     -.215813    .1082874
+        US Open_2024  |  -.0075429   .0833611    -0.09   0.928    -.1710846    .1559987
+        US Open_2025  |   .0260304   .0826995     0.31   0.753    -.1362134    .1882741
+      Wimbledon_2018  |  -.0750176   .0809822    -0.93   0.354    -.2338921    .0838568
+      Wimbledon_2019  |  -.0067687   .0832514    -0.08   0.935    -.1700952    .1565577
+      Wimbledon_2021  |  -.0612199   .0779689    -0.79   0.432    -.2141829    .0917431
+      Wimbledon_2022  |  -.0175405   .0808259    -0.22   0.828    -.1761084    .1410274
+      Wimbledon_2023  |   .0148896   .0826877     0.18   0.857    -.1473308      .17711
+      Wimbledon_2024  |   .0324515   .0824031     0.39   0.694    -.1292106    .1941136
+      Wimbledon_2025  |   .0202485   .0821384     0.25   0.805    -.1408944    .1813914
+                      |
+                _cons |    .565452   .0594824     9.51   0.000     .4487567    .6821472
+---------------------------------------------------------------------------------------
+
+. 
+. * --- Spec 2: own country (own_iso3) fixed effects in place of own_rank ---
+. * NOTE: per the Python analysis, this specification fails to converge for the binary
+. * outcomes (same_country, same_language) via quasi-complete separation -- several of
+. * 64 nationalities have too few ego-row observations (14 have <10, down to single
+. * players) for a country-specific fixed effect to be identified. own_iso3_grp pools
+. * nationalities with <10 obs into "OTHER" (51 remaining groups), which is enough for
+. * ling_prox (OLS) but NOT enough to fix the logit specs -- expect `logit` to fail or
+. * emit a "not identified" / omitted-predictor error for same_country/same_language.
+. display ""
+
+
+. display "--- Spec 2: C(own_iso3_grp) + tourn_year FE (expect failure for binary outcomes) ---"
+--- Spec 2: C(own_iso3_grp) + tourn_year FE (expect failure for binary outcomes) ---
+
+. capture noisily logit same_country i.own_iso3_grp_code i.ty8, cluster(team_id)
+
+note: 6.own_iso3_grp_code != 0 predicts failure perfectly
+      6.own_iso3_grp_code dropped and 17 obs not used
+
+note: 14.own_iso3_grp_code != 0 predicts failure perfectly
+      14.own_iso3_grp_code dropped and 12 obs not used
+
+note: 15.own_iso3_grp_code != 0 predicts failure perfectly
+      15.own_iso3_grp_code dropped and 28 obs not used
+
+note: 20.own_iso3_grp_code != 0 predicts failure perfectly
+      20.own_iso3_grp_code dropped and 10 obs not used
+
+note: 25.own_iso3_grp_code != 0 predicts failure perfectly
+      25.own_iso3_grp_code dropped and 10 obs not used
+
+note: 30.own_iso3_grp_code != 0 predicts failure perfectly
+      30.own_iso3_grp_code dropped and 52 obs not used
+
+note: 31.own_iso3_grp_code != 0 predicts failure perfectly
+      31.own_iso3_grp_code dropped and 11 obs not used
+
+note: 32.own_iso3_grp_code != 0 predicts failure perfectly
+      32.own_iso3_grp_code dropped and 57 obs not used
+
+note: 34.own_iso3_grp_code != 0 predicts failure perfectly
+      34.own_iso3_grp_code dropped and 14 obs not used
+
+note: 35.own_iso3_grp_code != 0 predicts failure perfectly
+      35.own_iso3_grp_code dropped and 69 obs not used
+
+note: 37.own_iso3_grp_code != 0 predicts failure perfectly
+      37.own_iso3_grp_code dropped and 21 obs not used
+
+note: 40.own_iso3_grp_code != 0 predicts failure perfectly
+      40.own_iso3_grp_code dropped and 29 obs not used
+
+note: 42.own_iso3_grp_code != 0 predicts failure perfectly
+      42.own_iso3_grp_code dropped and 35 obs not used
+
+note: 44.own_iso3_grp_code != 0 predicts failure perfectly
+      44.own_iso3_grp_code dropped and 31 obs not used
+
+note: 45.own_iso3_grp_code != 0 predicts failure perfectly
+      45.own_iso3_grp_code dropped and 30 obs not used
+
+note: 46.own_iso3_grp_code != 0 predicts failure perfectly
+      46.own_iso3_grp_code dropped and 12 obs not used
+
+note: 48.own_iso3_grp_code != 0 predicts failure perfectly
+      48.own_iso3_grp_code dropped and 10 obs not used
+
+note: 49.own_iso3_grp_code != 0 predicts failure perfectly
+      49.own_iso3_grp_code dropped and 37 obs not used
+
+Iteration 0:   log pseudolikelihood = -2572.4007  
+Iteration 1:   log pseudolikelihood = -2237.7131  
+Iteration 2:   log pseudolikelihood = -2233.3432  
+Iteration 3:   log pseudolikelihood = -2233.2529  
+Iteration 4:   log pseudolikelihood = -2233.2525  
+Iteration 5:   log pseudolikelihood = -2233.2525  
+
+Logistic regression                             Number of obs     =      3,717
+                                                Wald chi2(62)     =     189.47
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -2233.2525               Pseudo R2         =     0.1318
+
+                                     (Std. Err. adjusted for 1,239 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+         same_country |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+    own_iso3_grp_code |
+                 AUS  |   .8393075   .3842385     2.18   0.029     .0862139    1.592401
+                 AUT  |  -.9942241   .6026455    -1.65   0.099    -2.175388    .1869394
+                 BEL  |   1.073972   .8231882     1.30   0.192    -.5394471    2.687391
+                 BIH  |  -.9809531   1.134483    -0.86   0.387    -3.204499    1.242593
+                 BLR  |          0  (empty)
+                 BRA  |  -1.245062   .6752222    -1.84   0.065    -2.568473    .0783492
+                 CAN  |  -2.360058   1.070011    -2.21   0.027     -4.45724   -.2628755
+                 CHL  |  -1.143671    .679683    -1.68   0.092    -2.475825    .1884832
+                 CHN  |  -1.764287   1.154973    -1.53   0.127    -4.027993    .4994195
+                 COL  |   1.006885   .8380435     1.20   0.230    -.6356495     2.64942
+                 CZE  |  -.4682348   .6047629    -0.77   0.439    -1.653548    .7170787
+                 DEU  |   .2845573   .4851657     0.59   0.558      -.66635    1.235465
+                 DNK  |          0  (empty)
+                 ECU  |          0  (empty)
+                 ESP  |   .0860621   .3672833     0.23   0.815       -.6338    .8059241
+                 FIN  |  -2.929405     1.1026    -2.66   0.008    -5.090461   -.7683487
+                 FRA  |   1.036977   .3866009     2.68   0.007      .279253      1.7947
+                 GBR  |   .0169674   .4098088     0.04   0.967    -.7862431    .8201779
+                 GEO  |          0  (empty)
+                 GRC  |   2.166041   .9691812     2.23   0.025     .2664804    4.065601
+                 HRV  |  -1.099387   .6415282    -1.71   0.087    -2.356759    .1579852
+                 HUN  |  -2.244888   1.076878    -2.08   0.037     -4.35553   -.1342461
+                 IND  |  -1.129179   .4736434    -2.38   0.017    -2.057503   -.2008549
+                 ISR  |          0  (empty)
+                 ITA  |   .5512276   .4874798     1.13   0.258    -.4042152     1.50667
+                 JPN  |  -.9974561   .6393797    -1.56   0.119    -2.250617     .255705
+                 KAZ  |  -.4312419   .5944733    -0.73   0.468    -1.596388    .7339045
+                 KOR  |   -.731878   1.110553    -0.66   0.510    -2.908521    1.444765
+                 MCO  |          0  (empty)
+                 MDA  |          0  (empty)
+                 MEX  |          0  (empty)
+                 NLD  |  -.8130326   .4744113    -1.71   0.087    -1.742862    .1167965
+                 NOR  |          0  (empty)
+                 NZL  |          0  (empty)
+               OTHER  |  -2.525081   .7917518    -3.19   0.001    -4.076886   -.9732758
+                 PAK  |          0  (empty)
+                 POL  |  -1.322019   .6715592    -1.97   0.049    -2.638251   -.0057871
+                 PRT  |  -.7614581   .7436001    -1.02   0.306    -2.218888    .6959713
+                 ROU  |          0  (empty)
+                 RUS  |   -2.16457   1.077045    -2.01   0.044    -4.275539   -.0536008
+                 SLV  |          0  (empty)
+                 SRB  |  -.4726168   .4760252    -0.99   0.321    -1.405609    .4603754
+                 SVK  |          0  (empty)
+                 SWE  |          0  (empty)
+                 TUN  |          0  (empty)
+                 TWN  |  -1.562053   1.146856    -1.36   0.173    -3.809849     .685743
+                 UKR  |          0  (empty)
+                 URY  |          0  (empty)
+                 USA  |   .7078896   .3866364     1.83   0.067    -.0499037    1.465683
+                 ZAF  |  -1.856715     1.0851    -1.71   0.087    -3.983472    .2700413
+                      |
+                  ty8 |
+Australian Open_2019  |  -.0640634   .3724209    -0.17   0.863    -.7939948    .6658681
+Australian Open_2020  |  -.1521159   .3702881    -0.41   0.681    -.8778672    .5736355
+Australian Open_2021  |  -.0129102   .3762194    -0.03   0.973    -.7502867    .7244662
+Australian Open_2022  |  -.0494699   .3535505    -0.14   0.889    -.7424161    .6434763
+Australian Open_2023  |   .1694033   .4054369     0.42   0.676    -.6252385    .9640451
+Australian Open_2024  |     .08756    .365535     0.24   0.811    -.6288755    .8039956
+Australian Open_2025  |   .3003137   .3751663     0.80   0.423    -.4349989    1.035626
+  Roland Garros_2018  |  -.1211281   .3777405    -0.32   0.748    -.8614859    .6192298
+  Roland Garros_2019  |   .1408019   .3617492     0.39   0.697    -.5682135    .8498174
+  Roland Garros_2020  |  -.1093514   .3520565    -0.31   0.756    -.7993694    .5806665
+  Roland Garros_2021  |   .1243584   .3431903     0.36   0.717    -.5482823    .7969991
+  Roland Garros_2022  |  -.7268402   .3574441    -2.03   0.042    -1.427418   -.0262627
+  Roland Garros_2023  |   .1226288   .3947084     0.31   0.756    -.6509854     .896243
+  Roland Garros_2024  |  -.0990974   .3796458    -0.26   0.794    -.8431896    .6449948
+  Roland Garros_2025  |  -.0447263   .3642206    -0.12   0.902    -.7585855    .6691329
+        US Open_2018  |  -.3353343   .3756621    -0.89   0.372    -1.071618    .4009499
+        US Open_2019  |   .3495352   .3481025     1.00   0.315    -.3327332    1.031804
+        US Open_2020  |  -.5994778   .4339753    -1.38   0.167    -1.450054    .2510981
+        US Open_2021  |  -.1699694   .3674271    -0.46   0.644    -.8901133    .5501744
+        US Open_2022  |  -.0238136   .3651507    -0.07   0.948    -.7394957    .6918686
+        US Open_2023  |  -.2270275   .3573052    -0.64   0.525    -.9273328    .4732778
+        US Open_2024  |  -.1630173   .3597214    -0.45   0.650    -.8680582    .5420236
+        US Open_2025  |  -.0188536   .3765258    -0.05   0.960    -.7568306    .7191233
+      Wimbledon_2018  |  -.3388011   .3799788    -0.89   0.373    -1.083546    .4059437
+      Wimbledon_2019  |   .4752383   .3902783     1.22   0.223     -.289693     1.24017
+      Wimbledon_2021  |   .0502735   .3597387     0.14   0.889    -.6548015    .7553484
+      Wimbledon_2022  |  -.0627956   .3778857    -0.17   0.868    -.8034379    .6778468
+      Wimbledon_2023  |   .0289021   .3762915     0.08   0.939    -.7086158    .7664199
+      Wimbledon_2024  |   .1388667   .3810449     0.36   0.716    -.6079676    .8857011
+      Wimbledon_2025  |  -.0707801   .3854237    -0.18   0.854    -.8261967    .6846365
+                      |
+                _cons |  -.0705879   .3914361    -0.18   0.857    -.8377887    .6966128
+---------------------------------------------------------------------------------------
+
+. capture noisily logit same_language i.own_iso3_grp_code i.ty8, cluster(team_id)
+
+note: 6.own_iso3_grp_code != 0 predicts failure perfectly
+      6.own_iso3_grp_code dropped and 17 obs not used
+
+note: 14.own_iso3_grp_code != 0 predicts failure perfectly
+      14.own_iso3_grp_code dropped and 12 obs not used
+
+note: 20.own_iso3_grp_code != 0 predicts failure perfectly
+      20.own_iso3_grp_code dropped and 10 obs not used
+
+note: 31.own_iso3_grp_code != 0 predicts failure perfectly
+      31.own_iso3_grp_code dropped and 11 obs not used
+
+note: 34.own_iso3_grp_code != 0 predicts failure perfectly
+      34.own_iso3_grp_code dropped and 14 obs not used
+
+note: 37.own_iso3_grp_code != 0 predicts failure perfectly
+      37.own_iso3_grp_code dropped and 21 obs not used
+
+note: 40.own_iso3_grp_code != 0 predicts failure perfectly
+      40.own_iso3_grp_code dropped and 29 obs not used
+
+note: 44.own_iso3_grp_code != 0 predicts failure perfectly
+      44.own_iso3_grp_code dropped and 31 obs not used
+
+note: 45.own_iso3_grp_code != 0 predicts failure perfectly
+      45.own_iso3_grp_code dropped and 30 obs not used
+
+note: 48.own_iso3_grp_code != 0 predicts failure perfectly
+      48.own_iso3_grp_code dropped and 10 obs not used
+
+Iteration 0:   log pseudolikelihood = -2726.0248  
+Iteration 1:   log pseudolikelihood =  -2230.436  
+Iteration 2:   log pseudolikelihood = -2226.3398  
+Iteration 3:   log pseudolikelihood = -2226.2688  
+Iteration 4:   log pseudolikelihood = -2226.2687  
+
+Logistic regression                             Number of obs     =      4,017
+                                                Wald chi2(70)     =     281.06
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -2226.2687               Pseudo R2         =     0.1833
+
+                                     (Std. Err. adjusted for 1,258 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+        same_language |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+    own_iso3_grp_code |
+                 AUS  |   .3756679   .3549522     1.06   0.290    -.3200255    1.071361
+                 AUT  |  -2.135194   .5788574    -3.69   0.000    -3.269734   -1.000655
+                 BEL  |   .3823408   .7670203     0.50   0.618    -1.120991    1.885673
+                 BIH  |   -.329637   .6989972    -0.47   0.637    -1.699646    1.040372
+                 BLR  |          0  (empty)
+                 BRA  |   -2.21641   .5882764    -3.77   0.000    -3.369411    -1.06341
+                 CAN  |  -.2031638   .5338295    -0.38   0.704     -1.24945    .8431228
+                 CHL  |   .7270181   .6499384     1.12   0.263    -.5468378    2.000874
+                 CHN  |  -2.418742   .9430374    -2.56   0.010    -4.267061   -.5704229
+                 COL  |   .4815172   .7688246     0.63   0.531    -1.025351    1.988386
+                 CZE  |  -1.614938   .5721966    -2.82   0.005    -2.736422   -.4934531
+                 DEU  |   -.869116   .4579677    -1.90   0.058    -1.766716    .0284842
+                 DNK  |          0  (empty)
+                 ECU  |  -.8997573   .7888265    -1.14   0.254    -2.445829    .6463143
+                 ESP  |   .1703361   .3282698     0.52   0.604    -.4730608     .813733
+                 FIN  |  -4.070848   1.085458    -3.75   0.000    -6.198307   -1.943389
+                 FRA  |   .2733198   .3470544     0.79   0.431    -.4068943    .9535339
+                 GBR  |  -.2432739   .3794986    -0.64   0.521    -.9870775    .5005298
+                 GEO  |          0  (empty)
+                 GRC  |   1.016605   .9626294     1.06   0.291     -.870114    2.903324
+                 HRV  |  -2.074922   .5780786    -3.59   0.000    -3.207935   -.9419084
+                 HUN  |  -3.405636   1.074508    -3.17   0.002    -5.511634   -1.299639
+                 IND  |  -1.100107   .3986604    -2.76   0.006    -1.881467    -.318747
+                 ISR  |  -1.088884    .897259    -1.21   0.225    -2.847479    .6697117
+                 ITA  |  -.6064196   .4530598    -1.34   0.181      -1.4944    .2815612
+                 JPN  |  -2.125175   .6279259    -3.38   0.001    -3.355888   -.8944634
+                 KAZ  |  -1.560725   .5756912    -2.71   0.007    -2.689059   -.4323911
+                 KOR  |  -1.870762   1.126977    -1.66   0.097    -4.079595    .3380717
+                 MCO  |  -1.380835     .51922    -2.66   0.008    -2.398487    -.363182
+                 MDA  |          0  (empty)
+                 MEX  |  -2.046763   .5205324    -3.93   0.000    -3.066988   -1.026538
+                 NLD  |  -1.938383   .4375012    -4.43   0.000     -2.79587   -1.080897
+                 NOR  |          0  (empty)
+                 NZL  |  -.9072477   .5017304    -1.81   0.071    -1.890621    .0761258
+               OTHER  |  -3.666211   .7624337    -4.81   0.000    -5.160553   -2.171868
+                 PAK  |          0  (empty)
+                 POL  |  -2.462854   .6508813    -3.78   0.000    -3.738558    -1.18715
+                 PRT  |  -1.414451    .625011    -2.26   0.024     -2.63945    -.189452
+                 ROU  |          0  (empty)
+                 RUS  |  -3.315446   1.042418    -3.18   0.001    -5.358547   -1.272345
+                 SLV  |  -3.091897   .9271488    -3.33   0.001    -4.909075   -1.274718
+                 SRB  |  -.9123806   .4227812    -2.16   0.031    -1.741016   -.0837448
+                 SVK  |          0  (empty)
+                 SWE  |          0  (empty)
+                 TUN  |  -3.533266    1.12297    -3.15   0.002    -5.734247   -1.332285
+                 TWN  |  -2.157083   .9203987    -2.34   0.019    -3.961031   -.3531342
+                 UKR  |          0  (empty)
+                 URY  |  -.9864191   .6363537    -1.55   0.121    -2.233649    .2608112
+                 USA  |   .4479502   .3397266     1.32   0.187    -.2179017    1.113802
+                 ZAF  |  -.7564455   .6742111    -1.12   0.262    -2.077875     .564984
+                      |
+                  ty8 |
+Australian Open_2019  |  -.3121159   .3783167    -0.83   0.409    -1.053603    .4293712
+Australian Open_2020  |  -.4995354   .3772078    -1.32   0.185    -1.238849    .2397783
+Australian Open_2021  |  -.2425308   .3721967    -0.65   0.515     -.972023    .4869614
+Australian Open_2022  |  -.0032927   .3587909    -0.01   0.993      -.70651    .6999245
+Australian Open_2023  |  -.3031115   .4166576    -0.73   0.467    -1.119745    .5135224
+Australian Open_2024  |  -.2139476   .3784704    -0.57   0.572    -.9557359    .5278407
+Australian Open_2025  |  -.0043657   .3931326    -0.01   0.991    -.7748915    .7661601
+  Roland Garros_2018  |  -.3714669   .3789639    -0.98   0.327    -1.114222    .3712886
+  Roland Garros_2019  |  -.1840159   .3776565    -0.49   0.626    -.9242091    .5561772
+  Roland Garros_2020  |  -.3827006   .3615951    -1.06   0.290    -1.091414    .3260127
+  Roland Garros_2021  |  -.1275848    .359064    -0.36   0.722    -.8313373    .5761677
+  Roland Garros_2022  |  -.7909645   .3696271    -2.14   0.032     -1.51542   -.0665087
+  Roland Garros_2023  |  -.1185432   .3948312    -0.30   0.764    -.8923981    .6553116
+  Roland Garros_2024  |  -.1353398    .390327    -0.35   0.729    -.9003666     .629687
+  Roland Garros_2025  |  -.2639255   .3796297    -0.70   0.487    -1.007986    .4801351
+        US Open_2018  |  -.4054267   .3800946    -1.07   0.286    -1.150398    .3395449
+        US Open_2019  |  -.1264822   .3643778    -0.35   0.729    -.8406496    .5876853
+        US Open_2020  |  -.8649324   .4273783    -2.02   0.043    -1.702578   -.0272863
+        US Open_2021  |  -.2462824   .3843648    -0.64   0.522    -.9996236    .5070588
+        US Open_2022  |  -.3465448   .3889712    -0.89   0.373    -1.108914    .4158248
+        US Open_2023  |   -.536911   .3740846    -1.44   0.151    -1.270103    .1962814
+        US Open_2024  |  -.2646812   .3649568    -0.73   0.468    -.9799834    .4506209
+        US Open_2025  |  -.2952394   .3835701    -0.77   0.441    -1.047023    .4565442
+      Wimbledon_2018  |   -.273468   .3792441    -0.72   0.471    -1.016773    .4698367
+      Wimbledon_2019  |   .0820387   .3989361     0.21   0.837    -.6998616     .863939
+      Wimbledon_2021  |  -.1467518   .3720184    -0.39   0.693    -.8758945    .5823908
+      Wimbledon_2022  |  -.4267529   .3948083    -1.08   0.280    -1.200563    .3470571
+      Wimbledon_2023  |  -.1594144   .3878997    -0.41   0.681    -.9196839    .6008551
+      Wimbledon_2024  |   .1656736   .3992994     0.41   0.678    -.6169388     .948286
+      Wimbledon_2025  |  -.1271741   .3949159    -0.32   0.747     -.901195    .6468467
+                      |
+                _cons |   1.278554   .3794542     3.37   0.001     .5348377    2.022271
+---------------------------------------------------------------------------------------
+
+. display "  [ling_prox, OLS -- should estimate successfully]"
+  [ling_prox, OLS -- should estimate successfully]
+
+. regress ling_prox i.own_iso3_grp_code i.ty8, cluster(team_id)
+
+Linear regression                               Number of obs     =      4,202
+                                                F(80, 1262)       =      38.56
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.2893
+                                                Root MSE          =     .42174
+
+                                     (Std. Err. adjusted for 1,263 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+            ling_prox |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+    own_iso3_grp_code |
+                 AUS  |   .0576047    .063369     0.91   0.364    -.0667155    .1819249
+                 AUT  |  -.4909403   .1104737    -4.44   0.000    -.7076726   -.2742079
+                 BEL  |   .0586944   .1262082     0.47   0.642    -.1889066    .3062954
+                 BIH  |  -.0780976   .1521795    -0.51   0.608    -.3766503    .2204551
+                 BLR  |  -.7389858   .0560108   -13.19   0.000    -.8488703   -.6291013
+                 BRA  |  -.5065313   .1082379    -4.68   0.000    -.7188774   -.2941853
+                 CAN  |  -.0498832   .1103173    -0.45   0.651    -.2663087    .1665424
+                 CHL  |   .1438192   .0845495     1.70   0.089    -.0220538    .3096922
+                 CHN  |  -.5440086    .159914    -3.40   0.001    -.8577352    -.230282
+                 COL  |   .1130911   .1031578     1.10   0.273    -.0892886    .3154707
+                 CZE  |  -.3845866   .1275608    -3.01   0.003    -.6348412    -.134332
+                 DEU  |  -.2009613   .1049697    -1.91   0.056    -.4068956    .0049729
+                 DNK  |  -.7369084   .0561914   -13.11   0.000    -.8471472   -.6266696
+                 ECU  |  -.2104177   .1902528    -1.11   0.269    -.5836643     .162829
+                 ESP  |   .0396446   .0597021     0.66   0.507    -.0774817    .1567709
+                 FIN  |  -.6969086   .0712323    -9.78   0.000    -.8366553   -.5571618
+                 FRA  |   .0380328   .0639601     0.59   0.552    -.0874471    .1635127
+                 GBR  |  -.0552657   .0764223    -0.72   0.470    -.2051945    .0946631
+                 GEO  |  -.7369469   .0556636   -13.24   0.000    -.8461504   -.6277435
+                 GRC  |   .1406898   .1063044     1.32   0.186    -.0678631    .3492427
+                 HRV  |  -.4812132   .1108795    -4.34   0.000    -.6987417   -.2636847
+                 HUN  |  -.6551437   .0986611    -6.64   0.000    -.8487016   -.4615857
+                 IND  |  -.2604761   .0890435    -2.93   0.004    -.4351656   -.0857866
+                 ISR  |  -.2488487    .215363    -1.16   0.248    -.6713577    .1736603
+                 ITA  |  -.1363068    .101042    -1.35   0.178    -.3345355    .0619219
+                 JPN  |  -.4908226   .1179104    -4.16   0.000    -.7221446   -.2595005
+                 KAZ  |  -.3681376   .1309118    -2.81   0.005    -.6249663    -.111309
+                 KOR  |  -.4379174   .2296309    -1.91   0.057    -.8884178     .012583
+                 MCO  |  -.3255854    .119505    -2.72   0.007    -.5600358   -.0911351
+                 MDA  |  -.7462247    .055597   -13.42   0.000    -.8552975   -.6371519
+                 MEX  |  -.3892513   .1082916    -3.59   0.000    -.6017028   -.1767999
+                 NLD  |  -.4529477   .0876932    -5.17   0.000    -.6249883   -.2809072
+                 NOR  |  -.7470292   .0547521   -13.64   0.000    -.8544444   -.6396139
+                 NZL  |  -.2088551   .1166638    -1.79   0.074    -.4377315    .0200212
+               OTHER  |  -.6766547   .0690926    -9.79   0.000    -.8122037   -.5411058
+                 PAK  |  -.7375876   .0550105   -13.41   0.000    -.8455097   -.6296655
+                 POL  |  -.5482876   .1046825    -5.24   0.000    -.7536584   -.3429167
+                 PRT  |  -.3381157    .147215    -2.30   0.022    -.6269288   -.0493026
+                 ROU  |  -.7495023   .0545263   -13.75   0.000    -.8564746   -.6425301
+                 RUS  |   -.651234   .0999677    -6.51   0.000    -.8473552   -.4551129
+                 SLV  |  -.5701057   .1203127    -4.74   0.000    -.8061406   -.3340708
+                 SRB  |  -.2116973   .0958697    -2.21   0.027    -.3997788   -.0236158
+                 SVK  |   -.737878   .0547935   -13.47   0.000    -.8453743   -.6303817
+                 SWE  |   -.743793   .0531612   -13.99   0.000     -.848087    -.639499
+                 TUN  |  -.7569162   .0551916   -13.71   0.000    -.8651937   -.6486387
+                 TWN  |  -.4941269   .1735112    -2.85   0.004    -.8345292   -.1537247
+                 UKR  |  -.7338322   .0559595   -13.11   0.000    -.8436161   -.6240483
+                 URY  |  -.1757911   .1498945    -1.17   0.241    -.4698609    .1182787
+                 USA  |   .1089509   .0599259     1.82   0.069    -.0086145    .2265162
+                 ZAF  |  -.1774342    .159033    -1.12   0.265    -.4894324     .134564
+                      |
+                  ty8 |
+Australian Open_2019  |  -.0521152   .0628492    -0.83   0.407    -.1754155    .0711852
+Australian Open_2020  |  -.0994883   .0639574    -1.56   0.120    -.2249629    .0259863
+Australian Open_2021  |  -.0531807   .0627426    -0.85   0.397     -.176272    .0699106
+Australian Open_2022  |  -.0104813   .0594046    -0.18   0.860     -.127024    .1060614
+Australian Open_2023  |  -.0186202   .0694846    -0.27   0.789    -.1549382    .1176978
+Australian Open_2024  |  -.0478279   .0657124    -0.73   0.467    -.1767454    .0810897
+Australian Open_2025  |   .0058634   .0670474     0.09   0.930    -.1256732       .1374
+  Roland Garros_2018  |  -.0475185    .063281    -0.75   0.453     -.171666     .076629
+  Roland Garros_2019  |  -.0427801   .0618832    -0.69   0.490    -.1641855    .0786252
+  Roland Garros_2020  |  -.0781896   .0606137    -1.29   0.197    -.1971043    .0407251
+  Roland Garros_2021  |  -.0330651   .0601657    -0.55   0.583    -.1511009    .0849708
+  Roland Garros_2022  |  -.1406001   .0621548    -2.26   0.024    -.2625382    -.018662
+  Roland Garros_2023  |  -.0162154   .0653255    -0.25   0.804     -.144374    .1119432
+  Roland Garros_2024  |  -.0341599   .0665226    -0.51   0.608    -.1646671    .0963472
+  Roland Garros_2025  |  -.0429267   .0648449    -0.66   0.508    -.1701423    .0842889
+        US Open_2018  |  -.0870157   .0638531    -1.36   0.173    -.2122856    .0382543
+        US Open_2019  |  -.0236676   .0588312    -0.40   0.688    -.1390854    .0917502
+        US Open_2020  |  -.1426558   .0755948    -1.89   0.059    -.2909612    .0056496
+        US Open_2021  |  -.0575648   .0635949    -0.91   0.366    -.1823282    .0671986
+        US Open_2022  |   -.077869   .0649443    -1.20   0.231    -.2052796    .0495416
+        US Open_2023  |  -.1107647   .0638468    -1.73   0.083    -.2360222    .0144927
+        US Open_2024  |  -.0613536   .0618303    -0.99   0.321     -.182655    .0599479
+        US Open_2025  |  -.0389645   .0657137    -0.59   0.553    -.1678845    .0899556
+      Wimbledon_2018  |  -.0596376   .0636296    -0.94   0.349     -.184469    .0651938
+      Wimbledon_2019  |   .0038113   .0661196     0.06   0.954    -.1259051    .1335277
+      Wimbledon_2021  |  -.0356904   .0620887    -0.57   0.566    -.1574989    .0861181
+      Wimbledon_2022  |  -.0626667   .0658797    -0.95   0.342    -.1919125     .066579
+      Wimbledon_2023  |  -.0399526   .0672141    -0.59   0.552    -.1718162    .0919111
+      Wimbledon_2024  |   .0056638   .0671043     0.08   0.933    -.1259845     .137312
+      Wimbledon_2025  |  -.0191649   .0683457    -0.28   0.779    -.1532487    .1149189
+                      |
+                _cons |   .7908731   .0665261    11.89   0.000     .6603591    .9213871
+---------------------------------------------------------------------------------------
+
+. 
+. * --- Spec 3: own_rank + outcome-matched field composition ---
+. display ""
+
+
+. display "--- Spec 3: own_rank + field composition + tourn_year FE ---"
+--- Spec 3: own_rank + field composition + tourn_year FE ---
+
+. display "  [same_country]"
+  [same_country]
+
+. quietly logit same_country own_rank composition_nat i.ty8, cluster(team_id)
+
+. margins, dydx(own_rank composition_nat)
+
+Average marginal effects                        Number of obs     =      4,202
+Model VCE    : Robust
+
+Expression   : Pr(same_country), predict()
+dy/dx w.r.t. : own_rank composition_nat
+
+---------------------------------------------------------------------------------
+                |            Delta-method
+                |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+       own_rank |   .0001176   .0000529     2.22   0.026     .0000139    .0002213
+composition_nat |   3.753072   .2529512    14.84   0.000     3.257296    4.248847
+---------------------------------------------------------------------------------
+
+. display "  [same_language]"
+  [same_language]
+
+. quietly logit same_language own_rank composition_lang i.ty8, cluster(team_id)
+
+. margins, dydx(own_rank composition_lang)
+
+Average marginal effects                        Number of obs     =      4,202
+Model VCE    : Robust
+
+Expression   : Pr(same_language), predict()
+dy/dx w.r.t. : own_rank composition_lang
+
+----------------------------------------------------------------------------------
+                 |            Delta-method
+                 |      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-----------------+----------------------------------------------------------------
+        own_rank |   .0001175   .0000526     2.23   0.026     .0000143    .0002206
+composition_lang |   1.272164   .0817038    15.57   0.000     1.112027      1.4323
+----------------------------------------------------------------------------------
+
+. display "  [ling_prox, OLS]"
+  [ling_prox, OLS]
+
+. regress ling_prox own_rank composition_ling i.ty8, cluster(team_id)
+
+Linear regression                               Number of obs     =      4,202
+                                                F(32, 1262)       =       8.48
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.1577
+                                                Root MSE          =     .45651
+
+                                     (Std. Err. adjusted for 1,263 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+            ling_prox |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+             own_rank |   .0001047    .000047     2.23   0.026     .0000125    .0001969
+     composition_ling |   1.148917   .0760171    15.11   0.000     .9997828     1.29805
+                      |
+                  ty8 |
+Australian Open_2019  |  -.0562295   .0699821    -0.80   0.422    -.1935236    .0810645
+Australian Open_2020  |  -.0680972   .0730298    -0.93   0.351    -.2113703     .075176
+Australian Open_2021  |  -.0038997   .0736641    -0.05   0.958    -.1484173     .140618
+Australian Open_2022  |   .0109128     .06985     0.16   0.876    -.1261222    .1479478
+Australian Open_2023  |   .0231329   .0750082     0.31   0.758    -.1240216    .1702874
+Australian Open_2024  |   .0057784    .074154     0.08   0.938    -.1397003    .1512571
+Australian Open_2025  |   .0692803     .07397     0.94   0.349    -.0758375    .2143981
+  Roland Garros_2018  |   .0027694   .0708176     0.04   0.969    -.1361638    .1417027
+  Roland Garros_2019  |   .0148898   .0714671     0.21   0.835    -.1253176    .1550973
+  Roland Garros_2020  |  -.0295239   .0719852    -0.41   0.682    -.1707476    .1116999
+  Roland Garros_2021  |    .045241   .0674091     0.67   0.502    -.0870053    .1774872
+  Roland Garros_2022  |  -.0983189   .0710504    -1.38   0.167    -.2377089    .0410711
+  Roland Garros_2023  |   .0488095   .0734634     0.66   0.507    -.0953144    .1929335
+  Roland Garros_2024  |   .0485242   .0743605     0.65   0.514    -.0973597     .194408
+  Roland Garros_2025  |   .0189599   .0714488     0.27   0.791    -.1212117    .1591314
+        US Open_2018  |  -.0993511   .0726341    -1.37   0.172     -.241848    .0431458
+        US Open_2019  |  -.0465205   .0651256    -0.71   0.475    -.1742869    .0812459
+        US Open_2020  |  -.1803273   .0847175    -2.13   0.033      -.34653   -.0141246
+        US Open_2021  |  -.0867714   .0675956    -1.28   0.199    -.2193835    .0458407
+        US Open_2022  |  -.0758519   .0721078    -1.05   0.293    -.2173163    .0656125
+        US Open_2023  |  -.0914298   .0707334    -1.29   0.196    -.2301979    .0473382
+        US Open_2024  |  -.0675374   .0714942    -0.94   0.345    -.2077981    .0727232
+        US Open_2025  |  -.0429953   .0724711    -0.59   0.553    -.1851725    .0991818
+      Wimbledon_2018  |  -.0466005   .0691922    -0.67   0.501     -.182345     .089144
+      Wimbledon_2019  |   .0118623   .0719242     0.16   0.869    -.1292418    .1529663
+      Wimbledon_2021  |  -.0094386   .0657521    -0.14   0.886    -.1384342    .1195569
+      Wimbledon_2022  |   -.050414   .0709187    -0.71   0.477    -.1895455    .0887175
+      Wimbledon_2023  |  -.0058014   .0724541    -0.08   0.936    -.1479452    .1363423
+      Wimbledon_2024  |   .0243289    .071893     0.34   0.735    -.1167141    .1653719
+      Wimbledon_2025  |  -.0056033   .0733096    -0.08   0.939    -.1494254    .1382188
+                      |
+                _cons |   .3437426   .0518685     6.63   0.000     .2419846    .4455006
+---------------------------------------------------------------------------------------
+
+. 
+. * --- Spec 4: own country + field composition (expect same binary-outcome failure as Spec 2) ---
+. display ""
+
+
+. display "--- Spec 4: C(own_iso3_grp) + field composition + tourn_year FE (expect failure for binary outcomes) ---"
+--- Spec 4: C(own_iso3_grp) + field composition + tourn_year FE (expect failure for binary outcomes) ---
+
+. capture noisily logit same_country i.own_iso3_grp_code composition_nat i.ty8, cluster(team_id)
+
+note: 6.own_iso3_grp_code != 0 predicts failure perfectly
+      6.own_iso3_grp_code dropped and 17 obs not used
+
+note: 14.own_iso3_grp_code != 0 predicts failure perfectly
+      14.own_iso3_grp_code dropped and 12 obs not used
+
+note: 15.own_iso3_grp_code != 0 predicts failure perfectly
+      15.own_iso3_grp_code dropped and 28 obs not used
+
+note: 20.own_iso3_grp_code != 0 predicts failure perfectly
+      20.own_iso3_grp_code dropped and 10 obs not used
+
+note: 25.own_iso3_grp_code != 0 predicts failure perfectly
+      25.own_iso3_grp_code dropped and 10 obs not used
+
+note: 30.own_iso3_grp_code != 0 predicts failure perfectly
+      30.own_iso3_grp_code dropped and 52 obs not used
+
+note: 31.own_iso3_grp_code != 0 predicts failure perfectly
+      31.own_iso3_grp_code dropped and 11 obs not used
+
+note: 32.own_iso3_grp_code != 0 predicts failure perfectly
+      32.own_iso3_grp_code dropped and 57 obs not used
+
+note: 34.own_iso3_grp_code != 0 predicts failure perfectly
+      34.own_iso3_grp_code dropped and 14 obs not used
+
+note: 35.own_iso3_grp_code != 0 predicts failure perfectly
+      35.own_iso3_grp_code dropped and 69 obs not used
+
+note: 37.own_iso3_grp_code != 0 predicts failure perfectly
+      37.own_iso3_grp_code dropped and 21 obs not used
+
+note: 40.own_iso3_grp_code != 0 predicts failure perfectly
+      40.own_iso3_grp_code dropped and 29 obs not used
+
+note: 42.own_iso3_grp_code != 0 predicts failure perfectly
+      42.own_iso3_grp_code dropped and 35 obs not used
+
+note: 44.own_iso3_grp_code != 0 predicts failure perfectly
+      44.own_iso3_grp_code dropped and 31 obs not used
+
+note: 45.own_iso3_grp_code != 0 predicts failure perfectly
+      45.own_iso3_grp_code dropped and 30 obs not used
+
+note: 46.own_iso3_grp_code != 0 predicts failure perfectly
+      46.own_iso3_grp_code dropped and 12 obs not used
+
+note: 48.own_iso3_grp_code != 0 predicts failure perfectly
+      48.own_iso3_grp_code dropped and 10 obs not used
+
+note: 49.own_iso3_grp_code != 0 predicts failure perfectly
+      49.own_iso3_grp_code dropped and 37 obs not used
+
+Iteration 0:   log pseudolikelihood = -2572.4007  
+Iteration 1:   log pseudolikelihood = -2157.8171  
+Iteration 2:   log pseudolikelihood = -2153.2208  
+Iteration 3:   log pseudolikelihood = -2153.1332  
+Iteration 4:   log pseudolikelihood = -2153.1329  
+Iteration 5:   log pseudolikelihood = -2153.1329  
+
+Logistic regression                             Number of obs     =      3,717
+                                                Wald chi2(63)     =     326.03
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -2153.1329               Pseudo R2         =     0.1630
+
+                                     (Std. Err. adjusted for 1,239 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+         same_country |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+    own_iso3_grp_code |
+                 AUS  |   .3603964   .3946796     0.91   0.361    -.4131614    1.133954
+                 AUT  |  -.4515855   .6127911    -0.74   0.461    -1.652634    .7494631
+                 BEL  |   1.768901   .8423166     2.10   0.036     .1179913    3.419812
+                 BIH  |  -.1795913   1.132133    -0.16   0.874     -2.39853    2.039348
+                 BLR  |          0  (empty)
+                 BRA  |  -.7740879   .6731238    -1.15   0.250    -2.093386    .5452106
+                 CAN  |   -1.66555   1.056759    -1.58   0.115    -3.736759    .4056593
+                 CHL  |  -.4118665   .6905013    -0.60   0.551    -1.765224    .9414911
+                 CHN  |  -.9912746   1.157163    -0.86   0.392    -3.259271    1.276722
+                 COL  |   1.638164   .8352021     1.96   0.050     .0011985     3.27513
+                 CZE  |   .1355037   .6055224     0.22   0.823    -1.051298    1.322306
+                 DEU  |   .5029758   .4909668     1.02   0.306    -.4593015    1.465253
+                 DNK  |          0  (empty)
+                 ECU  |          0  (empty)
+                 ESP  |   .2577957   .3753887     0.69   0.492    -.4779526    .9935441
+                 FIN  |  -2.147751   1.105335    -1.94   0.052    -4.314167    .0186655
+                 FRA  |    .330294    .409746     0.81   0.420    -.4727934    1.133381
+                 GBR  |   -.424967   .4201125    -1.01   0.312    -1.248372    .3984383
+                 GEO  |          0  (empty)
+                 GRC  |    2.89316   .9728407     2.97   0.003     .9864271    4.799892
+                 HRV  |  -.6381119    .645884    -0.99   0.323    -1.904021    .6277975
+                 HUN  |  -1.383482   1.079452    -1.28   0.200    -3.499168    .7322044
+                 IND  |  -.6884652   .4772883    -1.44   0.149    -1.623933    .2470027
+                 ISR  |          0  (empty)
+                 ITA  |   .9713335   .5025169     1.93   0.053    -.0135815    1.956249
+                 JPN  |  -.3002697   .6511643    -0.46   0.645    -1.576528     .975989
+                 KAZ  |   .2422622   .5938522     0.41   0.683    -.9216667    1.406191
+                 KOR  |   .0306005    1.05773     0.03   0.977    -2.042513    2.103714
+                 MCO  |          0  (empty)
+                 MDA  |          0  (empty)
+                 MEX  |          0  (empty)
+                 NLD  |  -.5852762   .4793682    -1.22   0.222    -1.524821    .3542682
+                 NOR  |          0  (empty)
+                 NZL  |          0  (empty)
+               OTHER  |  -1.722243   .7936773    -2.17   0.030    -3.277822   -.1666641
+                 PAK  |          0  (empty)
+                 POL  |  -.6223704   .6734914    -0.92   0.355    -1.942389    .6976484
+                 PRT  |   -.007702   .7315225    -0.01   0.992     -1.44146    1.426056
+                 ROU  |          0  (empty)
+                 RUS  |  -1.322491   1.064042    -1.24   0.214    -3.407976    .7629938
+                 SLV  |          0  (empty)
+                 SRB  |   .0788881   .4853944     0.16   0.871    -.8724673    1.030244
+                 SVK  |          0  (empty)
+                 SWE  |          0  (empty)
+                 TUN  |          0  (empty)
+                 TWN  |  -.7786145   1.128558    -0.69   0.490    -2.990548    1.433318
+                 UKR  |          0  (empty)
+                 URY  |          0  (empty)
+                 USA  |  -.3329743   .4133205    -0.81   0.420    -1.143068     .477119
+                 ZAF  |  -1.088876   1.081583    -1.01   0.314    -3.208739    1.030987
+                      |
+      composition_nat |   15.90603   1.623665     9.80   0.000      12.7237    19.08835
+                      |
+                  ty8 |
+Australian Open_2019  |  -.1529124   .3760819    -0.41   0.684    -.8900194    .5841946
+Australian Open_2020  |  -.1821423   .3700312    -0.49   0.623    -.9073901    .5431055
+Australian Open_2021  |   .0265898    .374773     0.07   0.943    -.7079519    .7611314
+Australian Open_2022  |  -.2845242   .3776947    -0.75   0.451    -1.024792    .4557438
+Australian Open_2023  |   .1164022    .399099     0.29   0.771    -.6658175     .898622
+Australian Open_2024  |  -.0935419   .3787821    -0.25   0.805    -.8359411    .6488573
+Australian Open_2025  |   .2440936   .3745627     0.65   0.515    -.4900358     .978223
+  Roland Garros_2018  |   -.280664   .3891851    -0.72   0.471    -1.043453    .4821248
+  Roland Garros_2019  |   .0956313   .3694897     0.26   0.796    -.6285553    .8198179
+  Roland Garros_2020  |  -.1616559   .3606345    -0.45   0.654    -.8684865    .5451747
+  Roland Garros_2021  |   .0730956   .3540341     0.21   0.836    -.6207985    .7669896
+  Roland Garros_2022  |  -.8399948   .3601993    -2.33   0.020    -1.545973   -.1340171
+  Roland Garros_2023  |   .0765885   .3924865     0.20   0.845     -.692671    .8458479
+  Roland Garros_2024  |  -.1294739   .3745541    -0.35   0.730    -.8635866    .6046387
+  Roland Garros_2025  |  -.2141233    .377921    -0.57   0.571    -.9548348    .5265882
+        US Open_2018  |  -.5187847   .3844027    -1.35   0.177      -1.2722    .2346307
+        US Open_2019  |   .2227067   .3492715     0.64   0.524    -.4618529    .9072664
+        US Open_2020  |  -.7280342    .436818    -1.67   0.096    -1.584182    .1281134
+        US Open_2021  |   -.380416   .3815026    -1.00   0.319    -1.128147    .3673154
+        US Open_2022  |  -.1935106   .3759666    -0.51   0.607    -.9303915    .5433704
+        US Open_2023  |  -.5141924   .3805716    -1.35   0.177    -1.260099    .2317143
+        US Open_2024  |  -.3559917   .3599944    -0.99   0.323    -1.061568    .3495844
+        US Open_2025  |  -.2937555   .3947417    -0.74   0.457    -1.067435     .479924
+      Wimbledon_2018  |  -.2914074   .3654487    -0.80   0.425    -1.007674    .4248589
+      Wimbledon_2019  |   .3823732    .381494     1.00   0.316    -.3653413    1.130088
+      Wimbledon_2021  |  -.0173177   .3579517    -0.05   0.961    -.7188901    .6842546
+      Wimbledon_2022  |  -.1872937   .3746826    -0.50   0.617    -.9216581    .5470706
+      Wimbledon_2023  |  -.1283856   .3719996    -0.35   0.730    -.8574915    .6007203
+      Wimbledon_2024  |   -.029906   .3756589    -0.08   0.937     -.766184    .7063719
+      Wimbledon_2025  |  -.2863129   .3740174    -0.77   0.444    -1.019373    .4467477
+                      |
+                _cons |  -.8197417   .4066654    -2.02   0.044    -1.616791   -.0226922
+---------------------------------------------------------------------------------------
+
+. capture noisily logit same_language i.own_iso3_grp_code composition_lang i.ty8, cluster(team_id)
+
+note: 6.own_iso3_grp_code != 0 predicts failure perfectly
+      6.own_iso3_grp_code dropped and 17 obs not used
+
+note: 14.own_iso3_grp_code != 0 predicts failure perfectly
+      14.own_iso3_grp_code dropped and 12 obs not used
+
+note: 20.own_iso3_grp_code != 0 predicts failure perfectly
+      20.own_iso3_grp_code dropped and 10 obs not used
+
+note: 31.own_iso3_grp_code != 0 predicts failure perfectly
+      31.own_iso3_grp_code dropped and 11 obs not used
+
+note: 34.own_iso3_grp_code != 0 predicts failure perfectly
+      34.own_iso3_grp_code dropped and 14 obs not used
+
+note: 37.own_iso3_grp_code != 0 predicts failure perfectly
+      37.own_iso3_grp_code dropped and 21 obs not used
+
+note: 40.own_iso3_grp_code != 0 predicts failure perfectly
+      40.own_iso3_grp_code dropped and 29 obs not used
+
+note: 44.own_iso3_grp_code != 0 predicts failure perfectly
+      44.own_iso3_grp_code dropped and 31 obs not used
+
+note: 45.own_iso3_grp_code != 0 predicts failure perfectly
+      45.own_iso3_grp_code dropped and 30 obs not used
+
+note: 48.own_iso3_grp_code != 0 predicts failure perfectly
+      48.own_iso3_grp_code dropped and 10 obs not used
+
+Iteration 0:   log pseudolikelihood = -2726.0248  
+Iteration 1:   log pseudolikelihood = -2220.8336  
+Iteration 2:   log pseudolikelihood = -2216.1815  
+Iteration 3:   log pseudolikelihood = -2216.1041  
+Iteration 4:   log pseudolikelihood = -2216.1039  
+
+Logistic regression                             Number of obs     =      4,017
+                                                Wald chi2(71)     =     300.77
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -2216.1039               Pseudo R2         =     0.1871
+
+                                     (Std. Err. adjusted for 1,258 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+        same_language |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+    own_iso3_grp_code |
+                 AUS  |   -.440823   .3840719    -1.15   0.251     -1.19359    .3119441
+                 AUT  |  -1.499549   .6127505    -2.45   0.014    -2.700518   -.2985801
+                 BEL  |   .2908064   .7837816     0.37   0.711    -1.245377     1.82699
+                 BIH  |   .1884641   .7175601     0.26   0.793    -1.217928    1.594856
+                 BLR  |          0  (empty)
+                 BRA  |  -1.581068   .6240292    -2.53   0.011    -2.804143   -.3579932
+                 CAN  |  -1.527943   .6003771    -2.54   0.011     -2.70466   -.3512253
+                 CHL  |   .6721537   .6528441     1.03   0.303    -.6073972    1.951705
+                 CHN  |  -1.657535   .9780234    -1.69   0.090    -3.574426    .2593557
+                 COL  |    .471023   .7726023     0.61   0.542     -1.04325    1.985296
+                 CZE  |  -.8923003   .6119291    -1.46   0.145    -2.091659    .3070586
+                 DEU  |  -.2636481   .4924164    -0.54   0.592    -1.228766    .7014702
+                 DNK  |          0  (empty)
+                 ECU  |  -.9118188   .7950445    -1.15   0.251    -2.470077    .6464397
+                 ESP  |   .1557862   .3343439     0.47   0.641    -.4995158    .8110882
+                 FIN  |  -3.326246   1.104802    -3.01   0.003    -5.491619   -1.160873
+                 FRA  |   .4415567   .3574005     1.24   0.217    -.2589353    1.142049
+                 GBR  |  -1.057498   .4199142    -2.52   0.012    -1.880515   -.2344816
+                 GEO  |          0  (empty)
+                 GRC  |    1.75627   .9834462     1.79   0.074    -.1712491    3.683789
+                 HRV  |  -1.524352     .60325    -2.53   0.012      -2.7067   -.3420037
+                 HUN  |  -2.610045   1.096188    -2.38   0.017    -4.758533   -.4615565
+                 IND  |   -1.89149   .4437431    -4.26   0.000    -2.761211    -1.02177
+                 ISR  |   -1.93752   .9722609    -1.99   0.046    -3.843116   -.0319233
+                 ITA  |   .0539984   .4909869     0.11   0.912    -.9083183    1.016315
+                 JPN  |  -1.376589   .6680337    -2.06   0.039    -2.685911   -.0672672
+                 KAZ  |  -.8222002   .6137914    -1.34   0.180    -2.025209    .3808088
+                 KOR  |  -1.088349    1.13242    -0.96   0.337     -3.30785    1.131153
+                 MCO  |  -.6169721   .5648415    -1.09   0.275    -1.724041     .490097
+                 MDA  |          0  (empty)
+                 MEX  |   -2.05305   .5288406    -3.88   0.000    -3.089559   -1.016541
+                 NLD  |  -1.411796   .4658604    -3.03   0.002    -2.324866   -.4987265
+                 NOR  |          0  (empty)
+                 NZL  |  -1.725709   .5407959    -3.19   0.001    -2.785649    -.665768
+               OTHER  |  -3.084566   .8059864    -3.83   0.000    -4.664271   -1.504862
+                 PAK  |          0  (empty)
+                 POL  |  -1.707517   .6857607    -2.49   0.013    -3.051583   -.3634505
+                 PRT  |  -.7965463    .650186    -1.23   0.221    -2.070888    .4777949
+                 ROU  |          0  (empty)
+                 RUS  |  -2.511123   1.065697    -2.36   0.018    -4.599851    -.422396
+                 SLV  |  -3.088608   .9220555    -3.35   0.001    -4.895803   -1.281412
+                 SRB  |  -.3896577   .4536935    -0.86   0.390    -1.278881    .4995652
+                 SVK  |          0  (empty)
+                 SWE  |          0  (empty)
+                 TUN  |  -3.287966   1.140987    -2.88   0.004    -5.524259   -1.051673
+                 TWN  |  -1.379717   .9444195    -1.46   0.144    -3.230745    .4713112
+                 UKR  |          0  (empty)
+                 URY  |  -.9772341   .6319784    -1.55   0.122    -2.215889    .2614207
+                 USA  |  -.3756925   .3822412    -0.98   0.326    -1.124872    .3734865
+                 ZAF  |  -1.535344   .7235272    -2.12   0.034    -2.953431   -.1172566
+                      |
+     composition_lang |   4.984286    1.16436     4.28   0.000     2.702183    7.266389
+                      |
+                  ty8 |
+Australian Open_2019  |  -.3603392   .3821057    -0.94   0.346    -1.109253    .3885741
+Australian Open_2020  |  -.4630639   .3762997    -1.23   0.218    -1.200598      .27447
+Australian Open_2021  |   -.178597   .3715186    -0.48   0.631    -.9067601     .549566
+Australian Open_2022  |  -.0745219   .3633276    -0.21   0.837    -.7866309    .6375871
+Australian Open_2023  |  -.2897019   .4183986    -0.69   0.489    -1.109748    .5303443
+Australian Open_2024  |  -.1910741   .3765381    -0.51   0.612    -.9290752     .546927
+Australian Open_2025  |    .049208   .3877601     0.13   0.899    -.7107878    .8092039
+  Roland Garros_2018  |  -.3121569   .3807339    -0.82   0.412    -1.058382    .4340679
+  Roland Garros_2019  |  -.0756258   .3795491    -0.20   0.842    -.8195283    .6682768
+  Roland Garros_2020  |  -.3241616    .361976    -0.90   0.371    -1.033621    .3852982
+  Roland Garros_2021  |  -.0307441   .3599693    -0.09   0.932     -.736271    .6747827
+  Roland Garros_2022  |  -.7004294   .3664951    -1.91   0.056    -1.418747    .0178879
+  Roland Garros_2023  |  -.0370186   .3972559    -0.09   0.926    -.8156258    .7415886
+  Roland Garros_2024  |  -.0405262   .3864512    -0.10   0.916    -.7979566    .7169041
+  Roland Garros_2025  |  -.2536138   .3797278    -0.67   0.504    -.9978666     .490639
+        US Open_2018  |  -.4131855    .381028    -1.08   0.278    -1.159987    .3336157
+        US Open_2019  |  -.1734977   .3684917    -0.47   0.638    -.8957281    .5487327
+        US Open_2020  |  -1.032014   .4336103    -2.38   0.017    -1.881874   -.1821532
+        US Open_2021  |  -.3680729   .3960172    -0.93   0.353    -1.144252    .4081065
+        US Open_2022  |  -.3059918   .3857846    -0.79   0.428    -1.062116    .4501321
+        US Open_2023  |  -.5363903   .3756377    -1.43   0.153    -1.272627    .1998461
+        US Open_2024  |  -.3037708   .3656421    -0.83   0.406    -1.020416    .4128745
+        US Open_2025  |  -.3986919   .3891246    -1.02   0.306    -1.161362    .3639784
+      Wimbledon_2018  |  -.2243677   .3778798    -0.59   0.553    -.9649985     .516263
+      Wimbledon_2019  |    .078565   .3991493     0.20   0.844    -.7037533    .8608833
+      Wimbledon_2021  |  -.0792839   .3674115    -0.22   0.829    -.7993973    .6408295
+      Wimbledon_2022  |   -.444418   .3937014    -1.13   0.259    -1.216058    .3272225
+      Wimbledon_2023  |  -.1741261   .3878073    -0.45   0.653    -.9342144    .5859622
+      Wimbledon_2024  |   .1453814   .3988954     0.36   0.716    -.6364392    .9272019
+      Wimbledon_2025  |  -.1842537   .3968497    -0.46   0.642    -.9620647    .5935573
+                      |
+                _cons |   .4617846   .4488539     1.03   0.304    -.4179528    1.341522
+---------------------------------------------------------------------------------------
+
+. display "  [ling_prox, OLS -- should estimate successfully]"
+  [ling_prox, OLS -- should estimate successfully]
+
+. regress ling_prox i.own_iso3_grp_code composition_ling i.ty8, cluster(team_id)
+
+Linear regression                               Number of obs     =      4,202
+                                                F(81, 1262)       =      41.96
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.2938
+                                                Root MSE          =     .42047
+
+                                     (Std. Err. adjusted for 1,263 clusters in team_id)
+---------------------------------------------------------------------------------------
+                      |               Robust
+            ling_prox |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------------+----------------------------------------------------------------
+    own_iso3_grp_code |
+                 AUS  |   .0047362   .0639825     0.07   0.941    -.1207875    .1302599
+                 AUT  |  -.2657236   .1232193    -2.16   0.031    -.5074609   -.0239864
+                 BEL  |   .1441047   .1290997     1.12   0.265     -.109169    .3973783
+                 BIH  |   .1247035   .1602638     0.78   0.437    -.1897093    .4391162
+                 BLR  |  -.4914569    .081047    -6.06   0.000    -.6504586   -.3324552
+                 BRA  |  -.2809907   .1222425    -2.30   0.022    -.5208116   -.0411697
+                 CAN  |   -.192994   .1132325    -1.70   0.089    -.4151387    .0291508
+                 CHL  |   .1344782   .0832082     1.62   0.106    -.0287634    .2977198
+                 CHN  |  -.2976377   .1724175    -1.73   0.085    -.6358942    .0406187
+                 COL  |    .106874   .1042706     1.02   0.306    -.0976889    .3114369
+                 CZE  |  -.1438604   .1402177    -1.03   0.305    -.4189459    .1312252
+                 DEU  |   .0182754   .1157403     0.16   0.875    -.2087891    .2453399
+                 DNK  |  -.4814406   .0822973    -5.85   0.000    -.6428951   -.3199861
+                 ECU  |  -.2166546   .1925139    -1.13   0.261    -.5943371    .1610279
+                 ESP  |   .0403062   .0599585     0.67   0.502    -.0773232    .1579356
+                 FIN  |  -.4448039   .0911179    -4.88   0.000    -.6235631   -.2660446
+                 FRA  |   .1736211   .0688399     2.52   0.012     .0385678    .3086743
+                 GBR  |  -.1061372   .0775422    -1.37   0.171    -.2582629    .0459886
+                 GEO  |  -.4841877   .0808984    -5.99   0.000    -.6428978   -.3254775
+                 GRC  |   .3832899   .1197625     3.20   0.001     .1483343    .6182454
+                 HRV  |  -.2717349   .1223562    -2.22   0.027    -.5117789    -.031691
+                 HUN  |  -.3993421   .1150309    -3.47   0.001    -.6250149   -.1736693
+                 IND  |  -.3050738   .0902775    -3.38   0.001    -.4821842   -.1279634
+                 ISR  |  -.3967887   .2095096    -1.89   0.058    -.8078142    .0142367
+                 ITA  |   .0923647   .1113301     0.83   0.407    -.1260477    .3107772
+                 JPN  |  -.2445611   .1321572    -1.85   0.064    -.5038331    .0147109
+                 KAZ  |  -.1259931   .1432176    -0.88   0.379    -.4069639    .1549776
+                 KOR  |  -.1852095   .2336293    -0.79   0.428    -.6435541    .2731352
+                 MCO  |  -.0773735   .1312845    -0.59   0.556    -.3349335    .1801864
+                 MDA  |  -.5022701   .0797856    -6.30   0.000    -.6587971   -.3457431
+                 MEX  |  -.3936043   .1086995    -3.62   0.000     -.606856   -.1803526
+                 NLD  |  -.2478457   .0994787    -2.49   0.013    -.4430075    -.052684
+                 NOR  |  -.4923098   .0800421    -6.15   0.000      -.64934   -.3352795
+                 NZL  |  -.2590742   .1181191    -2.19   0.028    -.4908056   -.0273428
+               OTHER  |  -.4457394   .0898392    -4.96   0.000      -.62199   -.2694888
+                 PAK  |  -.4806318   .0816398    -5.89   0.000    -.6407964   -.3204672
+                 POL  |  -.2998954   .1193596    -2.51   0.012    -.5340605   -.0657303
+                 PRT  |  -.1147289   .1550869    -0.74   0.460    -.4189853    .1895276
+                 ROU  |  -.5127747   .0780344    -6.57   0.000    -.6658661   -.3596833
+                 RUS  |   -.391592   .1164734    -3.36   0.001    -.6200948   -.1630892
+                 SLV  |  -.5698664   .1195934    -4.77   0.000    -.8044902   -.3352426
+                 SRB  |  -.0090615   .1073727    -0.08   0.933    -.2197101    .2015871
+                 SVK  |   -.495676   .0790514    -6.27   0.000    -.6507627   -.3405893
+                 SWE  |  -.4879717    .079731    -6.12   0.000    -.6443916   -.3315518
+                 TUN  |  -.5010593   .0804657    -6.23   0.000    -.6589205   -.3431981
+                 TWN  |  -.2453652   .1823517    -1.35   0.179     -.603111    .1123806
+                 UKR  |  -.4784292   .0820793    -5.83   0.000    -.6394561   -.3174022
+                 URY  |  -.1690939    .150362    -1.12   0.261    -.4640809    .1258931
+                 USA  |  -.0968557   .0727404    -1.33   0.183    -.2395611    .0458496
+                 ZAF  |  -.2206792   .1626544    -1.36   0.175     -.539782    .0984237
+                      |
+     composition_ling |   .9411286   .1984018     4.74   0.000      .551895    1.330362
+                      |
+                  ty8 |
+Australian Open_2019  |  -.0685855   .0627265    -1.09   0.274    -.1916452    .0544742
+Australian Open_2020  |  -.0901153   .0639581    -1.41   0.159    -.2155911    .0353606
+Australian Open_2021  |  -.0349684   .0633195    -0.55   0.581    -.1591915    .0892547
+Australian Open_2022  |  -.0201454   .0599574    -0.34   0.737    -.1377725    .0974817
+Australian Open_2023  |   -.013082   .0696189    -0.19   0.851    -.1496635    .1234994
+Australian Open_2024  |   -.036743   .0655856    -0.56   0.575    -.1654119    .0919259
+Australian Open_2025  |   .0255653   .0670327     0.38   0.703    -.1059426    .1570732
+  Roland Garros_2018  |   -.044327   .0632004    -0.70   0.483    -.1683165    .0796625
+  Roland Garros_2019  |  -.0203262   .0623587    -0.33   0.745    -.1426644     .102012
+  Roland Garros_2020  |  -.0671978   .0604803    -1.11   0.267    -.1858508    .0514553
+  Roland Garros_2021  |  -.0148555    .060413    -0.25   0.806    -.1333765    .1036655
+  Roland Garros_2022  |  -.1296126   .0619617    -2.09   0.037    -.2511717   -.0080534
+  Roland Garros_2023  |  -.0017576   .0655336    -0.03   0.979    -.1303244    .1268091
+  Roland Garros_2024  |  -.0143015   .0663902    -0.22   0.829    -.1445489    .1159458
+  Roland Garros_2025  |  -.0390737    .064934    -0.60   0.547    -.1664642    .0883169
+        US Open_2018  |  -.0969133   .0639262    -1.52   0.130    -.2223265       .0285
+        US Open_2019  |  -.0493619    .059145    -0.83   0.404    -.1653953    .0666715
+        US Open_2020  |   -.171224   .0748984    -2.29   0.022    -.3181631   -.0242848
+        US Open_2021  |  -.0881261   .0638464    -1.38   0.168     -.213383    .0371307
+        US Open_2022  |  -.0911162   .0643932    -1.41   0.157    -.2174457    .0352134
+        US Open_2023  |  -.1221111   .0637943    -1.91   0.056    -.2472656    .0030434
+        US Open_2024  |  -.0875999    .061667    -1.42   0.156    -.2085811    .0333813
+        US Open_2025  |  -.0658891   .0652872    -1.01   0.313    -.1939725    .0621943
+      Wimbledon_2018  |  -.0479133   .0638845    -0.75   0.453    -.1732449    .0774183
+      Wimbledon_2019  |   .0134686    .066061     0.20   0.838    -.1161328    .1430701
+      Wimbledon_2021  |  -.0156788   .0619018    -0.25   0.800    -.1371206     .105763
+      Wimbledon_2022  |  -.0769563   .0657012    -1.17   0.242    -.2058519    .0519394
+      Wimbledon_2023  |  -.0473742   .0671588    -0.71   0.481    -.1791293     .084381
+      Wimbledon_2024  |   .0025163   .0664973     0.04   0.970    -.1279411    .1329737
+      Wimbledon_2025  |  -.0298978   .0682098    -0.44   0.661     -.163715    .1039193
+                      |
+                _cons |   .5336734    .089513     5.96   0.000     .3580627    .7092842
+---------------------------------------------------------------------------------------
+
+. 
+. display ""
+
+
+. display "Section 8 complete: Partner selection, own-country and field-composition specs."
+Section 8 complete: Partner selection, own-country and field-composition specs.
+
+. 
 . log close
       name:  <unnamed>
        log:  C:\Users\aldi\Documents\GitHub\tennis-homophily\stata_homophily_results.txt
   log type:  text
- closed on:  19 Aug 2026, 12:03:46
+ closed on:   1 Sep 2026, 15:08:58
 ----------------------------------------------------------------------------------------------------------------------------------------------
