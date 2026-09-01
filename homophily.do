@@ -1447,6 +1447,93 @@ restore
 display ""
 display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE, Table 4-NOINT, Table 4-RANDONE)."
 
+* ═══════════════════════════════════════════════════════════════════════════════
+* SECTION 8: PARTNER SELECTION — OWN COUNTRY AND TOURNAMENT-FIELD COMPOSITION
+* (new, per Lingqing's meeting notes / main.tex red comment: extend the Section 6.1
+* "does own ranking predict partner-culture similarity?" ego-row regression with own
+* nationality and field-composition controls.)
+*
+* IMPORTANT: the underlying Section 6 "Partner Selection" pipeline (deduplicating
+* partnerships by tournament x team, the closed-form random-matching benchmark, and
+* the tournament-field composition calculation) exists ONLY in the Python notebook
+* (code/analysis/homophily.ipynb, cells ~51-56) and has never previously been mirrored
+* in Stata -- unlike every other section of this do-file, which mirrors an existing
+* Stata-equivalent computation. Re-deriving that dedup/composition logic from scratch
+* in Stata, unexecuted, would carry real risk of a subtle, uncaught bug (string-based
+* team-key construction, per-tournament-year field aggregation, etc.). Instead, this
+* section imports data/atp/partner_selection_ego.csv, which was exported directly from
+* the EXECUTED and verified Python ego2 dataframe (4,202 ego-rows; identical
+* construction to homophily.ipynb) -- so the regressions below run on real, correct
+* data even though, like the rest of this do-file, they have not been run through
+* Stata itself in this environment.
+* ═══════════════════════════════════════════════════════════════════════════════
+
+display ""
+display "=== SECTION 8. Partner Selection: Own Country and Field Composition ==="
+display "Data: data/atp/partner_selection_ego.csv (exported from the executed Python ego2 sample)"
+display ""
+
+import delimited "data/atp/partner_selection_ego.csv", clear varnames(1) stringcols(1)
+
+encode tourn_year, generate(ty8)
+encode own_iso3, generate(own_iso3_code)
+encode own_iso3_grp, generate(own_iso3_grp_code)
+egen team_id = group(team_key)
+
+destring own_rank same_country same_language ling_prox composition_nat composition_lang composition_ling, replace force
+
+count
+display "Ego-rows loaded: " r(N) " (expect 4,202)"
+display ""
+
+* --- Spec 1: own_rank alone (reproduces Section 6.1's original result) ---
+display "--- Spec 1: own_rank + tourn_year FE ---"
+foreach outcome in same_country same_language {
+    display "  [`outcome']"
+    quietly logit `outcome' own_rank i.ty8, cluster(team_id)
+    margins, dydx(own_rank)
+}
+display "  [ling_prox, OLS]"
+regress ling_prox own_rank i.ty8, cluster(team_id)
+
+* --- Spec 2: own country (own_iso3) fixed effects in place of own_rank ---
+* NOTE: per the Python analysis, this specification fails to converge for the binary
+* outcomes (same_country, same_language) via quasi-complete separation -- several of
+* 64 nationalities have too few ego-row observations (14 have <10, down to single
+* players) for a country-specific fixed effect to be identified. own_iso3_grp pools
+* nationalities with <10 obs into "OTHER" (51 remaining groups), which is enough for
+* ling_prox (OLS) but NOT enough to fix the logit specs -- expect `logit` to fail or
+* emit a "not identified" / omitted-predictor error for same_country/same_language.
+display ""
+display "--- Spec 2: C(own_iso3_grp) + tourn_year FE (expect failure for binary outcomes) ---"
+capture noisily logit same_country i.own_iso3_grp_code i.ty8, cluster(team_id)
+capture noisily logit same_language i.own_iso3_grp_code i.ty8, cluster(team_id)
+display "  [ling_prox, OLS -- should estimate successfully]"
+regress ling_prox i.own_iso3_grp_code i.ty8, cluster(team_id)
+
+* --- Spec 3: own_rank + outcome-matched field composition ---
+display ""
+display "--- Spec 3: own_rank + field composition + tourn_year FE ---"
+display "  [same_country]"
+quietly logit same_country own_rank composition_nat i.ty8, cluster(team_id)
+margins, dydx(own_rank composition_nat)
+display "  [same_language]"
+quietly logit same_language own_rank composition_lang i.ty8, cluster(team_id)
+margins, dydx(own_rank composition_lang)
+display "  [ling_prox, OLS]"
+regress ling_prox own_rank composition_ling i.ty8, cluster(team_id)
+
+* --- Spec 4: own country + field composition (expect same binary-outcome failure as Spec 2) ---
+display ""
+display "--- Spec 4: C(own_iso3_grp) + field composition + tourn_year FE (expect failure for binary outcomes) ---"
+capture noisily logit same_country i.own_iso3_grp_code composition_nat i.ty8, cluster(team_id)
+capture noisily logit same_language i.own_iso3_grp_code composition_lang i.ty8, cluster(team_id)
+display "  [ling_prox, OLS -- should estimate successfully]"
+regress ling_prox i.own_iso3_grp_code composition_ling i.ty8, cluster(team_id)
+
+display ""
+display "Section 8 complete: Partner selection, own-country and field-composition specs."
+
 log close
 
 display ""

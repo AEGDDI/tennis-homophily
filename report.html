@@ -1416,34 +1416,33 @@
   that if anything pushes the benchmark rate <em>down</em> — so it does not overstate the
   actual-vs-random gap reported below.
 </p>
+<p class="note">
+  <strong>Verified 2026-08-20</strong>: the 2,101-partnership / 4,202-ego-row counts below were
+  independently re-derived from the raw source (<code>men_matches_with_ranks_cleaned.xlsx</code>,
+  sheet <code>players_list</code>) by re-running the tournament×team dedup logic standalone —
+  2,108 distinct partnership-events, 2,101 after dropping incomplete-rank pairs, 4,202 ego-rows —
+  matching the notebook and this table exactly.
+</p>
 <table>
   <thead>
-    <tr><th style="width:22%">Player pool</th>
-        <th class="num">N partnerships</th>
-        <th class="num" colspan="2">Same nationality</th>
-        <th class="num" colspan="2">Same language</th>
-        <th class="num" colspan="2">Mean ling_prox</th></tr>
-    <tr><th></th><th></th>
-        <th class="num">Actual</th><th class="num">Random benchmark</th>
-        <th class="num">Actual</th><th class="num">Random benchmark</th>
-        <th class="num">Actual</th><th class="num">Random benchmark</th></tr>
+    <tr><th style="width:26%">Measure</th><th></th>
+        <th class="num">All ranked players<br><span class="se">(N=2,101)</span></th>
+        <th class="num">Both partners top-100<br><span class="se">(N=1,212)</span></th>
+        <th class="num">Both partners top-50<br><span class="se">(N=712)</span></th></tr>
   </thead>
   <tbody>
-    <tr><td>All ranked players</td>
-        <td class="num">2,101</td>
-        <td class="num">42.2%</td><td class="num">5.2%</td>
-        <td class="num">55.9%</td><td class="num">16.2%</td>
-        <td class="num">0.567</td><td class="num">0.198</td></tr>
-    <tr><td>Both partners top-100</td>
-        <td class="num">1,212</td>
-        <td class="num">32.6%</td><td class="num">4.1%</td>
-        <td class="num">49.7%</td><td class="num">15.5%</td>
-        <td class="num">0.506</td><td class="num">0.189</td></tr>
-    <tr><td>Both partners top-50</td>
-        <td class="num">712</td>
-        <td class="num">35.5%</td><td class="num">4.5%</td>
-        <td class="num">56.3%</td><td class="num">15.8%</td>
-        <td class="num">0.565</td><td class="num">0.189</td></tr>
+    <tr><td rowspan="2">Same nationality</td><td>Actual</td>
+        <td class="num">42.2%</td><td class="num">32.6%</td><td class="num">35.5%</td></tr>
+    <tr class="bg"><td>Random benchmark</td>
+        <td class="num">5.2%</td><td class="num">4.1%</td><td class="num">4.5%</td></tr>
+    <tr><td rowspan="2">Same language</td><td>Actual</td>
+        <td class="num">55.9%</td><td class="num">49.7%</td><td class="num">56.3%</td></tr>
+    <tr class="bg"><td>Random benchmark</td>
+        <td class="num">16.2%</td><td class="num">15.5%</td><td class="num">15.8%</td></tr>
+    <tr><td rowspan="2">Mean ling_prox</td><td>Actual</td>
+        <td class="num">0.567</td><td class="num">0.506</td><td class="num">0.565</td></tr>
+    <tr class="bg"><td>Random benchmark</td>
+        <td class="num">0.198</td><td class="num">0.189</td><td class="num">0.189</td></tr>
   </tbody>
 </table>
 <p class="note">
@@ -1521,6 +1520,77 @@
   weaker-ranked players sort into same-culture partnerships slightly more, plausibly because
   players with less market power to attract a foreign/elite partner default to whoever is
   available in their own federation or language community.
+</p>
+
+<h3>6.2 Extended specification: own nationality and tournament-field composition</h3>
+<p>
+  Section 6.1's <code>own_rank</code>-only spec doesn't account for the cultural composition
+  of the tournament field a player is drawn from, which varies by tournament-year and could
+  mechanically affect how likely any given player is to end up with a culturally similar
+  partner. We extend to four specifications: <strong>(1)</strong> own_rank alone (Section 6.1,
+  reproduced below); <strong>(2)</strong> own nationality (country fixed effects) in place of
+  ranking; <strong>(3)</strong> own_rank plus an outcome-matched field-composition variable;
+  <strong>(4)</strong> own nationality plus field composition. Field composition is computed
+  from the <em>full</em> tournament-year field (every entrant, not only the rank-complete
+  partnerships used above): for <code>same_country</code>, the share of every <em>other</em>
+  field player sharing the focal player's nationality, (same-nat field count − 1) / (field
+  size − 1); for <code>same_language</code>/<code>ling_prox</code>, the analogous mean pairwise
+  value against every other field player, via the same CEPII lookup used throughout.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:34%">Outcome</th>
+        <th class="num">Spec 1: own_rank</th>
+        <th class="num">Spec 3: own_rank</th>
+        <th class="num">Spec 3: field composition</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Same nationality (AME)</td>
+        <td class="num">+0.000271<sup>***</sup></td>
+        <td class="num">+0.000118<sup>**</sup></td>
+        <td class="num">+3.753<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.000055)</td><td class="num">(0.000053)</td><td class="num">(0.253920)</td></tr>
+    <tr><td>Same language (AME)</td>
+        <td class="num">+0.000148<sup>**</sup></td>
+        <td class="num">+0.000117<sup>**</sup></td>
+        <td class="num">+1.272<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.000058)</td><td class="num">(0.000053)</td><td class="num">(0.082017)</td></tr>
+    <tr><td>Ling. proximity (OLS coef.)</td>
+        <td class="num">+0.000141<sup>***</sup></td>
+        <td class="num">+0.000105<sup>**</sup></td>
+        <td class="num">+1.149<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.000053)</td><td class="num">(0.000047)</td><td class="num">(0.076017)</td></tr>
+    <tr class="bg"><td>N (ego-rows)</td>
+        <td class="num">4,202</td><td class="num">4,202</td><td class="num">4,202</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  Adding field composition (Spec 3) shrinks the own-ranking coefficients by roughly half but
+  leaves them positive and significant for all three outcomes (p&lt;0.05 throughout), while
+  field composition itself is a strong, highly significant predictor in every case — a player
+  drawn from a field with more compatriots or linguistically similar entrants is mechanically
+  more likely to end up with a culturally similar partner. Own ranking therefore predicts
+  partner similarity <em>in addition to</em>, not merely <em>because of</em>, the cultural
+  composition of the field a player happens to be drawn from.
+</p>
+<p class="note">
+  <strong>Specs 2 and 4</strong> (own nationality replacing own ranking, with and without field
+  composition) are estimable only for linguistic proximity, the one continuous outcome: the
+  field-composition coefficient remains positive and significant (+0.941, p&lt;0.001, Spec 4),
+  consistent with Spec 3. For the two binary outcomes (same nationality, same language), the
+  country-fixed-effects logit specs fail to converge — a quasi-complete-separation problem, not
+  an estimation error — because several of the 64 nationalities in the ego-row sample have very
+  few observations (14 have fewer than 10, down to single players), so a given nationality's
+  fixed effect can perfectly predict that player's own-nationality-partnering outcome. Pooling
+  rare nationalities (&lt;10 obs) into one "Other" category (51 remaining groups) does not
+  resolve this for the binary outcomes — tested up to a pooling threshold of 80 observations
+  (only 15 groups remaining) before <code>same_country</code> converges, at which point "own
+  country" no longer means much beyond "top tennis nations vs. the rest." We therefore report
+  Specs 2/4 only for linguistic proximity; Spec 3 (own ranking net of field composition) is the
+  specification we rely on for the paper's discussion of this extension.
 </p>
 
 </body>
