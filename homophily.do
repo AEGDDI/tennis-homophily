@@ -1486,15 +1486,26 @@ count
 display "Ego-rows loaded: " r(N) " (expect 4,202)"
 display ""
 
+* Singleton-nationality exclusion (Spec 1 & 3 only, per Alessandro's request 2026-09-01):
+* drop ego-rows whose own_iso3 has exactly 1 observation in the ego-row sample, so a single
+* lone-nationality player cannot single-handedly drive the own_rank coefficient. This is
+* separate from, and does not touch, the own_iso3_grp <10-obs "OTHER" pooling used below,
+* which stays as-is and continues to apply only to the Spec 2/4 own-country FE regressions.
+bysort own_iso3: gen long _iso3_n = _N
+gen byte _singleton_iso3 = (_iso3_n == 1)
+quietly count if _singleton_iso3
+display "Singleton-nationality exclusion (Spec 1 & 3 only): " r(N) " ego-rows from nationalities with exactly 1 observation dropped for these two specs"
+display ""
+
 * --- Spec 1: own_rank alone (reproduces Section 6.1's original result) ---
-display "--- Spec 1: own_rank + tourn_year FE ---"
+display "--- Spec 1: own_rank + tourn_year FE (excl. singleton-nationality ego-rows) ---"
 foreach outcome in same_country same_language {
     display "  [`outcome']"
-    quietly logit `outcome' own_rank i.ty8, cluster(team_id)
+    quietly logit `outcome' own_rank i.ty8 if !_singleton_iso3, cluster(team_id)
     margins, dydx(own_rank)
 }
 display "  [ling_prox, OLS]"
-regress ling_prox own_rank i.ty8, cluster(team_id)
+regress ling_prox own_rank i.ty8 if !_singleton_iso3, cluster(team_id)
 
 * --- Spec 2: own country (own_iso3) fixed effects in place of own_rank ---
 * NOTE: per the Python analysis, this specification fails to converge for the binary
@@ -1513,15 +1524,15 @@ regress ling_prox i.own_iso3_grp_code i.ty8, cluster(team_id)
 
 * --- Spec 3: own_rank + outcome-matched field composition ---
 display ""
-display "--- Spec 3: own_rank + field composition + tourn_year FE ---"
+display "--- Spec 3: own_rank + field composition + tourn_year FE (excl. singleton-nationality ego-rows) ---"
 display "  [same_country]"
-quietly logit same_country own_rank composition_nat i.ty8, cluster(team_id)
+quietly logit same_country own_rank composition_nat i.ty8 if !_singleton_iso3, cluster(team_id)
 margins, dydx(own_rank composition_nat)
 display "  [same_language]"
-quietly logit same_language own_rank composition_lang i.ty8, cluster(team_id)
+quietly logit same_language own_rank composition_lang i.ty8 if !_singleton_iso3, cluster(team_id)
 margins, dydx(own_rank composition_lang)
 display "  [ling_prox, OLS]"
-regress ling_prox own_rank composition_ling i.ty8, cluster(team_id)
+regress ling_prox own_rank composition_ling i.ty8 if !_singleton_iso3, cluster(team_id)
 
 * --- Spec 4: own country + field composition (expect same binary-outcome failure as Spec 2) ---
 display ""
