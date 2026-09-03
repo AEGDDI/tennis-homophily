@@ -16,6 +16,7 @@
 \usepackage{graphicx}
 %\usepackage[retainorgcmds]{IEEEtrantools}
 %\usepackage{hyperref}
+\usepackage{comment} 
 \usepackage{caption}
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
@@ -35,7 +36,6 @@
 \bibpunct{(}{)}{;}{a}{}{,}
 \graphicspath{{./plot/}}
 \usepackage{array}
-\usepackage{multirow}
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
 
 \makeatletter
@@ -61,20 +61,25 @@
 
 \begin{abstract}
 
-Abstract: Cultural similarity may facilitate team communication and coordination, yet whether such advantages translate into superior team performance remains challenging to establish. We examine this question using all men’s doubles matches in Grand Slams from 2018 to 2025.  Culturally similar teams are more likely to win matches. However, this association has a clear boundary: it disappears in tiebreaks, where competing teams are closely matched and the outcome is determined over a few points. The association is stronger as team members have accumulated more professional experience but remains muted as the experience gap between teammates widens. Finally, we provide evidence that while there is substantial cultural sorting in team formation, stronger individuals are not systematically more likely to select culturally similar partners, suggesting that our results are not purely driven by endogenous sorting.
+Cultural similarity may facilitate team communication and coordination, yet evidence of whether such advantages translate into superior team performance remains mixed. We examine this question using all men’s doubles matches in Grand Slams from 2018 to 2025.  Culturally similar teams are more likely to win matches. However, this association has a clear boundary: it disappears in tiebreaks, where competing teams are closely matched and the outcome is determined over a few points. The association is stronger as team members have accumulated more professional experience but remains muted as the experience gap between teammates widens. Finally, we provide evidence that while there is substantial cultural sorting in team formation, stronger individuals are not systematically more likely to select culturally similar partners, suggesting that our results are not purely driven by endogenous sorting among stronger players.
 
 %we provide descriptive evidence around the Olympic cycles likewise does not support this explanation. 
 \end{abstract}
 \section{Introduction}
-Organizations increasingly rely on culturally diverse teams to solve complex tasks and compete in global markets. While diversity expands the range of knowledge, perspectives, and expertise available within teams, it may also create communication barriers and increase coordination costs. Consequently, whether cultural diversity ultimately enhances or hinders team performance remains a central question in management and economics. %Economic theory emphasizes the trade-off between the informational benefits of diversity and the communication frictions arising from heterogeneous backgrounds (Lazear, 1999), while organizational research similarly concludes that multicultural teams simultaneously benefit from broader informational resources but face greater communication difficulties and social integration challenges (Stahl et al., 2010). 
-Organizational research suggests that effective coordination depends not only on communication itself but also on the emergence of shared mental models—compatible understandings of the task, the environment, and teammates’ likely actions that allow individuals to anticipate one another without constant explicit communication \citep{cannonbowers1993,klimoski1994,mathieu2000}. On the other hand, cultural similarity may facilitate the development of such shared understandings by reducing communication frictions and providing teammates with more compatible expectations about one another’s behaviour. Recent evidence shows that cultural similarity is associated with greater collaboration between professional football players \citep{bekesottaviano2025}. Yet despite extensive evidence on how culture influences communication and collaboration within organizations, comparatively little is known about whether cultural similarity ultimately translates into superior team performance. \added{Recent work also documents cultural sorting in team interactions. Békés and Ottaviano (2025), for example, show that culturally similar players are more likely to collaborate in professional football. We find a similar pattern in professional doubles tennis, where partnerships are substantially more likely to connect culturally similar players than would be expected under random matching. This naturally raises a second question: once partnerships are formed, does cultural similarity also translate into differences in team performance? We address this question first and subsequently return to partnership formation to examine how cultural sorting operates in our setting.}
+Organizations increasingly rely on culturally diverse teams to solve complex tasks and compete in global markets. On the one hand, cultural diversity expands the range of knowledge, perspectives, and expertise available within teams; on the other hand, cultural similarity facilitates communication, reduces coordination costs, and helps teammates anticipate one another’s actions. Consequently, whether cultural composition ultimately affects team performance remains an important question in management, organization, and economics. %Economic theory emphasizes the trade-off between the informational benefits of diversity and the communication frictions arising from heterogeneous backgrounds (Lazear, 1999), while organizational research similarly concludes that multicultural teams simultaneously benefit from broader informational resources but face greater communication difficulties and social integration challenges (Stahl et al., 2010). 
+%{Organizational research suggests that effective coordination depends not only on communication itself but also on the emergence of shared mental models—compatible understandings of the task, the environment, and teammates’ likely actions that allow individuals to anticipate one another without constant explicit communication \citep{cannonbowers1993,klimoski1994,mathieu2000}. Cultural similarity may also facilitate the development of such shared understandings by reducing communication frictions and providing teammates with more compatible expectations about one another’s behaviour. 
+
+
+The existing empirical evidence is mixed. A large literature studies the relationship between cultural diversity and team performance, but finds both performance gains and losses. In their meta-analysis of 108 studies covering more than 10,000 teams, Stahl et al. (2010) show that cultural diversity is associated with greater creativity but also greater conflict and lower social integration, with little overall effect on team performance. The effects vary with the context in which teams operate, including task characteristics and team tenure. Evidence from professional sports similarly points to a context-dependent relationship. Békés and Ottaviano (2025), for example, show that cultural similarity shapes pairwise collaboration within  football teams, as culturally similar players are more likely to pass to one another. Yet whether such differences in pairwise interactions translate into superior team performance remains less clear.
+
+%Recent evidence shows that cultural similarity is associated with greater collaboration between professional football players \citep{bekesottaviano2025}. Yet whether cultural similarity ultimately translates into greater team performance remains a central question in management, organization, and economics.%Yet despite extensive evidence on how culture influences communication and collaboration within organizations, comparatively little is known about whether cultural similarity ultimately translates into superior team performance. 
 
 In this paper, we study whether cultural similarity is associated with performance of small teams. We use professional men's Grand Slam doubles tennis as an empirical setup of organizational coordination, where two players with distinct individual abilities must repeatedly coordinate their actions to produce a joint outcome.  Many organizations rely on dyadic or small-team collaboration, including project teams, surgical teams, military units, emergency response teams, and entrepreneurial partnerships. \added{In project teams, teammates repeatedly exchange information, adjust responsibilities, and anticipate one another's actions. In surgical teams, coordination occurs through repeated communication and rapid adjustment under time pressure. In military teams, shared expectations and communication facilitate coordinated action when explicit communication is costly or constrained. Doubles tennis has the same basic organizational structure at a much smaller scale: two interdependent individuals repeatedly make decisions whose value depends partly on anticipating and adapting to the partner's actions.} Although these settings differ substantially in purpose and context, they share common organizational challenges. %team members must repeatedly coordinate their actions under time constraints while adapting to rapidly changing environments. 
 Doubles tennis captures these fundamental features in a particularly transparent way. Every point requires two teammates to coordinate positioning, movement, tactical decisions, and responses to their opponents, while success depends not only on individual ability but also on how effectively partners anticipate and complement each other's actions. At the same time, performance is measured objectively, tasks are standardized across teams, and teammates operate under strong economic incentives to maximize joint success. These characteristics make doubles tennis an informative empirical model of organizational coordination in environments where communication and mutual understanding are essential to team performance.
 
 
 We collect data from all men's doubles matches in Grand Slams between 2018 and 2025. We measure cultural similarity along three complementary dimensions: shared nationality, shared official language, and linguistic proximity. We first examine whether culturally similar teams are more likely to win their matches. We then use tiebreak outcomes to examine a theoretically important boundary condition: whether the association remains visible when the opportunity for teammates to coordinate is sharply compressed. Tiebreaks are played to decide a set once the score reaches 6--6. They are short and closely contested in which relatively few points determine the outcome and teammates have fewer opportunities to communicate and adjust during play.\footnote{Much like a penalty shootout in football, a tennis tiebreak breaks a draw by shifting the match into a rapid-fire point-by-point format where losing a point on your own serve is the psychological equivalent of missing a penalty kick, as the alternating sequence means a single miss often decides the entire set.}
-
+%\added{Recent work also documents cultural sorting in team interactions. Békés and Ottaviano (2025), for example, show that culturally similar players are more likely to collaborate in professional football. We find a similar pattern in professional doubles tennis, where partnerships are substantially more likely to connect culturally similar players than would be expected under random matching. This naturally raises a second question: once partnerships are formed, does cultural similarity also translate into differences in team performance? We address this question first and subsequently return to partnership formation to examine how cultural sorting operates in our setting.}
 We find that culturally similar teams are 3.8 to 4.7 percentage points more likely to win Grand Slam matches, with the strongest and most precisely estimated associations observed for the language-based measures. This association, however, has a clear boundary. Cultural similarity is not associated with tiebreak outcomes. Tiebreaks provide a particularly stringent setting in which to examine the performance relevance of coordination: the competing teams have already demonstrated closely matched performance, while the outcome is determined over a short sequence of points that provides relatively little time and opportunity for teammates to communicate, adjust, and coordinate. The potential benefits of cultural similarity may therefore be too small to become visible under these conditions. If culturally similar teams were simply stronger for some persistent reason unrelated to coordination, we would have some reason to expect their advantage to remain visible in tiebreaks. Instead, the association is present when performance is aggregated over the match but not when the outcome is determined over a short, closely contested sequence. We interpret this contrast as evidence of a boundary condition on when cultural similarity can be associated with team performance, rather than as evidence of a universal performance advantage.
 
 
@@ -90,7 +95,7 @@ First, more experienced players have accumulated greater task-specific knowledge
 
 Finally, because partnerships are themselves formed through player choices, we return to the formation stage of the team. We document the extent of cultural sorting in partnerships, examine whether this sorting is particularly pronounced among stronger players, and describe partnership formation around the Olympic cycles. Cultural similarity is substantially more common among observed partnerships than under random matching, confirming that doubles teams are strongly sorted by nationality and language. However, this sorting is not more pronounced among higher-ranked players, and a player's own ranking is, if anything, negatively associated with having a culturally similar partner. We therefore find no evidence for the specific selection explanation in which stronger players systematically choose culturally similar partners. Nevertheless, these descriptive analyzes cannot rule out other forms of endogenous partner selection.
 
-\added{A particularly relevant recent contribution is Békés and Ottaviano (2025), who show that cultural homophily remains pervasive in the interaction patterns of highly skilled professional football players, using passing behavior in Europe's top five men's leagues. Their evidence establishes that cultural similarity is associated with whom players interact with within multinational teams, even in settings characterized by high skill, common objectives, and strong incentives to cooperate. We take this pattern of culturally structured interaction as an important starting point and ask a complementary question: does cultural similarity also translate into differences in the ultimate performance of small teams? Rather than examining who interacts with whom within an established team, we study whether culturally similar partnerships are associated with superior team outcomes, and whether such an association persists when the opportunity for coordination to influence performance is sharply constrained.}
+\added{A particularly relevant recent contribution is Békés and Ottaviano (2025), who show that cultural homophily remains pervasive in the interaction patterns of highly skilled professional football players, using passing behavior in Europe's top five men's leagues. Their evidence establishes that cultural similarity is associated with whom players interact with within multinational teams, even in settings characterized by high skill, common objectives, and strong incentives to cooperate. We take this pattern of culturally structured interaction as an important starting point and ask a complementary question: does cultural similarity also translate into differences in the ultimate performance of small teams? Rather than examining who interacts with whom within an established team, we study whether culturally similar partnerships are associated with superior team outcomes, and whether such an association persists when the opportunity for coordination to influence performance is sharply constrained. Békés and Ottaviano (2025) study cultural homophily in collaboration within professional football teams, where players operate within an organizational structure in which team composition and interaction opportunities are substantially shaped by managerial decisions. Our setting differs in an important respect: doubles partnerships are formed largely through bilateral decisions by individual players, with limited intervention from a manager or other central authority. This provides a setting in which cultural similarity can enter both the formation of partnerships and subsequent team performance.}
 
 Our study relates to \added{three} strands of literature. First, it contributes to the literature on cultural diversity and organizational performance. Economic models emphasize the trade-off between diversity's informational benefits and its communication costs \citep{lazear1999}, while organizational research documents that cultural diversity simultaneously enhances creativity and knowledge variety but also creates coordination challenges and interpersonal conflict \citep{stahl2010,harrisonklein2007}. Although numerous studies examine workforce diversity and firm outcomes, relatively few identify the role of cultural similarity within small teams performing highly interdependent tasks.
 
@@ -105,7 +110,7 @@ This paper makes three important contributions. First, it extends the literature
 The remainder of the paper is organized as follows. Section 2 describes the data, measures of cultural similarity, and construction of the empirical sample. Section 3 develops the theoretical framework and hypotheses. Section 4 presents the empirical analysis of cultural similarity and team performance. Section 5 investigates two potential mechanisms related to players’ professional experience. Section 6 returns to the formation of partnerships, documenting cultural sorting, examining whether stronger players are more likely to form culturally similar partnerships, and describing team formation around the Olympic cycles. Section 7 concludes.
 \section{Data}
 \subsection{Empirical Setting and Sample}
-Our empirical setting consists of men's doubles matches from the four Grand Slam tournaments, the Australian Open, Roland Garros, Wimbledon, and the US Open, between 2018 and 2025. The dataset contains 1,864 completed Grand Slam doubles matches and $3{,}728$ team-match observations.\footnote{\textcolor{red}{From the initial dataset with 1,933 matches we first exclude 12 qualifying-round matches found only at Wimbledon 2018 (8 ``1st Round Qualifying'' and 4 ``2nd Round Qualifying'' matches present in the raw data but not part of the main draw at any other tournament-year -- a data-inclusion inconsistency, not a real difference in draw size), leaving 1,921 matches. We then exclude retirements and walkovers because these outcomes do not reflect normal competitive performance. We further remove matches with incomplete doubles ranking information that cannot be reliably recovered, resulting in a final sample of 1,864 matches.}}
+Our empirical setting consists of men's doubles matches from the four Grand Slam tournaments, the Australian Open, Roland Garros, Wimbledon, and the US Open, between 2018 and 2025. The dataset contains 1,876 completed Grand Slam doubles matches and $3{,}752$ team-match observations.\footnote{From the initial dataset with 1,933  matches we exclude retirements and walkovers because these outcomes do not reflect normal competitive performance. We further remove matches with incomplete doubles ranking information that cannot be reliably recovered, resulting in a final  sample of 1,876 matches.} 
 
 Player information is collected by combining official tournament records from the Association of Tennis Professionals (ATP)  and supplementary public sources. Nationality and language information are fully harmonized through a multi-stage validation procedure that resolves inconsistencies arising from spelling variants, accented characters, and historical nationality changes. %Only observations for which all four players have complete ranking and cultural information are retained.
 
@@ -124,32 +129,30 @@ Tournament & 2018 & 2019 & 2020 & 2021 & 2022 & 2023 & 2024 & 2025 & \textbf{Tot
 \midrule
 Australian Open & 60 & 62 & 63 & 62 & 59 & 63 & 60 & 61 & \textbf{490} \\
 Roland Garros    & 63 & 60 & 62 & 62 & 62 & 61 & 58 & 63 & \textbf{491} \\
-Wimbledon        & 61 & 61 & 0  & 60 & 59 & 61 & 61 & 62 & \textbf{425} \\
+Wimbledon        & 73 & 61 & 0  & 60 & 59 & 61 & 61 & 62 & \textbf{437} \\
 US Open          & 63 & 60 & 31 & 59 & 62 & 61 & 63 & 59 & \textbf{458} \\
 \midrule
-\textbf{Total} & \textbf{247} & \textbf{243} & \textbf{156} & \textbf{243} & \textbf{242} & \textbf{246} & \textbf{242} & \textbf{245} & \textbf{1,864} \\
+\textbf{Total} & \textbf{259} & \textbf{243} & \textbf{156} & \textbf{243} & \textbf{242} & \textbf{246} & \textbf{242} & \textbf{245} & \textbf{1,876} \\
 \bottomrule
 \end{tabular}
 }
 
 \vspace{10pt}
 \textbf{Panel B: Descriptive Statistics}\\[2pt]
-\textcolor{red}{
 \begin{tabular}{lcccc}
 \toprule
- & \multicolumn{2}{c}{Individual level ($N$=7,456)} & \multicolumn{2}{c}{Team level ($N$=3,728)} \\
+ & \multicolumn{2}{c}{Individual level ($N$=7,504)} & \multicolumn{2}{c}{Team level ($N$=3,752)} \\
 Variable & Mean & SD & Mean & SD \\
 \midrule
-Doubles ranking            & 126.02 & 210.46 & 126.02 & 183.51 \\
-Years since turning pro    & 12.59  & 5.36   & 11.93  & 5.17   \\
-Age at tournament          & 31.57  & 5.19   & 31.60  & 4.36   \\
-Top-100 singles player (share) & \multicolumn{2}{c}{--} & \multicolumn{2}{c}{8.1\%} \\
+Doubles ranking            & 126.50 & 210.83 & 126.50 & 183.86 \\
+Years since turning pro    & 12.56  & 5.37   & 11.90  & 5.17   \\
+Age at tournament          & 31.55  & 5.18   & 31.58  & 4.36   \\
+Top-100 singles player (share) & \multicolumn{2}{c}{--} & \multicolumn{2}{c}{8.0\%} \\
 \bottomrule
 \end{tabular}
-}
 \begin{tablenotes}
 \small
-\item Note: Individual-level statistics pool both teammates across all 3,728 team-obs (4 players $\times$ 1,864 matches, minus a small number with missing tenure/DOB). Team-level statistics are the two-teammate average used directly in the regressions (\textit{rank\_mean}, \textit{exp\_mean}, \textit{age\_mean}). Years since turning pro is imputed to 1 for 216 team-obs whose raw tenure is $\le 0$ (rookies who turned pro in or after the tournament year); the team-level mean above reflects this imputation.
+\item Note: Individual-level statistics pool both teammates across all 3,752 team-obs (4 players $\times$ 1,876 matches, minus a small number with missing tenure/DOB). Team-level statistics are the two-teammate average used directly in the regressions (\textit{rank\_mean}, \textit{exp\_mean}, \textit{age\_mean}). Years since turning pro is imputed to 1 for 213 team-obs whose raw tenure is $\le 0$ (rookies who turned pro in or after the tournament year); the team-level mean above reflects this imputation.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -164,8 +167,9 @@ We construct three  measures of cultural similarity. The first measure, Same Nat
 These measures reflect increasingly broad notions of cultural similarity. Shared nationality captures common institutional and cultural background. Shared language more directly captures communication potential. Linguistic proximity recognizes that communication costs may also be lower between speakers of closely related languages even when they do not share the same official language.
 
 
+
 \begin{table}[htbp]
-\color{blue}
+\color{red}
 \centering
 \caption{Shares of the Three Cultural Similarity Measures, and Unique Teams by Tournament}
 \label{tab:t2}
@@ -179,8 +183,8 @@ These measures reflect increasingly broad notions of cultural similarity. Shared
 Measure & Share \\
 \midrule
 Same nationality  & 42.2\% \\
-Same language  & 56.0\% \\
-Ling.\ proximity (0--1) & 0.568 \\
+Same language  & 55.9\% \\
+Ling.\ proximity (0--1) & 0.567 \\
 \bottomrule
 \end{tabular}%
 }
@@ -194,23 +198,23 @@ Tournament & Teams \\
 \midrule
 Australian Open & 542 \\
 Roland Garros & 543 \\
-Wimbledon & 487 \\
+Wimbledon & 499 \\
 US Open & 517 \\
 \midrule
-\textbf{Total} & \textbf{2,089} \\
+\textbf{Total} & \textbf{2,101} \\
 \bottomrule
 \end{tabular}%
 }
 \end{tabular*}
 \begin{tablenotes}
 \small
-\item Note: Panel A reports shares over the 2,089 distinct tournament$\times$partnership pairings with complete ranking data (same rank-complete sample as Panel B and Section~\ref{sec:sorting}'s Table~\ref{tab:t9} ``All'' row) -- a pair advancing through several rounds of the same event is counted once, not once per match played. Panel B counts the same 2,089 pairings, broken down by tournament.
+\item Note: Panel A reports shares over the 2,101 distinct tournament$\times$partnership pairings with complete ranking data. Panel B counts the same 2,101 pairings, broken down by tournament.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-In our sample,  \textcolor{red}{42.2\%} of teams consist of players sharing the same nationality, \textcolor{red}{56.0\%} share an official language, and the mean linguistic proximity is \textcolor{red}{0.568} on the 0--1 scale.
+In our sample,  \textcolor{blue}{41.2\%} of teams consist of players sharing the same nationality, \textcolor{blue}{56.2\%} share an official language, and the mean linguistic proximity is \textcolor{blue}{0.569} on the 0--1 scale.
 
 \section{Theory and Hypotheses}
 \subsection{Cultural Similarity and Team Performance}
@@ -228,7 +232,7 @@ We therefore propose:
 \added{Tiebreaks impose a different temporal and competitive environment in which the opportunity for any coordination advantage to accumulate is substantially reduced.}
 
 The coordination benefits associated with cultural similarity are not necessarily  equally observable in every part of a match. Coordination is a process that develops through repeated interaction: teammates communicate, adjust their behavior, learn one another's tendencies, and build shared expectations. While a full match provides a series of opportunities for this process to operate, a tiebreak substantially
-compresses these opportunities.\footnote{Two distinct tiebreak formats exist in professional tennis. A \emph{standard} tiebreak, played to decide a set once the game score reaches 6--6, is won by the first team to reach 7 points with a margin of at least 2 (so it typically lasts 7--10 points in practice); this format is used in every set of a match, and, at some tournaments, in the final set as well. A \emph{match} or ``super'' tiebreak, played to 10 points instead of 7, is used at some tournaments as a substitute for a full final set. \added{In our sample, no genuine 10-point match tiebreak is ever used to decide the last set at any of the four Grand Slams. Wimbledon is the only tournament with a non-standard deciding-set format: in 15 of our sample's matches (7 in 2018, 3 in 2019, 5 in 2021), the last set was instead resolved through extended advantage-set play with no breaker at all, with final scores as lopsided as 16--14 and 22--20 -- consistent with Wimbledon's pre-2019 rule of no tiebreak in the deciding set and, for the 2019 and 2021 cases, with its subsequent 12-12-breaker rule simply never being triggered because the set ended before reaching 12-12. At the Australian Open, Roland Garros, and US Open -- and in the remaining 79 Wimbledon matches with a completed deciding set -- the last set is instead resolved by the same standard 6--6 seven-point breaker used in every other set.}} First, tiebreaks are short relative to the match as a whole, leaving less time for a coordination advantage to accumulate. Second, a tiebreak is reached only when the two teams have performed sufficiently similarly to reach a closely contested stage of the set. Its outcome is therefore determined in a setting where relatively small differences in performance can be decisive and where point-level randomness is likely to play a larger role.
+compresses these opportunities.\footnote{Two distinct tiebreak formats exist in professional tennis. A \emph{standard} tiebreak, played to decide a set once the game score reaches 6--6, is won by the first team to reach 7 points with a margin of at least 2 (so it typically lasts 7--10 points in practice); this format is used in every set of a match, and, at some tournaments, in the final set as well. A \emph{match} or ``super'' tiebreak, played to 10 points instead of 7, is used at some tournaments as a substitute for a full final set. \added{In our sample, no genuine 10-point match tiebreak is ever used to decide the last set at any of the four Grand Slams. Wimbledon is the only tournament with a non-standard deciding-set format: in 15 of our sample's matches (7 in 2018, 3 in 2019, 5 in 2021), the last set was instead resolved through extended advantage-set play with no breaker at all, with final scores such as 16--14 and 22--20 -- consistent with Wimbledon's pre-2019 rule of no tiebreak in the deciding set and, for the 2019 and 2021 cases, with its subsequent 12-12-breaker rule simply never being triggered because the set ended before reaching 12-12. At the Australian Open, Roland Garros, and US Open -- and in the remaining 79 Wimbledon matches with a completed deciding set -- the last set is instead resolved by the same standard 6--6 seven-point breaker used in every other set.}} First, tiebreaks are short relative to the match as a whole, leaving less time for a coordination advantage to accumulate. Second, a tiebreak is reached only when the two teams have performed sufficiently similarly to reach a closely contested stage of the set. Its outcome is therefore determined in a setting where relatively small differences in performance can be decisive and where point-level randomness is likely to play a larger role.
 
 %The communication environment also differs. During a set, teammates have repeated opportunities to communicate during changeovers, allowing them to exchange information, adjust tactics, and coordinate subsequent play. A tiebreak substantially compresses these opportunities. Once the tiebreak begins, teammates have very limited scope for formal discussion before the decisive points are played, with the principal changeover occurring only after the score reaches 6–6. Thus, a tiebreak provides not only a shorter horizon over which coordination can operate but also fewer opportunities to communicate and update a shared understanding during that period.
 
@@ -242,7 +246,6 @@ The positive association between cultural similarity and team performance is wea
 \section{Empirical Analysis}
 
 \subsection{Match Performance}
-\label{sec:matchwin}
 We test Hypothesis 1 by  estimating the association between cultural similarity of the two players within a team and the probability of winning a doubles match. Specifically, we estimate a Logit model
 \begin{equation}\label{matchoutcome}
   \operatorname{Pr}(W_{ijt} = 1) = f(\beta C_{ijt} + \gamma X_{ijt} + \delta_{ty} + \lambda_r) , 
@@ -267,86 +270,42 @@ Throughout the analysis we include tournament-by-year fixed effects $\delta_{ty}
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Cultural similarity & 0.0361** & 0.0459*** & 0.0419*** \\
- & (0.0164) & (0.0157) & (0.0157) \\
+Cultural similarity & 0.0377** & 0.0474*** & 0.0434*** \\
+ & (0.0163) & (0.0156) & (0.0156) \\
 Own avg. doubles ranking & $-$0.0007*** & $-$0.0007*** & $-$0.0007*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
 Opponent avg. doubles ranking & 0.0007*** & 0.0007*** & 0.0007*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player (0,1)& $-$0.0042 & $-$0.0030 & $-$0.0024 \\
+Top-100 singles player (0,1)& $-$0.0049 & $-$0.0036 & $-$0.0030 \\
  & (0.0315) & (0.0315) & (0.0315) \\
-Team avg. professional years  & 0.0044*** & 0.0043** & 0.0042** \\
+Team avg. professional years  & 0.0045*** & 0.0043*** & 0.0043** \\
  & (0.0017) & (0.0017) & (0.0017) \\
-Team avg. professional years$^2$  & $-$0.0008*** & $-$0.0008*** & $-$0.0008*** \\
+Team avg. professional years$^2$  & $-$0.0008*** & $-$0.0007*** & $-$0.0007*** \\
  & (0.0002) & (0.0002) & (0.0002) \\
 \midrule
 Tournament $\times$ year FE & Yes & Yes & Yes \\
 Match round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.096 & 0.097 & 0.097 \\
-$N$ & 3,728 & 3,728 & 3,728 \\
+Pseudo-$R^2$ & 0.095 & 0.096 & 0.096 \\
+$N$ & 3,752 & 3,752 & 3,752 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Unit of observation is team-match (2 team obs. per match); Professional years (Experience) is demeaned at the sample mean (11.93 years); the squared term is built from the demeaned variable. %so the linear term is the marginal effect of tenure at the sample mean.
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Unit of observation is team-match (2 team obs. per match); Professional years (Experience) is demeaned at the sample mean (11.90 years)
+% ; the squared term is built from the demeaned variable. %so the linear term is the marginal effect of tenure at the sample mean.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-Table~\ref{tab:t3} reports average marginal effects (AMEs) estimated in logit models. %which can be interpreted as percentage-point changes in the probability of winning associated with each explanatory variable.
-Across all three specifications, culturally similar teams are significantly more likely to win Grand Slam matches. The estimated effects range from 3.6 to 4.6 percentage points and are strongest when cultural similarity is measured through shared language. Team quality are the dominant predictor of success: stronger own doubles rankings significantly increase the probability of winning, while stronger opponent rankings significantly decrease the probability of winning. Whether having a top 100 singles player in the team does not seem to matter for the match outcome. More experienced teams perform better with diminishing returns.
+Table~\ref{tab:t3} reports average marginal effects (AMEs) estimated in logit models. %which can be interpreted as percentage-point changes in the probability of winning associated with each explanatory variable. 
+Across all three specifications, culturally similar teams are significantly more likely to win Grand Slam matches. The estimated effects range from 3.8 to 4.7 percentage points and are strongest when cultural similarity is measured through shared language. Team quality are the dominant predictor of success: stronger own doubles rankings significantly increase the probability of winning, while stronger opponent rankings significantly decrease the probability of winning. Whether having a top 100 singles player in the team does not seem to matter for the match outcome. More experienced teams perform better with diminishing returns.
 
-\added{As a check on the non-independence of the two team-rows within a match (a win for one team mechanically implies a loss for the other), we re-estimate Table \ref{tab:t3} keeping only one randomly-selected team per match (N=1,864), with robust standard errors and no clustering (since each match now contributes exactly one row). Repeated over 10 random seeds: the same-nationality AME averages 0.0466 (range 0.0161--0.0812, significant at the 5\% level in 5 of 10 draws), same-language averages 0.0517 (range 0.0230--0.0877, significant in 7 of 10 draws), and language proximity averages 0.0471 (range 0.0156--0.0859, significant in 6 of 10 draws) -- consistently the same sign and a broadly similar magnitude to Table \ref{tab:t3}, but genuinely not identical to it draw by draw. Halving the sample inflates standard errors by roughly $\sqrt{2}$, which is enough to push several individual draws below conventional significance, most visibly for same nationality (already the weakest of the three measures at baseline). We also verified that dropping the model's intercept in favor of full-rank tournament$\times$year fixed effects reproduces Table \ref{tab:t3} exactly (identical AMEs, standard errors, and log-likelihood), confirming the clustered, both-rows specification used throughout the paper -- the standard approach for this kind of paired, mechanically-linked data -- is not manufacturing the result.}
+\added{Alternative specification: randomly assign one team per match as the focal team to be kept in the regression analysis (N=1,876). Coefficients are of similar magnitude and slighter weaker significance.} \textcolor{red}{Alessandro: setting SEED = 10. the same-nationality AME averages 0.0312 (range 0.0024--0.0764, significant at the 5\% level in 2 of 10 draws), same-language averages 0.0392 (range 0.0146--0.0747, significant in 5 of 10 draws), and language proximity averages 0.0357 (range 0.0084--0.0772, significant in 4 of 10 draws). Similar to Table 3 but slightly different magnitude.}
 
 These findings provide consistent evidence that cultural similarity is positively associated with team performance after accounting for observable differences in own and opponent quality,  experience, and tournament characteristics.
 
-\subsection{Disentangling Nationality from Language}
-\label{sec:natlang}
-\added{The \textit{same\_country} and \textit{same\_language} measures used above are themselves correlated: in our sample, every same-nationality team-obs is also a same-language team-obs (0 team-obs share a nationality but not an official language), so Table~\ref{tab:t3} alone cannot distinguish whether the cultural-similarity association reflects shared nationality specifically -- e.g.\ shared sporting institutions, geographic proximity, or common exposure on the junior circuit -- or a broader communication-related component tied to language. To separate the two, we replace the two indicators with three mutually exclusive categories that partition the full estimation sample: (i) \textit{same nationality and same language}; (ii) \textit{different nationality, same language} (e.g.\ Germany/Austria, UK/Australia/US, Spain/Argentina -- teammates who share a language without sharing an institutional or geographic background); and (iii) \textit{different nationality, different language} (the omitted reference category). Table~\ref{tab:t4} reports the sample sizes, raw win rates, and re-estimated AMEs for these categories using the same controls, fixed effects, and clustering as Table~\ref{tab:t3}.}
-
-\begin{table}[htbp]
-\color{blue}
-\centering
-\caption{Match Win: Nationality vs.\ Language Decomposition \label{tab:t4}}
-\begin{threeparttable}
-\begin{tabular}{lccc}
-\toprule
- & $N$ & Win rate & AME \\
-\midrule
-Same nationality + same language & 1,534 & 49.0\% & 0.0467*** \\
- & & & (0.0173) \\
-Diff.\ nationality + same language & 561 & 56.9\% & 0.0438* \\
- & & & (0.0230) \\
-Diff.\ nationality + diff.\ language (reference) & 1,633 & 48.6\% & -- \\
-\midrule
-Own avg. doubles ranking & & & $-$0.0007*** \\
- & & & (0.0001) \\
-Opponent avg. doubles ranking & & & 0.0007*** \\
- & & & (0.0001) \\
-Top-100 singles player (0,1) & & & $-$0.0031 \\
- & & & (0.0315) \\
-Team avg. professional years & & & 0.0043** \\
- & & & (0.0017) \\
-Team avg. professional years$^2$ & & & $-$0.0008*** \\
- & & & (0.0002) \\
-\midrule
-Tournament $\times$ year FE & \multicolumn{3}{c}{Yes} \\
-Match round FE & \multicolumn{3}{c}{Yes} \\
-Pseudo-$R^2$ & \multicolumn{3}{c}{0.097} \\
-$N$ (total) & \multicolumn{3}{c}{3,728} \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Same controls and FE as Table~\ref{tab:t3}. Reference category (omitted): different nationality, different language. The three categories partition the full estimation sample exactly (0 same-nationality/different-language team-obs exist in this data).
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\added{The key comparison is between the two same-language rows. Same-nationality teams (who are, by construction in this data, also same-language) show a positive and highly significant association with winning (AME = 0.0467, p$<$0.01). Critically, different-nationality teams who share a language show an association of similar magnitude (AME = 0.0438) that is significant at the 10\% level (p = 0.057), despite this being the smallest of the three groups (561 team-obs). Because these teammates share no nationality -- and therefore no shared sporting federation, junior-circuit exposure, or geographic proximity -- this result is inconsistent with the cultural-similarity association being driven solely by nationality-specific institutional factors. It is more consistent with a communication-related component of cultural similarity that operates through shared language independently of shared nationality.}
-
-\subsection{Testing Tiebreaks as a Boundary Condition}
+\subsection{Testing Tiebreaks as a Boundary Condition} 
 %Tiebreaks provide a particularly demanding boundary test because they are both short and conditional on the two teams having reached a closely contested state. The limited number of points leaves less scope for coordination advantages to accumulate, while the outcome of a short sequence is more sensitive to point-level variation.
 
 
@@ -370,29 +329,29 @@ We estimate the same empirical specification in Equation (\ref{matchoutcome}) us
 \begin{table}[htbp]
 \color{blue}
 \centering
-\caption{Tiebreak Win — Average Marginal Effects (AME) from Logit \label{tab:t5}}
+\caption{Tiebreak Win — Average Marginal Effects (AME) from Logit \label{tab:t4}}
 \begin{threeparttable}
 \begin{tabular}{lccc}
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Cultural similarity & 0.0308 & 0.0082 & 0.0026 \\
- & (0.0224) & (0.0218) & (0.0217) \\
+Cultural similarity & 0.0298 & 0.0075 & 0.0019 \\
+ & (0.0223) & (0.0218) & (0.0217) \\
 Own avg. doubles ranking & $-$0.0003*** & $-$0.0003*** & $-$0.0003*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
 Opponent avg. doubles ranking & 0.0003*** & 0.0003*** & 0.0003*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player (0,1) & $-$0.0675 & $-$0.0646 & $-$0.0644 \\
+Top-100 singles player (0,1) & $-$0.0663 & $-$0.0634 & $-$0.0632 \\
  & (0.0428) & (0.0427) & (0.0427) \\
-Team avg. professional years & 0.0027 & 0.0023 & 0.0022 \\
+Team avg. professional years & 0.0026 & 0.0022 & 0.0022 \\
  & (0.0022) & (0.0021) & (0.0021) \\
 Team avg. professional years$^2$ & 0.0000 & 0.0001 & 0.0001 \\
  & (0.0003) & (0.0003) & (0.0003) \\
 \midrule
 Tournament $\times$ year FE & Yes & Yes & Yes \\
 Round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.013 & 0.013 & 0.013 \\
-$N$ & 2,354 & 2,354 & 2,354 \\
+Pseudo-$R^2$ & 0.014 & 0.013 & 0.013 \\
+$N$ & 2,364 & 2,364 & 2,364 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -403,7 +362,7 @@ $N$ & 2,354 & 2,354 & 2,354 \\
 \end{table}
 \FloatBarrier
 
-Table \ref{tab:t5} reports the results. None of the three measures of cultural similarity is significantly associated with the probability of winning a tiebreak. The estimated coefficients are economically small and statistically indistinguishable from zero.  The ranking controls remain highly significant, indicating that the specification continues to capture underlying differences in team quality.
+Table \ref{tab:t4} reports the results. None of the three measures of cultural similarity is significantly associated with the probability of winning a tiebreak. The estimated coefficients are economically small and statistically indistinguishable from zero.  The ranking controls remain highly significant, indicating that the specification continues to capture underlying differences in team quality.
 
 \added{If culturally similar teams were simply stronger for some persistent reason, we would have some reason to expect that advantage to remain visible in tiebreaks.}
 
@@ -418,36 +377,36 @@ One concern is that the observed association reflects strategic characteristics 
 If the observed association were driven by a particular tactical or environmental feature of doubles tennis, we might expect the return to cultural similarity to vary across surfaces, which differ substantially in their playing characteristics. We therefore test whether the association is stable across surfaces by interacting each cultural similarity measure with grass and clay surface, respectively. 
 
 
-Table \ref{tab:t6} reports the results. The coefficients are remarkably stable across playing environments, suggesting that the result is not driven by any specific physical environment of the tournament. \added{The notes below every table (Tables \ref{tab:t3}--\ref{tab:t8}) have been checked against the underlying estimation code -- controls, fixed effects, clustering, sample sizes, and robustness-spec descriptions all match what was actually estimated.}
+Table \ref{tab:t5} reports the results. The coefficients are remarkably stable across playing environments, suggesting that the result is not driven by any specific physical environment of the tournament \footnote{\textcolor{red}{As a robustness check, restoring tournament$\times$year FE and estimating C$\times$grass/C$\times$clay jointly (hardcourt as baseline, no separate surface main effect) leaves this conclusion unchanged: both C$\times$grass and C$\times$clay interactions remain small and insignificant (p$>$0.77) in that specification.}}. \textcolor{red}{Alessandro: Please double check all the notes below all the tables, whether they are correct, accurate, and exactly what you estimate.}
 
 
 \begin{table}[htbp]
 \color{blue}
 \centering
-\caption{Stability across playing surfaces \label{tab:t6}}
+\caption{Stability across playing surfaces \label{tab:t5}}
 \begin{threeparttable}
 \begin{tabular}{lcccccc}
 \toprule
  & \multicolumn{2}{c}{(1) Same Nationality} & \multicolumn{2}{c}{(2) Same Language} & \multicolumn{2}{c}{(3) Lang. Proximity} \\
  & (a) grass & (b) clay & (a) grass & (b) clay & (a) grass & (b) clay \\
 \midrule
-Cultural similarity (C) & 0.0395** & 0.0351* & 0.0439** & 0.0477*** & 0.0416** & 0.0401** \\
- & (0.0183) & (0.0189) & (0.0176) & (0.0182) & (0.0176) & (0.0181) \\
-Surface & 0.0097 & $-$0.0017 & $-$0.0022 & 0.0047 & 0.0019 & $-$0.0037 \\
- & (0.0149) & (0.0142) & (0.0207) & (0.0188) & (0.0209) & (0.0194) \\
-C $\times$ Surface & $-$0.0169 & 0.0023 & 0.0070 & $-$0.0084 & 0.0003 & 0.0061 \\
- & (0.0376) & (0.0347) & (0.0364) & (0.0340) & (0.0364) & (0.0344) \\
+Cultural similarity (C) & 0.0392** & 0.0374** & 0.0438** & 0.0498*** & 0.0415** & 0.0422** \\
+ & (0.0183) & (0.0188) & (0.0176) & (0.0181) & (0.0176) & (0.0180) \\
+Surface & 0.0063 & $-$0.0007 & $-$0.0062 & 0.0059 & $-$0.0022 & $-$0.0024 \\
+ & (0.0148) & (0.0142) & (0.0206) & (0.0188) & (0.0207) & (0.0194) \\
+C $\times$ Surface & $-$0.0082 & $-$0.0003 & 0.0140 & $-$0.0106 & 0.0075 & 0.0038 \\
+ & (0.0373) & (0.0346) & (0.0361) & (0.0340) & (0.0362) & (0.0344) \\
 \midrule
 Controls  & Yes & Yes & Yes & Yes & Yes & Yes \\
 Round FE & Yes & Yes & Yes & Yes & Yes & Yes \\
 Tournament $\times$ year FE & No & No & No & No & No & No \\
-Pseudo-$R^2$ & 0.096 & 0.096 & 0.097 & 0.097 & 0.096 & 0.096 \\
-$N$ & \multicolumn{2}{c}{3,728} & \multicolumn{2}{c}{3,728} & \multicolumn{2}{c}{3,728} \\
+Pseudo-$R^2$ & 0.095 & 0.095 & 0.096 & 0.096 & 0.096 & 0.096 \\
+$N$ & \multicolumn{2}{c}{3,752} & \multicolumn{2}{c}{3,752} & \multicolumn{2}{c}{3,752} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Spec (a): grass vs.\ rest (hardcourt+clay pooled). Spec (b): clay vs.\ rest (hardcourt+grass pooled). Round FE only (no tournament$\times$year FE, since it would be collinear with only two surface groups); Same controls as in  Table \ref{tab:t3}. All surface main effects and C$\times$Surface interactions are insignificant (p$>$0.51 throughout) in both specs. As a robustness check, restoring tournament$\times$year FE and estimating C$\times$grass/C$\times$clay jointly (hardcourt as baseline, no separate surface main effect) leaves this conclusion unchanged: both C$\times$grass and C$\times$clay interactions remain small and insignificant (p$>$0.65) in that specification.
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Spec (a): grass vs.\ rest (hardcourt+clay pooled). Spec (b): clay vs.\ rest (hardcourt+grass pooled). Round FE only; Same controls as in  Table \ref{tab:t3}. 
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -495,41 +454,42 @@ We first test whether the association between cultural similarity and match perf
 \operatorname{Pr}(\text{Win}) = f(\beta_1 C + \beta_2 \text{AvgTeamExp} + \beta_3 (C \times \text{AvgTeamExp}) + \gamma X + \delta_{ty} + \lambda_r)
 \end{equation}
 
-%Team average experience is demeaned at its sample mean of 11.93 years, so the coefficient on cultural similarity represents its association with match performance for a team at the average level of professional experience. The specification also includes the linear and quadratic terms for average experience used in the main analysis.
+%Team average experience is demeaned at its sample mean of 11.90 years, so the coefficient on cultural similarity represents its association with match performance for a team at the average level of professional experience. The specification also includes the linear and quadratic terms for average experience used in the main analysis.
 
-Table \ref{tab:t7} reports the results. The interaction between cultural similarity and team average experience is positive for all three measures. For same nationality, however, the interaction is very small and statistically insignificant (0.0008, p=0.809). For the two language-based measures, the interaction is positive and statistically significant: 0.0069 for shared language (p=0.032) and 0.0068 for linguistic proximity (p=0.034). Thus, the association between language-related cultural similarity and match performance becomes stronger as team members have more professional experience on average.
+Table \ref{tab:t6} reports the results. \textcolor{red}{Alessandro: I would report the coefficients of experience-mean-dm in Table \ref{tab:t6} instead of leaving it in the controls to keep the same format as Table \ref{tab:t6b}.} The interaction between cultural similarity and team average experience is positive for all three measures. For same nationality, however, the interaction is very small and statistically insignificant (0.0003, p=0.925). For the two language-based measures, the interaction is positive and statistically significant: 0.0064 for shared language (p=0.045) and 0.0063 for linguistic proximity (p=0.049). Thus, the association between language-related cultural similarity and match performance becomes stronger as team members have more professional experience on average.
 
 
 \begin{table}[htbp]
-\color{blue}
+\color{red}
 \centering
-\caption{Team Average Experience \label{tab:t7}}
+\caption{Team Average Experience \label{tab:t6}}
 \begin{threeparttable}
 \begin{tabular}{lccc}
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Cultural similarity (C)  & 0.0361** & 0.0433*** & 0.0392** \\
- & (0.0164) & (0.0157) & (0.0156) \\
-C $\times$ exp\_mean\_dm & 0.0008 & 0.0069** & 0.0068** \\
- & (0.0033) & (0.0032) & (0.0032) \\
-exp\_mean\_dm (main) & 0.0041* & 0.0002 & 0.0002 \\
- & (0.0023) & (0.0025) & (0.0025) \\
+Cultural similarity (C)  & 0.0377** & 0.0450*** & 0.0410*** \\
+ & (0.0163) & (0.0156) & (0.0156) \\
+C $\times$ exp\_mean\_dm & 0.0003 & 0.0064** & 0.0063** \\
+ & (0.0032) & (0.0032) & (0.0032) \\
+exp\_mean\_dm (main) & 0.0043* & 0.0005 & 0.0005 \\
+ & (0.0022) & (0.0025) & (0.0025) \\
 \midrule
 Controls & Yes & Yes & Yes \\
 Tournament $\times$ year FE & Yes & Yes & Yes \\
 Round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.096 & 0.098 & 0.097 \\
-$N$ & 3,728 & 3,728 & 3,728 \\
+Pseudo-$R^2$ & 0.095 & 0.097 & 0.097 \\
+$N$ & 3,752 & 3,752 & 3,752 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. \textit{exp\_mean\_dm} is demeaned at the sample mean (11.93 years, SD 5.17), so the Culture (C) row is the AME at mean team experience. An alternative specification adding the quadratic interaction C $\times$ exp\_mean\_dm$^2$ leaves this conclusion unchanged: the quadratic term is small and insignificant for all three measures (p$>$0.50), while the linear interaction for shared language and linguistic proximity remains positive and significant (p$\approx$0.03).
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. \textit{exp\_mean\_dm} is demeaned at the sample mean (11.90 years, SD 5.17), so the Culture (C) row is the AME at mean team experience.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
+
 
 
 The result is robust to allowing the interaction to vary nonlinearly with experience. When we additionally include the interaction between cultural similarity and squared demeaned experience, the quadratic interactions are small and statistically insignificant for all three measures (p$>$0.50), while the linear interactions for shared language and linguistic proximity remain positive and statistically significant. %The finding therefore does not appear to be driven by an omitted nonlinear relationship.
@@ -555,41 +515,41 @@ The estimating equation becomes
 
 The second mechanism makes a different prediction. Cultural similarity may matter particularly when teammates have different levels of professional experience. An experienced player may possess greater knowledge of the demands of elite doubles competition, while an inexperienced teammate may need to learn unfamiliar routines and expectations. Under this knowledge-transfer interpretation, a common cultural and linguistic background could facilitate communication between teammates with different levels of experience. The value of cultural similarity should therefore increase with the experience gap within the team, rather than with the average experience of the two players.
 
-We test this prediction using the absolute difference between the two teammates' years since turning professional, $\text{ExperienceGap}_{ij} = |\text{Experience}_i - \text{Experience}_j|$. We interact this measure with each cultural-similarity measure and additionally control for team average experience and its quadratic term. The experience gap is demeaned at its sample mean of 5.50 years, so the cultural-similarity coefficient is evaluated at the average experience gap rather than at zero. The models otherwise retain the specification used in the main analysis.
+We test this prediction using the absolute difference between the two teammates' years since turning professional, ExperienceGap=. We interact this measure with each cultural-similarity measure and additionally control for team average experience and its quadratic term. The experience gap is demeaned at its sample mean of 5.48 years, so the cultural-similarity coefficient is evaluated at the average experience gap rather than at zero. The models otherwise retain the specification used in the main analysis.
 
 
 \begin{table}[htbp]
 \color{blue}
 \centering
-\caption{Within-Team Experience Gap \label{tab:t8}}
+\caption{Within-Team Experience Gap \label{tab:t6b}}
 \begin{threeparttable}
 \begin{tabular}{lccc}
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Culture (C) -- mean gap & 0.0356** & 0.0447*** & 0.0409*** \\
- & (0.0164) & (0.0157) & (0.0157) \\
+Culture (C) -- mean gap & 0.0373** & 0.0462*** & 0.0425*** \\
+ & (0.0163) & (0.0156) & (0.0156) \\
 C $\times$ exp\_gap\_dm & 0.0032 & 0.0038 & 0.0036 \\
- & (0.0034) & (0.0032) & (0.0032) \\
-exp\_gap\_dm (main) & $-$0.0036* & $-$0.0045* & $-$0.0045* \\
+ & (0.0033) & (0.0032) & (0.0032) \\
+exp\_gap\_dm (main) & $-$0.0036* & $-$0.0045* & $-$0.0044* \\
  & (0.0021) & (0.0025) & (0.0025) \\
 \midrule
 Controls (Table~\ref{tab:t3} set) & Yes & Yes & Yes \\
 Tournament $\times$ year FE & Yes & Yes & Yes \\
 Round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.097 & 0.097 & 0.097 \\
-$N$ & 3,728 & 3,728 & 3,728 \\
+Pseudo-$R^2$ & 0.096 & 0.097 & 0.096 \\
+$N$ & 3,752 & 3,752 & 3,752 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. \textit{exp\_gap\_dm} $=|{\rm exp}_i-{\rm exp}_j|$, demeaned at the sample mean (5.50 years, SD 4.92); individual tenure is imputed to 1 year for rookies, matching the \textit{exp\_mean} rule. Controls include team-average \textit{exp\_mean\_dm} and its square, plus \textit{exp\_gap\_dm} itself. A robustness spec adding C $\times$ exp\_gap\_dm$^2$ leaves the conclusion unchanged (quadratic term and linear term both insignificant throughout, p$>$0.29).
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. \textit{exp\_gap\_dm} $=|{\rm exp}_i-{\rm exp}_j|$, demeaned at the sample mean (5.48 years, SD 4.92); individual tenure is imputed to 1 year for rookies. Controls include team-average \textit{exp\_mean\_dm} and its square, plus \textit{exp\_gap\_dm} itself. A robustness spec adding C $\times$ exp\_gap\_dm$^2$ leaves the conclusion unchanged (quadratic term and linear term both insignificant throughout, p$>$0.24).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-The results provide no evidence that cultural similarity becomes more strongly associated with performance as the experience gap increases. The interaction is positive for all three measures—0.0032 for same nationality (p=0.344), 0.0038 for same language (p=0.232), and 0.0036 for linguistic proximity (p=0.261)—but none is statistically significant. Allowing for a quadratic relationship between the experience gap and cultural similarity produces the same conclusion: the quadratic interactions are small and statistically insignificant, while the linear interactions remain insignificant.
+The results provide no evidence that cultural similarity becomes more strongly associated with performance as the experience gap increases. The interaction is positive for all three measures—0.0032 for same nationality (p=0.344), 0.0038 for same language (p=0.240), and 0.0036 for linguistic proximity (p=0.271)—but none is statistically significant. Allowing for a quadratic relationship between the experience gap and cultural similarity produces the same conclusion: the quadratic interactions are small and statistically insignificant, while the linear interactions remain insignificant.
 
 The results therefore distinguish the two potential mechanisms. We find evidence that the association between cultural similarity and performance becomes stronger among more experienced teams, particularly for language-related measures, but no evidence supporting the specific prediction that cultural similarity is especially valuable as a bridge across unequal experience levels. The findings are consequently more consistent with an interpretation based on accumulated professional experience and coordination.
 
@@ -598,41 +558,42 @@ This distinction is important for interpreting the mechanism. We do not find evi
 
 
 \section{Team Formation and Cultural Sorting}
-An important feature of doubles tennis is that teams are formed through player choices rather than assigned exogenously. This makes partnership formation relevant for interpreting the performance associations documented above. Békés and Ottaviano (2025) show that cultural similarity is systematically related to interaction patterns within professional football teams, demonstrating that culturally structured collaboration persists even among highly skilled professionals working in common organizational settings. Our data reveal a related pattern at the stage of team formation: players are substantially more likely to form partnerships with culturally similar teammates than would be expected under random matching. We therefore examine partnership formation separately from the performance analysis. The purpose of this section is not to eliminate selection concerns or to establish that partnerships are formed exogenously, but to document how cultural sorting operates in the doubles environment and whether it is particularly pronounced among stronger players. We first compare observed cultural similarity in partnerships with the corresponding random-matching benchmark, then examine whether a player's own doubles ranking predicts the cultural similarity of their partner, and finally describe how partnership formation varies around the Olympic cycles. Together, these analyses provide a more transparent picture of the selection environment in which the performance associations arise.
+An important feature of doubles tennis is that teams are formed bilaterally between players rather than assigned exogenously. This makes partnership formation relevant for interpreting the performance associations documented above. Békés and Ottaviano (2025) show that cultural similarity is systematically related to interaction patterns within professional football teams, demonstrating that culturally structured collaboration persists even among highly skilled professionals working in common organizational settings. Our data reveal a related pattern at the stage of team formation: players are substantially more likely to form partnerships with culturally similar teammates than would be expected under random matching. We therefore examine partnership formation separately from the performance analysis. The purpose of this section is not to eliminate selection concerns or to establish that partnerships are formed exogenously, but to document how cultural sorting operates in the doubles environment and whether it is particularly pronounced among stronger players. We first compare observed cultural similarity in partnerships with the corresponding random-matching benchmark, then examine whether a player's own doubles ranking predicts the cultural similarity of their partner, and finally describe how partnership formation varies around the Olympic cycles. Together, these analyses provide a more transparent picture of the selection environment in which the performance associations arise.
 
 \subsection{Cultural Sorting in Partnership Formation}
 \label{sec:sorting}
 
-We construct a partnership-level sample containing each distinct men's doubles partnership appearing in the Grand Slams between 2018 and 2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds, because partner formation occurs before the subsequent match outcomes. The resulting sample contains 2,089 partnerships with complete ranking information (542 at the Australian Open, 543 at Roland Garros, 487 at Wimbledon, and 517 at the US Open; see Table~\ref{tab:t2}, Panel B).
+
+We construct a partnership-level sample containing each distinct men's doubles partnership appearing in the Grand Slams between 2018 and 2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds, because partner formation occurs before the subsequent match outcomes. The resulting sample contains 2,101 partnerships with complete ranking information.
 
 We compare the observed prevalence of cultural similarity with the rate expected under random matching within each tournament-year. The random-matching benchmark is calculated directly from the composition of the actual player field: for each tournament-year, we calculate the share of all possible player pairs that would satisfy the relevant cultural criterion. This produces a deterministic benchmark that accounts for the nationality and language composition of each tournament field.
 
 \begin{table}[htbp]
-\color{blue}
+\color{red}
 \centering
-\caption{Cultural Sorting in Partnership Formation: Actual vs.\ Random-Matching Benchmark \label{tab:t9}}
+\caption{Cultural Sorting in Partnership Formation: Actual vs.\ Random-Matching Benchmark \label{tab:t8}}
 \begin{threeparttable}
 \begin{tabularx}{\textwidth}{l l Y Y Y}
 \toprule
 Measure & & All ranked players & Both partners top-100 & Both partners top-50 \\
- & & ($N$=2,089) & ($N$=1,211) & ($N$=712) \\
+ & & ($N$=2,101) & ($N$=1,212) & ($N$=712) \\
 \midrule
 \multirow{2}{*}{Same nationality} & Actual & 42.2\% & 32.6\% & 35.5\% \\
  & Random benchmark & 5.2\% & 4.1\% & 4.5\% \\
-\multirow{2}{*}{Same language} & Actual & 56.0\% & 49.7\% & 56.3\% \\
+\multirow{2}{*}{Same language} & Actual & 55.9\% & 49.7\% & 56.3\% \\
  & Random benchmark & 16.2\% & 15.5\% & 15.8\% \\
-\multirow{2}{*}{Mean ling.\ prox.} & Actual & 0.568 & 0.506 & 0.565 \\
- & Random benchmark & 0.199 & 0.189 & 0.189 \\
+\multirow{2}{*}{Mean ling.\ prox.} & Actual & 0.567 & 0.506 & 0.565 \\
+ & Random benchmark & 0.198 & 0.189 & 0.189 \\
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
 \small
-\item Note: one row per distinct partnership per tournament (2,089 partnerships, Grand Slams 2018--2025, Olympics excluded). Random benchmark is the closed-form expected rate under random pairing within each tournament-year's actual field, using the same CEPII \textit{comlang\_off}/\textit{comlang\_ethno} country-pair lookup underlying \textit{same\_language}/\textit{ling\_prox}.
+\item Note: one row per distinct partnership per tournament (2,101 partnerships, Grand Slams 2018--2025, Olympics excluded). Random benchmark is the closed-form expected rate under random pairing within each tournament-year's actual field, using the same CEPII \textit{comlang\_off}/\textit{comlang\_ethno} country-pair lookup underlying \textit{same\_language}/\textit{ling\_prox}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-The results in Table~\ref{tab:t9} show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with 5.2\% under random matching. Similarly, 56.0\% of partnerships share an official language, compared with 16.2\% under random matching. Mean linguistic proximity is 0.568 among observed partnerships, compared with 0.199 under random matching. Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
+The results in Table X show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with 5.2\% under random matching. Similarly, 55.9\% of partnerships share an official language, compared with 16.2\% under random matching. Mean linguistic proximity is 0.567 among observed partnerships, compared with 0.198 under random matching. Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
 
 This finding is important for interpreting the performance results. Cultural similarity is clearly not randomly distributed across partnerships: players who form teams are much more culturally similar than would be expected from the composition of the tournament field alone. The match-performance estimates should therefore not be interpreted as if cultural similarity were randomly assigned. Rather, they describe an association between the cultural composition of an already formed partnership and its subsequent performance.
 
@@ -640,53 +601,58 @@ At the same time, the sorting does not appear to be concentrated among the stron
 
 These comparisons provide no evidence that the cultural sorting observed in doubles is disproportionately driven by the strongest players.
 
-\subsection{Player Ranking and Cultural Partner Selection}
+\subsection{Player Ranking and Partner Selection}
 
-We next examine the relationship between a player's own ranking and the cultural similarity of the partnership more directly. For each partnership, we treat each player in turn as the focal player, generating two player-level observations per partnership. This produces 4,178 player-partnership observations from the 2,089 partnerships. Because the same partnership contributes two observations, standard errors are clustered at the partnership level.
+We next examine the relationship between a player's own ranking and the cultural similarity of the partnership more directly. For each partnership, we treat each player in turn as the focal player, generating two player-level observations per partnership. This produces 4,202 player-partnership observations from the 2,101 partnerships. Because the same partnership contributes two observations, standard errors are clustered at the partnership level.
 
-We regress each cultural-similarity measure on the focal player's own doubles ranking, including tournament-by-year fixed effects. \added{Because the cultural composition of the player pool differs across tournament-years, a player's probability of having a culturally similar partner may vary mechanically with the set of players entering the event. We therefore extend the specification to also account for the cultural composition of the tournament field: for each focal player, the share of every \emph{other} player in that tournament-year's full field (every entrant, not only the rank-complete partnerships used above) who shares the focal player's nationality -- and, analogously, the mean pairwise value of \textit{same\_language}/\textit{ling\_prox} against every other player in the field -- matched to the corresponding outcome.} The specification is deliberately parsimonious: the purpose is not to explain partner selection comprehensively, but to test whether a player's own ranking predicts the cultural similarity of the partner within a given tournament-year, and whether that association survives controlling for own nationality and field composition.
+\textcolor{red}{We regress each cultural-similarity measure on the focal player's own doubles ranking, including tournament-by-year fixed effects} 
+\textcolor{red}{Because the cultural composition of the player pool differs across tournament-years, a player's probability of having a culturally similar partner may vary with the set of players entering the event. We therefore extend the specification to also account for the cultural composition of the tournament field: for each focal player, the share of every \emph{other} player in that tournament-year's full field who shares the focal player's nationality -- and, analogously, the mean pairwise value of \textit{same\_language}/\textit{ling\_prox} against every other player in the field -- matched to the corresponding outcome.}
+The specification is deliberately parsimonious: the purpose is not to explain partner selection comprehensively, but to test whether a player's own ranking predicts the cultural similarity of the partner within a given tournament-year.
 
-\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout. We also estimated an own-nationality (country fixed effects) specification in place of own ranking, but do not report it: nationality is a 60-level categorical variable, so it produces 59 separate country-dummy coefficients rather than one interpretable effect, and its logit specifications fail to converge for the two binary outcomes regardless (quasi-complete separation, since several nationalities have as few as 2 ego-rows).}
+\textcolor{red}{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 4 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}198$ (from 4,202) throughout.}
+
 
 \begin{table}[htbp]
-\color{blue}
+\color{red}
 \centering
-\caption{Own Ranking, Tournament-Field Composition, and Partner-Culture Similarity \label{tab:t10}}
+\caption{Own Ranking, Tournament-Field Composition, and Partner-Culture Similarity \label{tab:t9}}
 \begin{threeparttable}
 \begin{tabular}{lcccc}
 \toprule
 Outcome & Spec 1: & Spec 2: & Spec 3: & Spec 3: \\
  & own\_rank & composition & own\_rank & composition \\
 \midrule
-Same nationality (AME) & 0.000269*** & 3.853*** & 0.000116** & 3.756*** \\
- & (0.000056) & (0.241325) & (0.000053) & (0.255403) \\
-Same language (AME) & 0.000146** & 1.275*** & 0.000117** & 1.267*** \\
- & (0.000058) & (0.081709) & (0.000053) & (0.082578) \\
-Ling.\ proximity (OLS coef.) & 0.000139*** & 1.152*** & 0.000104** & 1.145*** \\
- & (0.000053) & (0.075655) & (0.000047) & (0.076295) \\
+Same nationality (AME) & 0.000272*** & 3.851*** & 0.000118** & 3.751*** \\
+ & (0.000055) & (0.240066) & (0.000053) & (0.254239) \\
+Same language (AME) & 0.000150** & 1.279*** & 0.000118** & 1.270*** \\
+ & (0.000058) & (0.081294) & (0.000053) & (0.082173) \\
+Ling.\ proximity (OLS coef.) & 0.000142*** & 1.155*** & 0.000105** & 1.147*** \\
+ & (0.000053) & (0.075461) & (0.000047) & (0.076106) \\
 \midrule
-$N$ (ego-rows) & 4,175 & 4,175 & 4,175 & 4,175 \\
+$N$ (ego-rows) & 4,198 & 4,198 & 4,198 & 4,198 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by partnership. All specifications include tournament$\times$year FE and exclude ego-rows whose own nationality has exactly 1 observation in the ego-row sample (3 rows dropped; $N=4{,}175$, from 4,178). Field composition is (\# other field entrants sharing the focal player's nationality)/(field size $-1$) for same nationality, and the analogous mean pairwise value for same language / linguistic proximity, computed against every other player entering that tournament-year (not only the rank-complete partnerships in the estimation sample).
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by partnership. All specifications include tournament$\times$year FE and exclude ego-rows whose own nationality has exactly 1 observation in the ego-row sample (4 rows dropped; $N=4{,}198$, from 4,202). Field composition is (\# other field entrants sharing the focal player's nationality)/(field size $-1$) for same nationality, and the analogous mean pairwise value for same language / linguistic proximity, computed against every other player entering that tournament-year.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-The results in Table~\ref{tab:t10} confirm and extend the simple own-ranking result. In Spec 1, the coefficient on own ranking is positive and statistically significant for all three measures: 0.000269 for same nationality (p$<$0.001), 0.000146 for same language (p=0.012), and 0.000139 for linguistic proximity (p=0.009). Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners. Field composition alone (Spec 2) is also a strong, highly significant predictor of all three outcomes, as expected -- a player drawn from a tournament field with more compatriots or linguistically similar entrants is mechanically more likely to end up with a culturally similar partner. Adding both own ranking and field composition together (Spec 3) shrinks the own-ranking coefficients by roughly half relative to Spec 1 but leaves them positive and statistically significant for all three outcomes (p$<$0.05 throughout), while the composition coefficient remains close to its Spec 2 magnitude. Own ranking therefore predicts partner similarity \emph{in addition to}, not merely \emph{because of}, the cultural composition of the field a player happens to be drawn from, and this finding (Spec 3) remains the paper's main extension of the simple own-ranking result.
+The results are reported in Table~\ref{tab:t9}. The coefficient on own ranking is positive and statistically significant for all three measures: 0.000271 for same nationality (p<0.001), 0.000148 for same language (p=0.011), and 0.000141 for linguistic proximity (p=0.008). Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
 
 This result is the opposite of what would be expected if the performance association were primarily generated by stronger players having greater partner choice and systematically selecting culturally similar teammates. Together with the bracket comparisons, the evidence therefore provides no support for the specific selection mechanism in which stronger players disproportionately sort into culturally similar partnerships. It does not, however, eliminate other forms of endogenous partnership formation, and the performance estimates remain associations rather than causal effects.
 
 \subsection{Team Formation Around the Olympic Cycle}
+\added{The regular professional doubles circuit provides a setting in which players have substantial discretion over their partners, while Olympic doubles imposes a distinct institutional constraint: teams must represent the same nation. This raises a broader question about how institutional constraints interact with decentralized partnership formation. The Olympic requirement could, in principle, also increase the salience of national affiliation in the regular professional circuit, particularly as the Games approach, potentially generating spillovers in the cultural composition of Grand Slam partnerships.}
 
 Finally, we provide a  descriptive perspective on partnership formation by examining whether cultural sorting changes around the Olympic Games. The Olympic Games provide a separate setting in which the incentives surrounding partner formation are particularly salient. Unlike Grand Slam doubles competition, Olympic participation is organized around national representation, creating a direct incentive for players seeking to compete together at the Games to form partnerships with compatriots. We therefore examine whether the composition of Grand Slam partnerships changes during the preparation periods surrounding the Tokyo 2021 and Paris 2024 Olympic Games. The analysis is descriptive and is intended to provide additional evidence on how partnership formation responds to the institutional environment surrounding elite competition.
 
-For the Tokyo cycle, we divide the Grand Slam sample into three periods: a pre-Tokyo period covering the Australian Open 2018 through the US Open 2019; a Tokyo preparation period covering the Australian Open 2020 through Wimbledon 2021, excluding the cancelled 2020 Wimbledon; and a post-Tokyo period covering the US Open 2021 through the US Open 2022. For the Paris cycle, the pre-Paris period covers the 2022 Grand Slams, the Paris preparation period covers the Australian Open 2023 through Wimbledon 2024, and the post-Paris period covers the US Open 2024 through the US Open 2025.
+For the Tokyo cycle, we divide the Grand Slam sample into three periods: a pre-Tokyo period covering the Australian Open 2018 through the US Open 2019; a Tokyo preparation period covering the Australian Open 2020 through Wimbledon 2021, excluding the cancelled 2020 Wimbledon; and a post-Tokyo period covering the US Open 2021 through the US Open 2022. \textcolor{red}{For the Paris cycle, the pre-Paris period covers the 2022 Grand Slams, the Paris preparation period covers the Australian Open 2023 through Wimbledon 2024, and the post-Paris period covers the US Open 2024 through the US Open 2025.}
+
 
 \begin{table}[htbp]
-\color{blue}
+\color{red}
 \centering
 \caption{Grand Slam Partnerships Around the Tokyo 2021 and Paris 2024 Olympic Cycles \label{tab:t2ab}}
 \begin{threeparttable}
@@ -700,7 +666,7 @@ Same nationality & 40.0\% & 40.3\% & 39.0\% & 39.3\% & 42.6\% & 43.9\% \\
 Same language & 54.8\% & 55.0\% & 54.8\% & 54.1\% & 57.6\% & 58.8\% \\
 Ling.\ proximity (mean) & 0.557 & 0.551 & 0.556 & 0.552 & 0.580 & 0.602 \\
 \midrule
-$N$ & 980 & 680 & 602 & 484 & 860 & 626 \\
+$N$ & 1,004 & 680 & 602 & 484 & 860 & 626 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -714,6 +680,7 @@ The share of same-nationality teams is remarkably stable across the Tokyo cycle'
 
 The absence of an increase during the Tokyo preparation period is noteworthy because the Tokyo cycle took place during the COVID-19 pandemic. International travel and cross-border interaction were unusually difficult during this period, potentially increasing the relative attractiveness of partnering with compatriots or players from nearby linguistic communities. Nevertheless, the descriptive composition of teams does not show an increase in same-nationality or language-based partnerships during the preparation period.
 
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{homophily_nationality_only}
@@ -721,17 +688,18 @@ The absence of an increase during the Tokyo preparation period is noteworthy bec
 \label{fig:cycle_nat}
 \end{figure}
 
-The Paris cycle provides a contrasting pattern (Table~\ref{tab:t2ab} and Figure~\ref{fig:cycle_nat}). Same-nationality partnerships account for 39.3\% of teams before the Paris Games, 42.6\% during the preparation period, and 43.9\% afterwards. Shared-language partnerships increase from 54.1\% to 57.6\% and then 58.8\%, while mean linguistic proximity rises from 0.552 to 0.580 and then 0.602.
+The Paris cycle provides a contrasting pattern. Same-nationality partnerships account for 39.3\% of teams before the Paris Games, 42.6\% during the preparation period, and 43.9\% afterwards. Shared-language partnerships increase from 54.1\% to 57.6\% and then 58.8\%, while mean linguistic proximity rises from 0.552 to 0.580 and then 0.602.
 
-\added{The relatively flat trend around the Tokyo cycle in particular should not be read as evidence about whether players strategically build Grand Slam partnerships in anticipation of the Olympics, because the two populations of teams are largely distinct. Each Olympic doubles draw fields only 32 teams -- 22 nations at Tokyo 2021 and 23 at Paris 2024 -- and cross-referencing these 61 distinct Olympic pairings against every Grand Slam partnership in our 2018--2025 sample shows that only 16 (26\%; 9 of 32 at Tokyo, 10 of 32 at Paris) ever play together at a Grand Slam at all. This is not incidental: Olympic doubles eligibility does not require an existing partnership. A player ranked in the ATP doubles top 10 may enter with any compatriot ranked in the top 300 of either singles or doubles, and additional places are allocated by a combined ranking (each player's best of singles or doubles) that prioritizes pairs already accepted into the singles draw -- the pathway through which, for example, Rafael Nadal and Carlos Alcaraz partnered at the Paris Games despite never having played tour doubles together. Because most Olympic teams are assembled from outside the pool of regular Grand Slam doubles partnerships in the first place, the absence of a shift in Grand Slam partnership formation around the Games is more directly explained by this institutional separation between the two competitive environments than it is informative about the presence or absence of strategic partner-building behavior.}
 
 The contrast between the two Olympic cycles should not be interpreted as a causal estimate of Olympic incentives on partner formation. The two periods differ in many dimensions, most importantly the extraordinary conditions surrounding the Tokyo Games. Instead, the descriptive evidence illustrates that the composition of doubles partnerships can vary with the broader institutional and competitive environment. It also reinforces the broader conclusion from this section: partnership formation involves substantial cultural sorting, but that sorting is not simply a consequence of the strongest players systematically selecting culturally similar teammates.
+
+\added{This evidence should be interpreted cautiously. The Olympics involve a small and highly selected set of players, and their qualification rules differ substantially from those governing the Grand Slam circuit. Moreover, the timing and strength of any spillover from Olympic participation or national representation to regular partnership decisions are not clear. Players may also respond to Olympic considerations in lower-level tournaments or through partnership decisions that are not captured by changes in the aggregate Grand Slam composition. We therefore do not interpret the stable pattern as evidence that the Olympic institution has no effect on partnership formation. Rather, it provides descriptive evidence that the heightened salience of national representation around the Olympics is not accompanied by a large, readily visible change in the cultural composition of the broader Grand Slam partnership market.}
 
 Overall, the evidence in this section provides useful context for interpreting the main performance results. Cultural sorting is clearly present, but the data do not support the specific hypothesis that stronger players are disproportionately responsible for that sorting. At the same time, partnerships are formed through a mixture of deliberate choice and circumstances that can constrain partner selection. We therefore do not interpret the main estimates as causal effects of cultural similarity. Rather, the team-formation evidence helps assess the plausibility of one important alternative explanation for the observed association between cultural similarity and team performance.
 
 %Taken together, the partnership-formation evidence provides two useful qualifications to the performance analysis. First, cultural sorting in doubles is substantial: culturally similar partnerships are much more common than random matching would imply. Second, the sorting does not appear to be disproportionately concentrated among higher-ranked players, and the Tokyo preparation period provides no evidence of a sharp increase in national sorting despite unusually strong incentives for nationally aligned preparation. These findings do not eliminate selection as a possible source of the performance association, but they make the specific explanation that stronger players systematically select culturally similar partners less consistent with the data.
 
-\iffalse
+\begin{comment}
 \subsection{Evidence from the Olympics}
 
 If cultural similarity is associated with better performance, an important question is whether players appear to sort toward culturally similar partners when the incentives to coordinate are particularly salient. We therefore examine team composition around the Tokyo and Paris Olympic cycles.  
@@ -742,9 +710,12 @@ If anything, this creates a plausible setting in which same-nationality partneri
 
 
 During the Paris cycle, same-nationality and same-language partnerships become modestly more common, although the increase occurs gradually rather than as a discrete shift during the Olympic preparation period. These patterns do not provide evidence of systematic optimization.
-\fi
+\end{comment}
 
 \section{Conclusion}
+
+\added{Attention: tennis doubles are formed by individual players, not by a manager or an organization. Different implications if were assigned by managers/organizations like football. The findings also have implications for organizations in which employees have discretion over their collaborators. In such settings, team composition may emerge partly through endogenous cultural sorting rather than solely through managerial assignment. If cultural similarity facilitates coordination, such sorting may reflect an economically meaningful feature of decentralized team formation. At the same time, our results do not imply that managers should systematically favor culturally similar teams: the evidence is observational, and culturally homogeneous partnerships may also reflect selection into partnerships on unobserved characteristics.}
+
 Cultural diversity is increasingly a feature of how organizations assemble teams, but the organizational value of diversity depends not only on what individuals bring to a team but also on how effectively they can combine those resources. %This paper highlights one component of that process: the coordination costs associated with cultural differences. 
 Our findings suggests that cultural similarity is associated with better team performance, but that this association is neither universal nor mechanical. Its relevance appears to depend on whether teammates have sufficient opportunity to communicate, develop shared understandings, and translate those understandings into coordinated action.
 
@@ -759,170 +730,6 @@ The findings also suggest a more nuanced view of team composition. A natural man
 These limitations point toward an important agenda for future research. The central challenge is to move from observing cultural similarity to identifying the coordination process through which similarity affects team production. Experimental or quasi-experimental variation in team composition could help separate cultural compatibility from selection into partnerships. Richer longitudinal data could distinguish shared experience with a particular teammate from general professional experience and examine whether coordination routines develop through repeated interaction. Direct measures of communication—such as verbal exchanges, shared decision-making, or behavioral measures of anticipation—could provide an even more direct test of whether cultural and linguistic similarity operate through communication costs and shared mental models.
 
 More broadly, the paper suggests that the consequences of diversity should be understood as a property of the interaction between team composition and task design, rather than as an inherent feature of diversity itself. Cultural differences may provide organizations with access to heterogeneous knowledge, perspectives, and networks, while simultaneously increasing the effort required to integrate those resources. Whether the balance is favorable depends on the extent to which an organization's production process relies on rapid, repeated, and interdependent coordination. Understanding this interaction is important for managers designing teams, but also for economists and organizational scholars seeking to explain when diversity becomes an asset, when it becomes a coordination challenge, and how organizations can reduce the costs of bringing different people together.
-
-\appendix
-\renewcommand{\thetable}{A\arabic{table}}
-\setcounter{table}{0}
-\section{Appendix: Robustness to Age as an Alternative Career-Maturity Proxy}
-\added{\textit{age\_mean} (team average player age at the tournament) is a second natural proxy for career maturity alongside \textit{exp\_mean} (years since turning pro); the two are highly correlated (corr = 0.83, implied VIF $\approx$ 3.32 if entered together), so age is estimated in its own separate specification rather than added alongside experience in the main tables.}
-
-\begin{table}[htbp]
-\color{blue}
-\centering
-\caption{Match Win, \textit{age\_mean} Replacing \textit{exp\_mean} \label{tab:ta1}}
-\begin{threeparttable}
-\begin{tabular}{lccc}
-\toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
-\midrule
-Cultural similarity & 0.0332** & 0.0447*** & 0.0409*** \\
- & (0.0164) & (0.0158) & (0.0157) \\
-Own avg. doubles ranking & $-$0.0007*** & $-$0.0007*** & $-$0.0007*** \\
- & (0.0001) & (0.0001) & (0.0001) \\
-Opponent avg. doubles ranking & 0.0007*** & 0.0007*** & 0.0007*** \\
- & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player & 0.0077 & 0.0086 & 0.0089 \\
- & (0.0313) & (0.0313) & (0.0313) \\
-Team avg. age at tournament & 0.0053** & 0.0052** & 0.0051** \\
- & (0.0023) & (0.0023) & (0.0023) \\
-Age, squared & $-$0.0005 & $-$0.0006 & $-$0.0005 \\
-\midrule
-Tournament $\times$ year FE & Yes & Yes & Yes \\
-Round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.094 & 0.095 & 0.094 \\
-$N$ & 3,728 & 3,728 & 3,728 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\small
-\item *** p$<$0.01, ** p$<$0.05. Same sample, FE, and clustering as Table \ref{tab:t3}. Cultural-similarity AMEs are essentially unchanged from Table \ref{tab:t3} (e.g.\ same nationality: 0.0361 $\to$ 0.0332, both p$<$0.05), confirming the core finding is not an artefact of which career-maturity proxy is used.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[htbp]
-\color{blue}
-\centering
-\caption{Match Win, \textit{age\_mean} and \textit{exp\_mean} Entered Jointly (Diagnostic) \label{tab:ta2}}
-\begin{threeparttable}
-\begin{tabular}{lccc}
-\toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
-\midrule
-Cultural similarity & 0.0376** & 0.0467*** & 0.0425*** \\
-Own avg. doubles ranking & $-$0.0007*** & $-$0.0007*** & $-$0.0007*** \\
- & (0.0001) & (0.0001) & (0.0001) \\
-Opponent avg. doubles ranking & 0.0007*** & 0.0007*** & 0.0007*** \\
- & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player & $-$0.0025 & $-$0.0014 & $-$0.0009 \\
- & (0.0315) & (0.0316) & (0.0316) \\
-Team avg.\ yrs since turning pro & 0.0028 & 0.0027 & 0.0028 \\
- & (0.0029) & (0.0029) & (0.0029) \\
-Yrs since turning pro, squared & $-$0.0008*** & $-$0.0008*** & $-$0.0008*** \\
-Team avg.\ age at tournament & 0.0026 & 0.0025 & 0.0022 \\
- & (0.0040) & (0.0040) & (0.0040) \\
-Age, squared & 0.0001 & 0.0001 & 0.0001 \\
-\midrule
-$N$ & 3,728 & 3,728 & 3,728 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\small
-\item Diagnostic only, not a preferred spec. With both tenure proxies in the model, neither linear term remains significant (p$>$0.33), and SEs roughly double relative to the single-proxy specs -- the expected signature of near-collinear regressors (corr = 0.83), not evidence that career maturity stops mattering. The cultural-similarity AMEs remain robust throughout.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[htbp]
-\color{blue}
-\centering
-\caption{Tiebreak Win, \textit{age\_mean} Replacing \textit{exp\_mean} \label{tab:ta3}}
-\begin{threeparttable}
-\begin{tabular}{lccc}
-\toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
-\midrule
-Cultural similarity & 0.0253 & 0.0043 & $-$0.0013 \\
- & (0.0227) & (0.0221) & (0.0219) \\
-Own avg. doubles ranking & $-$0.0003*** & $-$0.0003*** & $-$0.0003*** \\
- & (0.0001) & (0.0001) & (0.0001) \\
-Opponent avg. doubles ranking & 0.0003*** & 0.0003*** & 0.0003*** \\
- & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player & $-$0.0691 & $-$0.0672 & $-$0.0671 \\
- & (0.0428) & (0.0428) & (0.0427) \\
-Team avg.\ age at tournament & $-$0.0002 & $-$0.0009 & $-$0.0010 \\
- & (0.0030) & (0.0030) & (0.0030) \\
-Age, squared & 0.0002 & 0.0002 & 0.0002 \\
-\midrule
-Tournament $\times$ year FE & Yes & Yes & Yes \\
-Round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.013 & 0.012 & 0.012 \\
-$N$ & 2,354 & 2,354 & 2,354 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\small
-\item Same tiebreak sample, FE, and clustering as Table \ref{tab:t5}. As with experience, age is not significantly associated with tiebreak win (p$>$0.6 throughout), and none of the three cultural-similarity measures reach significance either -- the null tiebreak result is not an artefact of which career-maturity proxy is used.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\section{Appendix: Heterogeneity by Cultural Individualism (Hofstede IDV)}
-\added{As a further heterogeneity test, we interact each culture measure with the team-average Hofstede individualism score (\textit{IC\_team\_dm}, demeaned; mean = 62.98, SD = 20.85), testing whether teams from more individualist cultures rely less on in-group cultural bonding, so that the culture-performance association would be smaller for them.}
-
-\begin{table}[htbp]
-\color{blue}
-\centering
-\caption{Heterogeneity: Culture $\times$ Hofstede Individualism (Demeaned) \label{tab:ta4}}
-\begin{threeparttable}
-\begin{tabular}{lccc}
-\toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
-\midrule
-Culture (C) & 0.0293* & 0.0393** & 0.0352** \\
- & (0.0167) & (0.0163) & (0.0163) \\
-IC\_team\_dm & 0.0011* & 0.0007 & 0.0007 \\
- & (0.0006) & (0.0008) & (0.0008) \\
-C $\times$ IC\_team\_dm ($\theta$) & $-$0.00046 & 0.00007 & 0.00009 \\
- & (0.00079) & (0.00089) & (0.00089) \\
-\midrule
-Tournament $\times$ year FE & Yes & Yes & Yes \\
-Round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.097 & 0.098 & 0.097 \\
-$N$ & 3,728 & 3,728 & 3,728 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Hofstede IDV scores are taken from the official 6-dimension dataset (2015 release); countries not directly covered are assigned tiered proxy scores (direct cultural/linguistic kin, or same-region closest available). The interaction $\theta$ is small and statistically insignificant for all three measures (p$>$0.56), providing no evidence that individualism moderates the cultural homophily advantage. A robustness spec dropping team-obs relying on the lower-confidence regional proxy countries ($N=3{,}577$) leaves this conclusion unchanged.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\section{Appendix: Robustness to Non-Independence of Team-Rows within a Match}
-\added{Each match (tiebreak) contributes two team-rows that are mechanically linked -- a win for one team is a loss for the other -- so the two rows are not independent draws. The main specifications already address this via standard errors clustered by \textit{match\_id}. We verify this further with two checks. First, a no-intercept specification that gives tournament$\times$year fixed effects full-rank (all-levels) dummies instead of the usual intercept plus reference-dropped dummies reproduces Tables~\ref{tab:t3} and \ref{tab:t5} exactly (identical AMEs, SEs, and log-likelihood to three decimals), confirming it is a pure reparameterization rather than a different model. Second, we re-estimate both outcomes keeping only one randomly-selected team's row per match (Table~\ref{tab:t3}) or per tiebreak (Table~\ref{tab:t5}), removing the mechanical complementarity entirely; repeated over 10 random seeds since any single draw is arbitrary (the match-win version is reported in Section~\ref{sec:matchwin} above; the tiebreak-win version is reported here).}
-
-\begin{table}[htbp]
-\color{blue}
-\centering
-\caption{Robustness: One Randomly-Selected Team per Tiebreak (10 Random Seeds) \label{tab:ta5}}
-\begin{threeparttable}
-\begin{tabular}{lccc}
-\toprule
-Cultural similarity & Baseline AME & Random-one: mean AME [range] & Sig.\ ($p<.05$) \\
-\midrule
-Same nationality & 0.0308 (n.s.) & 0.0174~[$-$0.0305, 0.0592] & 1/10 \\
-Same language & 0.0082 (n.s.) & $-$0.0041~[$-$0.0434, 0.0526] & 0/10 \\
-Lang.\ proximity & 0.0026 (n.s.) & $-$0.0107~[$-$0.0526, 0.0433] & 0/10 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\small
-\item Tiebreak win, $N\approx$1,177 per draw; all 10 seeds converge in every spec. Every point estimate keeps the same sign or a similarly small magnitude to baseline (Table \ref{tab:t5}), and none reaches significance -- consistent with the null tiebreak result. The stacked-both-rows, match-clustered design used throughout the paper remains the preferred specification.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
 \bibliographystyle{apalike}
 \bibliography{reference}
 

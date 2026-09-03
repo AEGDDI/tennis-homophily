@@ -705,6 +705,42 @@ estimates store win_ling_prox
 estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
 
 * ─────────────────────────────────────────────────────────────────────────────
+* TABLE 3-NATLANG: MATCH WIN — NATIONALITY VS. LANGUAGE DECOMPOSITION
+* (per Lingqing's 2026-09-02 email: same_country and same_language are perfectly
+* correlated in one direction in this data -- every same_country=1 team-obs also
+* has same_language=1 -- so Table 3 alone cannot tell whether the association is
+* nationality-specific or has a language/communication component. Replace the two
+* indicators with three mutually exclusive, exhaustive categories.)
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== TABLE 3-NATLANG. Match Win — Nationality vs. Language Decomposition ==="
+display "Reference category: different nationality, different language"
+display ""
+
+capture drop d_same_nat_same_lang d_diff_nat_same_lang
+generate byte d_same_nat_same_lang = (same_country==1 & same_language==1)
+generate byte d_diff_nat_same_lang = (same_country==0 & same_language==1)
+quietly count if same_country==1 & same_language==0
+display "same-nationality/different-language team-obs: " r(N) " (0 expected)"
+display ""
+
+display "--- Descriptives: N and raw win rate by category ---"
+foreach v in d_same_nat_same_lang d_diff_nat_same_lang {
+    quietly summarize win if `v'==1
+    display "  `v': N=" r(N) "  win rate=" %5.4f r(mean)
+}
+quietly count if d_same_nat_same_lang==0 & d_diff_nat_same_lang==0
+local n_ref = r(N)
+quietly summarize win if d_same_nat_same_lang==0 & d_diff_nat_same_lang==0
+display "  diff_nat_diff_lang (reference): N=`n_ref'  win rate=" %5.4f r(mean)
+display ""
+
+display "--- Regression: win ~ d_same_nat_same_lang + d_diff_nat_same_lang + controls + FE ---"
+logit win i.ty i.stage_code d_same_nat_same_lang d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(d_same_nat_same_lang d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store win_natlang
+
+* ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3-AGE: MATCH WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)
 * age_mean (team avg. player age at the tournament) is highly correlated with exp_mean
 * (years since turning pro) -- both proxy career maturity. corr(age_mean, exp_mean) = 0.83,
@@ -1378,7 +1414,7 @@ margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_me
 * match_id (a match can still contribute >1 tiebreak-row after de-duplication),
 * unlike Table 3-RANDONE where de-duplication leaves exactly one row per match and
 * no clustering unit remains. Sparse tournament x year x round cells after halving
-* the sample (~1,182 vs 2,364) can produce a singular Hessian for some draws --
+* the sample (~1,177 vs 2,354) can produce a singular Hessian for some draws --
 * caught with capture/`_rc' and skipped rather than left to crash the do-file.
 * ─────────────────────────────────────────────────────────────────────────────
 display ""
@@ -1476,8 +1512,6 @@ display ""
 import delimited "data/atp/partner_selection_ego.csv", clear varnames(1) stringcols(1)
 
 encode tourn_year, generate(ty8)
-encode own_iso3, generate(own_iso3_code)
-encode own_iso3_grp, generate(own_iso3_grp_code)
 egen team_id = group(team_key)
 
 destring own_rank same_country same_language ling_prox composition_nat composition_lang composition_ling, replace force
@@ -1486,16 +1520,26 @@ count
 display "Ego-rows loaded: " r(N) " (expect 4,202)"
 display ""
 
-* Singleton-nationality exclusion (Spec 1 & 3 only, per Alessandro's request 2026-09-01):
+* Singleton-nationality exclusion (per Alessandro's request 2026-09-01, extended 2026-09-03):
 * drop ego-rows whose own_iso3 has exactly 1 observation in the ego-row sample, so a single
-* lone-nationality player cannot single-handedly drive the own_rank coefficient. This is
-* separate from, and does not touch, the own_iso3_grp <10-obs "OTHER" pooling used below,
-* which stays as-is and continues to apply only to the Spec 2/4 own-country FE regressions.
+* lone-nationality player cannot single-handedly drive any coefficient below.
 bysort own_iso3: gen long _iso3_n = _N
 gen byte _singleton_iso3 = (_iso3_n == 1)
 quietly count if _singleton_iso3
-display "Singleton-nationality exclusion (Spec 1 & 3 only): " r(N) " ego-rows from nationalities with exactly 1 observation dropped for these two specs"
+local n_singleton = r(N)
+display "Singleton-nationality exclusion: `n_singleton' ego-rows dropped"
 display ""
+quietly count if !_singleton_iso3
+display "Estimation sample after exclusion: " r(N) " ego-rows (expect 4,198)"
+display ""
+
+* NOTE: an own-country (own_iso3) fixed-effects specification was tried and dropped
+* entirely (per Alessandro's request 2026-09-03) -- own nationality is a 60-level
+* categorical variable, not a single variable, so it never produced one reportable
+* coefficient the way own_rank or composition do (Lingqing's comment: the 59 individual
+* country-dummy coefficients are not of substantive interest), and its binary-outcome
+* logits failed to converge (quasi-complete separation) regardless. Only the three
+* specifications below, all built from own_rank and/or the composition variable, are used.
 
 * --- Spec 1: own_rank alone (reproduces Section 6.1's original result) ---
 display "--- Spec 1: own_rank + tourn_year FE (excl. singleton-nationality ego-rows) ---"
@@ -1507,22 +1551,19 @@ foreach outcome in same_country same_language {
 display "  [ling_prox, OLS]"
 regress ling_prox own_rank i.ty8 if !_singleton_iso3, cluster(team_id)
 
-* --- Spec 2: own country (own_iso3) fixed effects in place of own_rank ---
-* NOTE: per the Python analysis, this specification fails to converge for the binary
-* outcomes (same_country, same_language) via quasi-complete separation -- several of
-* 64 nationalities have too few ego-row observations (14 have <10, down to single
-* players) for a country-specific fixed effect to be identified. own_iso3_grp pools
-* nationalities with <10 obs into "OTHER" (51 remaining groups), which is enough for
-* ling_prox (OLS) but NOT enough to fix the logit specs -- expect `logit` to fail or
-* emit a "not identified" / omitted-predictor error for same_country/same_language.
+* --- Spec 2: outcome-matched field composition alone ---
 display ""
-display "--- Spec 2: C(own_iso3_grp) + tourn_year FE (expect failure for binary outcomes) ---"
-capture noisily logit same_country i.own_iso3_grp_code i.ty8, cluster(team_id)
-capture noisily logit same_language i.own_iso3_grp_code i.ty8, cluster(team_id)
-display "  [ling_prox, OLS -- should estimate successfully]"
-regress ling_prox i.own_iso3_grp_code i.ty8, cluster(team_id)
+display "--- Spec 2: field composition + tourn_year FE (excl. singleton-nationality ego-rows) ---"
+display "  [same_country]"
+quietly logit same_country composition_nat i.ty8 if !_singleton_iso3, cluster(team_id)
+margins, dydx(composition_nat)
+display "  [same_language]"
+quietly logit same_language composition_lang i.ty8 if !_singleton_iso3, cluster(team_id)
+margins, dydx(composition_lang)
+display "  [ling_prox, OLS]"
+regress ling_prox composition_ling i.ty8 if !_singleton_iso3, cluster(team_id)
 
-* --- Spec 3: own_rank + outcome-matched field composition ---
+* --- Spec 3: own_rank + outcome-matched field composition (the paper's main extension result) ---
 display ""
 display "--- Spec 3: own_rank + field composition + tourn_year FE (excl. singleton-nationality ego-rows) ---"
 display "  [same_country]"
@@ -1534,16 +1575,8 @@ margins, dydx(own_rank composition_lang)
 display "  [ling_prox, OLS]"
 regress ling_prox own_rank composition_ling i.ty8 if !_singleton_iso3, cluster(team_id)
 
-* --- Spec 4: own country + field composition (expect same binary-outcome failure as Spec 2) ---
 display ""
-display "--- Spec 4: C(own_iso3_grp) + field composition + tourn_year FE (expect failure for binary outcomes) ---"
-capture noisily logit same_country i.own_iso3_grp_code composition_nat i.ty8, cluster(team_id)
-capture noisily logit same_language i.own_iso3_grp_code composition_lang i.ty8, cluster(team_id)
-display "  [ling_prox, OLS -- should estimate successfully]"
-regress ling_prox i.own_iso3_grp_code composition_ling i.ty8, cluster(team_id)
-
-display ""
-display "Section 8 complete: Partner selection, own-country and field-composition specs."
+display "Section 8 complete: Partner selection, own-rank/field-composition specs 1-3."
 
 log close
 
