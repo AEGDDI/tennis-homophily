@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.27)  3 SEP 2026 17:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.27)  4 SEP 2026 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -897,172 +897,102 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 [1
 
-{C:/Users/aldi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] [4]
-
-Package natbib Warning: Citation `lazear1999' on page 5 undefined on input line
- 104.
-
-
-Package natbib Warning: Citation `stahl2010' on page 5 undefined on input line 
-104.
-
-
-Package natbib Warning: Citation `harrisonklein2007' on page 5 undefined on inp
-ut line 104.
-
-
-Package natbib Warning: Citation `wernerfelt2004' on page 5 undefined on input 
-line 106.
-
-
-Package natbib Warning: Citation `marschanpiekkari1999' on page 5 undefined on 
-input line 106.
-
-
-Package natbib Warning: Citation `feelyharzing2003' on page 5 undefined on inpu
-t line 106.
-
-
-Package natbib Warning: Citation `melitztoubal2014' on page 5 undefined on inpu
-t line 106.
-
-[5]
-
-Package natbib Warning: Citation `cannonbowers1993' on page 6 undefined on inpu
-t line 108.
-
-
-Package natbib Warning: Citation `klimoski1994' on page 6 undefined on input li
-ne 108.
-
-
-Package natbib Warning: Citation `mathieu2000' on page 6 undefined on input lin
-e 108.
-
-[6]
-Overfull \hbox (1.83054pt too wide) in paragraph at lines 128--164
+{C:/Users/aldi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [1]
+[2] [3] [4] [5]
+Overfull \hbox (1.83054pt too wide) in paragraph at lines 133--169
  [] 
  []
 
-[7] [8] [9] [10]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 276--305
+[6] [7] [8] [9]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 280--309
  [] 
  []
 
-[11] [12] [13] [14] [15]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 386--414
+[10] [11] [12]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 345--373
  [] 
  []
 
-[16] [17]
-Overfull \hbox (43.41415pt too wide) in paragraph at lines 440--464
+[13] [14]
+Overfull \hbox (43.41415pt too wide) in paragraph at lines 399--423
  [] 
  []
 
-[18]
-Overfull \hbox (35.30302pt too wide) in paragraph at lines 519--542
+[15] [16]
+Overfull \hbox (35.30302pt too wide) in paragraph at lines 478--501
  [] 
  []
 
-[19] [20]
-Overfull \hbox (38.05302pt too wide) in paragraph at lines 578--601
+[17]
+Overfull \hbox (38.05302pt too wide) in paragraph at lines 537--560
  [] 
  []
 
-[21] [22] [23] [24] [25]
-Overfull \hbox (6.94197pt too wide) in paragraph at lines 672--692
+[18] [19] [20] [21] [22]
+Overfull \hbox (6.94197pt too wide) in paragraph at lines 631--651
  [] 
  []
 
-[26] [27]
-Overfull \hbox (82.69183pt too wide) in paragraph at lines 710--728
+[23] [24]
+Overfull \hbox (82.69183pt too wide) in paragraph at lines 669--687
  [] 
  []
 
-[28]
-<./plot//homophily_nationality_only.png, id=115, 787.2612pt x 321.8424pt>
+[25]
+<./plot//homophily_nationality_only.png, id=109, 787.2612pt x 321.8424pt>
 File: ./plot//homophily_nationality_only.png Graphic file (type png)
 <use ./plot//homophily_nationality_only.png>
 Package pdftex.def Info: ./plot//homophily_nationality_only.png  used on input 
-line 736.
+line 695.
 (pdftex.def)             Requested size: 380.69788pt x 155.63174pt.
- [29 <./plot//homophily_nationality_only.png>] [30] [31] [32]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 796--823
- [] 
- []
-
-
-Overfull \hbox (72.10863pt too wide) in paragraph at lines 830--856
- [] 
- []
-
-
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 863--890
- [] 
- []
-
-
-Overfull \hbox (35.30302pt too wide) in paragraph at lines 902--924
- [] 
- []
-
-[33] [34]
-Overfull \hbox (15.02847pt too wide) in paragraph at lines 936--950
- [] 
- []
-
-(main.bbl
+ [26 <./plot//homophily_nationality_only.png>] [27] [28] (main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
 )
-
-Package natbib Warning: There were undefined citations.
-
 \Changes@OutFile=\write4
 \openout4 = `main.soc'.
 
 \tf@loc=\write5
 \openout5 = `main.loc'.
 
-[35] [36] (main.aux) ) 
+ [29] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 19174 strings out of 476339
- 384957 string characters out of 5788591
- 1876340 words of memory out of 5000000
- 39211 multiletter control sequences out of 15000+600000
+ 19167 strings out of 476339
+ 384885 string characters out of 5788591
+ 1870340 words of memory out of 5000000
+ 39204 multiletter control sequences out of 15000+600000
  523461 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,89p,1890b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmbx10.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/aldi/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/aldi/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/aldi/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/aldi/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/al
-di/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/U
-sers/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pf
-b><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mmi9.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr12.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmr17.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/aldi/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/aldi/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/aldi/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/aldi/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/
-aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:
-/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10
+ 84i,17n,89p,2170b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx10.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/aldi/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/aldi/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/aldi/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/aldi/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users
+/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C
+:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9
 .pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmti8.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmti9.pfb>
-Output written on main.pdf (36 pages, 494220 bytes).
+m/cmr10.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr12.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr17.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr6.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/aldi/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/aldi/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/aldi/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/aldi/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/aldi
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Use
+rs/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb
+><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+ti8.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmti9.pfb>
+Output written on main.pdf (30 pages, 474894 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
+ 214 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
