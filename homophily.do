@@ -25,6 +25,19 @@ clear
 
 import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
 
+* Qualifying-round exclusion (found 2026-09-03): Wimbledon 2018 alone contains 12
+* qualifying-round doubles matches (8 "1st Round Qualifying" + 4 "2nd Round Qualifying")
+* not present for any other tournament-year in this dataset -- a data-inclusion
+* inconsistency, not a real difference in draw size. Mirrors homophily.ipynb cell 1
+* (_qualifying_mask). Must run before any other filter so downstream counts (Table 1,
+* the regression sample, N=1,864/3,728) reconcile with the notebook.
+count
+local n_raw = r(N)
+count if strpos(stage, "Qualifying")
+display "Dropping qualifying-round matches (Wimbledon 2018 only): " r(N) " of `n_raw' raw matches"
+drop if strpos(stage, "Qualifying")
+display "Matches after qualifying-round exclusion: " _N
+
 destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 losers_set3 ///
     winners_set4 losers_set4 winners_set5 losers_set5 ///
     winners_p1_top100_within_1y winners_p2_top100_within_1y losers_p1_top100_within_1y losers_p2_top100_within_1y ///
@@ -154,9 +167,9 @@ display "Section 1 complete: Variable construction."
 * SECTION 2: PRESSURE OUTCOMES — COUNTS AND INSPECTION
 * ═══════════════════════════════════════════════════════════════════════════════
 * All descriptive stats in this section (Table 1, 2.1, 2.2, 2.3) are computed on the
-* SAME 1,876-match regression sample used in Tables 3-6, not the broader post-
+* SAME 1,864-match regression sample used in Tables 3-6, not the broader post-
 * retirement-drop set -- so these numbers reconcile exactly with the regression
-* tables. See 2.4 for how 1,876 relates to 1,886 and the raw data.
+* tables. See 2.4 for how 1,864 relates to 1,874 and the raw data.
 * ═══════════════════════════════════════════════════════════════════════════════
 
 * Regression-sample flag: same ranking/nationality completeness filter used later
@@ -270,7 +283,7 @@ forvalues s = 1/5 {
 display ""
 display %4.0f `n_tb_s1' " + " %4.0f `n_tb_s2' " + " %4.0f `n_tb_s3' " + " %4.0f `n_tb_s4' " + " %4.0f `n_tb_s5' " = " %4.0f `n_sum_std' "  <- sum of standard (7-6) tiebreaks across all sets"
 display "Note: this matches Table 4's main-spec tiebreak count exactly, since both are"
-display "  now computed on the identical 1,876-match regression sample."
+display "  now computed on the identical 1,864-match regression sample."
 
 * Cross-check against the fully raw (pre-retirement-filter) data: the working
 * dataset's retirement filter (top of this do-file) now recognizes the
@@ -504,7 +517,7 @@ display ""
 display "Section 4 complete: Team panel loaded."
 
 * ─────────────────────────────────────────────────────────────────────────────
-* 4.1 (== notebook section 2.4) WHERE 1,876 AND 1,886 COME FROM
+* 4.1 (== notebook section 2.4) WHERE 1,864 AND 1,874 COME FROM
 * The retirement filter (top of this do-file) has been fixed to recognize the
 * 12-12-breaker pattern (e.g. 13-12) as a valid finish and to check sets 4-5 when
 * present, so match_id 903, 927 (2021 Wimbledon, valid 13-12 set-3 finish) are
@@ -519,16 +532,17 @@ display "Section 4 complete: Team panel loaded."
 * 10 could not be reliably retrieved and stay dropped.
 * ─────────────────────────────────────────────────────────────────────────────
 display ""
-display "=== Where 1,876 and 1,886 Come From ==="
-display "1,997 raw scraped matches (Grand Slams + Olympics)."
-display "Drop 48 retirements/walkovers -> 1,949 remain (47 GS + 1 Olympics)."
-display "Of the 1,949: 63 are Olympic matches; 1,886 are Grand Slam matches -- this is"
-display "  where 1,886 comes from (GS matches after dropping retirements, BEFORE the"
-display "  ranking/nationality filters below). Section 2's Table 1 above uses 1,876,"
-display "  not 1,886."
-display "From 1,886, a further 10 matches are dropped for incomplete doubles ranking"
+display "=== Where 1,864 and 1,874 Come From ==="
+display "1,997 raw scraped matches (Grand Slams + Olympics), before the qualifying-round"
+display "  exclusion. Drop 12 Wimbledon-2018 qualifying-round GS matches -> 1,985 remain."
+display "Drop 48 retirements/walkovers -> 1,937 remain (47 GS + 1 Olympics)."
+display "Of the 1,937: 63 are Olympic matches; 1,874 are Grand Slam matches -- this is"
+display "  where 1,874 comes from (GS matches after dropping qualifying rounds and"
+display "  retirements, BEFORE the ranking/nationality filters below). Section 2's Table 1"
+display "  above uses 1,864, not 1,874."
+display "From 1,874, a further 10 matches are dropped for incomplete doubles ranking"
 display "  (4 of the original 14 were retrieved and restored; 0 more for"
-display "  nationality/language) -> 1,876 Grand Slam matches: the final regression"
+display "  nationality/language) -> 1,864 Grand Slam matches: the final regression"
 display "  sample, matching team_gs_panel.csv exactly."
 display ""
 display "=== Reconciliation: Pressure-Outcome Counts vs. Regression Sample ==="
@@ -895,7 +909,7 @@ restore
 *   Table 6.  Culture x Hofstede individualism score, demeaned (ic_team_dm),
 *             Spec 2 only (C + IC + C*IC + controls + FE)
 *
-* Sample: same 3,752 obs as Tables 3-4 (exp_mean imputed to 1 for rookies).
+* Sample: same 3,728 obs as Tables 3-4 (exp_mean imputed to 1 for rookies).
 * Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
 * =============================================================================
 
@@ -1498,7 +1512,7 @@ display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE, Tab
 * in Stata, unexecuted, would carry real risk of a subtle, uncaught bug (string-based
 * team-key construction, per-tournament-year field aggregation, etc.). Instead, this
 * section imports data/atp/partner_selection_ego.csv, which was exported directly from
-* the EXECUTED and verified Python ego2 dataframe (4,202 ego-rows; identical
+* the EXECUTED and verified Python ego2 dataframe (4,178 ego-rows; identical
 * construction to homophily.ipynb) -- so the regressions below run on real, correct
 * data even though, like the rest of this do-file, they have not been run through
 * Stata itself in this environment.
@@ -1517,7 +1531,7 @@ egen team_id = group(team_key)
 destring own_rank same_country same_language ling_prox composition_nat composition_lang composition_ling, replace force
 
 count
-display "Ego-rows loaded: " r(N) " (expect 4,202)"
+display "Ego-rows loaded: " r(N) " (expect 4,178)"
 display ""
 
 * Singleton-nationality exclusion (per Alessandro's request 2026-09-01, extended 2026-09-03):
@@ -1530,7 +1544,7 @@ local n_singleton = r(N)
 display "Singleton-nationality exclusion: `n_singleton' ego-rows dropped"
 display ""
 quietly count if !_singleton_iso3
-display "Estimation sample after exclusion: " r(N) " ego-rows (expect 4,198)"
+display "Estimation sample after exclusion: " r(N) " ego-rows (expect 4,175)"
 display ""
 
 * NOTE: an own-country (own_iso3) fixed-effects specification was tried and dropped
