@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.5)  8 SEP 2026 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.5)  8 SEP 2026 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -950,12 +950,12 @@ Overfull \hbox (1.83054pt too wide) in paragraph at lines 181--217
  [] 
  []
 
-[6] [7] [8] [9]
+[6] [7] [8] [9] [10]
 Overfull \hbox (70.60872pt too wide) in paragraph at lines 328--357
  [] 
  []
 
-[10] [11] [12]
+[11] [12]
 Overfull \hbox (70.60872pt too wide) in paragraph at lines 393--421
  [] 
  []
@@ -975,24 +975,18 @@ Overfull \hbox (38.05302pt too wide) in paragraph at lines 584--607
  [] 
  []
 
-[18] [19] [20] [21] [22]
-Overfull \hbox (6.94197pt too wide) in paragraph at lines 678--698
+[18] [19] [20] [21] [22] [23] [24]
+Overfull \hbox (82.69183pt too wide) in paragraph at lines 726--744
  [] 
  []
 
-[23] [24]
-Overfull \hbox (82.69183pt too wide) in paragraph at lines 716--734
- [] 
- []
-
-[25]
-<./plot/homophily_nationality_only.png, id=109, 787.2612pt x 321.8424pt>
+<./plot/homophily_nationality_only.png, id=106, 787.2612pt x 321.8424pt>
 File: ./plot/homophily_nationality_only.png Graphic file (type png)
 <use ./plot/homophily_nationality_only.png>
 Package pdftex.def Info: ./plot/homophily_nationality_only.png  used on input l
-ine 742.
+ine 752.
 (pdftex.def)             Requested size: 380.69788pt x 155.63174pt.
- [26 <./plot/homophily_nationality_only.png>] [27] [28] (main.bbl [29]
+[25] [26 <./plot/homophily_nationality_only.png>] [27] [28] (main.bbl [29]
 [30])
 \Changes@OutFile=\write4
 \openout4 = `main.soc'.
@@ -1009,7 +1003,7 @@ L3 programming layer <2025-12-24>
 Here is how much of TeX's memory you used:
  19164 strings out of 467871
  383418 string characters out of 5415957
- 771214 words of memory out of 5000000
+ 769214 words of memory out of 5000000
  47660 multiletter control sequences out of 15000+600000
  638895 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1040,7 +1034,7 @@ m/cmsy9.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/ALESSANDRO/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on main.pdf (32 pages, 483207 bytes).
+Output written on main.pdf (32 pages, 484022 bytes).
 PDF statistics:
  221 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -221,9 +221,9 @@ Table~\ref{tab:t1} reports the number of matches in each tournaments by year in 
 
 
 \subsection{Measuring Cultural Similarity}
-We construct three  measures of cultural similarity. The first measure, Same Nationality, equals one if both teammates represent the same country and zero otherwise. The second measure, Same Language, equals one if both teammates share an official national language. The third measure, Language Proximity, is a continuous measure ranging from zero to one that captures the linguistic similarity between teammates' native languages, with larger values indicating greater linguistic proximity.
+We construct three measures of cultural similarity, all binary, using the CEPII gravity dataset's country-pair language indicators. The first measure, Same Nationality, equals one if both teammates represent the same country and zero otherwise. The second measure, Same Language, equals one if both teammates share an official national language (CEPII's \textit{comlang\_off}) and zero otherwise. The third measure, Language Proximity, equals one if both teammates share a widely-spoken ethnic language and zero otherwise (CEPII's \textit{comlang\_ethno}, defined as a language spoken as a mother tongue by at least 9\% of the population in both countries).
 
-These measures reflect increasingly broad notions of cultural similarity. Shared nationality captures common institutional and cultural background. Shared language more directly captures communication potential. Linguistic proximity recognizes that communication costs may also be lower between speakers of closely related languages even when they do not share the same official language.
+These measures reflect increasingly broad notions of cultural similarity. Shared nationality captures common institutional and cultural background. Shared official language captures communication potential through the language used in formal and public life. Shared ethnic language recognizes that communication costs may also be lower between teammates who share a widely-spoken native language even when it is not their countries' official language, so Language Proximity and Same Language can diverge whenever a country's official language differs from its most widely spoken native language.
 
 
 
@@ -668,26 +668,36 @@ We regress each cultural-similarity measure on the focal player's own doubles ra
 
 The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), the coefficient on own ranking is positive and statistically significant for all three measures: 0.000269 for same nationality (p<0.001), 0.000146 for same language (p=0.012), and 0.000139 for linguistic proximity (p=0.009). Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
 
-\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout. We also estimated an own-nationality (country fixed effects) specification in place of own ranking, but do not report it: nationality is a 60-level categorical variable, so it produces 59 separate country-dummy coefficients rather than one interpretable effect, and its logit specifications fail to converge for the two binary outcomes regardless (quasi-complete separation, since several nationalities have as few as 2 ego-rows).}
+\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout.}
 
 \begin{table}[htbp]
 \color{red}
 \centering
 \caption{Own Ranking, Tournament-Field Composition, and Partner-Culture Similarity \label{tab:t9}}
 \begin{threeparttable}
-\begin{tabular}{lcccc}
+\begin{tabular}{llccc}
 \toprule
-Outcome & Spec 1: & Spec 2: & Spec 3: & Spec 3: \\
- & own\_rank & composition & own\_rank & composition \\
+Outcome & Variable & Spec 1 & Spec 2 & Spec 3 \\
 \midrule
-Same nationality (AME) & 0.000269*** & 3.853*** & 0.000116** & 3.756*** \\
- & (0.000056) & (0.241325) & (0.000053) & (0.255403) \\
-Same language (AME) & 0.000146** & 1.275*** & 0.000117** & 1.267*** \\
- & (0.000058) & (0.081709) & (0.000053) & (0.082578) \\
-Ling.\ proximity (OLS coef.) & 0.000139*** & 1.152*** & 0.000104** & 1.145*** \\
- & (0.000053) & (0.075655) & (0.000047) & (0.076295) \\
+\multirow{4}{*}{Same nationality (AME)}
+ & own\_rank & 0.000269*** & & 0.000116** \\
+ & & (0.000056) & & (0.000053) \\
+ & composition & & 3.853*** & 3.756*** \\
+ & & & (0.241325) & (0.255403) \\
+\addlinespace
+\multirow{4}{*}{Same language (AME)}
+ & own\_rank & 0.000146** & & 0.000117** \\
+ & & (0.000058) & & (0.000053) \\
+ & composition & & 1.275*** & 1.267*** \\
+ & & & (0.081709) & (0.082578) \\
+\addlinespace
+\multirow{4}{*}{Ling.\ proximity (OLS coef.)}
+ & own\_rank & 0.000139*** & & 0.000104** \\
+ & & (0.000053) & & (0.000047) \\
+ & composition & & 1.152*** & 1.145*** \\
+ & & & (0.075655) & (0.076295) \\
 \midrule
-$N$ (ego-rows) & 4,175 & 4,175 & 4,175 & 4,175 \\
+\multicolumn{2}{l}{$N$ (ego-rows)} & 4,175 & 4,175 & 4,175 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}

@@ -54,10 +54,18 @@
 <!-- ══════════════════════════════════════════════════════════════════════════ -->
 <h2>1. Data and Measures</h2>
 <p>
-  Three culture measures capture teammate similarity.
-  <strong>Same nationality</strong> and <strong>same official language</strong> are binary (0/1).
-  <strong>Language proximity</strong> is a continuous 0–1 index of ethnolinguistic closeness
-  (higher = more similar language family).
+  Three culture measures capture teammate similarity, all binary (0/1), built from the CEPII
+  gravity dataset's country-pair language indicators.
+  <strong>Same nationality</strong> is shared citizenship.
+  <strong>Same official language</strong> is CEPII's <code>comlang_off</code> (shared official/
+  national language). <strong>Language proximity</strong> is CEPII's <code>comlang_ethno</code>
+  (shared widely-spoken ethnic/native language — a language spoken as a mother tongue by at
+  least 9% of the population in both countries), confirmed binary directly against the raw
+  data (only {0,1} values present). It differs from same-language only in using ethnic/spoken-
+  language overlap rather than official designation, so the two can diverge when a country's
+  official language differs from its most widely spoken native language. Sample means reported
+  elsewhere in this report (e.g. "0.568") are the <em>share</em> of observations with
+  ling_prox=1, not an average distance — this is not a continuous closeness score.
 </p>
 <p>
   Regressions use a team-level panel with tournament-by-year fixed effects,
@@ -1526,7 +1534,7 @@
   available in their own federation or language community.
 </p>
 
-<h3>6.2 Extended specification: field composition, and why own-nationality fixed effects are not reported</h3>
+<h3>6.2 Extended specification: field composition</h3>
 <p>
   Section 6.1's <code>own_rank</code>-only spec doesn't account for the cultural composition
   of the tournament field a player is drawn from, which varies by tournament-year and could
@@ -1546,39 +1554,50 @@
 </p>
 <table>
   <thead>
-    <tr><th style="width:34%">Outcome</th>
-        <th class="num">Spec 1: own_rank</th>
-        <th class="num">Spec 2: composition</th>
-        <th class="num">Spec 3: own_rank</th>
-        <th class="num">Spec 3: composition</th></tr>
+    <tr><th style="width:24%">Outcome</th><th style="width:14%">Variable</th>
+        <th class="num">Spec 1</th>
+        <th class="num">Spec 2</th>
+        <th class="num">Spec 3</th></tr>
   </thead>
   <tbody>
-    <tr><td>Same nationality (AME)</td>
+    <tr><td rowspan="4">Same nationality (AME)</td><td>own_rank</td>
         <td class="num">+0.000269<sup>***</sup></td>
+        <td class="num"></td>
+        <td class="num">+0.000116<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.000056)</td><td class="num"></td><td class="num">(0.000053)</td></tr>
+    <tr><td>composition</td>
+        <td class="num"></td>
         <td class="num">+3.853<sup>***</sup></td>
-        <td class="num">+0.000116<sup>**</sup></td>
         <td class="num">+3.756<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.000056)</td><td class="num">(0.241325)</td>
-        <td class="num">(0.000053)</td><td class="num">(0.255403)</td></tr>
-    <tr><td>Same language (AME)</td>
+        <td class="num"></td><td class="num">(0.241325)</td><td class="num">(0.255403)</td></tr>
+    <tr><td rowspan="4">Same language (AME)</td><td>own_rank</td>
         <td class="num">+0.000146<sup>**</sup></td>
+        <td class="num"></td>
+        <td class="num">+0.000117<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.000058)</td><td class="num"></td><td class="num">(0.000053)</td></tr>
+    <tr><td>composition</td>
+        <td class="num"></td>
         <td class="num">+1.275<sup>***</sup></td>
-        <td class="num">+0.000117<sup>**</sup></td>
         <td class="num">+1.267<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.000058)</td><td class="num">(0.081709)</td>
-        <td class="num">(0.000053)</td><td class="num">(0.082578)</td></tr>
-    <tr><td>Ling. proximity (OLS coef.)</td>
+        <td class="num"></td><td class="num">(0.081709)</td><td class="num">(0.082578)</td></tr>
+    <tr><td rowspan="4">Ling. proximity (OLS coef.)</td><td>own_rank</td>
         <td class="num">+0.000139<sup>***</sup></td>
+        <td class="num"></td>
+        <td class="num">+0.000104<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.000053)</td><td class="num"></td><td class="num">(0.000047)</td></tr>
+    <tr><td>composition</td>
+        <td class="num"></td>
         <td class="num">+1.152<sup>***</sup></td>
-        <td class="num">+0.000104<sup>**</sup></td>
         <td class="num">+1.145<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.000053)</td><td class="num">(0.075655)</td>
-        <td class="num">(0.000047)</td><td class="num">(0.076295)</td></tr>
-    <tr class="bg"><td>N (ego-rows)</td>
-        <td class="num">4,175</td><td class="num">4,175</td><td class="num">4,175</td><td class="num">4,175</td></tr>
+        <td class="num"></td><td class="num">(0.075655)</td><td class="num">(0.076295)</td></tr>
+    <tr class="bg"><td colspan="2">N (ego-rows)</td>
+        <td class="num">4,175</td><td class="num">4,175</td><td class="num">4,175</td></tr>
   </tbody>
 </table>
 <p class="note">
@@ -1591,21 +1610,6 @@
   its Spec 2 magnitude. Own ranking therefore predicts partner similarity <em>in addition
   to</em>, not merely <em>because of</em>, the cultural composition of the field a player
   happens to be drawn from.
-</p>
-<p class="note">
-  <strong>Why an own-nationality (country fixed effects) specification is not reported:</strong>
-  we also estimated <code>own_rank</code> replaced by <code>C(own_iso3)</code> (a dummy for
-  each of the 60 nationalities remaining after the singleton exclusion — no pooling into an
-  "Other" category). This is not a useful specification for two independent reasons. First, a
-  60-level categorical variable has no single coefficient analogous to own_rank's — it produces
-  59 separate dummy coefficients, not one, so there is nothing meaningful to put in a table cell
-  next to the other specs. Second, even setting that aside, the two binary outcomes (same
-  nationality, same language) fail to converge — a quasi-complete-separation problem, not an
-  estimation error — because several nationalities still have as few as 2 ego-rows, which can
-  perfectly predict the outcome if both rows share the same value. Only linguistic proximity
-  (continuous, OLS) estimates without issue, but with nothing else to compare it to in the same
-  table, it is not reported separately here. Spec 3 (own ranking net of field composition)
-  remains the specification we rely on for the paper's discussion of this extension.
 </p>
 
 </body>

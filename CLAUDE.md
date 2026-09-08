@@ -80,7 +80,15 @@ this GS dataset, so Table 4 currently has no valid robustness spec — main spec
 **Culture measures (enter one at a time):**
 - `same_country` — same nationality (binary)
 - `same_language` — same official language (binary)
-- `ling_prox` — ethnolinguistic proximity 0–1 (continuous)
+- `ling_prox` — shared widely-spoken ethnic/native language (binary, 0/1 — CEPII gravity
+  dataset's `comlang_ethno`: 1 if a language is spoken as a mother tongue by at least 9% of
+  the population in both countries; confirmed binary directly against the raw data, only
+  {0,1} values present). Distinct from `same_language` (CEPII's `comlang_off`, official/
+  national language) only in using ethnic/spoken-language overlap rather than official
+  designation — the two can diverge when a country's official language differs from its
+  most widely spoken native language. Despite the name, this is NOT a continuous closeness
+  score; sample means/shares reported elsewhere (e.g. "0.568") are the fraction of
+  observations with ling_prox=1, not an average distance.
 
 **Controls:** `rank_mean`, `opp_rank_mean`, `single_top100`, `exp_mean_dm`, `exp_mean_dm_sq`
 (`exp_mean` = tournament year − year turned pro, i.e. years of professional tenure, averaged
