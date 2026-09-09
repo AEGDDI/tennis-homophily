@@ -5,12 +5,13 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsthm} 
-
+\usepackage{comment}
 \newtheorem{hypothesis}{Hypothesis} 
 \usepackage{pdflscape}
 \usepackage{afterpage}
 \usepackage{rotating}
 \usepackage{color}
+\usepackage{changes}
 \usepackage{placeins}
 %\usepackage{paralist}
 \usepackage{graphicx}
@@ -62,8 +63,8 @@
 \begin{abstract}
 
 
-In increasingly international work environments, cultural similarity may be one dimension along which individuals sort into collaborations. %While experiments have compared performance of self-sorted and randomly assigned teams, evidence from naturally occurring professional partnerships is more limited. 
-We examine relationship between cultural similarity and team performance where teams are self-sorted using men’s doubles matches at the four Grand Slam tournaments. We measure cultural similarity using nationality,  language, and linguistic proximity. Culturally similar teams are more likely to win matches. This association has a clear boundary: it disappears in tiebreaks, where teams are closely matched and outcomes are determined over few points. The association strengthens with professional experience but not with partners' experience gap. Finally, although cultural sorting in team formation is substantial, higher-ranked players are not systematically more likely to choose culturally similar partners, suggesting that the performance association is not simply driven by sorting among stronger players.
+In increasingly international and self-organized work environments, cultural similarity may be one dimension along which individuals sort into collaborations. %While experiments have compared performance of self-sorted and randomly assigned teams, evidence from naturally occurring professional partnerships is more limited. 
+We examine relationship between cultural similarity and team performance where teams are self-organized using men’s doubles tennis matches at the four Grand Slam tournaments. We measure cultural similarity using nationality,  language, and linguistic proximity. Culturally similar teams are more likely to win matches. This association has a clear boundary: it disappears in tiebreaks, where teams are closely matched and outcomes are determined over few points. The association strengthens with professional experience but not with partners' experience gap. Finally, although cultural sorting in team formation is substantial, higher-ranked players are not systematically more likely to choose culturally similar partners, suggesting that the performance association is not simply driven by sorting among stronger players.
 \end{abstract}
 \newpage
 \setcounter{page}{1}
@@ -75,20 +76,20 @@ Many forms of work increasingly give individuals substantial discretion over who
 As organizations and professional networks become increasingly international, these collaborations often bring together individuals from different national, linguistic, and cultural backgrounds. Among the many characteristics that may shape these choices, cultural similarity is one potentially important dimension of team formation process. Individuals may prefer culturally similar collaborators because shared language, norms, or backgrounds can facilitate communication, reduce coordination costs, and make it easier to anticipate one another's actions. %At the same time, cultural similarity may come at the expense of exposure to different perspectives and skills. 
 This raises an important question: \lq\lq When individuals have substantial discretion over whom they collaborate with,  does cultural similarity between the resulting collaborators translate into better performance?" 
 
-\textcolor{red}{List 2-3 evidence from the literature: firm, academic, sports. Firm evidence needed!}
-
-\added{In academics, Freeman and Huang (2015) document that culturally self-sorted homogeneous teams face a distinct quality penalty, receiving fewer citations than diverse teams. %Tonellato (2025) Journal of Management Surgical teams; Dale-Olsen and Finseraas (2019) find higher workforce linguistic diversity decreases productivity in Manufactures. 
+The empirical evidence answering this question across corporate, academics, and sports suggests that teams sorted by cultural homophily often receive a performance penalty, though the exact boundaries remain heavily debated. In entrepreneurial and ventures, Gompers, Mukharlyamov, and Xuan (2016) find that ethnic homophily in self-selected entrepreneurial teams reduces investment success rates. In academics, Freeman and Huang (2015) document  that culturally homogeneous research teams  receiving fewer citations than their diverse counterparts. In sports, Békés and Ottaviano (2025) show that culturally similar players exhibit an internal bias, being more likely to pass the ball to one another within elite football teams; however, they note that such patterns do not necessarily translate into better overall team performance. Synthesizing these complex dynamics, a comprehensive meta-analysis by Stahl, Maznevski, Voigt, and Jonsen (2010) suggests that the ultimate effect of cultural diversity on team performance is not universal and depends heavily on the specific nature of the task environment, highlighting a critical need for research that can isolate these boundary conditions.
+\begin{comment}
+Paul A Gompers et al (2012) find ethnic homophily in self-selected entrepreneurial teams does not increase a team's investment success. In academics, Freeman and Huang (2015) document that culturally self-sorted homogeneous teams face a distinct quality penalty, receiving fewer citations than diverse teams. %Tonellato (2025) Journal of Management Surgical teams; Dale-Olsen and Finseraas (2019) find higher workforce linguistic diversity decreases productivity in Manufactures. 
 In sports, Békés and Ottaviano (2025) show that culturally similar players are more likely to pass to one another within elite football teams,  however, such pattern may not necessarily enhance the overall performance.
 %Huang et al (2023) \lq\lq Wearing the Same Jersey?" find a higher level of cultural diversity enhanced the entire on-field performance. 
-A meta analysis by Sthal et al (2021) suggest that the effect of cultural diversity on team performance  is not universal and depends on the nature of the task, highlighting the urgent need for future research.} %Yet whether cultural similarity between collaborators ultimately translates into better team performance, particularly when collaborators themselves have substantial discretion over partner selection, remains less clear.
+A meta analysis by Sthal et al (2021) suggest that the effect of cultural diversity on team performance  is not universal and depends on the nature of the task, highlighting the urgent need for future research. %Yet whether cultural similarity between collaborators ultimately translates into better team performance, particularly when collaborators themselves have substantial discretion over partner selection, remains less clear.
 %This raises a more specific question: \lq\lq When individuals have substantial discretion over whom they collaborate with, under what condition does cultural similarity between the resulting collaborators translate into better performance?" 
 
 
-Answering this question requires a setting in which partner formation and subsequent team performance can both be observed. Professional doubles tennis provides a unique real world setting with desirable features. %This makes it possible to study cultural similarity at the collaborator-pair level while explicitly recognizing that the partnership itself is endogenous to partner choice. Using data on men’s doubles matches at the four Grand Slam tournaments from 2018 to 2025, we examine whether teams whose members share a nationality, share an official language, or have greater linguistic proximity are more likely to win their matches. Doubles tennis also offers an unusually transparent team-production environment: individual contributions during play are directly observable, limiting concerns about unobserved effort and free-riding that can complicate team-performance measures in other settings. The central challenge is therefore less whether players contribute effort than how effectively the two players coordinate those contributions.
+Answering this question requires a setting in which partner formation and subsequent team performance can both be observed. Professional doubles tennis provides a unique real world setting with desirable features. 
 The workplace is international. Two individuals bilaterally form a partnership and jointly work in a transparent team-production environment: individual contributions during play are directly observable, limiting concerns about unobserved effort and free-riding that can complicate team-performance measures in other settings. Individuals operate under high-stake economic incentives to maximize joint success under various competing conditions. \textcolor{red}{More importantly, unlike academics where unpublished research outputs may not be observable, the outcome of doubles tennis match is always observable, winning or losing; unlike football where players may have discretion of bilateral collaboration but the entire team is assembled by the manager and coach, the collaboration of doubles tennis is entirely self-organized. }
 %Doubles tennis has the same basic organizational structure at a much smaller scale: two interdependent individuals repeatedly make decisions whose value depends partly on anticipating and adapting to the partner's actions. Although these settings differ substantially in purpose and context, they share common organizational challenges. %team members must repeatedly coordinate their actions under time constraints while adapting to rapidly changing environments. 
 %Doubles tennis captures these fundamental features in a particularly transparent way. Every point requires two teammates to coordinate positioning, movement, tactical decisions, and responses to their opponents, while success depends not only on individual ability but also on how effectively partners anticipate and complement each other's actions. At the same time, performance is measured objectively, tasks are standardized across teams, and teammates operate under strong economic incentives to maximize joint success. These characteristics make doubles tennis an informative empirical model of organizational coordination in environments where communication and mutual understanding are essential to team performance.
-
+\end{comment}
 
 In this paper, we use professional men's doubles tennis as an empirical setup to examine 1) the relationship between cultural similarity and team performance,  2) the boundary condition of this relationship, and 3) the extent to which cultural similarity reflects systematic partner sorting in our setting.\footnote{Partnership formation in professional doubles tennis is inherently multidimensional. Players may sort on several characteristics, including playing ability and experience, strategic complementarity, and institutional or commercial connections such as shared representation by an agency or sponsorship arrangement. Our analysis abstracts from these multiple dimensions of partner selection and focuses on cultural similarity as one potentially consequential dimension of the resulting partnership.} 
 
@@ -111,7 +112,7 @@ First, more experienced players have accumulated greater task-specific knowledge
 
 
 
-Finally, we return to the endogenous team formation stage. We document the extent of cultural sorting in partnerships, examining whether the sorting is related to  players' ability. Cultural similarity is substantially more common among observed partnerships than under random matching, confirming that doubles teams are strongly sorted by nationality and language. However, this sorting is not more pronounced among higher-ranked players, and a player's own ranking is, if anything, negatively associated with having a culturally similar partner. We therefore find no evidence for the specific selection explanation in which stronger players systematically choose culturally similar partners.\footnote{\textcolor{red}{In Freeman and Huang (2015), if weaker scholars collaborate locally while stronger scholars can reach out internationally, it can cause culturally similar teams produce lower quality output. But this goes against our finding.}} Nevertheless, this  cannot rule out other forms of endogenous partner selection that we do not observe.
+Finally, we return to the endogenous team formation stage. We document the extent of cultural sorting in partnerships, examining whether the sorting is related to  players' ability. Cultural similarity is substantially more common among observed partnerships than under random matching, confirming that doubles teams are strongly sorted by nationality and language. However, this sorting is not more pronounced among higher-ranked players, and a player's own ranking is, if anything, negatively associated with having a culturally similar partner. We therefore find no evidence for the specific selection explanation in which stronger players systematically choose culturally similar partners.\footnote{\textcolor{red}{Freeman and Huang (2015): if weaker scholars collaborate locally while stronger scholars can reach out internationally, it can cause culturally similar teams produce lower quality output. But this goes against our finding.}} Nevertheless, this  cannot rule out other forms of endogenous partner selection that we do not observe.
 
 Our study relates to three strands of literature. First, it contributes to research on cultural diversity, or similarity, and organizational performance. Economic models emphasize that cultural diversity can generate informational and productivity benefits while also creating communication and coordination costs (Lazear, 1999). Organizational research similarly identifies both benefits and costs of cultural diversity, including greater creativity and knowledge variety but also conflict, weaker social integration, and coordination difficulties (Stahl et al., 2010; Harrison and Klein, 2007). Consistent with these competing forces, evidence on cultural composition and team performance is mixed and context dependent. Much of this literature examines diversity at the workforce or team level. We instead focus on cultural similarity within a small, highly interdependent dyad, where partners must coordinate continuously to produce a common outcome. In such settings, shared language and cultural background may directly facilitate communication and anticipation of a partner’s actions.
 
@@ -188,7 +189,8 @@ Table~\ref{tab:t1} reports the number of matches in each tournaments by year in 
 
 
 \subsection{Measuring Cultural Similarity}
-We construct three  measures of cultural similarity. The first measure, Same Nationality, equals one if both teammates represent the same country and zero otherwise. The second measure, Same Language, equals one if both teammates share an official national language. The third measure, Language Proximity, is a continuous measure ranging from zero to one that captures the linguistic similarity between teammates' native languages, with larger values indicating greater linguistic proximity.
+
+\textcolor{red}{We construct three measures of cultural similarity, all binary, using the CEPII gravity dataset's country-pair language indicators. The first measure, Same Nationality, equals one if both teammates represent the same country and zero otherwise. The second measure, Same Language, equals one if both teammates share an official national language (CEPII's \textit{comlang\_off}) and zero otherwise. The third measure, Language Proximity, equals one if both teammates share a widely-spoken ethnic language and zero otherwise (CEPII's \textit{comlang\_ethno}, defined as a language spoken as a mother tongue by at least 9\% of the population in both countries).\footnote{Monaco is not covered by the raw CEPII gravity table. We manually set Same Language and Language Proximity to 1 for any Monaco pairing against another French-official-language country (France, Belgium, Switzerland, Canada, Luxembourg), reflecting that French is Monaco's sole official language. This affects 39 of the raw match observations.}}
 
 These measures reflect increasingly broad notions of cultural similarity. Shared nationality captures common institutional and cultural background. Shared language more directly captures communication potential. Linguistic proximity recognizes that communication costs may also be lower between speakers of closely related languages even when they do not share the same official language.
 
@@ -635,26 +637,37 @@ We regress each cultural-similarity measure on the focal player's own doubles ra
 
 The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), the coefficient on own ranking is positive and statistically significant for all three measures: 0.000269 for same nationality (p<0.001), 0.000146 for same language (p=0.012), and 0.000139 for linguistic proximity (p=0.009). Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
 
-\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout. We also estimated an own-nationality (country fixed effects) specification in place of own ranking, but do not report it: nationality is a 60-level categorical variable, so it produces 59 separate country-dummy coefficients rather than one interpretable effect, and its logit specifications fail to converge for the two binary outcomes regardless (quasi-complete separation, since several nationalities have as few as 2 ego-rows).}
+
+\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout.}
 
 \begin{table}[htbp]
 \color{red}
 \centering
 \caption{Own Ranking, Tournament-Field Composition, and Partner-Culture Similarity \label{tab:t9}}
 \begin{threeparttable}
-\begin{tabular}{lcccc}
+\begin{tabular}{llccc}
 \toprule
-Outcome & Spec 1: & Spec 2: & Spec 3: & Spec 3: \\
- & own\_rank & composition & own\_rank & composition \\
+Outcome & Variable & Spec 1 & Spec 2 & Spec 3 \\
 \midrule
-Same nationality (AME) & 0.000269*** & 3.853*** & 0.000116** & 3.756*** \\
- & (0.000056) & (0.241325) & (0.000053) & (0.255403) \\
-Same language (AME) & 0.000146** & 1.275*** & 0.000117** & 1.267*** \\
- & (0.000058) & (0.081709) & (0.000053) & (0.082578) \\
-Ling.\ proximity (OLS coef.) & 0.000139*** & 1.152*** & 0.000104** & 1.145*** \\
- & (0.000053) & (0.075655) & (0.000047) & (0.076295) \\
+\multirow{4}{*}{Same nationality (AME)}
+ & own\_rank & 0.000269*** & & 0.000116** \\
+ & & (0.000056) & & (0.000053) \\
+ & composition & & 3.853*** & 3.756*** \\
+ & & & (0.241325) & (0.255403) \\
+\addlinespace
+\multirow{4}{*}{Same language (AME)}
+ & own\_rank & 0.000146** & & 0.000117** \\
+ & & (0.000058) & & (0.000053) \\
+ & composition & & 1.275*** & 1.267*** \\
+ & & & (0.081709) & (0.082578) \\
+\addlinespace
+\multirow{4}{*}{Ling.\ proximity (OLS coef.)}
+ & own\_rank & 0.000139*** & & 0.000104** \\
+ & & (0.000053) & & (0.000047) \\
+ & composition & & 1.152*** & 1.145*** \\
+ & & & (0.075655) & (0.076295) \\
 \midrule
-$N$ (ego-rows) & 4,175 & 4,175 & 4,175 & 4,175 \\
+\multicolumn{2}{l}{$N$ (ego-rows)} & 4,175 & 4,175 & 4,175 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -668,8 +681,13 @@ $N$ (ego-rows) & 4,175 & 4,175 & 4,175 & 4,175 \\
 
 This result is the opposite of what would be expected if the performance association were primarily generated by stronger players having greater partner choice and systematically selecting culturally similar teammates. Together with the bracket comparisons, the evidence therefore provides no support for the specific selection mechanism in which stronger players disproportionately sort into culturally similar partnerships. It does not, however, eliminate other forms of endogenous partnership formation, and the performance estimates remain associations rather than causal effects.
 
-\subsection{Team Formation Around the Olympic Cycle}
-\added{The regular professional doubles circuit provides a setting in which players have substantial discretion over their partners, while Olympic doubles imposes a distinct institutional constraint: teams must represent the same nation. This raises a broader question about how institutional constraints interact with decentralized partnership formation. The Olympic requirement could, in principle, also increase the salience of national affiliation in the regular professional circuit, particularly as the Games approach, potentially generating spillovers in the cultural composition of Grand Slam partnerships.}
+Overall, the evidence in this section provides useful context for interpreting the main performance results. Cultural sorting is clearly present, but the data do not support the specific hypothesis that stronger players are disproportionately responsible for that sorting. At the same time, partnerships are formed through a mixture of deliberate choice and circumstances that can constrain partner selection. We therefore do not interpret the main estimates as causal effects of cultural similarity. Rather, the team-formation evidence helps assess the plausibility of one important alternative explanation for the observed association between cultural similarity and team performance.
+
+Taken together, the partnership-formation evidence provides two useful qualifications to the performance analysis. First, cultural sorting in doubles is substantial: culturally similar partnerships are much more common than random matching would imply. Second, the sorting does not appear to be disproportionately concentrated among higher-ranked players. These findings do not eliminate selection as a possible source of the performance association, but they make the specific explanation that stronger players systematically select culturally similar partners less consistent with the data.
+
+%\subsection{Team Formation Around the Olympic Cycle}
+%\added{The regular professional doubles circuit provides a setting in which players have substantial discretion over their partners, while Olympic doubles imposes a distinct institutional constraint: teams must represent the same nation. This raises a broader question about how institutional constraints interact with decentralized partnership formation. The Olympic requirement could, in principle, also increase the salience of national affiliation in the regular professional circuit, particularly as the Games approach, potentially generating spillovers in the cultural composition of Grand Slam partnerships.}
+\begin{comment}
 
 Finally, we provide a  descriptive perspective on partnership formation by examining whether cultural sorting changes around the Olympic Games. The Olympic Games provide a separate setting in which the incentives surrounding partner formation are particularly salient. Unlike Grand Slam doubles competition, Olympic participation is organized around national representation, creating a direct incentive for players seeking to compete together at the Games to form partnerships with compatriots. We therefore examine whether the composition of Grand Slam partnerships changes during the preparation periods surrounding the Tokyo 2021 and Paris 2024 Olympic Games. The analysis is descriptive and is intended to provide additional evidence on how partnership formation responds to the institutional environment surrounding elite competition.
 
@@ -717,11 +735,6 @@ The contrast between the two Olympic cycles should not be interpreted as a causa
 
 \added{This evidence should be interpreted cautiously. The Olympics involve a small and highly selected set of players, and their qualification rules differ substantially from those governing the Grand Slam circuit. Moreover, the timing and strength of any spillover from Olympic participation or national representation to regular partnership decisions are not clear. Players may also respond to Olympic considerations in lower-level tournaments or through partnership decisions that are not captured by changes in the aggregate Grand Slam composition. We therefore do not interpret the stable pattern as evidence that the Olympic institution has no effect on partnership formation. Rather, it provides descriptive evidence that the heightened salience of national representation around the Olympics is not accompanied by a large, readily visible change in the cultural composition of the broader Grand Slam partnership market.}
 
-Overall, the evidence in this section provides useful context for interpreting the main performance results. Cultural sorting is clearly present, but the data do not support the specific hypothesis that stronger players are disproportionately responsible for that sorting. At the same time, partnerships are formed through a mixture of deliberate choice and circumstances that can constrain partner selection. We therefore do not interpret the main estimates as causal effects of cultural similarity. Rather, the team-formation evidence helps assess the plausibility of one important alternative explanation for the observed association between cultural similarity and team performance.
-
-%Taken together, the partnership-formation evidence provides two useful qualifications to the performance analysis. First, cultural sorting in doubles is substantial: culturally similar partnerships are much more common than random matching would imply. Second, the sorting does not appear to be disproportionately concentrated among higher-ranked players, and the Tokyo preparation period provides no evidence of a sharp increase in national sorting despite unusually strong incentives for nationally aligned preparation. These findings do not eliminate selection as a possible source of the performance association, but they make the specific explanation that stronger players systematically select culturally similar partners less consistent with the data.
-
-\iffalse
 \subsection{Evidence from the Olympics}
 
 If cultural similarity is associated with better performance, an important question is whether players appear to sort toward culturally similar partners when the incentives to coordinate are particularly salient. We therefore examine team composition around the Tokyo and Paris Olympic cycles.  
@@ -732,7 +745,8 @@ If anything, this creates a plausible setting in which same-nationality partneri
 
 
 During the Paris cycle, same-nationality and same-language partnerships become modestly more common, although the increase occurs gradually rather than as a discrete shift during the Olympic preparation period. These patterns do not provide evidence of systematic optimization.
-\fi
+\end{comment}
+
 
 \section{Conclusion}
 
