@@ -63,8 +63,8 @@
   least 9% of the population in both countries), confirmed binary directly against the raw
   data (only {0,1} values present). It differs from same-language only in using ethnic/spoken-
   language overlap rather than official designation, so the two can diverge when a country's
-  official language differs from its most widely spoken native language. Sample means reported
-  elsewhere in this report (e.g. "0.568") are the <em>share</em> of observations with
+  official language differs from its most widely spoken native language. Shares reported
+  elsewhere in this report (e.g. "56.8%") are the <em>share</em> of observations with
   ling_prox=1, not an average distance — this is not a continuous closeness score.
 </p>
 <p>
@@ -258,6 +258,83 @@
   zero tenure). Tenure shows a concave effect: positive linear (p&lt;0.05) at the mean, negative
   quadratic (p&lt;0.01). Top-100 singles indicator is not significant: within-GS doubles, having a top
   singles player does not predict match win once ranking and tenure are controlled.
+</p>
+
+<h3>Table 3d — Robustness: Continuous Linguistic Proximity &nbsp;|&nbsp; N = 3,728 team-obs &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
+<p>
+  Column (3) of Table 3 measures linguistic proximity as CEPII's binary <code>comlang_ethno</code>
+  indicator. As a robustness check, we replace it with three continuous measures, one at a time,
+  same sample/controls/FE as Table 3: <strong>prox1</strong> (Melitz &amp; Toubal 2014, Ethnologue
+  tree-based — the same source Békés &amp; Ottaviano 2025 use for their own language-similarity
+  variable), plus two independent robustness measures from PSW2024
+  (<a href="https://www.geopoliticaldistance.org/linguistic-distance">geopoliticaldistance.org</a>):
+  an inverted tree-distance index and a cognate/lexical-based proximity index. All three are
+  continuous on [0,1] with complete (100%) coverage on this sample, after the same Monaco
+  fallback rule already used for <code>same_language</code>/<code>ling_prox</code>.
+</p>
+<table>
+  <thead>
+    <tr><th style="width:40%">Variable</th>
+        <th class="num">(1) prox1</th>
+        <th class="num">(2) PSW tree</th>
+        <th class="num">(3) PSW cognate</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Linguistic proximity (continuous)</td>
+        <td class="num">+0.0527<sup>***</sup></td>
+        <td class="num">+0.0648<sup>***</sup></td>
+        <td class="num">+0.0719<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0201)<br>p=0.009</td>
+        <td class="num">(0.0231)<br>p=0.005</td>
+        <td class="num">(0.0231)<br>p=0.002</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)</td><td class="num">(0.0001)</td><td class="num">(0.0001)</td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)</td><td class="num">(0.0001)</td><td class="num">(0.0001)</td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0034</td><td class="num">−0.0038</td><td class="num">−0.0034</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0314)<br>p=0.914</td>
+        <td class="num">(0.0314)<br>p=0.905</td>
+        <td class="num">(0.0315)<br>p=0.914</td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0044<sup>***</sup></td>
+        <td class="num">+0.0046<sup>***</sup></td>
+        <td class="num">+0.0047<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0017)<br>p=0.009</td>
+        <td class="num">(0.0017)<br>p=0.006</td>
+        <td class="num">(0.0017)<br>p=0.005</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td>
+        <td class="num">−0.0008<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0002)<br>p=0.001</td>
+        <td class="num">(0.0002)<br>p=0.001</td>
+        <td class="num">(0.0002)<br>p=0.001</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.096</td><td class="num">0.097</td><td class="num">0.097</td></tr>
+  </tbody>
+</table>
+<p class="note">
+  <sup>***</sup>&nbsp;p&lt;0.01 &nbsp;<sup>**</sup>&nbsp;p&lt;0.05 &nbsp;<sup>*</sup>&nbsp;p&lt;0.10.
+  Clustered SE. FE: tournament×year, round. AME reported per full-scale (0→1) change in the
+  linguistic-proximity measure, directly comparable to Table 3 column (3)'s binary AME (+0.0419).
+  Per-SD AMEs: prox1 = 0.0206, PSW tree = 0.0225, PSW cognate = 0.0249. All three continuous
+  measures agree with the binary specification — positive, significant at the 1% level, and
+  somewhat larger in magnitude (5.3–7.2 percentage points for a full-scale change) — so the
+  Table 3 finding is not an artifact of CEPII's binary threshold rule or specific to one
+  continuous data source.
 </p>
 
 <h3>Table 4 — Outcome: Tiebreak Win &nbsp;|&nbsp; Unit: team × tiebreak &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
@@ -1451,10 +1528,10 @@
         <td class="num">56.0%</td><td class="num">49.7%</td><td class="num">56.3%</td></tr>
     <tr class="bg"><td>Random benchmark</td>
         <td class="num">16.2%</td><td class="num">15.5%</td><td class="num">15.8%</td></tr>
-    <tr><td rowspan="2">Mean ling_prox</td><td>Actual</td>
-        <td class="num">0.568</td><td class="num">0.506</td><td class="num">0.565</td></tr>
+    <tr><td rowspan="2">Ling. proximity</td><td>Actual</td>
+        <td class="num">56.8%</td><td class="num">50.6%</td><td class="num">56.5%</td></tr>
     <tr class="bg"><td>Random benchmark</td>
-        <td class="num">0.199</td><td class="num">0.189</td><td class="num">0.189</td></tr>
+        <td class="num">19.9%</td><td class="num">18.9%</td><td class="num">18.9%</td></tr>
   </tbody>
 </table>
 <p class="note">
@@ -1483,8 +1560,8 @@
   tests the same mechanism continuously. Each of the two players in a partnership is treated
   as an "ego" with the other as "partner" (2 ego-rows per partnership, 4,178 rows from the
   2,089 partnerships), and the ego's <strong>own</strong> doubles ranking (at that tournament)
-  is regressed on whether the partnership is same-nationality / same-language (logit AME) or
-  on ling_prox (OLS), with tournament×year FE and SE clustered by partnership (so both
+  is regressed on whether the partnership is same-nationality / same-language / ling_prox
+  (all three binary; logit AME), with tournament×year FE and SE clustered by partnership (so both
   ego-rows from the same team don't count as independent observations). The model is
   deliberately bivariate — <code>own_rank + C(tourn_year)</code>, no further controls — since
   the point is to test whether own ranking alone predicts partner-culture similarity net of
@@ -1513,10 +1590,10 @@
         <td class="num">0.000058</td>
         <td class="num">0.013</td>
         <td class="num">4,178</td></tr>
-    <tr><td>Ling. proximity (OLS coef.)</td>
-        <td class="num">+0.000138<sup>***</sup></td>
-        <td class="num">0.000053</td>
-        <td class="num">0.010</td>
+    <tr><td>Ling. proximity (AME)</td>
+        <td class="num">+0.000144<sup>**</sup></td>
+        <td class="num">0.000058</td>
+        <td class="num">0.014</td>
         <td class="num">4,178</td></tr>
   </tbody>
 </table>
@@ -1584,18 +1661,18 @@
         <td class="num">+1.267<sup>***</sup></td></tr>
     <tr class="se"><td></td>
         <td class="num"></td><td class="num">(0.081709)</td><td class="num">(0.082578)</td></tr>
-    <tr><td rowspan="4">Ling. proximity (OLS coef.)</td><td>own_rank</td>
-        <td class="num">+0.000139<sup>***</sup></td>
+    <tr><td rowspan="4">Ling. proximity (AME)</td><td>own_rank</td>
+        <td class="num">+0.000146<sup>**</sup></td>
         <td class="num"></td>
-        <td class="num">+0.000104<sup>**</sup></td></tr>
+        <td class="num">+0.000115<sup>**</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.000053)</td><td class="num"></td><td class="num">(0.000047)</td></tr>
+        <td class="num">(0.000058)</td><td class="num"></td><td class="num">(0.000052)</td></tr>
     <tr><td>composition</td>
         <td class="num"></td>
-        <td class="num">+1.152<sup>***</sup></td>
-        <td class="num">+1.145<sup>***</sup></td></tr>
+        <td class="num">+1.102<sup>***</sup></td>
+        <td class="num">+1.097<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num"></td><td class="num">(0.075655)</td><td class="num">(0.076295)</td></tr>
+        <td class="num"></td><td class="num">(0.063048)</td><td class="num">(0.063932)</td></tr>
     <tr class="bg"><td colspan="2">N (ego-rows)</td>
         <td class="num">4,175</td><td class="num">4,175</td><td class="num">4,175</td></tr>
   </tbody>

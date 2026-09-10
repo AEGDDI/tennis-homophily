@@ -719,6 +719,39 @@ estimates store win_ling_prox
 estimates table win_same_country win_same_language win_ling_prox, b se stats(N ll)
 
 * ─────────────────────────────────────────────────────────────────────────────
+* APPENDIX A3: MATCH WIN — LANGUAGE PROXIMITY ROBUSTNESS (mirrors main.tex Appendix
+* Table A3, cf. Table 3 / tab:t3). Main text Table 3 col 3 (line 715 above) now IS
+* prox1 (ling_prox was redefined to mean prox1 on 2026-09-10 -- see CLAUDE.md). This
+* block covers the three measures relocated OUT of the main text on that date: the
+* original binary CEPII comlang_ethno (ling_prox_binary) and two independent PSW2024
+* (geopoliticaldistance.org) continuous measures, ling_prox_psw_tree (inverted tree
+* distance) and ling_prox_psw_cognet (cognate/lexical proximity). All three are 100%
+* covered (no missing pairs), so N matches Table 3 exactly (3,728).
+* ─────────────────────────────────────────────────────────────────────────────
+display ""
+display "=== APPENDIX A3. Match Win — Language Proximity Robustness ==="
+
+display ""
+display "--- A3-i. Binary (comlang_ethno) -- reproduces the pre-2026-09-10 Table 3 col 3 ---"
+logit win i.ty i.stage_code ling_prox_binary rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store win_ling_prox_binary
+
+display ""
+display "--- A3-ii. PSW2024 tree distance, inverted (robustness) ---"
+logit win i.ty i.stage_code ling_prox_psw_tree rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store win_ling_prox_psw_tree
+
+display ""
+display "--- A3-iii. PSW2024 cognate/lexical proximity (robustness) ---"
+logit win i.ty i.stage_code ling_prox_psw_cognet rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store win_ling_prox_psw_cognet
+
+estimates table win_ling_prox_binary win_ling_prox_psw_tree win_ling_prox_psw_cognet, b se stats(N ll)
+
+* ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3-NATLANG: MATCH WIN — NATIONALITY VS. LANGUAGE DECOMPOSITION
 * (per Lingqing's 2026-09-02 email: same_country and same_language are perfectly
 * correlated in one direction in this data -- every same_country=1 team-obs also
@@ -967,6 +1000,38 @@ estimates store het_exp_lp
 estimates table het_exp_sc het_exp_sl het_exp_lp, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
+* APPENDIX A6: Culture x exp_mean, language-proximity robustness measures
+* (mirrors main.tex Appendix Table A6, cf. Table 6 / tab:t6). Binary comlang_ethno
+* + two PSW2024 continuous measures, relocated out of the main text 2026-09-10.
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A6. Culture x exp_mean -- Language Proximity Robustness ==="
+display ""
+
+generate double int_lpbin_exp = ling_prox_binary   * exp_mean_dm
+generate double int_pswt_exp  = ling_prox_psw_tree * exp_mean_dm
+generate double int_pswc_exp  = ling_prox_psw_cognet * exp_mean_dm
+
+display "--- A6-i. Binary (comlang_ethno) x exp_mean ---"
+logit win i.ty i.stage_code ling_prox_binary int_lpbin_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary int_lpbin_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_lpbin
+
+display ""
+display "--- A6-ii. PSW tree x exp_mean ---"
+logit win i.ty i.stage_code ling_prox_psw_tree int_pswt_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree int_pswt_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_pswt
+
+display ""
+display "--- A6-iii. PSW cognate x exp_mean ---"
+logit win i.ty i.stage_code ling_prox_psw_cognet int_pswc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet int_pswc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_pswc
+
+estimates table het_exp_lpbin het_exp_pswt het_exp_pswc, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
 * TABLE 6a ROBUSTNESS: adding Culture x exp_mean_dm^2 (per reviewer request 2026-08-11)
 * Checks the linear-interaction finding isn't an artefact of a curved true relationship.
 * ---------------------------------------------------------------------------
@@ -1064,6 +1129,37 @@ estimates store het_gap_lp
 
 estimates table het_gap_sc het_gap_sl het_gap_lp, b se stats(N ll)
 
+* ---------------------------------------------------------------------------
+* APPENDIX A6b: Culture x exp_gap, language-proximity robustness measures
+* (mirrors main.tex Appendix Table A6b, cf. Table 6b / tab:t6b).
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A6b. Culture x exp_gap -- Language Proximity Robustness ==="
+display ""
+
+generate double int_lpbin_gap = ling_prox_binary     * exp_gap_dm
+generate double int_pswt_gap  = ling_prox_psw_tree   * exp_gap_dm
+generate double int_pswc_gap  = ling_prox_psw_cognet * exp_gap_dm
+
+display "--- A6b-i. Binary (comlang_ethno) x exp_gap ---"
+logit win i.ty i.stage_code ling_prox_binary int_lpbin_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary int_lpbin_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_lpbin
+
+display ""
+display "--- A6b-ii. PSW tree x exp_gap ---"
+logit win i.ty i.stage_code ling_prox_psw_tree int_pswt_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree int_pswt_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_pswt
+
+display ""
+display "--- A6b-iii. PSW cognate x exp_gap ---"
+logit win i.ty i.stage_code ling_prox_psw_cognet int_pswc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet int_pswc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_pswc
+
+estimates table het_gap_lpbin het_gap_pswt het_gap_pswc, b se stats(N ll)
+
 * --- Table 6b robustness: adding Culture x exp_gap_dm^2 ---
 display ""
 display "=== TABLE 6b ROBUSTNESS. + Culture x exp_gap_dm^2 ==="
@@ -1151,6 +1247,62 @@ display "--- Comparison: Spec (a) grass vs. Spec (b) clay ---"
 estimates table het_surf_sc_grass het_surf_sc_clay, b se stats(N ll)
 estimates table het_surf_sl_grass het_surf_sl_clay, b se stats(N ll)
 estimates table het_surf_lp_grass het_surf_lp_clay, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* APPENDIX A5: Culture x Surface, language-proximity robustness measures
+* (mirrors main.tex Appendix Table A5, cf. Table 5 / tab:t5).
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A5. Culture x Surface -- Language Proximity Robustness ==="
+display ""
+
+generate double int_lpbin_clay  = ling_prox_binary     * clay
+generate double int_lpbin_grass = ling_prox_binary     * grass
+generate double int_pswt_clay   = ling_prox_psw_tree   * clay
+generate double int_pswt_grass  = ling_prox_psw_tree   * grass
+generate double int_pswc_clay   = ling_prox_psw_cognet * clay
+generate double int_pswc_grass  = ling_prox_psw_cognet * grass
+
+display "--- A5-i. Binary (comlang_ethno): Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox_binary grass int_lpbin_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary grass int_lpbin_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_lpbin_grass
+
+display ""
+display "--- A5-i. Binary (comlang_ethno): Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox_binary clay int_lpbin_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary clay int_lpbin_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_lpbin_clay
+
+display ""
+display "--- A5-ii. PSW tree: Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox_psw_tree grass int_pswt_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree grass int_pswt_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswt_grass
+
+display ""
+display "--- A5-ii. PSW tree: Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox_psw_tree clay int_pswt_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree clay int_pswt_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswt_clay
+
+display ""
+display "--- A5-iii. PSW cognate: Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox_psw_cognet grass int_pswc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet grass int_pswc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswc_grass
+
+display ""
+display "--- A5-iii. PSW cognate: Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox_psw_cognet clay int_pswc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet clay int_pswc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswc_clay
+
+display ""
+display "--- Appendix A5 comparison: Spec (a) grass vs. Spec (b) clay ---"
+estimates table het_surf_lpbin_grass het_surf_lpbin_clay, b se stats(N ll)
+estimates table het_surf_pswt_grass het_surf_pswt_clay, b se stats(N ll)
+estimates table het_surf_pswc_grass het_surf_pswc_clay, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
 * TABLE 5 ROBUSTNESS: tournament x year FE restored, interaction only, no separate
@@ -1311,7 +1463,7 @@ encode tournament, generate(tourn_code)
 drop tournament
 rename tourn_code tournament
 
-destring stage_code same_country same_language ling_prox rank_mean opp_rank_mean ///
+destring stage_code same_country same_language ling_prox ling_prox_binary ling_prox_psw_tree ling_prox_psw_cognet rank_mean opp_rank_mean ///
     rank_gap single_top100 exp_mean age_mean win pre_olympic olympic_period tb_set won_tb year, replace force
 replace stage_code = 0 if missing(stage_code)
 replace exp_mean = 1 if missing(exp_mean)
@@ -1367,6 +1519,33 @@ estimates store tbn_ling_prox
 display ""
 display "--- Table 4 summary ---"
 estimates table tbn_same_country tbn_same_language tbn_ling_prox, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* APPENDIX A4: TIEBREAK WIN — LANGUAGE PROXIMITY ROBUSTNESS (mirrors main.tex
+* Appendix Table A4, cf. Table 4 / tab:t4). Same tiebreak sample/spec as Table 4.
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A4. Tiebreak Win — Language Proximity Robustness ==="
+display ""
+
+display "--- A4-i. Binary (comlang_ethno) -- reproduces the pre-2026-09-10 Table 4 col 3 ---"
+logit won_tb i.ty i.stage_code ling_prox_binary rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store tbn_ling_prox_binary
+
+display ""
+display "--- A4-ii. PSW tree (robustness) ---"
+logit won_tb i.ty i.stage_code ling_prox_psw_tree rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store tbn_ling_prox_psw_tree
+
+display ""
+display "--- A4-iii. PSW cognate (robustness) ---"
+logit won_tb i.ty i.stage_code ling_prox_psw_cognet rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store tbn_ling_prox_psw_cognet
+
+estimates table tbn_ling_prox_binary tbn_ling_prox_psw_tree tbn_ling_prox_psw_cognet, b se stats(N ll)
 
 * ─────────────────────────────────────────────────────────────────────────────
 * TABLE 4-AGE: TIEBREAK WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)
@@ -1556,13 +1735,18 @@ display ""
 * specifications below, all built from own_rank and/or the composition variable, are used.
 
 * --- Spec 1: own_rank alone (reproduces Section 6.1's original result) ---
+* NOTE (fixed 2026-09-10, part 2): ling_prox now means prox1 (continuous, Melitz & Toubal /
+* Bekes-Ottaviano), reverting the 2026-09-10 logit fix -- that fix was correct when ling_prox
+* meant the binary comlang_ethno, but prox1 is genuinely continuous, so OLS/LPM is now the
+* right choice again, for the right reason this time. See homophily.ipynb cells 59/61 for the
+* mirror (ling_prox_binary/psw_tree/psw_cognet, still logit, are the Appendix A3-A6b measures).
 display "--- Spec 1: own_rank + tourn_year FE (excl. singleton-nationality ego-rows) ---"
 foreach outcome in same_country same_language {
     display "  [`outcome']"
     quietly logit `outcome' own_rank i.ty8 if !_singleton_iso3, cluster(team_id)
     margins, dydx(own_rank)
 }
-display "  [ling_prox, OLS]"
+display "  [ling_prox]"
 regress ling_prox own_rank i.ty8 if !_singleton_iso3, cluster(team_id)
 
 * --- Spec 2: outcome-matched field composition alone ---
@@ -1574,7 +1758,7 @@ margins, dydx(composition_nat)
 display "  [same_language]"
 quietly logit same_language composition_lang i.ty8 if !_singleton_iso3, cluster(team_id)
 margins, dydx(composition_lang)
-display "  [ling_prox, OLS]"
+display "  [ling_prox]"
 regress ling_prox composition_ling i.ty8 if !_singleton_iso3, cluster(team_id)
 
 * --- Spec 3: own_rank + outcome-matched field composition (the paper's main extension result) ---
@@ -1586,7 +1770,7 @@ margins, dydx(own_rank composition_nat)
 display "  [same_language]"
 quietly logit same_language own_rank composition_lang i.ty8 if !_singleton_iso3, cluster(team_id)
 margins, dydx(own_rank composition_lang)
-display "  [ling_prox, OLS]"
+display "  [ling_prox]"
 regress ling_prox own_rank composition_ling i.ty8 if !_singleton_iso3, cluster(team_id)
 
 display ""

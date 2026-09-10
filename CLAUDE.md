@@ -80,15 +80,35 @@ this GS dataset, so Table 4 currently has no valid robustness spec — main spec
 **Culture measures (enter one at a time):**
 - `same_country` — same nationality (binary)
 - `same_language` — same official language (binary)
-- `ling_prox` — shared widely-spoken ethnic/native language (binary, 0/1 — CEPII gravity
-  dataset's `comlang_ethno`: 1 if a language is spoken as a mother tongue by at least 9% of
-  the population in both countries; confirmed binary directly against the raw data, only
-  {0,1} values present). Distinct from `same_language` (CEPII's `comlang_off`, official/
-  national language) only in using ethnic/spoken-language overlap rather than official
-  designation — the two can diverge when a country's official language differs from its
-  most widely spoken native language. Despite the name, this is NOT a continuous closeness
-  score; sample means/shares reported elsewhere (e.g. "0.568") are the fraction of
-  observations with ling_prox=1, not an average distance.
+- `ling_prox` — **changed 2026-09-10: now `prox1`, continuous on [0,1]**, not the binary
+  CEPII `comlang_ethno` measure documented in earlier versions of this file. `prox1`
+  \citep{melitztoubal2014} is Ethnologue-tree-based linguistic proximity — the same measure
+  \citet{bekesottaviano2025} use for their own language-similarity variable, retrieved from
+  Farid Toubal's site (`data/atp/melitz_toubal_proxling.dta`; CEPII's own download link for
+  this file is dead) since CEPII's public gravity table only ever exposed the pre-binarized
+  `comlang_ethno`. Same-country pairs are forced to 1.0; Monaco (absent from the raw
+  Melitz-Toubal table) uses France's value as a stand-in, or 1.0 against another
+  French-official country; a handful of remaining pairs (mostly involving South Korea,
+  entirely absent from this table) fall back to 0. 100% coverage on this sample.
+  **Estimator implication:** `ling_prox` is now continuous, so wherever `ling_prox` is the
+  *outcome* variable (Section 6.1/6.2 partner-selection regressions, `homophily.ipynb`
+  cells 59/61, `homophily.do` Section 8), it uses OLS/LPM, not logit — same_country/
+  same_language there still use logit+AME as before. Wherever `ling_prox` is a *regressor*
+  (Tables 3–6b), logit+AME is unchanged; only the AME's underlying regressor changed from
+  binary to continuous, so the reported number is now "AME per full 0→1 change," directly
+  comparable in magnitude to the old binary AME.
+  **Appendix (Tables A3–A6b in `main.tex`, `\label{app:langprox}`):** the original binary
+  `comlang_ethno` (now `ling_prox_binary`) plus two further continuous robustness measures
+  from `data/atp/linguistic_distance_PSW2024.csv` \citep{psw2024} — `ling_prox_psw_tree`
+  (inverted tree distance) and `ling_prox_psw_cognet` (cognate/lexical proximity) — are
+  relocated there. All tables agree qualitatively with the `prox1` main text with one
+  exception: Table 6 (culture × `exp_mean`)'s interaction is significant (p=0.034) for the
+  binary measure but *not* for `prox1` (p=0.211) or either PSW measure (p=0.305, p=0.265) —
+  the experience-amplification finding holds for shared language but not for linguistic
+  proximity once measured continuously. Every other table's conclusion is unchanged across
+  all four measures. Distinct from `same_language` only in using linguistic closeness
+  rather than official designation — the two can diverge, e.g. Italian/Spanish speakers
+  score high `prox1` without sharing an official language.
 
 **Controls:** `rank_mean`, `opp_rank_mean`, `single_top100`, `exp_mean_dm`, `exp_mean_dm_sq`
 (`exp_mean` = tournament year − year turned pro, i.e. years of professional tenure, averaged
@@ -133,11 +153,18 @@ actual field, using the same CEPII `comlang_off`/`comlang_ethno` country-pair lo
 culturally assortative than chance at every skill level (6–8× benchmark for nationality,
 3–4× for language), but the degree of excess is essentially flat across brackets — elite
 players are not disproportionately more assortative. A follow-up continuous test (§6.1,
-logit/OLS of same_country/same_language/ling_prox on the ego player's own ranking, ~4,178
-ego-rows, clustered by partnership) confirms this: the coefficient on own rank is positive
+logit AME of same_country/same_language/ling_prox on the ego player's own ranking, ~4,178
+ego-rows, clustered by partnership) confirms this: the AME on own rank is positive
 and significant for all three outcomes, meaning *worse*-ranked players sort into
 same-culture partnerships slightly *more*, not less — the reverse of the "stronger players
 have more choice and sort more" concern.
+**Estimator fix (2026-09-10):** `ling_prox` was previously estimated with OLS/LPM in §6.1/6.2
+while `same_country`/`same_language` used logit AME — an inconsistency, since `ling_prox` is
+just as binary as the other two (see the "Culture measures" section above). All three outcomes
+now use logit AME throughout §6.1/6.2, in `homophily.ipynb`, `homophily.do`, `report.html`, and
+`main.tex`. The switch changes `ling_prox`'s coefficients modestly (e.g. §6.1 Spec 1 own_rank:
+was coef=+0.000104 (OLS), now AME=+0.000146) but not the sign, significance, or qualitative
+finding of any table.
 
 **Section 6.2 (new, per Lingqing's 2026-08 meeting notes; finalized 2026-09): tournament-field
 composition.** Extends the §6.1 ego-row regression from `own_rank` alone to three specs: (1)
