@@ -34,6 +34,18 @@ entirely, since it is Part 1 in the narrower sense (the regression tables only).
 Of the 14 matches originally dropped for incomplete doubles ranking, 4 were retrieved and restored
 (Guillermo García-López's ranking merge fixed for match_id 6/35/49; Alejandro Davidovich Fokina's
 full profile reconstructed for match_id 913) — 10 remain dropped as unretrievable.
+**⚠ This fix lives ONLY in the currently-committed `data/atp/men_matches_with_ranks_cleaned.xlsx`
+— confirmed 2026-09-11 that it is not encoded anywhere in `code/` (checked `final_ds.ipynb`,
+`code/merging/`, and `homophily.ipynb` — only a markdown cell in the latter describes it,
+none of it is executable).** `men_matches_with_ranks.xlsx` (the raw input to `final_ds.ipynb`)
+lacks it. **Never run `final_ds.ipynb` end-to-end and overwrite `men_matches_with_ranks_cleaned.xlsx`
+with its output** — doing so silently regresses the sample to 1,860 matches / 3,720 team-obs
+(discovered the hard way 2026-09-11, when adding the continuous-linguistic-proximity columns
+via a full notebook re-run did exactly this; fixed by `git checkout` on the cleaned file plus a
+standalone column-only patch script instead of a full re-run). If you need to add a column to
+this file, read the already-cleaned file and add the column with a standalone script/cell,
+the way the continuous linguistic-proximity columns were ultimately added — do not regenerate
+it from `INPUT_FILE`.
 `exp_mean` imputed to 1 (not 0) for rookies (turned pro in/after the tournament year, so raw
 tenure ≤0) — a nominal first-year tenure rather than zero, per reviewer feedback; no observations
 are dropped. Demeaned against each estimation sample's own mean to form `exp_mean_dm` (see
@@ -42,13 +54,19 @@ Controls below).
 **Sample correction (found 2026-09-03): Wimbledon 2018 qualifying-round contamination.**
 The raw scrape for Wimbledon 2018 alone included 12 qualifying-round doubles matches (8 "1st
 Round Qualifying" + 4 "2nd Round Qualifying") mixed in with the 63 main-draw matches — no other
-tournament-year in the dataset has any qualifying-round rows. These are now excluded at the very
-start of the pipeline (`homophily.ipynb`, cell ~1, `_qualifying_mask`), which is what moved the
+tournament-year in the dataset has any qualifying-round rows. These are now excluded, which is what moved the
 sample from the previously-documented 1,876 matches / 3,752 team-obs down to the current 1,864 /
 3,728 (Wimbledon: 437 → 425 matches). This is a genuine data-quality fix, not an error in either
 the notebook or the paper — `overleaf/main.tex` (Lingqing's 2026-09 revision) already reflects the
 corrected sample throughout and was independently verified against a fresh end-to-end re-execution
 of `homophily.ipynb` (e.g. Table 3 same-nationality AME = 0.0361, matching exactly).
+**(moved 2026-09-11)** This filter now lives in `code/cleaning/final_ds.ipynb` (per the project
+principle that all cleaning/filtering/merging belongs in the cleaning pipeline, not the analysis
+notebook) — `men_matches_with_ranks_cleaned.xlsx` is already qualifying-round-free (1,985 rows,
+was 1,997). Applied via the same safe non-destructive patch pattern as the linguistic-proximity
+columns (see the warning above) — NOT via a full `final_ds.ipynb` re-run — after confirming none
+of the 4 manually-fixed matches (6, 35, 49, 913) were among the 12 dropped rows.
+`homophily.ipynb` cell 1 now just asserts no qualifying rows remain, rather than filtering them.
 **Resync status (updated 2026-09-08): complete.** `report.html`/`report.pdf` were re-audited
 table-by-table against a fresh notebook execution — every table (Section 2 breakdown, Tables
 3–6b, Section 6/6.1/6.2 partner-selection, age/double-counting appendix tables) already carried
@@ -84,12 +102,23 @@ this GS dataset, so Table 4 currently has no valid robustness spec — main spec
   CEPII `comlang_ethno` measure documented in earlier versions of this file. `prox1`
   \citep{melitztoubal2014} is Ethnologue-tree-based linguistic proximity — the same measure
   \citet{bekesottaviano2025} use for their own language-similarity variable, retrieved from
-  Farid Toubal's site (`data/atp/melitz_toubal_proxling.dta`; CEPII's own download link for
-  this file is dead) since CEPII's public gravity table only ever exposed the pre-binarized
-  `comlang_ethno`. Same-country pairs are forced to 1.0; Monaco (absent from the raw
-  Melitz-Toubal table) uses France's value as a stand-in, or 1.0 against another
+  Farid Toubal's site (`data/gravity/melitz_toubal_proxling.dta`; CEPII's own download link
+  for this file is dead) since CEPII's public gravity table only ever exposed the
+  pre-binarized `comlang_ethno`. Same-country pairs are forced to 1.0; Monaco (absent from
+  the raw Melitz-Toubal table) uses France's value as a stand-in, or 1.0 against another
   French-official country; a handful of remaining pairs (mostly involving South Korea,
   entirely absent from this table) fall back to 0. 100% coverage on this sample.
+  **(moved 2026-09-11)** All raw ingestion + Monaco/KOR fallback resolution now lives in
+  `code/merging/merge_linguistic_proximity.ipynb`, which exports a complete, closed
+  country-pair lookup to `data/gravity/ling_prox_pairs_final.csv` (65 countries × all pairs
+  + self-pairs, no missing values). `homophily.ipynb` and `final_ds.ipynb` just read that
+  file — no raw Melitz-Toubal data or fallback logic in either of them anymore. Similarly,
+  `code/merging/merge_psw2024.ipynb` resolves the two PSW2024 robustness measures (below)
+  into `data/gravity/psw2024_pairs_final.csv` (100% coverage directly from the raw file, no
+  fallback needed). All four non-ATP reference datasets — `gravity_lang_lookup.xlsx`,
+  `melitz_toubal_proxling.dta`, `linguistic_distance_PSW2024.csv`, and the two `_final.csv`
+  outputs — live in `data/gravity/` alongside `hofstede.csv`, not `data/atp/` (which holds
+  only ATP match/ranking data).
   **Estimator implication:** `ling_prox` is now continuous, so wherever `ling_prox` is the
   *outcome* variable (Section 6.1/6.2 partner-selection regressions, `homophily.ipynb`
   cells 59/61, `homophily.do` Section 8), it uses OLS/LPM, not logit — same_country/
@@ -99,7 +128,7 @@ this GS dataset, so Table 4 currently has no valid robustness spec — main spec
   comparable in magnitude to the old binary AME.
   **Appendix (Tables A3–A6b in `main.tex`, `\label{app:langprox}`):** the original binary
   `comlang_ethno` (now `ling_prox_binary`) plus two further continuous robustness measures
-  from `data/atp/linguistic_distance_PSW2024.csv` \citep{psw2024} — `ling_prox_psw_tree`
+  from `data/gravity/linguistic_distance_PSW2024.csv` \citep{psw2024} — `ling_prox_psw_tree`
   (inverted tree distance) and `ling_prox_psw_cognet` (cognate/lexical proximity) — are
   relocated there. All tables agree qualitatively with the `prox1` main text with one
   exception: Table 6 (culture × `exp_mean`)'s interaction is significant (p=0.034) for the

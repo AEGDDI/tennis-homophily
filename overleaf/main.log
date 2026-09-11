@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.27)  10 SEP 2026 16:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.27)  11 SEP 2026 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -138,6 +138,10 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headsep=\skip55
 \dth@everypar=\toks27
 )
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/comment\comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment')
 \c@hypothesis=\count271
 
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
@@ -183,210 +187,33 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx))
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
-Package: placeins 2005/04/18  v 2.2
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
-Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/changes\changes.sty
+Package: changes 2021/07/15 v4.2.1 changes package
 
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
-Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen152
-\captionmargin=\dimen153
-\caption@leftmargin=\dimen154
-\caption@rightmargin=\dimen155
-\caption@width=\dimen156
-\caption@indent=\dimen157
-\caption@parindent=\dimen158
-\caption@hangindent=\dimen159
-Package caption Info: Standard document class detected.
-)
-\c@caption@flags=\count273
-\c@continuedfloat=\count274
-Package caption Info: rotating package is loaded.
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/floatrow\floatrow.sty
-Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
-\c@float@type=\count275
-\float@exts=\toks30
-\float@box=\box56
-\@floatcapt=\box57
-Package floatrow Info: Modified float package code loaded on input line 455.
-Package floatrow Info: Modified rotfloat package code loaded on input line 473.
+*** changes package 2021/07/15 v4.2.1 ***
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
-\FR@everyfloat=\toks31
-\flrow@foot=\insert252
-\FB@wd=\dimen160
-\FBo@wd=\dimen161
-\FBc@wd=\dimen162
-\FBo@ht=\skip58
-\FBc@ht=\skip59
-\FBf@ht=\skip60
-\FBo@max=\skip61
-\FBc@max=\skip62
-\FBf@max=\skip63
-\c@FBl@b=\count276
-\floatbox@depth=\count277
-\c@FRobj=\count278
-\c@FRsobj=\count279
-\Xhsize=\skip64
-\sXhsize=\skip65
-\Zhsize=\skip66
-\sZhsize=\skip67
-\flrow@rowbox=\box58
-\FR@Zunitlength=\dimen163
-\c@FBcnt=\count280
-\FPOScnt=\count281
-\LTleft=\skip68
-\LTright=\skip69
-\LTleft=\skip70
-\LTright=\skip71
-\flrow@types=\toks32
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks30
+\XKV@tempa@toks=\toks31
 )
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
-Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
-\c@subfigure=\count282
-\c@subtable=\count283
+\XKV@depth=\count273
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count274
+) (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\integerpart=\count275
+\decimalpart=\count276
 )
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
-Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen164
-\lightrulewidth=\dimen165
-\cmidrulewidth=\dimen166
-\belowrulesep=\dimen167
-\belowbottomsep=\dimen168
-\aboverulesep=\dimen169
-\abovetopsep=\dimen170
-\cmidrulesep=\dimen171
-\cmidrulekern=\dimen172
-\defaultaddspace=\dimen173
-\@cmidla=\count284
-\@cmidlb=\count285
-\@aboverulesep=\dimen174
-\@belowrulesep=\dimen175
-\@thisruleclass=\count286
-\@lastruleclass=\count287
-\@thisrulewidth=\dimen176
+Package: xstring 2023/01/14 v1.85 String manipulations (CT)
 )
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
-Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
-Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen177
-\ar@mcellbox=\box59
-\extrarowheight=\dimen178
-\NC@list=\toks33
-\extratabsurround=\skip72
-\backup@length=\skip73
-\ar@cellbox=\box60
-)
-\TX@col@width=\dimen179
-\TX@old@table=\dimen180
-\TX@old@col=\dimen181
-\TX@target=\dimen182
-\TX@delta=\dimen183
-\TX@cols=\count288
-\TX@ftn=\toks34
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip74
-\multirow@cntb=\count289
-\multirow@dima=\skip75
-\bigstrutjot=\dimen184
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip76
-\bibsep=\skip77
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count290
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.s
-ty
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-
-common.tex
-\pgfutil@everybye=\toks35
-\pgfutil@tempdima=\dimen185
-\pgfutil@tempdimb=\dimen186
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-
-latex.def
-\pgfutil@abb=\box61
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.c
-ode.tex
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
-Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
-))
-Package: pgf 2023-01-15 v3.1.10 (3.1.10)
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.s
-ty
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.s
-ty
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
-.code.tex
-Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.
-code.tex
-\pgfkeys@pathtoks=\toks36
-\pgfkeys@temptoks=\toks37
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeysl
-ibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks38
-))
-\pgf@x=\dimen187
-\pgf@y=\dimen188
-\pgf@xa=\dimen189
-\pgf@ya=\dimen190
-\pgf@xb=\dimen191
-\pgf@yb=\dimen192
-\pgf@xc=\dimen193
-\pgf@yc=\dimen194
-\pgf@xd=\dimen195
-\pgf@yd=\dimen196
-\w@pgf@writea=\write3
-\r@pgf@reada=\read2
-\c@pgf@counta=\count291
-\c@pgf@countb=\count292
-\c@pgf@countc=\count293
-\c@pgf@countd=\count294
-\t@pgf@toka=\toks39
-\t@pgf@tokb=\toks40
-\t@pgf@tokc=\toks41
-\pgf@sys@id@count=\count295
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cf
-g
-File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
-)
-Driver file for pgf: pgfsys-pdftex.def
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
--pdftex.def
-File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
--common-pdf.def
-File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-)))
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
-softpath.code.tex
-File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count296
-\pgfsyssoftpath@bigbuffer@items=\count297
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
-protocol.code.tex
-File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
+ulem-option 'normalem,normalbf', passed to package ulem
+truncate-option 'breakall,fit', passed to package truncate
+changes-option 'commandnameprefix=ifneeded'
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 
@@ -406,7 +233,106 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+) (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/ulem\ulem.sty
+\UL@box=\box56
+\UL@hyphenbox=\box57
+\UL@skip=\skip58
+\UL@hook=\toks32
+\UL@height=\dimen152
+\UL@pe=\count277
+\UL@pixel=\dimen153
+\ULC@box=\box58
+Package: ulem 2019/11/18
+\ULdepth=\dimen154
 )
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/todonotes\todonotes.sty
+Package: todonotes 2024/01/05 v1.1.7 Todonotes source and documentation.
+Package: todonotes 2024/01/05
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.s
+ty
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-
+common.tex
+\pgfutil@everybye=\toks33
+\pgfutil@tempdima=\dimen155
+\pgfutil@tempdimb=\dimen156
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-
+latex.def
+\pgfutil@abb=\box59
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.c
+ode.tex
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.s
+ty
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.s
+ty
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
+.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.
+code.tex
+\pgfkeys@pathtoks=\toks34
+\pgfkeys@temptoks=\toks35
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeysl
+ibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks36
+))
+\pgf@x=\dimen157
+\pgf@y=\dimen158
+\pgf@xa=\dimen159
+\pgf@ya=\dimen160
+\pgf@xb=\dimen161
+\pgf@yb=\dimen162
+\pgf@xc=\dimen163
+\pgf@yc=\dimen164
+\pgf@xd=\dimen165
+\pgf@yd=\dimen166
+\w@pgf@writea=\write4
+\r@pgf@reada=\read2
+\c@pgf@counta=\count278
+\c@pgf@countb=\count279
+\c@pgf@countc=\count280
+\c@pgf@countd=\count281
+\t@pgf@toka=\toks37
+\t@pgf@tokb=\toks38
+\t@pgf@tokc=\toks39
+\pgf@sys@id@count=\count282
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cf
+g
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
+-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
+-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
+softpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count283
+\pgfsyssoftpath@bigbuffer@items=\count284
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys
+protocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 .code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
@@ -417,12 +343,12 @@ tex
 ode.tex)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser
 .code.tex
-\pgfmath@dimen=\dimen197
-\pgfmath@count=\count298
-\pgfmath@box=\box62
-\pgfmath@toks=\toks42
-\pgfmath@stack@operand=\toks43
-\pgfmath@stack@operation=\toks44
+\pgfmath@dimen=\dimen167
+\pgfmath@count=\count285
+\pgfmath@box=\box60
+\pgfmath@toks=\toks40
+\pgfmath@stack@operand=\toks41
+\pgfmath@stack@operation=\toks42
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfuncti
 ons.code.tex)
@@ -446,59 +372,59 @@ ons.integerarithmetics.code.tex)
 ode.tex)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.
 code.tex
-\c@pgfmathroundto@lastzeros=\count299
+\c@pgfmathroundto@lastzeros=\count286
 ))
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.t
 ex)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 points.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen198
-\pgf@picmaxx=\dimen199
-\pgf@picminy=\dimen256
-\pgf@picmaxy=\dimen257
-\pgf@pathminx=\dimen258
-\pgf@pathmaxx=\dimen259
-\pgf@pathminy=\dimen260
-\pgf@pathmaxy=\dimen261
-\pgf@xx=\dimen262
-\pgf@xy=\dimen263
-\pgf@yx=\dimen264
-\pgf@yy=\dimen265
-\pgf@zx=\dimen266
-\pgf@zy=\dimen267
+\pgf@picminx=\dimen168
+\pgf@picmaxx=\dimen169
+\pgf@picminy=\dimen170
+\pgf@picmaxy=\dimen171
+\pgf@pathminx=\dimen172
+\pgf@pathmaxx=\dimen173
+\pgf@pathminy=\dimen174
+\pgf@pathmaxy=\dimen175
+\pgf@xx=\dimen176
+\pgf@xy=\dimen177
+\pgf@yx=\dimen178
+\pgf@yy=\dimen179
+\pgf@zx=\dimen180
+\pgf@zy=\dimen181
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 pathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen268
-\pgf@path@lasty=\dimen269
+\pgf@path@lastx=\dimen182
+\pgf@path@lasty=\dimen183
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 pathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen270
-\pgf@shorten@start@additional=\dimen271
+\pgf@shorten@end@additional=\dimen184
+\pgf@shorten@start@additional=\dimen185
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 scopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box63
-\pgf@hbox=\box64
-\pgf@layerbox@main=\box65
-\pgf@picture@serial@count=\count300
+\pgfpic=\box61
+\pgf@hbox=\box62
+\pgf@layerbox@main=\box63
+\pgf@picture@serial@count=\count287
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 graphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen272
+\pgflinewidth=\dimen186
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 transformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen273
-\pgf@pt@y=\dimen274
-\pgf@pt@temp=\dimen275
+\pgf@pt@x=\dimen187
+\pgf@pt@y=\dimen188
+\pgf@pt@temp=\dimen189
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 quick.code.tex
@@ -515,14 +441,14 @@ File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 arrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen276
+\pgfarrowsep=\dimen190
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 shade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen277
-\pgf@sys@shading@range@num=\count301
-\pgf@shadingcount=\count302
+\pgf@max=\dimen191
+\pgf@sys@shading@range@num=\count288
+\pgf@shadingcount=\count289
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 image.code.tex
@@ -531,7 +457,7 @@ File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 external.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box66
+\pgfexternal@startupbox=\box64
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore
 layers.code.tex
@@ -552,7 +478,7 @@ File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodules
 hapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box67
+\pgfnodeparttextbox=\box65
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulep
 lot.code.tex
@@ -561,8 +487,8 @@ File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcom
 p-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen278
-\pgf@nodesepend=\dimen279
+\pgf@nodesepstart=\dimen192
+\pgf@nodesepend=\dimen193
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcom
 p-version-1-18.sty
@@ -580,10 +506,10 @@ tex))
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.c
 ode.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen280
-\pgffor@skip=\dimen281
-\pgffor@stack=\toks45
-\pgffor@toks=\toks46
+\pgffor@iter=\dimen194
+\pgffor@skip=\dimen195
+\pgffor@stack=\toks43
+\pgffor@toks=\toks44
 ))
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz
 \tikz.code.tex
@@ -592,115 +518,197 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibra
 ryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count303
-\pgfplotmarksize=\dimen282
+\pgf@plot@mark@count=\count290
+\pgfplotmarksize=\dimen196
 )
-\tikz@lastx=\dimen283
-\tikz@lasty=\dimen284
-\tikz@lastxsaved=\dimen285
-\tikz@lastysaved=\dimen286
-\tikz@lastmovetox=\dimen287
-\tikz@lastmovetoy=\dimen288
-\tikzleveldistance=\dimen289
-\tikzsiblingdistance=\dimen290
-\tikz@figbox=\box68
-\tikz@figbox@bg=\box69
-\tikz@tempbox=\box70
-\tikz@tempbox@bg=\box71
-\tikztreelevel=\count304
-\tikznumberofchildren=\count305
-\tikznumberofcurrentchild=\count306
-\tikz@fig@count=\count307
+\tikz@lastx=\dimen197
+\tikz@lasty=\dimen198
+\tikz@lastxsaved=\dimen199
+\tikz@lastysaved=\dimen256
+\tikz@lastmovetox=\dimen257
+\tikz@lastmovetoy=\dimen258
+\tikzleveldistance=\dimen259
+\tikzsiblingdistance=\dimen260
+\tikz@figbox=\box66
+\tikz@figbox@bg=\box67
+\tikz@tempbox=\box68
+\tikz@tempbox@bg=\box69
+\tikztreelevel=\count291
+\tikznumberofchildren=\count292
+\tikznumberofcurrentchild=\count293
+\tikz@fig@count=\count294
 
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulem
 atrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count308
-\pgfmatrixcurrentcolumn=\count309
-\pgf@matrix@numberofcolumns=\count310
+\pgfmatrixcurrentrow=\count295
+\pgfmatrixcurrentcolumn=\count296
+\pgf@matrix@numberofcolumns=\count297
 )
-\tikz@expandcount=\count311
+\tikz@expandcount=\count298
 
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz
 /libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/changes\changes.sty
-Package: changes 2021/07/15 v4.2.1 changes package
-
-*** changes package 2021/07/15 v4.2.1 ***
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks47
-\XKV@tempa@toks=\toks48
-)
-\XKV@depth=\count312
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count313
-) (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
-\integerpart=\count314
-\decimalpart=\count315
-)
-Package: xstring 2023/01/14 v1.85 String manipulations (CT)
-)
-ulem-option 'normalem,normalbf', passed to package ulem
-truncate-option 'breakall,fit', passed to package truncate
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/ulem\ulem.sty
-\UL@box=\box72
-\UL@hyphenbox=\box73
-\UL@skip=\skip78
-\UL@hook=\toks49
-\UL@height=\dimen291
-\UL@pe=\count316
-\UL@pixel=\dimen292
-\ULC@box=\box74
-Package: ulem 2019/11/18
-\ULdepth=\dimen293
-)
-(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/todonotes\todonotes.sty
-Package: todonotes 2024/01/05 v1.1.7 Todonotes source and documentation.
-Package: todonotes 2024/01/05
-
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz
 /libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count317
-\calc@Bcount=\count318
-\calc@Adimen=\dimen294
-\calc@Bdimen=\dimen295
-\calc@Askip=\skip79
-\calc@Bskip=\skip80
+\calc@Acount=\count299
+\calc@Bcount=\count300
+\calc@Adimen=\dimen261
+\calc@Bdimen=\dimen262
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count319
-\calc@Cskip=\skip81
+\calc@Ccount=\count301
+\calc@Cskip=\skip61
 )
-\c@@todonotes@numberoftodonotes=\count320
+\c@@todonotes@numberoftodonotes=\count302
 )
-\c@Changes@AuthorCount=\count321
-\c@Changes@Author=\count322
-\c@Changes@addedCount=\count323
-\c@Changes@deletedCount=\count324
-\c@Changes@replacedCount=\count325
-\c@Changes@highlightCount=\count326
-\c@Changes@commentCount=\count327
-\c@authorcommentcount=\count328
+\c@Changes@AuthorCount=\count303
+\c@Changes@Author=\count304
+\c@Changes@addedCount=\count305
+\c@Changes@deletedCount=\count306
+\c@Changes@replacedCount=\count307
+\c@Changes@highlightCount=\count308
+\c@Changes@commentCount=\count309
+\c@authorcommentcount=\count310
+
+
+Package changes Warning: Command comment is already defined, using chcomment on
+ input line 783.
 
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/truncate\truncate.sty
 Package: truncate 2001/08/20  ver 3.6
-\@Trunc@RestHyph=\toks50
+\@Trunc@RestHyph=\toks45
 )
-\Changestruncatewidth=\skip82
-\Changes@summary@width=\skip83
+\Changestruncatewidth=\skip62
+\Changes@summary@width=\skip63
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen263
+\captionmargin=\dimen264
+\caption@leftmargin=\dimen265
+\caption@rightmargin=\dimen266
+\caption@width=\dimen267
+\caption@indent=\dimen268
+\caption@parindent=\dimen269
+\caption@hangindent=\dimen270
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count311
+\c@continuedfloat=\count312
+Package caption Info: rotating package is loaded.
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/floatrow\floatrow.sty
+Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
+\c@float@type=\count313
+\float@exts=\toks46
+\float@box=\box70
+\@floatcapt=\box71
+Package floatrow Info: Modified float package code loaded on input line 455.
+Package floatrow Info: Modified rotfloat package code loaded on input line 473.
+
+\FR@everyfloat=\toks47
+\flrow@foot=\insert252
+\FB@wd=\dimen271
+\FBo@wd=\dimen272
+\FBc@wd=\dimen273
+\FBo@ht=\skip64
+\FBc@ht=\skip65
+\FBf@ht=\skip66
+\FBo@max=\skip67
+\FBc@max=\skip68
+\FBf@max=\skip69
+\c@FBl@b=\count314
+\floatbox@depth=\count315
+\c@FRobj=\count316
+\c@FRsobj=\count317
+\Xhsize=\skip70
+\sXhsize=\skip71
+\Zhsize=\skip72
+\sZhsize=\skip73
+\flrow@rowbox=\box72
+\FR@Zunitlength=\dimen274
+\c@FBcnt=\count318
+\FPOScnt=\count319
+\LTleft=\skip74
+\LTright=\skip75
+\LTleft=\skip76
+\LTright=\skip77
+\flrow@types=\toks48
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+\c@subfigure=\count320
+\c@subtable=\count321
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen275
+\lightrulewidth=\dimen276
+\cmidrulewidth=\dimen277
+\belowrulesep=\dimen278
+\belowbottomsep=\dimen279
+\aboverulesep=\dimen280
+\abovetopsep=\dimen281
+\cmidrulesep=\dimen282
+\cmidrulekern=\dimen283
+\defaultaddspace=\dimen284
+\@cmidla=\count322
+\@cmidlb=\count323
+\@aboverulesep=\dimen285
+\@belowrulesep=\dimen286
+\@thisruleclass=\count324
+\@lastruleclass=\count325
+\@thisrulewidth=\dimen287
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen288
+\ar@mcellbox=\box73
+\extrarowheight=\dimen289
+\NC@list=\toks49
+\extratabsurround=\skip78
+\backup@length=\skip79
+\ar@cellbox=\box74
+)
+\TX@col@width=\dimen290
+\TX@old@table=\dimen291
+\TX@old@col=\dimen292
+\TX@target=\dimen293
+\TX@delta=\dimen294
+\TX@cols=\count326
+\TX@ftn=\toks50
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip80
+\multirow@cntb=\count327
+\multirow@dima=\skip81
+\bigstrutjot=\dimen295
+)
+(C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip82
+\bibsep=\skip83
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count328
 )
 (C:\Users\aldi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz
 /libraries\tikzlibrarydecorations.pathreplacing.code.tex
@@ -897,91 +905,88 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 [1
 
-{C:/Users/aldi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [1]
-[2] [3] [4] [5]
-Overfull \hbox (1.83054pt too wide) in paragraph at lines 181--217
+{C:/Users/aldi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+Excluding 'comment' comment. [1] [2] [3] [4] [5]
+Overfull \hbox (1.83054pt too wide) in paragraph at lines 158--194
  [] 
  []
 
-[6] [7] [8] [9] [10]
+[6] [7] [8] [9] [10] [11]
 Overfull \hbox (70.60872pt too wide) in paragraph at lines 328--357
  [] 
  []
 
-[11] [12] [13]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 435--463
+[12] [13]
+Overfull \hbox (43.41415pt too wide) in paragraph at lines 383--407
  [] 
  []
 
-[14] [15]
-Overfull \hbox (43.41415pt too wide) in paragraph at lines 488--512
+[14]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 436--464
  [] 
  []
 
-[16] [17]
-Overfull \hbox (35.30302pt too wide) in paragraph at lines 567--590
+[15] [16] [17]
+Overfull \hbox (35.30302pt too wide) in paragraph at lines 529--552
  [] 
  []
 
 [18] [19]
-Overfull \hbox (38.05302pt too wide) in paragraph at lines 626--649
+Overfull \hbox (38.05302pt too wide) in paragraph at lines 588--611
  [] 
  []
 
-[20] [21] [22]
-Overfull \hbox (4.09633pt too wide) in paragraph at lines 689--689
+[20] [21]
+Overfull \hbox (14.29079pt too wide) in paragraph at lines 651--651
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =2,089)| 
  []
 
 
-Overfull \hbox (4.09633pt too wide) in paragraph at lines 689--689
+Overfull \hbox (14.29079pt too wide) in paragraph at lines 651--651
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =1,211)| 
  []
 
-[23] [24] [25] [26]
-Overfull \hbox (82.69183pt too wide) in paragraph at lines 768--786
+
+Overfull \hbox (6.51299pt too wide) in paragraph at lines 651--651
+ []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =712)| 
+ []
+
+[22] [23]
+Overfull \hbox (30.52538pt too wide) in paragraph at lines 683--713
  [] 
  []
 
-[27]
-<./plot//homophily_nationality_only.png, id=115, 787.2612pt x 321.8424pt>
-File: ./plot//homophily_nationality_only.png Graphic file (type png)
-<use ./plot//homophily_nationality_only.png>
-Package pdftex.def Info: ./plot//homophily_nationality_only.png  used on input 
-line 794.
-(pdftex.def)             Requested size: 380.69788pt x 155.63174pt.
- [28 <./plot//homophily_nationality_only.png>] [29] [30] (main.bbl [31]
-[32]) [33]
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 854--882
- [] 
- []
-
-
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 888--916
+[24] [25] Excluding 'comment' comment. [26] [27] [28] [29] [30]
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 821--849
  [] 
  []
 
 
-Overfull \hbox (47.942pt too wide) in paragraph at lines 922--946
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 855--883
  [] 
  []
 
-[34] [35] [36]
-\Changes@OutFile=\write4
-\openout4 = `main.soc'.
 
-\tf@loc=\write5
-\openout5 = `main.loc'.
+Overfull \hbox (47.942pt too wide) in paragraph at lines 889--913
+ [] 
+ []
 
- [37] (main.aux) ) 
+(main.bbl [31] [32] [33])
+\Changes@OutFile=\write5
+\openout5 = `main.soc'.
+
+\tf@loc=\write6
+\openout6 = `main.loc'.
+
+ [34] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 19229 strings out of 476339
- 386199 string characters out of 5788591
+ 19227 strings out of 476339
+ 385868 string characters out of 5788591
  1881340 words of memory out of 5000000
- 39266 multiletter control sequences out of 15000+600000
+ 39263 multiletter control sequences out of 15000+600000
  523461 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,89p,2189b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,17n,117p,2505b,584s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmbx10.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmbx12.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/
@@ -1007,9 +1012,9 @@ rs/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb
 ><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 ti8.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmti9.pfb>
-Output written on main.pdf (38 pages, 503609 bytes).
+Output written on main.pdf (35 pages, 388891 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
+ 227 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

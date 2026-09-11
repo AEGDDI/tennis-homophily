@@ -25,18 +25,18 @@ clear
 
 import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
 
-* Qualifying-round exclusion (found 2026-09-03): Wimbledon 2018 alone contains 12
+* Qualifying-round exclusion (found 2026-09-03): Wimbledon 2018 alone contained 12
 * qualifying-round doubles matches (8 "1st Round Qualifying" + 4 "2nd Round Qualifying")
 * not present for any other tournament-year in this dataset -- a data-inclusion
-* inconsistency, not a real difference in draw size. Mirrors homophily.ipynb cell 1
-* (_qualifying_mask). Must run before any other filter so downstream counts (Table 1,
-* the regression sample, N=1,864/3,728) reconcile with the notebook.
+* inconsistency, not a real difference in draw size. Moved 2026-09-11 to
+* code/cleaning/final_ds.ipynb (per the project principle that all cleaning/filtering/
+* merging belongs in the cleaning pipeline) -- men_matches_with_ranks_cleaned.xlsx is
+* already qualifying-round-free. This is now just a safety check, not an active filter.
 count
 local n_raw = r(N)
 count if strpos(stage, "Qualifying")
-display "Dropping qualifying-round matches (Wimbledon 2018 only): " r(N) " of `n_raw' raw matches"
-drop if strpos(stage, "Qualifying")
-display "Matches after qualifying-round exclusion: " _N
+assert r(N) == 0
+display "Qualifying-round check: 0 of `n_raw' raw matches (already excluded upstream)"
 
 destring year winners_set1 winners_set2 winners_set3 losers_set1 losers_set2 losers_set3 ///
     winners_set4 losers_set4 winners_set5 losers_set5 ///

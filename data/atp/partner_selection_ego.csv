@@ -13,7 +13,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'thompson', 'AUS'), ('t', 'kokkinakis', 'AUS'))",Australian Open_2018,AUS,435.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
 "(('g', 'lópez', 'ESP'), ('p', 'busta', 'ESP'))",Australian Open_2018,ESP,42.0,1,1,1.0,0.055944055944055944,0.16083916083916083,0.40136363716809065
 "(('m', 'middelkoop', 'NLD'), ('r', 'haase', 'NLD'))",Australian Open_2018,NLD,64.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.3408741266368986
-"(('d', 'marrero', 'ESP'), ('s', 'lipsky', 'USA'))",Australian Open_2018,USA,77.0,0,0,0.36250001192092896,0.08391608391608392,0.34965034965034963,0.4599126033172324
+"(('d', 'marrero', 'ESP'), ('s', 'lipsky', 'USA'))",Australian Open_2018,USA,77.0,0,0,0.3625000119209289,0.08391608391608392,0.34965034965034963,0.4599126033172324
 "(('m', 'venus', 'NZL'), ('r', 'klaasen', 'ZAF'))",Australian Open_2018,ZAF,25.0,0,1,0.0,0.0,0.34965034965034963,0.0
 "(('n', 'mahut', 'FRA'), ('p-h', 'herbert', 'FRA'))",Australian Open_2018,FRA,11.0,1,1,1.0,0.04895104895104895,0.06993006993006994,0.3330069956454364
 "(('j', 'millman', 'AUS'), ('m', 'ebden', 'AUS'))",Australian Open_2018,AUS,202.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
@@ -44,13 +44,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'viñolas', 'ESP'), ('p', 'andújar', 'ESP'))",Australian Open_2018,ESP,327.0,1,1,1.0,0.055944055944055944,0.16083916083916083,0.40136363716809065
 "(('sa', 'ratiwatana', 'THA'), ('so', 'ratiwatana', 'THA'))",Australian Open_2018,THA,95.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.006993006993006993
 "(('l', 'hewitt', 'AUS'), ('s', 'groth', 'AUS'))",Australian Open_2018,AUS,86.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
-"(('d', 'istomin', 'UZB'), ('m', 'kukushkin', 'KAZ'))",Australian Open_2018,UZB,397.0,0,0,0.3133999705314636,0.0,0.0,0.04499999915699025
+"(('d', 'istomin', 'UZB'), ('m', 'kukushkin', 'KAZ'))",Australian Open_2018,UZB,397.0,0,0,0.3133999705314636,0.0,0.0,0.04499999915699024
 "(('h', 'tecău', 'ROU'), ('j-j', 'rojer', 'NLD'))",Australian Open_2018,NLD,7.0,0,0,0.25,0.02097902097902098,0.02097902097902098,0.3408741266368986
 "(('a', 'molteni', 'ARG'), ('g', 'durán', 'ARG'))",Australian Open_2018,ARG,71.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.40136363716809065
 "(('b', 'bryan', 'USA'), ('m', 'bryan', 'USA'))",Australian Open_2018,USA,12.0,1,1,1.0,0.08391608391608392,0.34965034965034963,0.4599126033172324
 "(('m', 'fucsovics', 'HUN'), ('y', 'nishioka', 'JPN'))",Australian Open_2018,HUN,369.0,0,0,0.0,0.0,0.0,0.0017482517482517483
 "(('m', 'mirnyi', 'BLR'), ('p', 'oswald', 'AUT'))",Australian Open_2018,BLR,39.0,0,0,0.25,0.006993006993006993,0.006993006993006993,0.26454545442874616
-"(('d', 'sela', 'ISR'), ('t', 'fabbiano', 'ITA'))",Australian Open_2018,ITA,498.0,0,0,0.032499998807907104,0.013986013986013986,0.013986013986013986,0.30888112076929397
+"(('d', 'sela', 'ISR'), ('t', 'fabbiano', 'ITA'))",Australian Open_2018,ITA,498.0,0,0,0.0324999988079071,0.013986013986013986,0.013986013986013986,0.30888112076929397
 "(('m', 'reid', 'AUS'), ('n', 'kyrgios', 'AUS'))",Australian Open_2018,AUS,70.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
 "(('j-p', 'smith', 'AUS'), ('n', 'monroe', 'USA'))",Australian Open_2018,USA,30.0,0,1,0.8875000476837158,0.08391608391608392,0.34965034965034963,0.4599126033172324
 "(('f', 'martin', 'FRA'), ('j', 'chardy', 'FRA'))",Australian Open_2018,FRA,113.0,1,1,1.0,0.04895104895104895,0.06993006993006994,0.3330069956454364
@@ -60,7 +60,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'škugor', 'HRV'), ('r', 'lindstedt', 'SWE'))",Australian Open_2018,SWE,66.0,0,0,0.25,0.0,0.006993006993006993,0.3129020986648706
 "(('j', 'veselý', 'CZE'), ('r', 'jebavý', 'CZE'))",Australian Open_2018,CZE,51.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.25465034959199545
 "(('h', 'chung', 'KOR'), ('r', 'albot', 'MDA'))",Australian Open_2018,MDA,212.0,0,0,0.0,0.0,0.02097902097902098,0.3123776242657975
-"(('d', 'nestor', 'CAN'), ('j', 'erlich', 'ISR'))",Australian Open_2018,ISR,83.0,0,1,0.032499998807907104,0.006993006993006993,0.34965034965034963,0.04205664205592829
+"(('d', 'nestor', 'CAN'), ('j', 'erlich', 'ISR'))",Australian Open_2018,ISR,83.0,0,1,0.0324999988079071,0.006993006993006993,0.34965034965034963,0.04205664205592828
 "(('h', 'kontinen', 'FIN'), ('j', 'peers', 'AUS'))",Australian Open_2018,FIN,3.0,0,0,0.0,0.0,0.006993006993006993,0.0017482517482517483
 "(('d', 'džumhur', 'BIH'), ('d', 'lajović', 'SRB'))",Australian Open_2018,BIH,300.0,0,1,0.8575000166893005,0.0,0.055944055944055944,0.26739510518687587
 "(('ben', 'mclachlan', 'JPN'), ('jan-lennard', 'struff', 'DEU'))",Australian Open_2018,JPN,73.0,0,0,0.0,0.013986013986013986,0.013986013986013986,0.013986013986013986
@@ -74,7 +74,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('lukasz', 'kubot', 'POL'), ('marcelo', 'melo', 'BRA'))",Roland Garros_2018,POL,2.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.2637795275590551
 "(('marco', 'cecchinato', 'ITA'), ('marton', 'fucsovics', 'HUN'))",Roland Garros_2018,ITA,325.0,0,0,0.0,0.03937007874015748,0.03937007874015748,0.36417323069309626
 "(('mate', 'pavic', 'HRV'), ('oliver', 'marach', 'AUT'))",Roland Garros_2018,AUT,4.0,0,0,0.25,0.015748031496062992,0.015748031496062992,0.34448818991503377
-"(('adil', 'shamasdin', 'CAN'), ('sander', 'arends', 'NLD'))",Roland Garros_2018,NLD,65.0,0,0,0.42500001192092896,0.031496062992125984,0.031496062992125984,0.3366141741670023
+"(('adil', 'shamasdin', 'CAN'), ('sander', 'arends', 'NLD'))",Roland Garros_2018,NLD,65.0,0,0,0.4250000119209289,0.031496062992125984,0.031496062992125984,0.3366141741670023
 "(('henri', 'kontinen', 'FIN'), ('john', 'peers', 'AUS'))",Roland Garros_2018,FIN,8.0,0,0,0.0,0.0,0.007874015748031496,0.001968503937007874
 "(('ilya', 'ivashka', 'BLR'), ('karen', 'khachanov', 'RUS'))",Roland Garros_2018,BLR,673.0,0,0,1.0,0.015748031496062992,0.015748031496062992,0.2755905511811024
 "(('bruno', 'soares', 'BRA'), ('jamie', 'murray', 'GBR'))",Roland Garros_2018,GBR,11.0,0,0,0.25,0.023622047244094488,0.2440944881889764,0.3956692960318618
@@ -86,7 +86,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('alexander', 'peya', 'AUT'), ('nikola', 'mektic', 'HRV'))",Roland Garros_2018,HRV,21.0,0,0,0.25,0.031496062992125984,0.05511811023622047,0.281496062992126
 "(('dominic', 'inglot', 'GBR'), ('franko', 'skugor', 'HRV'))",Roland Garros_2018,GBR,46.0,0,0,0.25,0.023622047244094488,0.2440944881889764,0.3956692960318618
 "(('ivan', 'dodig', 'HRV'), ('rajeev', 'ram', 'USA'))",Roland Garros_2018,HRV,16.0,0,0,0.25,0.031496062992125984,0.05511811023622047,0.281496062992126
-"(('hans', 'podlipnik-castillo', 'CHL'), ('jackson', 'withrow', 'USA'))",Roland Garros_2018,CHL,48.0,0,0,0.36250001192092896,0.015748031496062992,0.1889763779527559,0.45511811126874185
+"(('hans', 'podlipnik-castillo', 'CHL'), ('jackson', 'withrow', 'USA'))",Roland Garros_2018,CHL,48.0,0,0,0.3625000119209289,0.015748031496062992,0.1889763779527559,0.45511811126874185
 "(('michael', 'venus', 'NZL'), ('raven', 'klaasen', 'ZAF'))",Roland Garros_2018,ZAF,31.0,0,1,0.0,0.0,0.2440944881889764,0.0
 "(('alexandre', 'muller', 'FRA'), ('corentin', 'denolly', 'FRA'))",Roland Garros_2018,FRA,496.0,1,1,1.0,0.15748031496062992,0.18110236220472442,0.4307086646087526
 "(('marcel', 'granollers', 'ESP'), ('pablo', 'cuevas', 'URY'))",Roland Garros_2018,URY,27.0,0,1,1.0,0.0,0.1889763779527559,0.45511811126874185
@@ -97,7 +97,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('frances', 'tiafoe', 'USA'), ('taylor', 'fritz', 'USA'))",Roland Garros_2018,USA,422.0,1,1,1.0,0.10236220472440945,0.2440944881889764,0.42399607657447574
 "(('horacio', 'zeballos', 'ARG'), ('julio', 'peralta', 'CHL'))",Roland Garros_2018,CHL,37.0,0,1,1.0,0.015748031496062992,0.1889763779527559,0.45511811126874185
 "(('clement', 'tabur', 'FRA'), ('hugo', 'gaston', 'FRA'))",Roland Garros_2018,FRA,1145.0,1,1,1.0,0.15748031496062992,0.18110236220472442,0.4307086646087526
-"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Roland Garros_2018,SLV,81.0,0,0,0.36250001192092896,0.0,0.1889763779527559,0.45511811126874185
+"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Roland Garros_2018,SLV,81.0,0,0,0.3625000119209289,0.0,0.1889763779527559,0.45511811126874185
 "(('ben', 'mclachlan', 'JPN'), ('jan-lennard', 'struff', 'DEU'))",Roland Garros_2018,JPN,25.0,0,0,0.0,0.015748031496062992,0.015748031496062992,0.015748031496062992
 "(('damir', 'dzumhur', 'BIH'), ('mirza', 'basic', 'BIH'))",Roland Garros_2018,BIH,502.0,1,1,1.0,0.007874015748031496,0.05511811023622047,0.2764370080054276
 "(('albert', 'ramos-vinolas', 'ESP'), ('jiri', 'vesely', 'CZE'))",Roland Garros_2018,ESP,156.0,0,0,0.25,0.05511811023622047,0.1889763779527559,0.45511811126874185
@@ -142,7 +142,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('bruno', 'soares', 'BRA'), ('jamie', 'murray', 'GBR'))",US Open_2018,GBR,11.0,0,0,0.25,0.047244094488188976,0.3543307086614173,0.46334646554209113
 "(('albert', 'ramos-vinolas', 'ESP'), ('guido', 'pella', 'ARG'))",US Open_2018,ARG,166.0,0,1,1.0,0.03937007874015748,0.14173228346456693,0.40192913604298913
 "(('juan', 'cabal', 'COL'), ('robert', 'farah', 'COL'))",US Open_2018,COL,10.0,1,1,1.0,0.007874015748031496,0.14173228346456693,0.40192913604298913
-"(('denis', 'istomin', 'UZB'), ('jeevan', 'nedunchezhiyan', 'IND'))",US Open_2018,UZB,375.0,0,0,0.0,0.0,0.0,0.042366928853622574
+"(('denis', 'istomin', 'UZB'), ('jeevan', 'nedunchezhiyan', 'IND'))",US Open_2018,UZB,375.0,0,0,0.0,0.0,0.0,0.04236692885362256
 "(('horia', 'tecau', 'ROU'), ('jean-julien', 'rojer', 'NLD'))",US Open_2018,NLD,20.0,0,0,0.25,0.031496062992125984,0.031496062992125984,0.36255905636417585
 "(('antonio', 'sancic', 'HRV'), ('sander', 'arends', 'NLD'))",US Open_2018,NLD,71.0,0,0,0.25,0.031496062992125984,0.031496062992125984,0.36255905636417585
 "(('lukasz', 'kubot', 'POL'), ('marcelo', 'melo', 'BRA'))",US Open_2018,POL,5.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.2566338582771031
@@ -185,7 +185,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('andres', 'molteni', 'ARG'), ('roman', 'jebavy', 'CZE'))",US Open_2018,CZE,50.0,0,0,0.25,0.0,0.0,0.25466535434009524
 "(('evan', 'king', 'USA'), ('nathan', 'pasha', 'USA'))",US Open_2018,USA,125.0,1,1,1.0,0.18110236220472442,0.3543307086614173,0.4886023742183456
 "(('austin', 'krajicek', 'USA'), ('tennys', 'sandgren', 'USA'))",US Open_2018,USA,61.0,1,1,1.0,0.18110236220472442,0.3543307086614173,0.4886023742183456
-"(('aisam-ul-haq', 'qureshi', 'PAK'), ('jonathan', 'erlich', 'ISR'))",US Open_2018,ISR,74.0,0,0,0.032499998807907104,0.0,0.3543307086614173,0.03388956569017857
+"(('aisam-ul-haq', 'qureshi', 'PAK'), ('jonathan', 'erlich', 'ISR'))",US Open_2018,ISR,74.0,0,0,0.0324999988079071,0.0,0.3543307086614173,0.033889565690178564
 "(('dusan', 'lajovic', 'SRB'), ('stefanos', 'tsitsipas', 'GRC'))",US Open_2018,SRB,277.0,0,0,0.25,0.015748031496062992,0.07086614173228346,0.2760433073588244
 "(('cameron', 'norrie', 'GBR'), ('diego', 'schwartzman', 'ARG'))",US Open_2018,GBR,209.0,0,0,0.25,0.047244094488188976,0.3543307086614173,0.46334646554209113
 "(('joao', 'sousa', 'PRT'), ('leonardo', 'mayer', 'ARG'))",US Open_2018,ARG,72.0,0,0,0.75,0.03937007874015748,0.14173228346456693,0.40192913604298913
@@ -209,7 +209,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('jack', 'sock', 'USA'), ('mike', 'bryan', 'USA'))",Wimbledon_2018,USA,8.0,1,1,1.0,0.07086614173228346,0.31496062992125984,0.4477165507988667
 "(('andreas', 'seppi', 'ITA'), ('daniele', 'bracciali', 'ITA'))",Wimbledon_2018,ITA,293.0,1,1,1.0,0.031496062992125984,0.031496062992125984,0.3252559071920049
 "(('alexander', 'peya', 'AUT'), ('nikola', 'mektic', 'HRV'))",Wimbledon_2018,HRV,18.0,0,0,0.25,0.031496062992125984,0.06299212598425197,0.2701968503749277
-"(('daniel', 'nestor', 'CAN'), ('jurgen', 'melzer', 'AUT'))",Wimbledon_2018,AUT,701.0,0,0,0.42500001192092896,0.023622047244094488,0.023622047244094488,0.3760433077342867
+"(('daniel', 'nestor', 'CAN'), ('jurgen', 'melzer', 'AUT'))",Wimbledon_2018,AUT,701.0,0,0,0.4250000119209289,0.023622047244094488,0.023622047244094488,0.3760433077342867
 "(('aisam-ul-haq', 'qureshi', 'PAK'), ('jean-julien', 'rojer', 'NLD'))",Wimbledon_2018,PAK,36.0,0,0,0.25,0.0,0.0,0.2648228348240139
 "(('david', 'ferrer', 'ESP'), ('marc', 'lopez', 'ESP'))",Wimbledon_2018,ESP,555.0,1,1,1.0,0.06299212598425197,0.1732283464566929,0.4099015755446877
 "(('marcel', 'granollers', 'ESP'), ('pablo', 'cuevas', 'URY'))",Wimbledon_2018,URY,28.0,0,1,1.0,0.0,0.1732283464566929,0.4099015755446877
@@ -238,7 +238,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('marius', 'copil', 'ROU'), ('stefanos', 'tsitsipas', 'GRC'))",Wimbledon_2018,ROU,853.0,0,0,0.25,0.0,0.007874015748031496,0.3134448835699577
 "(('matthew', 'ebden', 'AUS'), ('taylor', 'fritz', 'USA'))",Wimbledon_2018,AUS,167.0,0,1,0.8875000476837158,0.047244094488188976,0.31496062992125984,0.438641735653239
 "(('benoit', 'paire', 'FRA'), ('peter', 'gojowczyk', 'DEU'))",Wimbledon_2018,DEU,820.0,0,0,0.25,0.06299212598425197,0.06299212598425197,0.3760433077342867
-"(('jonathan', 'erlich', 'ISR'), ('marcin', 'matkowski', 'POL'))",Wimbledon_2018,ISR,100.0,0,0,0.06499999761581421,0.0,0.31496062992125984,0.03352362081760497
+"(('jonathan', 'erlich', 'ISR'), ('marcin', 'matkowski', 'POL'))",Wimbledon_2018,ISR,100.0,0,0,0.0649999976158142,0.0,0.31496062992125984,0.03352362081760496
 "(('hugo', 'nys', 'MCO'), ('jonathan', 'eysseric', 'FRA'))",Wimbledon_2018,FRA,72.0,0,1,1.0,0.05511811023622047,0.07874015748031496,0.34730315184968663
 "(('maximo', 'gonzalez', 'ARG'), ('nicolas', 'jarry', 'CHL'))",Wimbledon_2018,ARG,58.0,0,1,1.0,0.031496062992125984,0.1732283464566929,0.4099015755446877
 "(('henri', 'kontinen', 'FIN'), ('john', 'peers', 'AUS'))",Wimbledon_2018,FIN,6.0,0,0,0.0,0.0,0.007874015748031496,0.001968503937007874
@@ -271,7 +271,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('nicolas', 'mahut', 'FRA'), ('pierre-hugues', 'herbert', 'FRA'))",Australian Open_2019,FRA,12.0,1,1,1.0,0.047244094488188976,0.05511811023622047,0.34017716835098943
 "(('david', 'marrero', 'ESP'), ('mischa', 'zverev', 'DEU'))",Australian Open_2019,ESP,62.0,0,0,0.25,0.07086614173228346,0.1889763779527559,0.42246063141606927
 "(('michael', 'venus', 'NZL'), ('raven', 'klaasen', 'ZAF'))",Australian Open_2019,ZAF,15.0,0,1,0.0,0.0,0.36220472440944884,0.0
-"(('bradley', 'klahn', 'USA'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2019,KAZ,455.0,0,0,0.10250000655651093,0.0,0.0,0.10677755917385807
+"(('bradley', 'klahn', 'USA'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2019,KAZ,455.0,0,0,0.1025000065565109,0.0,0.0,0.10677755917385806
 "(('horacio', 'zeballos', 'ARG'), ('lukasz', 'kubot', 'POL'))",Australian Open_2019,POL,10.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.25555118108828234
 "(('aljaz', 'bedene', 'SVN'), ('maximilian', 'marterer', 'DEU'))",Australian Open_2019,SVN,453.0,0,0,0.25,0.0,0.0,0.25751968502529027
 "(('dominic', 'inglot', 'GBR'), ('franko', 'skugor', 'HRV'))",Australian Open_2019,GBR,20.0,0,0,0.25,0.05511811023622047,0.36220472440944884,0.484665360331066
@@ -284,7 +284,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('matt', 'reid', 'AUS'), ('nick', 'kyrgios', 'AUS'))",Australian Open_2019,AUS,145.0,1,1,1.0,0.11023622047244094,0.36220472440944884,0.484665360331066
 "(('malek', 'jaziri', 'TUN'), ('radu', 'albot', 'MDA'))",Australian Open_2019,MDA,68.0,0,0,0.0,0.0,0.015748031496062992,0.3204921289809107
 "(('ben', 'mclachlan', 'JPN'), ('jan-lennard', 'struff', 'DEU'))",Australian Open_2019,JPN,18.0,0,0,0.0,0.007874015748031496,0.007874015748031496,0.007874015748031496
-"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Australian Open_2019,SLV,56.0,0,0,0.36250001192092896,0.0,0.1889763779527559,0.42246063141606927
+"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Australian Open_2019,SLV,56.0,0,0,0.3625000119209289,0.0,0.1889763779527559,0.42246063141606927
 "(('horia', 'tecau', 'ROU'), ('jean-julien', 'rojer', 'NLD'))",Australian Open_2019,NLD,19.0,0,0,0.25,0.023622047244094488,0.023622047244094488,0.36025590625569576
 "(('jonny', ""o'mara"", 'GBR'), ('luke', 'bambridge', 'GBR'))",Australian Open_2019,GBR,51.0,1,1,1.0,0.05511811023622047,0.36220472440944884,0.484665360331066
 "(('marius', 'copil', 'ROU'), ('marton', 'fucsovics', 'HUN'))",Australian Open_2019,ROU,546.0,0,0,0.0,0.007874015748031496,0.015748031496062992,0.3204921289809107
@@ -375,7 +375,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('edouard', 'roger-vasselin', 'FRA'), ('ivan', 'dodig', 'HRV'))",Roland Garros_2019,HRV,33.0,0,0,0.25,0.023622047244094488,0.06299212598425197,0.27326771652135323
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Roland Garros_2019,DEU,51.0,1,1,1.0,0.031496062992125984,0.031496062992125984,0.32718503973850116
 "(('arthur', 'rinderknech', 'FRA'), ('manuel', 'guinard', 'FRA'))",Roland Garros_2019,FRA,392.0,1,1,1.0,0.14960629921259844,0.16535433070866143,0.4047440959829984
-"(('joran', 'vliegen', 'BEL'), ('mikhail', 'kukushkin', 'KAZ'))",Roland Garros_2019,KAZ,145.0,0,0,0.0,0.0,0.0,0.10516338549026354
+"(('joran', 'vliegen', 'BEL'), ('mikhail', 'kukushkin', 'KAZ'))",Roland Garros_2019,KAZ,145.0,0,0,0.0,0.0,0.0,0.10516338549026352
 "(('malek', 'jaziri', 'TUN'), ('radu', 'albot', 'MDA'))",Roland Garros_2019,MDA,60.0,0,0,0.0,0.0,0.015748031496062992,0.33781496212473067
 "(('dusan', 'lajovic', 'SRB'), ('janko', 'tipsarevic', 'SRB'))",Roland Garros_2019,SRB,201.0,1,1,1.0,0.023622047244094488,0.06299212598425197,0.27411417334567845
 "(('aisam-ul-haq', 'qureshi', 'PAK'), ('santiago', 'gonzalez', 'MEX'))",Roland Garros_2019,MEX,46.0,0,0,0.25,0.007874015748031496,0.18110236220472442,0.4330905519249871
@@ -390,7 +390,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('ken', 'skupski', 'GBR'), ('neal', 'skupski', 'GBR'))",Roland Garros_2019,GBR,49.0,1,1,1.0,0.06299212598425197,0.23622047244094488,0.3913582707131941
 "(('jonny', ""o'mara"", 'GBR'), ('luke', 'bambridge', 'GBR'))",Roland Garros_2019,GBR,42.0,1,1,1.0,0.06299212598425197,0.23622047244094488,0.3913582707131941
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",US Open_2019,COL,1.0,1,1,1.0,0.02097902097902098,0.18181818181818182,0.42599650540135126
-"(('p', 'cuevas', 'URY'), ('s', 'johnson', 'USA'))",US Open_2019,URY,131.0,0,0,0.36250001192092896,0.0,0.18181818181818182,0.42599650540135126
+"(('p', 'cuevas', 'URY'), ('s', 'johnson', 'USA'))",US Open_2019,URY,131.0,0,0,0.3625000119209289,0.0,0.18181818181818182,0.42599650540135126
 "(('c', 'norrie', 'GBR'), ('d', 'evans', 'GBR'))",US Open_2019,GBR,189.0,1,1,1.0,0.07692307692307693,0.36363636363636365,0.4891083995987485
 "(('j-l', 'struff', 'DEU'), ('t', 'pütz', 'DEU'))",US Open_2019,DEU,67.0,1,1,1.0,0.04195804195804196,0.04195804195804196,0.38019230888856875
 "(('f', 'lópez', 'ESP'), ('p', 'busta', 'ESP'))",US Open_2019,ESP,119.0,1,1,1.0,0.04895104895104895,0.18181818181818182,0.42599650540135126
@@ -424,7 +424,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'zeballos', 'ARG'), ('m', 'granollers', 'ESP'))",US Open_2019,ESP,27.0,0,1,1.0,0.04895104895104895,0.18181818181818182,0.42599650540135126
 "(('j', 'vliegen', 'BEL'), ('s', 'gillé', 'BEL'))",US Open_2019,BEL,51.0,1,1,1.0,0.006993006993006993,0.14685314685314685,0.013986013986013986
 "(('e', 'king', 'USA'), ('h', 'reese', 'USA'))",US Open_2019,USA,120.0,1,1,1.0,0.16783216783216784,0.36363636363636365,0.5115909230458987
-"(('a', 'bublik', 'KAZ'), ('j', 'millman', 'AUS'))",US Open_2019,KAZ,299.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.11329195851629431
+"(('a', 'bublik', 'KAZ'), ('j', 'millman', 'AUS'))",US Open_2019,KAZ,299.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.11329195851629431
 "(('a', 'minaur', 'AUS'), ('m', 'reid', 'AUS'))",US Open_2019,AUS,156.0,1,1,1.0,0.04195804195804196,0.36363636363636365,0.4891083995987485
 "(('d', 'schwartzman', 'ARG'), ('g', 'pella', 'ARG'))",US Open_2019,ARG,58.0,1,1,1.0,0.06293706293706294,0.18181818181818182,0.42599650540135126
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",US Open_2019,USA,17.0,0,1,0.8875000476837158,0.16783216783216784,0.36363636363636365,0.5115909230458987
@@ -478,7 +478,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('henri', 'kontinen', 'FIN'), ('john', 'peers', 'AUS'))",Wimbledon_2019,FIN,15.0,0,0,0.0,0.0,0.007874015748031496,0.001968503937007874
 "(('gerard', 'granollers', 'ESP'), ('marcel', 'granollers', 'ESP'))",Wimbledon_2019,ESP,36.0,1,1,1.0,0.03937007874015748,0.16535433070866143,0.3910629926469382
 "(('horacio', 'zeballos', 'ARG'), ('maximo', 'gonzalez', 'ARG'))",Wimbledon_2019,ARG,26.0,1,1,1.0,0.05511811023622047,0.16535433070866143,0.3910629926469382
-"(('artem', 'sitak', 'NZL'), ('jonathan', 'erlich', 'ISR'))",Wimbledon_2019,ISR,78.0,0,1,0.032499998807907104,0.0,0.3464566929133858,0.0327866129195831
+"(('artem', 'sitak', 'NZL'), ('jonathan', 'erlich', 'ISR'))",Wimbledon_2019,ISR,78.0,0,1,0.0324999988079071,0.0,0.3464566929133858,0.03278661291958309
 "(('edouard', 'roger-vasselin', 'FRA'), ('nicolas', 'mahut', 'FRA'))",Wimbledon_2019,FRA,13.0,1,1,1.0,0.03937007874015748,0.07086614173228346,0.3241732295338563
 "(('liam', 'broady', 'GBR'), ('scott', 'clayton', 'GBR'))",Wimbledon_2019,GBR,246.0,1,1,1.0,0.14173228346456693,0.3464566929133858,0.45539370249575517
 "(('joe', 'salisbury', 'GBR'), ('rajeev', 'ram', 'USA'))",Wimbledon_2019,USA,25.0,0,1,0.8875000476837158,0.031496062992125984,0.3464566929133858,0.45160041186283895
@@ -489,7 +489,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('damir', 'dzumhur', 'BIH'), ('romain', 'arneodo', 'MCO'))",Wimbledon_2019,MCO,94.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.34405511910990466
 "(('marcelo', 'arevalo', 'SLV'), ('miguel', 'reyes-varela', 'MEX'))",Wimbledon_2019,SLV,70.0,0,1,1.0,0.0,0.16535433070866143,0.3910629926469382
 "(('casper', 'ruud', 'NOR'), ('lloyd', 'harris', 'ZAF'))",Wimbledon_2019,ZAF,268.0,0,0,0.0,0.007874015748031496,0.3464566929133858,0.007874015748031496
-"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Wimbledon_2019,KAZ,285.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.1090503932218852
+"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Wimbledon_2019,KAZ,285.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.10905039322188519
 "(('benoit', 'paire', 'FRA'), ('leander', 'paes', 'IND'))",Wimbledon_2019,IND,73.0,0,0,0.0,0.031496062992125984,0.3464566929133858,0.031496062992125984
 "(('feliciano', 'lopez', 'ESP'), ('pablo', 'busta', 'ESP'))",Wimbledon_2019,ESP,150.0,1,1,1.0,0.03937007874015748,0.16535433070866143,0.3910629926469382
 "(('cristian', 'garin', 'CHL'), ('nicolas', 'jarry', 'CHL'))",Wimbledon_2019,CHL,422.0,1,1,1.0,0.007874015748031496,0.16535433070866143,0.3910629926469382
@@ -559,7 +559,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('frances', 'tiafoe', 'USA'), ('ugo', 'humbert', 'FRA'))",Australian Open_2020,FRA,370.0,0,0,0.2875000238418579,0.06299212598425197,0.08661417322834646,0.33946850626018105
 "(('benoit', 'paire', 'FRA'), ('simone', 'bolelli', 'ITA'))",Australian Open_2020,ITA,86.0,0,0,0.5,0.023622047244094488,0.023622047244094488,0.3146653563722851
 "(('nicolas', 'mahut', 'FRA'), ('pierre-hugues', 'herbert', 'FRA'))",Australian Open_2020,FRA,6.0,1,1,1.0,0.06299212598425197,0.08661417322834646,0.33946850626018105
-"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2020,KAZ,342.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.11484527532157936
+"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2020,KAZ,342.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.11484527532157934
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Australian Open_2020,DEU,8.0,1,1,1.0,0.023622047244094488,0.023622047244094488,0.35316929197686864
 "(('jaume', 'munar', 'ESP'), ('juan', 'cabal', 'COL'))",Australian Open_2020,COL,1.0,0,1,1.0,0.0,0.15748031496062992,0.3980905522746364
 "(('taylor', 'fritz', 'USA'), ('tommy', 'paul', 'USA'))",Australian Open_2020,USA,121.0,1,1,1.0,0.07874015748031496,0.33070866141732286,0.47368702491906683
@@ -604,7 +604,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('bruno', 'soares', 'BRA'), ('mate', 'pavic', 'HRV'))",Roland Garros_2020,HRV,11.0,0,0,0.25,0.023622047244094488,0.047244094488188976,0.2689763779245962
 "(('marcus', 'daniell', 'NZL'), ('philipp', 'oswald', 'AUT'))",Roland Garros_2020,NZL,49.0,0,0,0.5,0.015748031496062992,0.2755905511811024,0.43320866515786627
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Roland Garros_2020,DEU,16.0,1,1,1.0,0.023622047244094488,0.023622047244094488,0.34954724478440025
-"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Roland Garros_2020,KAZ,105.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.11118110210642101
+"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Roland Garros_2020,KAZ,105.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.111181102106421
 "(('nikola', 'mektic', 'HRV'), ('wesley', 'koolhof', 'NLD'))",Roland Garros_2020,NLD,15.0,0,0,0.25,0.023622047244094488,0.03937007874015748,0.3416732290363687
 "(('ben', 'mclachlan', 'JPN'), ('luke', 'bambridge', 'GBR'))",Roland Garros_2020,GBR,55.0,0,0,0.0,0.06299212598425197,0.2755905511811024,0.43320866515786627
 "(('john', 'peers', 'AUS'), ('michael', 'venus', 'NZL'))",Roland Garros_2020,AUS,28.0,0,1,1.0,0.05511811023622047,0.2755905511811024,0.43320866515786627
@@ -664,7 +664,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('maximo', 'gonzalez', 'ARG'), ('simone', 'bolelli', 'ITA'))",US Open_2020,ITA,74.0,0,0,0.5,0.0,0.0,0.2974206388942779
 "(('ken', 'skupski', 'GBR'), ('santiago', 'gonzalez', 'MEX'))",US Open_2020,MEX,42.0,0,0,0.25,0.015873015873015872,0.1111111111111111,0.3779761923684014
 "(('denis', 'shapovalov', 'CAN'), ('rohan', 'bopanna', 'IND'))",US Open_2020,IND,37.0,0,1,0.0,0.015873015873015872,0.4126984126984127,0.015873015873015872
-"(('ernesto', 'escobedo', 'MEX'), ('noah', 'rubin', 'USA'))",US Open_2020,MEX,296.0,0,0,0.36250001192092896,0.015873015873015872,0.1111111111111111,0.3779761923684014
+"(('ernesto', 'escobedo', 'MEX'), ('noah', 'rubin', 'USA'))",US Open_2020,MEX,296.0,0,0,0.3625000119209289,0.015873015873015872,0.1111111111111111,0.3779761923684014
 "(('marcus', 'daniell', 'NZL'), ('philipp', 'oswald', 'AUT'))",US Open_2020,NZL,50.0,0,0,0.5,0.015873015873015872,0.4126984126984127,0.51646826191554
 "(('oliver', 'marach', 'AUT'), ('raven', 'klaasen', 'ZAF'))",US Open_2020,ZAF,12.0,0,0,0.0,0.0,0.4126984126984127,0.0
 "(('marcelo', 'demoliner', 'BRA'), ('matwe', 'middelkoop', 'NLD'))",US Open_2020,BRA,49.0,0,0,0.25,0.031746031746031744,0.031746031746031744,0.35158730452022857
@@ -713,13 +713,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('marcelo', 'demoliner', 'BRA'), ('santiago', 'gonzalez', 'MEX'))",Australian Open_2021,BRA,44.0,0,0,0.75,0.023622047244094488,0.023622047244094488,0.36324803231973346
 "(('dominic', 'inglot', 'GBR'), ('luke', 'bambridge', 'GBR'))",Australian Open_2021,GBR,64.0,1,1,1.0,0.06299212598425197,0.30708661417322836,0.4486811047815901
 "(('aljaz', 'bedene', 'SVN'), ('jiri', 'vesely', 'CZE'))",Australian Open_2021,SVN,386.0,0,0,0.75,0.0,0.0,0.25681102357980773
-"(('mikhail', 'kukushkin', 'KAZ'), ('ricardas', 'berankis', 'LTU'))",Australian Open_2021,LTU,331.0,0,0,0.10249999910593033,0.0,0.0,0.22092519682927395
+"(('mikhail', 'kukushkin', 'KAZ'), ('ricardas', 'berankis', 'LTU'))",Australian Open_2021,LTU,331.0,0,0,0.1024999991059303,0.0,0.0,0.22092519682927395
 "(('edouard', 'roger-vasselin', 'FRA'), ('henri', 'kontinen', 'FIN'))",Australian Open_2021,FIN,32.0,0,0,0.0,0.007874015748031496,0.007874015748031496,0.007874015748031496
 "(('maximo', 'gonzalez', 'ARG'), ('simone', 'bolelli', 'ITA'))",Australian Open_2021,ITA,69.0,0,0,0.5,0.03937007874015748,0.03937007874015748,0.3274212610416525
 "(('fabrice', 'martin', 'FRA'), ('jeremy', 'chardy', 'FRA'))",Australian Open_2021,FRA,31.0,1,1,1.0,0.05511811023622047,0.09448818897637795,0.3467126004691199
 "(('aisam-ul-haq', 'qureshi', 'PAK'), ('tomislav', 'brkic', 'BIH'))",Australian Open_2021,BIH,80.0,0,0,0.25,0.0,0.06299212598425197,0.2708858273864731
 "(('pablo', 'andujar', 'ESP'), ('pedro', 'martinez', 'ESP'))",Australian Open_2021,ESP,445.0,1,1,1.0,0.047244094488188976,0.15748031496062992,0.39907480359781444
-"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2021,KAZ,90.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.11824803107132123
+"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2021,KAZ,90.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.11824803107132122
 "(('emil', 'ruusuvuori', 'FIN'), ('salvatore', 'caruso', 'ITA'))",Australian Open_2021,ITA,177.0,0,0,0.0,0.03937007874015748,0.03937007874015748,0.3274212610416525
 "(('marcus', 'daniell', 'NZL'), ('philipp', 'oswald', 'AUT'))",Australian Open_2021,NZL,45.0,0,0,0.5,0.015748031496062992,0.30708661417322836,0.4486811047815901
 "(('adrian', 'mannarino', 'FRA'), ('gilles', 'simon', 'FRA'))",Australian Open_2021,FRA,190.0,1,1,1.0,0.05511811023622047,0.09448818897637795,0.3467126004691199
@@ -777,13 +777,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'lajović', 'SRB'), ('f', 'krajinović', 'SRB'))",Roland Garros_2021,SRB,405.0,1,1,1.0,0.027972027972027972,0.06293706293706294,0.271678321845048
 "(('d', 'koepfer', 'DEU'), ('e', 'ruusuvuori', 'FIN'))",Roland Garros_2021,DEU,191.0,0,0,0.0,0.04195804195804196,0.04195804195804196,0.34286713329228485
 "(('a', 'bedene', 'SVN'), ('j', 'withrow', 'USA'))",Roland Garros_2021,SVN,346.0,0,0,0.25,0.0,0.0,0.24919580412911368
-"(('a', 'bublik', 'KAZ'), ('a', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,98.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824139
+"(('a', 'bublik', 'KAZ'), ('a', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,98.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824136
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",Roland Garros_2021,FRA,130.0,1,1,1.0,0.14685314685314685,0.16083916083916083,0.40982517662581863
 "(('f', 'polášek', 'SVK'), ('i', 'dodig', 'HRV'))",Roland Garros_2021,HRV,9.0,0,0,0.5,0.013986013986013986,0.06293706293706294,0.2666783216116312
 "(('a', 'molteni', 'ARG'), ('f', 'nielsen', 'DNK'))",Roland Garros_2021,ARG,62.0,0,0,0.25,0.04195804195804196,0.16083916083916083,0.4173426582263066
 "(('n', 'mahut', 'FRA'), ('p-h', 'herbert', 'FRA'))",Roland Garros_2021,FRA,20.0,1,1,1.0,0.14685314685314685,0.16083916083916083,0.40982517662581863
 "(('c', 'norrie', 'GBR'), ('j', ""o'mara"", 'GBR'))",Roland Garros_2021,GBR,180.0,1,1,1.0,0.04895104895104895,0.24475524475524477,0.39653846517309443
-"(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",Roland Garros_2021,ISR,78.0,0,1,0.0,0.0,0.24475524475524477,0.03330908965814364
+"(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",Roland Garros_2021,ISR,78.0,0,1,0.0,0.0,0.24475524475524477,0.03330908965814363
 "(('d', 'schwartzman', 'ARG'), ('f', 'coria', 'ARG'))",Roland Garros_2021,ARG,243.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.4173426582263066
 "(('j-l', 'struff', 'DEU'), ('r', 'haase', 'NLD'))",Roland Garros_2021,NLD,39.0,0,0,0.75,0.027972027972027972,0.04195804195804196,0.3323776228027744
 "(('j-p', 'smith', 'AUS'), ('m', 'ebden', 'AUS'))",Roland Garros_2021,AUS,71.0,1,1,1.0,0.055944055944055944,0.24475524475524477,0.39653846517309443
@@ -815,7 +815,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('k', 'skupski', 'GBR'), ('n', 'skupski', 'GBR'))",Roland Garros_2021,GBR,60.0,1,1,1.0,0.04895104895104895,0.24475524475524477,0.39653846517309443
 "(('pablo', 'andújar', 'ESP'), ('pedro', 'martínez', 'ESP'))",Roland Garros_2021,ESP,452.0,1,1,1.0,0.04895104895104895,0.16083916083916083,0.4173426582263066
 "(('franko', 'škugor', 'HRV'), ('rohan', 'bopanna', 'IND'))",Roland Garros_2021,IND,40.0,0,0,0.0,0.013986013986013986,0.24475524475524477,0.013986013986013986
-"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,98.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824139
+"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,98.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824136
 "(('hugo', 'nys', 'MCO'), ('tim', 'pütz', 'DEU'))",Roland Garros_2021,MCO,53.0,0,0,0.25,0.013986013986013986,0.013986013986013986,0.42381119061183264
 "(('nicolas', 'mahut', 'FRA'), ('pierre-hugues', 'herbert', 'FRA'))",Roland Garros_2021,FRA,20.0,1,1,1.0,0.14685314685314685,0.16083916083916083,0.40982517662581863
 "(('nikola', 'ćaćić', 'SRB'), ('tomislav', 'brkić', 'BIH'))",Roland Garros_2021,BIH,66.0,0,1,0.8575000166893005,0.006993006993006993,0.06293706293706294,0.26868881170566267
@@ -833,7 +833,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('m', 'krueger', 'USA'), ('m', 'mmoh', 'USA'))",US Open_2021,USA,241.0,1,1,1.0,0.17482517482517482,0.4195804195804196,0.5343181972320263
 "(('a', 'molteni', 'ARG'), ('s', 'gonzález', 'MEX'))",US Open_2021,MEX,54.0,0,1,1.0,0.0,0.1258741258741259,0.38452797409120976
 "(('m', 'mcdonald', 'USA'), ('r', 'haase', 'NLD'))",US Open_2021,NLD,64.0,0,0,0.4625000059604645,0.02097902097902098,0.03496503496503497,0.3684440570902991
-"(('f', 'nielsen', 'DNK'), ('v', 'pospisil', 'CAN'))",US Open_2021,DNK,94.0,0,0,0.42500001192092896,0.0,0.0,0.3457167843630264
+"(('f', 'nielsen', 'DNK'), ('v', 'pospisil', 'CAN'))",US Open_2021,DNK,94.0,0,0,0.4250000119209289,0.0,0.0,0.3457167843630264
 "(('a', 'göransson', 'SWE'), ('m', 'giron', 'USA'))",US Open_2021,USA,678.0,0,0,0.4625000059604645,0.17482517482517482,0.4195804195804196,0.5343181972320263
 "(('h', 'tecău', 'ROU'), ('k', 'krawietz', 'DEU'))",US Open_2021,DEU,13.0,0,0,0.25,0.03496503496503497,0.03496503496503497,0.37718531583155784
 "(('m', 'fucsovics', 'HUN'), ('s', 'travaglia', 'ITA'))",US Open_2021,HUN,343.0,0,0,0.0,0.0,0.0,0.005244755244755245
@@ -855,13 +855,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",US Open_2021,COL,10.0,1,1,1.0,0.006993006993006993,0.1258741258741259,0.38452797409120976
 "(('f', 'polášek', 'SVK'), ('j', 'peers', 'AUS'))",US Open_2021,AUS,25.0,0,0,0.25,0.0979020979020979,0.4195804195804196,0.5215909175731085
 "(('k', 'skupski', 'GBR'), ('l', 'bambridge', 'GBR'))",US Open_2021,GBR,59.0,1,1,1.0,0.07692307692307693,0.4195804195804196,0.5215909175731085
-"(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",US Open_2021,ISR,65.0,0,1,0.0,0.0,0.4195804195804196,0.034609089625048474
+"(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",US Open_2021,ISR,65.0,0,1,0.0,0.0,0.4195804195804196,0.03460908962504847
 "(('o', 'marach', 'AUT'), ('p', 'oswald', 'AUT'))",US Open_2021,AUT,41.0,1,1,1.0,0.013986013986013986,0.027972027972027972,0.37718531583155784
 "(('a', 'lawson', 'USA'), ('r', 'galloway', 'USA'))",US Open_2021,USA,108.0,1,1,1.0,0.17482517482517482,0.4195804195804196,0.5343181972320263
 "(('f', 'coria', 'ARG'), ('g', 'mager', 'ITA'))",US Open_2021,ARG,259.0,0,0,0.5,0.04195804195804196,0.1258741258741259,0.38452797409120976
 "(('j-j', 'rojer', 'NLD'), ('w', 'koolhof', 'NLD'))",US Open_2021,NLD,16.0,1,1,1.0,0.02097902097902098,0.03496503496503497,0.3684440570902991
 "(('a', 'karatsev', 'RUS'), ('a', 'nedovyesov', 'KAZ'))",US Open_2021,RUS,171.0,0,0,0.4099999964237213,0.0,0.0,0.260139860056497
-"(('a', 'golubev', 'KAZ'), ('a', 'mies', 'DEU'))",US Open_2021,KAZ,38.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.11416643396853567
+"(('a', 'golubev', 'KAZ'), ('a', 'mies', 'DEU'))",US Open_2021,KAZ,38.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.11416643396853567
 "(('a', 'viñolas', 'ESP'), ('p', 'martínez', 'ESP'))",US Open_2021,ESP,87.0,1,1,1.0,0.027972027972027972,0.1258741258741259,0.38452797409120976
 "(('n', 'ćaćić', 'SRB'), ('t', 'brkić', 'BIH'))",US Open_2021,BIH,52.0,0,1,0.8575000166893005,0.0,0.055944055944055944,0.27106643410829395
 "(('a', 'mannarino', 'FRA'), ('p', 'cuevas', 'URY'))",US Open_2021,URY,150.0,0,0,0.5,0.006993006993006993,0.1258741258741259,0.38452797409120976
@@ -894,7 +894,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('bruno', 'soares', 'BRA'), ('jamie', 'murray', 'GBR'))",US Open_2021,GBR,22.0,0,0,0.25,0.07692307692307693,0.4195804195804196,0.5215909175731085
 "(('horacio', 'zeballos', 'ARG'), ('marcel', 'granollers', 'ESP'))",US Open_2021,ESP,5.0,0,1,1.0,0.027972027972027972,0.1258741258741259,0.38452797409120976
 "(('m', 'pavić', 'HRV'), ('n', 'mektić', 'HRV'))",Wimbledon_2021,HRV,3.0,1,1,1.0,0.03496503496503497,0.07692307692307693,0.28447552442133844
-"(('a', 'vasilevski', 'BLR'), ('j', 'erlich', 'ISR'))",Wimbledon_2021,ISR,72.0,0,0,0.12999999523162842,0.0,0.3076923076923077,0.035209089595746326
+"(('a', 'vasilevski', 'BLR'), ('j', 'erlich', 'ISR'))",Wimbledon_2021,ISR,72.0,0,0,0.1299999952316284,0.0,0.3076923076923077,0.03520908959574632
 "(('a', 'minaur', 'AUS'), ('m', 'reid', 'AUS'))",Wimbledon_2021,AUS,68.0,1,1,1.0,0.055944055944055944,0.3076923076923077,0.44284965248999897
 "(('a', 'matusevich', 'GBR'), ('l', 'johnson', 'GBR'))",Wimbledon_2021,GBR,431.0,1,1,1.0,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('n', 'ćaćić', 'SRB'), ('t', 'brkić', 'BIH'))",Wimbledon_2021,BIH,57.0,0,1,0.8575000166893005,0.0,0.07692307692307693,0.27949300752236295
@@ -912,7 +912,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",Wimbledon_2021,COL,5.0,1,1,1.0,0.02097902097902098,0.14685314685314685,0.3842832172563026
 "(('d', 'pel', 'NLD'), ('y-h', 'lu', 'TWN'))",Wimbledon_2021,TWN,542.0,0,0,0.0,0.0,0.0,0.0
 "(('r', 'matos', 'BRA'), ('t', 'monteiro', 'BRA'))",Wimbledon_2021,BRA,89.0,1,1,1.0,0.03496503496503497,0.03496503496503497,0.3544755252403813
-"(('a', 'bublik', 'KAZ'), ('a', 'nedovyesov', 'KAZ'))",Wimbledon_2021,KAZ,50.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.12187622318213637
+"(('a', 'bublik', 'KAZ'), ('a', 'nedovyesov', 'KAZ'))",Wimbledon_2021,KAZ,50.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.12187622318213634
 "(('d', 'inglot', 'GBR'), ('l', 'bambridge', 'GBR'))",Wimbledon_2021,GBR,67.0,1,1,1.0,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('j', 'ward', 'GBR'), ('s', 'parker', 'GBR'))",Wimbledon_2021,GBR,1145.0,1,1,1.0,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('l', 'saville', 'AUS'), ('m', 'purcell', 'AUS'))",Wimbledon_2021,AUS,43.0,1,1,1.0,0.055944055944055944,0.3076923076923077,0.44284965248999897
@@ -943,7 +943,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'lajović', 'SRB'), ('i', 'sabanov', 'SRB'))",Wimbledon_2021,SRB,165.0,1,1,1.0,0.027972027972027972,0.07692307692307693,0.2834790210415433
 "(('b', 'soares', 'BRA'), ('j', 'murray', 'GBR'))",Wimbledon_2021,GBR,22.0,0,0,0.25,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('n', 'monroe', 'USA'), ('v', 'pospisil', 'CAN'))",Wimbledon_2021,USA,87.0,0,1,0.7075000405311584,0.04195804195804196,0.3076923076923077,0.44194057615070076
-"(('a', 'golubev', 'KAZ'), ('r', 'haase', 'NLD'))",Wimbledon_2021,KAZ,40.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.12187622318213637
+"(('a', 'golubev', 'KAZ'), ('r', 'haase', 'NLD'))",Wimbledon_2021,KAZ,40.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.12187622318213634
 "(('m', 'demoliner', 'BRA'), ('s', 'gonzález', 'MEX'))",Wimbledon_2021,BRA,49.0,0,0,0.75,0.03496503496503497,0.03496503496503497,0.3544755252403813
 "(('m', 'gonzález', 'ARG'), ('s', 'bolelli', 'ITA'))",Wimbledon_2021,ITA,46.0,0,0,0.5,0.03496503496503497,0.03496503496503497,0.31417832273494944
 "(('f', 'krajinović', 'SRB'), ('m', 'sabanov', 'HRV'))",Wimbledon_2021,SRB,406.0,0,1,0.75,0.027972027972027972,0.07692307692307693,0.2834790210415433
@@ -997,10 +997,10 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'thompson', 'AUS'), ('m', 'reid', 'AUS'))",Australian Open_2022,AUS,77.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
 "(('f', 'polášek', 'SVK'), ('j', 'peers', 'AUS'))",Australian Open_2022,AUS,12.0,0,0,0.25,0.1888111888111888,0.38461538461538464,0.5102447585521878
 "(('j-p', 'smith', 'AUS'), ('l', 'saville', 'AUS'))",Australian Open_2022,AUS,23.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
-"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Australian Open_2022,KAZ,70.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.12187622333844225
+"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Australian Open_2022,KAZ,70.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.12187622333844222
 "(('f', 'martin', 'FRA'), ('n', 'mahut', 'FRA'))",Australian Open_2022,FRA,5.0,1,1,1.0,0.03496503496503497,0.04895104895104895,0.3214335680737362
 "(('m', 'giron', 'USA'), ('s-w', 'kwon', 'KOR'))",Australian Open_2022,USA,1169.0,0,0,0.0,0.06293706293706294,0.38461538461538464,0.5022028166722584
-"(('a', 'bublik', 'KAZ'), ('j', 'zieliński', 'POL'))",Australian Open_2022,KAZ,50.0,0,0,0.20499999821186066,0.013986013986013986,0.013986013986013986,0.12187622333844225
+"(('a', 'bublik', 'KAZ'), ('j', 'zieliński', 'POL'))",Australian Open_2022,KAZ,50.0,0,0,0.2049999982118606,0.013986013986013986,0.013986013986013986,0.12187622333844222
 "(('d', 'altmaier', 'DEU'), ('t', 'monteiro', 'BRA'))",Australian Open_2022,DEU,404.0,0,0,0.25,0.04195804195804196,0.04195804195804196,0.3756293710190933
 "(('g', 'mager', 'ITA'), ('l', 'musetti', 'ITA'))",Australian Open_2022,ITA,1533.0,1,1,1.0,0.04895104895104895,0.04895104895104895,0.3214335680737362
 "(('n', 'skupski', 'GBR'), ('w', 'koolhof', 'NLD'))",Australian Open_2022,NLD,21.0,0,0,0.5,0.04195804195804196,0.055944055944055944,0.37388111927084156
@@ -1010,7 +1010,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'inglot', 'GBR'), ('k', 'skupski', 'GBR'))",Australian Open_2022,GBR,60.0,1,1,1.0,0.055944055944055944,0.38461538461538464,0.5102447585521878
 "(('a', 'vavassori', 'ITA'), ('t', 'griekspoor', 'NLD'))",Australian Open_2022,NLD,329.0,0,0,0.25,0.04195804195804196,0.055944055944055944,0.37388111927084156
 "(('m', 'ebden', 'AUS'), ('m', 'purcell', 'AUS'))",Australian Open_2022,AUS,55.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
-"(('a', 'göransson', 'SWE'), ('j', 'erlich', 'ISR'))",Australian Open_2022,ISR,64.0,0,0,0.032499998807907104,0.0,0.38461538461538464,0.035209089595746326
+"(('a', 'göransson', 'SWE'), ('j', 'erlich', 'ISR'))",Australian Open_2022,ISR,64.0,0,0,0.0324999988079071,0.0,0.38461538461538464,0.03520908959574632
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",Australian Open_2022,COL,10.0,1,1,1.0,0.006993006993006993,0.13286713286713286,0.37737762318416074
 "(('a', 'popyrin', 'AUS'), ('l', 'harris', 'ZAF'))",Australian Open_2022,ZAF,200.0,0,1,0.0,0.006993006993006993,0.38461538461538464,0.006993006993006993
 "(('b', 'soares', 'BRA'), ('j', 'murray', 'GBR'))",Australian Open_2022,GBR,19.0,0,0,0.25,0.055944055944055944,0.38461538461538464,0.5102447585521878
@@ -1022,7 +1022,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('i', 'dodig', 'HRV'), ('m', 'melo', 'BRA'))",Australian Open_2022,HRV,13.0,0,0,0.25,0.027972027972027972,0.07692307692307693,0.28272727267308667
 "(('a', 'mannarino', 'FRA'), ('h', 'nys', 'MCO'))",Australian Open_2022,FRA,164.0,0,1,1.0,0.03496503496503497,0.04895104895104895,0.3214335680737362
 "(('d', 'sweeny', 'AUS'), ('l', 'tu', 'AUS'))",Australian Open_2022,AUS,566.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
-"(('a', 'golubev', 'KAZ'), ('f', 'škugor', 'HRV'))",Australian Open_2022,KAZ,29.0,0,0,0.20499999821186066,0.013986013986013986,0.013986013986013986,0.12187622333844225
+"(('a', 'golubev', 'KAZ'), ('f', 'škugor', 'HRV'))",Australian Open_2022,KAZ,29.0,0,0,0.2049999982118606,0.013986013986013986,0.013986013986013986,0.12187622333844222
 "(('c', 'rungkat', 'IDN'), ('t', 'huey', 'PHL'))",Australian Open_2022,PHL,137.0,0,0,0.25,0.0,0.38461538461538464,0.0017482517482517483
 "(('r', 'bopanna', 'IND'), ('é', 'roger-vasselin', 'FRA'))",Australian Open_2022,IND,43.0,0,0,0.0,0.0,0.38461538461538464,0.0
 "(('f', 'nielsen', 'DNK'), ('m', 'daniell', 'NZL'))",Australian Open_2022,NZL,52.0,0,0,0.5,0.02097902097902098,0.38461538461538464,0.5102447585521878
@@ -1041,13 +1041,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('m', 'giron', 'USA'), ('s-w', 'kwon', 'KOR'))",Roland Garros_2022,USA,221.0,0,0,0.0,0.09090909090909091,0.24475524475524477,0.41519756563059934
 "(('m', 'kecmanović', 'SRB'), ('n', 'monroe', 'USA'))",Roland Garros_2022,SRB,772.0,0,0,0.25,0.02097902097902098,0.06993006993006994,0.2809265735266092
 "(('j', 'sousa', 'PRT'), ('n', 'basilashvili', 'GEO'))",Roland Garros_2022,GEO,775.0,0,0,0.0,0.0,0.0,0.0
-"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Roland Garros_2022,USA,638.0,0,0,0.36250001192092896,0.09090909090909091,0.24475524475524477,0.41519756563059934
+"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Roland Garros_2022,USA,638.0,0,0,0.3625000119209289,0.09090909090909091,0.24475524475524477,0.41519756563059934
 "(('m', 'sabanov', 'HRV'), ('r', 'jebavý', 'CZE'))",Roland Garros_2022,CZE,72.0,0,0,0.5,0.006993006993006993,0.006993006993006993,0.26444055942388683
 "(('m', 'gonzález', 'ARG'), ('m', 'melo', 'BRA'))",Roland Garros_2022,ARG,24.0,0,0,0.75,0.055944055944055944,0.17482517482517482,0.4280069942970376
 "(('a', 'bedene', 'SVN'), ('f', 'krajinović', 'SRB'))",Roland Garros_2022,SVN,766.0,0,0,0.5,0.0,0.0,0.26269230767563506
 "(('f', 'tiafoe', 'USA'), ('m', 'fucsovics', 'HUN'))",Roland Garros_2022,HUN,264.0,0,0,0.0,0.0,0.0,0.005244755244755245
 "(('a', 'tabilo', 'CHL'), ('tm', 'etcheverry', 'ARG'))",Roland Garros_2022,ARG,259.0,0,1,1.0,0.055944055944055944,0.17482517482517482,0.4280069942970376
-"(('a', 'bublik', 'KAZ'), ('t', 'kokkinakis', 'AUS'))",Roland Garros_2022,KAZ,65.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.1217615383488315
+"(('a', 'bublik', 'KAZ'), ('t', 'kokkinakis', 'AUS'))",Roland Garros_2022,KAZ,65.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.1217615383488315
 "(('k', 'majchrzak', 'POL'), ('n', 'lammons', 'USA'))",Roland Garros_2022,USA,80.0,0,0,0.25,0.09090909090909091,0.24475524475524477,0.41519756563059934
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",Roland Garros_2022,FRA,90.0,1,1,1.0,0.13986013986013987,0.15384615384615385,0.394300701682801
 "(('p', 'andújar', 'ESP'), ('p', 'martínez', 'ESP'))",Roland Garros_2022,ESP,85.0,1,1,1.0,0.04895104895104895,0.17482517482517482,0.4280069942970376
@@ -1062,9 +1062,9 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'vavassori', 'ITA'), ('l', 'sonego', 'ITA'))",Roland Garros_2022,ITA,143.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.32437063175273106
 "(('m', 'ebden', 'AUS'), ('m', 'purcell', 'AUS'))",Roland Garros_2022,AUS,33.0,1,1,1.0,0.04195804195804196,0.24475524475524477,0.39265734733609886
 "(('b', 'soares', 'BRA'), ('j', 'murray', 'GBR'))",Roland Garros_2022,GBR,19.0,0,0,0.25,0.04895104895104895,0.24475524475524477,0.39265734733609886
-"(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",Roland Garros_2022,ISR,74.0,0,1,0.0,0.0,0.24475524475524477,0.03517272592997634
+"(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",Roland Garros_2022,ISR,74.0,0,1,0.0,0.0,0.24475524475524477,0.035172725929976334
 "(('m', 'mcdonald', 'USA'), ('t', 'paul', 'USA'))",Roland Garros_2022,USA,335.0,1,1,1.0,0.09090909090909091,0.24475524475524477,0.41519756563059934
-"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Roland Garros_2022,KAZ,60.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.1217615383488315
+"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Roland Garros_2022,KAZ,60.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.1217615383488315
 "(('h', 'reese', 'USA'), ('r', 'ramanathan', 'IND'))",Roland Garros_2022,IND,79.0,0,1,0.0,0.013986013986013986,0.24475524475524477,0.013986013986013986
 "(('d', 'altmaier', 'DEU'), ('o', 'otte', 'DEU'))",Roland Garros_2022,DEU,318.0,1,1,1.0,0.027972027972027972,0.027972027972027972,0.33181818241214417
 "(('n', 'skupski', 'GBR'), ('w', 'koolhof', 'NLD'))",Roland Garros_2022,NLD,11.0,0,0,0.5,0.06293706293706294,0.07692307692307693,0.3388111894051512
@@ -1095,7 +1095,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'mies', 'DEU'), ('k', 'krawietz', 'DEU'))",Roland Garros_2022,DEU,14.0,1,1,1.0,0.027972027972027972,0.027972027972027972,0.33181818241214417
 "(('m', 'middelkoop', 'NLD'), ('r', 'bopanna', 'IND'))",Roland Garros_2022,IND,26.0,0,0,0.0,0.013986013986013986,0.24475524475524477,0.013986013986013986
 "(('l', 'assche', 'FRA'), ('s', 'wayenburg', 'FRA'))",Roland Garros_2022,FRA,473.0,1,1,1.0,0.13986013986013987,0.15384615384615385,0.394300701682801
-"(('a', 'golubev', 'KAZ'), ('f', 'martin', 'FRA'))",Roland Garros_2022,KAZ,21.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.1217615383488315
+"(('a', 'golubev', 'KAZ'), ('f', 'martin', 'FRA'))",Roland Garros_2022,KAZ,21.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.1217615383488315
 "(('f', 'alves', 'BRA'), ('s', 'báez', 'ARG'))",Roland Garros_2022,ARG,1055.0,0,0,0.75,0.055944055944055944,0.17482517482517482,0.4280069942970376
 "(('r', 'haase', 'NLD'), ('r', 'klaasen', 'ZAF'))",Roland Garros_2022,NLD,59.0,0,0,0.0,0.06293706293706294,0.07692307692307693,0.3388111894051512
 "(('g', 'simon', 'FRA'), ('h', 'gaston', 'FRA'))",Roland Garros_2022,FRA,220.0,1,1,1.0,0.13986013986013987,0.15384615384615385,0.394300701682801
@@ -1116,7 +1116,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('jean-julien', 'rojer', 'NLD'), ('marcelo', 'arevalo', 'SLV'))",US Open_2022,SLV,6.0,0,0,0.25,0.0,0.18110236220472442,0.44385827004205525
 "(('alexei', 'popyrin', 'AUS'), ('john', 'peers', 'AUS'))",US Open_2022,AUS,440.0,1,1,1.0,0.047244094488188976,0.31496062992125984,0.44484252905047783
 "(('michael', 'venus', 'NZL'), ('tim', 'puetz', 'DEU'))",US Open_2022,DEU,8.0,0,0,0.5,0.023622047244094488,0.023622047244094488,0.33559055233330237
-"(('andrey', 'golubev', 'KAZ'), ('pedro', 'martinez', 'ESP'))",US Open_2022,KAZ,46.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.1230905517114429
+"(('andrey', 'golubev', 'KAZ'), ('pedro', 'martinez', 'ESP'))",US Open_2022,KAZ,46.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.12309055171144288
 "(('mate', 'pavic', 'HRV'), ('nikola', 'mektic', 'HRV'))",US Open_2022,HRV,13.0,1,1,1.0,0.023622047244094488,0.047244094488188976,0.27255905507587075
 "(('brandon', 'holt', 'USA'), ('govind', 'nanda', 'USA'))",US Open_2022,USA,898.0,1,1,1.0,0.1889763779527559,0.31496062992125984,0.4806693030858603
 "(('austin', 'krajicek', 'USA'), ('ivan', 'dodig', 'HRV'))",US Open_2022,HRV,14.0,0,0,0.25,0.023622047244094488,0.047244094488188976,0.27255905507587075
@@ -1137,7 +1137,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('albert', 'ramos-vinolas', 'ESP'), ('bernabe', 'miralles', 'ESP'))",US Open_2022,ESP,315.0,1,1,1.0,0.047244094488188976,0.18110236220472442,0.44385827004205525
 "(('francisco', 'cabral', 'PRT'), ('nuno', 'borges', 'PRT'))",US Open_2022,PRT,82.0,1,1,1.0,0.015748031496062992,0.05511811023622047,0.4049803184594695
 "(('miguel', 'reyes-varela', 'MEX'), ('nicolas', 'barrientos', 'COL'))",US Open_2022,COL,68.0,0,1,1.0,0.023622047244094488,0.18110236220472442,0.44385827004205525
-"(('alexander', 'bublik', 'KAZ'), ('holger', 'rune', 'DNK'))",US Open_2022,KAZ,198.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.1230905517114429
+"(('alexander', 'bublik', 'KAZ'), ('holger', 'rune', 'DNK'))",US Open_2022,KAZ,198.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.12309055171144288
 "(('denis', 'kudla', 'USA'), ('frances', 'tiafoe', 'USA'))",US Open_2022,USA,260.0,1,1,1.0,0.1889763779527559,0.31496062992125984,0.4806693030858603
 "(('joao', 'sousa', 'PRT'), ('marcelo', 'demoliner', 'BRA'))",US Open_2022,BRA,160.0,0,1,1.0,0.031496062992125984,0.05511811023622047,0.4049803184594695
 "(('horacio', 'zeballos', 'ARG'), ('marcel', 'granollers', 'ESP'))",US Open_2022,ESP,11.0,0,1,1.0,0.047244094488188976,0.18110236220472442,0.44385827004205525
@@ -1167,7 +1167,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('arthur', 'rinderknech', 'FRA'), ('benjamin', 'bonzi', 'FRA'))",US Open_2022,FRA,125.0,1,1,1.0,0.06299212598425197,0.07086614173228346,0.35822835112885226
 "(('keegan', 'smith', 'USA'), ('nicholas', 'monroe', 'USA'))",US Open_2022,USA,210.0,1,1,1.0,0.1889763779527559,0.31496062992125984,0.4806693030858603
 "(('alex', 'molcan', 'SVK'), ('marton', 'fucsovics', 'HUN'))",US Open_2022,HUN,312.0,0,0,0.0,0.0,0.0,0.003937007874015748
-"(('aisam-ul-haq', 'qureshi', 'PAK'), ('aleksandr', 'nedovyesov', 'KAZ'))",US Open_2022,KAZ,57.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.1230905517114429
+"(('aisam-ul-haq', 'qureshi', 'PAK'), ('aleksandr', 'nedovyesov', 'KAZ'))",US Open_2022,KAZ,57.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.12309055171144288
 "(('sebastian', 'baez', 'ARG'), ('tomas', 'etcheverry', 'ARG'))",US Open_2022,ARG,1233.0,1,1,1.0,0.03937007874015748,0.18110236220472442,0.44385827004205525
 "(('hugo', 'nys', 'MCO'), ('jan', 'zielinski', 'POL'))",US Open_2022,MCO,61.0,0,0,0.25,0.0,0.0,0.36610236687688374
 "(('fabrice', 'martin', 'FRA'), ('jonny', ""o'mara"", 'GBR'))",US Open_2022,FRA,50.0,0,0,0.25,0.06299212598425197,0.07086614173228346,0.35822835112885226
@@ -1176,8 +1176,8 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Wimbledon_2022,USA,2.0,0,1,0.8875000476837158,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('c', 'taberner', 'ESP'), ('d', 'altmaier', 'DEU'))",Wimbledon_2022,DEU,325.0,0,0,0.25,0.04195804195804196,0.04195804195804196,0.37031468613581225
 "(('f', 'martin', 'FRA'), ('h', 'nys', 'MCO'))",Wimbledon_2022,FRA,50.0,0,1,1.0,0.09090909090909091,0.0979020979020979,0.3773076956297134
-"(('m', 'gonzález', 'ARG'), ('n', 'lammons', 'USA'))",Wimbledon_2022,ARG,35.0,0,0,0.36250001192092896,0.04895104895104895,0.1888111888111888,0.4437412603960171
-"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Wimbledon_2022,KAZ,60.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.11759265751897038
+"(('m', 'gonzález', 'ARG'), ('n', 'lammons', 'USA'))",Wimbledon_2022,ARG,35.0,0,0,0.3625000119209289,0.04895104895104895,0.1888111888111888,0.4437412603960171
+"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Wimbledon_2022,KAZ,60.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.11759265751897036
 "(('j', 'duckworth', 'AUS'), ('m', 'giron', 'USA'))",Wimbledon_2022,AUS,222.0,0,1,0.8875000476837158,0.06293706293706294,0.3356643356643357,0.48395105560759566
 "(('d', 'hernández', 'ESP'), ('r', 'matos', 'BRA'))",Wimbledon_2022,BRA,40.0,0,0,0.75,0.013986013986013986,0.03496503496503497,0.40003496752335477
 "(('j', 'clarke', 'GBR'), ('l', 'broady', 'GBR'))",Wimbledon_2022,GBR,554.0,1,1,1.0,0.0979020979020979,0.3356643356643357,0.48395105560759566
@@ -1186,13 +1186,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'verdugo', 'MEX'), ('p', 'oswald', 'AUT'))",Wimbledon_2022,MEX,62.0,0,0,0.25,0.013986013986013986,0.1888111888111888,0.4437412603960171
 "(('h', 'reese', 'USA'), ('r', 'jebavý', 'CZE'))",Wimbledon_2022,CZE,71.0,0,0,0.25,0.0,0.0,0.27209790207289314
 "(('s', 'walków', 'POL'), ('ł', 'kubot', 'POL'))",Wimbledon_2022,POL,112.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.2773426573176484
-"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Wimbledon_2022,USA,259.0,0,0,0.36250001192092896,0.13286713286713286,0.3356643356643357,0.5031818336956985
+"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Wimbledon_2022,USA,259.0,0,0,0.3625000119209289,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('a', 'krajicek', 'USA'), ('i', 'dodig', 'HRV'))",Wimbledon_2022,HRV,17.0,0,0,0.25,0.03496503496503497,0.06293706293706294,0.2913286713036624
 "(('s', 'johnson', 'USA'), ('s', 'querrey', 'USA'))",Wimbledon_2022,USA,52.0,1,1,1.0,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('n', 'skupski', 'GBR'), ('w', 'koolhof', 'NLD'))",Wimbledon_2022,NLD,7.0,0,0,0.5,0.03496503496503497,0.04195804195804196,0.36681818263930877
 "(('d', 'schwartzman', 'ARG'), ('f', 'bagnis', 'ARG'))",Wimbledon_2022,ARG,296.0,1,1,1.0,0.04895104895104895,0.1888111888111888,0.4437412603960171
 "(('j-p', 'smith', 'AUS'), ('p', 'martínez', 'ESP'))",Wimbledon_2022,ESP,91.0,0,0,0.25,0.027972027972027972,0.1888111888111888,0.4437412603960171
-"(('a', 'golubev', 'KAZ'), ('d', 'molchanov', 'UKR'))",Wimbledon_2022,KAZ,39.0,0,0,0.3382500112056732,0.006993006993006993,0.006993006993006993,0.11759265751897038
+"(('a', 'golubev', 'KAZ'), ('d', 'molchanov', 'UKR'))",Wimbledon_2022,KAZ,39.0,0,0,0.3382500112056732,0.006993006993006993,0.006993006993006993,0.11759265751897036
 "(('j', 'vliegen', 'BEL'), ('j', 'withrow', 'USA'))",Wimbledon_2022,BEL,56.0,0,0,0.0,0.0,0.14685314685314685,0.006993006993006993
 "(('a', 'gray', 'GBR'), ('r', 'peniston', 'GBR'))",Wimbledon_2022,GBR,305.0,1,1,1.0,0.0979020979020979,0.3356643356643357,0.48395105560759566
 "(('m', 'ebden', 'AUS'), ('m', 'purcell', 'AUS'))",Wimbledon_2022,AUS,31.0,1,1,1.0,0.06293706293706294,0.3356643356643357,0.48395105560759566
@@ -1246,7 +1246,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('mate', 'pavić', 'HRV'), ('nikola', 'mektić', 'HRV'))",Wimbledon_2022,HRV,6.0,1,1,1.0,0.03496503496503497,0.06293706293706294,0.2913286713036624
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Wimbledon_2022,DEU,23.0,1,1,1.0,0.04195804195804196,0.04195804195804196,0.37031468613581225
 "(('neal', 'skupski', 'GBR'), ('wesley', 'koolhof', 'NLD'))",Australian Open_2023,NLD,3.0,0,0,0.5,0.023622047244094488,0.03937007874015748,0.3255511816209695
-"(('alexander', 'bublik', 'KAZ'), ('john-patrick', 'smith', 'AUS'))",Australian Open_2023,KAZ,179.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.1162625980952124
+"(('alexander', 'bublik', 'KAZ'), ('john-patrick', 'smith', 'AUS'))",Australian Open_2023,KAZ,179.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.11626259809521239
 "(('joe', 'salisbury', 'GBR'), ('rajeev', 'ram', 'USA'))",Australian Open_2023,USA,1.0,0,1,0.8875000476837158,0.06299212598425197,0.2992125984251969,0.4314941099778874
 "(('constant', 'lestienne', 'FRA'), ('marcos', 'giron', 'USA'))",Australian Open_2023,USA,211.0,0,0,0.2875000238418579,0.06299212598425197,0.2992125984251969,0.4314941099778874
 "(('jean-julien', 'rojer', 'NLD'), ('marcelo', 'arevalo', 'SLV'))",Australian Open_2023,SLV,6.0,0,0,0.25,0.0,0.2204724409448819,0.452677166309413
@@ -1258,7 +1258,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('horacio', 'zeballos', 'ARG'), ('marcel', 'granollers', 'ESP'))",Australian Open_2023,ESP,16.0,0,1,1.0,0.03937007874015748,0.2204724409448819,0.452677166309413
 "(('luis', 'martinez', 'CHE'), ('sebastian', 'baez', 'ARG'))",Australian Open_2023,ARG,826.0,0,0,0.3149999976158142,0.08661417322834646,0.2204724409448819,0.452677166309413
 "(('jamie', 'murray', 'GBR'), ('michael', 'venus', 'NZL'))",Australian Open_2023,GBR,35.0,0,1,1.0,0.03937007874015748,0.2992125984251969,0.4137795309968821
-"(('cristian', 'rodriguez', 'COL'), ('hunter', 'reese', 'USA'))",Australian Open_2023,COL,77.0,0,0,0.36250001192092896,0.023622047244094488,0.2204724409448819,0.452677166309413
+"(('cristian', 'rodriguez', 'COL'), ('hunter', 'reese', 'USA'))",Australian Open_2023,COL,77.0,0,0,0.3625000119209289,0.023622047244094488,0.2204724409448819,0.452677166309413
 "(('juan', 'cabal', 'COL'), ('robert', 'farah', 'COL'))",Australian Open_2023,COL,27.0,1,1,1.0,0.023622047244094488,0.2204724409448819,0.452677166309413
 "(('daniel', 'altmaier', 'DEU'), ('juan', 'varillas', 'PER'))",Australian Open_2023,DEU,332.0,0,0,0.25,0.015748031496062992,0.015748031496062992,0.3324015753593032
 "(('andreas', 'mies', 'DEU'), ('john', 'peers', 'AUS'))",Australian Open_2023,DEU,22.0,0,0,0.5,0.015748031496062992,0.015748031496062992,0.3324015753593032
@@ -1287,14 +1287,14 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('fabio', 'fognini', 'ITA'), ('simone', 'bolelli', 'ITA'))",Australian Open_2023,ITA,23.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.3290944899043699
 "(('alexander', 'erler', 'AUT'), ('lucas', 'miedler', 'AUT'))",Australian Open_2023,AUT,50.0,1,1,1.0,0.015748031496062992,0.031496062992125984,0.3324015753593032
 "(('matthew', 'ebden', 'AUS'), ('rohan', 'bopanna', 'IND'))",Australian Open_2023,IND,19.0,0,1,0.0,0.03937007874015748,0.2992125984251969,0.03937007874015748
-"(('aleksandr', 'nedovyesov', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2023,KAZ,49.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.1162625980952124
+"(('aleksandr', 'nedovyesov', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2023,KAZ,49.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.11626259809521239
 "(('dane', 'sweeny', 'AUS'), ('li', 'tu', 'AUS'))",Australian Open_2023,AUS,160.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
 "(('andre', 'goransson', 'SWE'), ('marc-andrea', 'huesler', 'CHE'))",Australian Open_2023,SWE,68.0,0,0,0.4350000023841858,0.0,0.015748031496062992,0.2990157485125572
 "(('adrian', 'mannarino', 'FRA'), ('quentin', 'halys', 'FRA'))",Australian Open_2023,FRA,149.0,1,1,1.0,0.08661417322834646,0.10236220472440945,0.3705118126639231
 "(('lloyd', 'harris', 'ZAF'), ('raven', 'klaasen', 'ZAF'))",Australian Open_2023,ZAF,154.0,1,1,1.0,0.007874015748031496,0.2992125984251969,0.007874015748031496
 "(('pedro', 'martinez', 'ESP'), ('thiago', 'monteiro', 'BRA'))",Australian Open_2023,BRA,404.0,0,0,0.75,0.015748031496062992,0.031496062992125984,0.3997440959407589
 "(('jason', 'kubler', 'AUS'), ('rinky', 'hijikata', 'AUS'))",Australian Open_2023,AUS,277.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
-"(('hans', 'verdugo', 'MEX'), ('john', 'isner', 'USA'))",Australian Open_2023,MEX,102.0,0,0,0.36250001192092896,0.015748031496062992,0.2204724409448819,0.452677166309413
+"(('hans', 'verdugo', 'MEX'), ('john', 'isner', 'USA'))",Australian Open_2023,MEX,102.0,0,0,0.3625000119209289,0.015748031496062992,0.2204724409448819,0.452677166309413
 "(('alex', 'molcan', 'SVK'), ('jiri', 'lehecka', 'CZE'))",Australian Open_2023,CZE,1057.0,0,0,0.75,0.0,0.0,0.2440944881889764
 "(('francisco', 'cerundolo', 'ARG'), ('tomas', 'etcheverry', 'ARG'))",Australian Open_2023,ARG,209.0,1,1,1.0,0.08661417322834646,0.2204724409448819,0.452677166309413
 "(('ben', 'mclachlan', 'JPN'), ('yoshihito', 'nishioka', 'JPN'))",Australian Open_2023,JPN,70.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.007874015748031496
@@ -1304,15 +1304,15 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('hugo', 'nys', 'MCO'), ('jan', 'zielinski', 'POL'))",Australian Open_2023,MCO,40.0,0,0,0.25,0.0,0.0,0.39500000175293976
 "(('david', 'hernandez', 'ESP'), ('rafael', 'matos', 'BRA'))",Australian Open_2023,BRA,29.0,0,0,0.75,0.015748031496062992,0.031496062992125984,0.3997440959407589
 "(('alexei', 'popyrin', 'AUS'), ('marc', 'polmans', 'AUS'))",Australian Open_2023,AUS,1074.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
-"(('facundo', 'bagnis', 'ARG'), ('robert', 'galloway', 'USA'))",Australian Open_2023,ARG,817.0,0,0,0.36250001192092896,0.08661417322834646,0.2204724409448819,0.452677166309413
+"(('facundo', 'bagnis', 'ARG'), ('robert', 'galloway', 'USA'))",Australian Open_2023,ARG,817.0,0,0,0.3625000119209289,0.08661417322834646,0.2204724409448819,0.452677166309413
 "(('jordan', 'thompson', 'AUS'), ('max', 'purcell', 'AUS'))",Australian Open_2023,AUS,33.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
 "(('guillermo', 'duran', 'ARG'), ('philipp', 'oswald', 'AUT'))",Australian Open_2023,ARG,72.0,0,0,0.25,0.08661417322834646,0.2204724409448819,0.452677166309413
 "(('petros', 'tsitsipas', 'GRC'), ('stefanos', 'tsitsipas', 'GRC'))",Australian Open_2023,GRC,73.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.22395669293450557
 "(('miguel', 'reyes-varela', 'MEX'), ('ramkumar', 'ramanathan', 'IND'))",Australian Open_2023,MEX,62.0,0,0,0.0,0.015748031496062992,0.2204724409448819,0.452677166309413
 "(('neal', 'skupski', 'GBR'), ('wesley', 'koolhof', 'NLD'))",Roland Garros_2023,NLD,1.0,0,0,0.5,0.03937007874015748,0.05511811023622047,0.33312992182538265
-"(('andrey', 'golubev', 'KAZ'), ('gonzalo', 'escobar', 'ECU'))",Roland Garros_2023,ECU,55.0,0,0,0.10249999910593033,0.007874015748031496,0.1889763779527559,0.4515944892379243
+"(('andrey', 'golubev', 'KAZ'), ('gonzalo', 'escobar', 'ECU'))",Roland Garros_2023,ECU,55.0,0,0,0.1024999991059303,0.007874015748031496,0.1889763779527559,0.4515944892379243
 "(('joe', 'salisbury', 'GBR'), ('rajeev', 'ram', 'USA'))",Roland Garros_2023,USA,3.0,0,1,0.8875000476837158,0.07086614173228346,0.2440944881889764,0.40865946355767135
-"(('guido', 'pella', 'ARG'), ('hugo', 'dellien', 'BOL'))",Roland Garros_2023,BOL,224.0,0,0,0.5400000214576721,0.0,0.0,0.24581693984040126
+"(('guido', 'pella', 'ARG'), ('hugo', 'dellien', 'BOL'))",Roland Garros_2023,BOL,224.0,0,0,0.5400000214576721,0.0,0.0,0.24581693984040123
 "(('jean-julien', 'rojer', 'NLD'), ('marcelo', 'arevalo', 'SLV'))",Roland Garros_2023,SLV,6.0,0,0,0.25,0.0,0.1889763779527559,0.4515944892379243
 "(('petros', 'tsitsipas', 'GRC'), ('stefanos', 'tsitsipas', 'GRC'))",Roland Garros_2023,GRC,159.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.22395669293450557
 "(('austin', 'krajicek', 'USA'), ('ivan', 'dodig', 'HRV'))",Roland Garros_2023,HRV,8.0,0,0,0.25,0.015748031496062992,0.023622047244094488,0.2440944881889764
@@ -1327,7 +1327,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('kevin', 'krawietz', 'DEU'), ('tim', 'puetz', 'DEU'))",Roland Garros_2023,DEU,26.0,1,1,1.0,0.023622047244094488,0.023622047244094488,0.3399803155637163
 "(('victor', 'cornea', 'ROU'), ('zhizhen', 'zhang', 'CHN'))",Roland Garros_2023,ROU,89.0,0,0,0.0,0.0,0.0,0.3352952774936759
 "(('andreas', 'mies', 'DEU'), ('matwe', 'middelkoop', 'NLD'))",Roland Garros_2023,NLD,24.0,0,0,0.75,0.03937007874015748,0.05511811023622047,0.33312992182538265
-"(('alexander', 'bublik', 'KAZ'), ('marton', 'fucsovics', 'HUN'))",Roland Garros_2023,KAZ,158.0,0,0,0.0,0.015748031496062992,0.015748031496062992,0.11303425172534515
+"(('alexander', 'bublik', 'KAZ'), ('marton', 'fucsovics', 'HUN'))",Roland Garros_2023,KAZ,158.0,0,0,0.0,0.015748031496062992,0.015748031496062992,0.11303425172534513
 "(('jamie', 'murray', 'GBR'), ('michael', 'venus', 'NZL'))",Roland Garros_2023,GBR,36.0,0,1,1.0,0.03937007874015748,0.2440944881889764,0.38336614554557275
 "(('david', 'hernandez', 'ESP'), ('diego', 'hidalgo', 'ECU'))",Roland Garros_2023,ECU,109.0,0,1,1.0,0.007874015748031496,0.1889763779527559,0.4515944892379243
 "(('andres', 'molteni', 'ARG'), ('maximo', 'gonzalez', 'ARG'))",Roland Garros_2023,ARG,30.0,1,1,1.0,0.06299212598425197,0.1889763779527559,0.4515944892379243
@@ -1336,7 +1336,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('philipp', 'oswald', 'AUT'), ('robin', 'haase', 'NLD'))",Roland Garros_2023,NLD,29.0,0,0,0.75,0.03937007874015748,0.05511811023622047,0.33312992182538265
 "(('luca', 'sanchez', 'FRA'), ('theo', 'arribage', 'FRA'))",Roland Garros_2023,FRA,138.0,1,1,1.0,0.15748031496062992,0.1732283464566929,0.42395669474141806
 "(('arthur', 'fils', 'FRA'), ('giovanni', 'perricard', 'FRA'))",Roland Garros_2023,FRA,502.0,1,1,1.0,0.15748031496062992,0.1732283464566929,0.42395669474141806
-"(('nicolas', 'barrientos', 'COL'), ('robert', 'galloway', 'USA'))",Roland Garros_2023,COL,71.0,0,0,0.36250001192092896,0.015748031496062992,0.1889763779527559,0.4515944892379243
+"(('nicolas', 'barrientos', 'COL'), ('robert', 'galloway', 'USA'))",Roland Garros_2023,COL,71.0,0,0,0.3625000119209289,0.015748031496062992,0.1889763779527559,0.4515944892379243
 "(('albano', 'olivetti', 'FRA'), ('dan', 'added', 'FRA'))",Roland Garros_2023,FRA,98.0,1,1,1.0,0.15748031496062992,0.1732283464566929,0.42395669474141806
 "(('adam', 'pavlasek', 'CZE'), ('ariel', 'behar', 'URY'))",Roland Garros_2023,URY,68.0,0,0,0.25,0.0,0.1889763779527559,0.4515944892379243
 "(('albert', 'ramos-vinolas', 'ESP'), ('bernabe', 'miralles', 'ESP'))",Roland Garros_2023,ESP,560.0,1,1,1.0,0.03937007874015748,0.1889763779527559,0.4515944892379243
@@ -1368,7 +1368,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('juan', 'varillas', 'PER'), ('thiago', 'monteiro', 'BRA'))",Roland Garros_2023,BRA,404.0,0,0,0.75,0.023622047244094488,0.031496062992125984,0.4062401590736832
 "(('john', 'peers', 'AUS'), ('marcelo', 'melo', 'BRA'))",Roland Garros_2023,BRA,43.0,0,0,0.25,0.023622047244094488,0.031496062992125984,0.4062401590736832
 "(('miomir', 'kecmanovic', 'SRB'), ('william', 'blumberg', 'USA'))",Roland Garros_2023,USA,91.0,0,0,0.25,0.07086614173228346,0.2440944881889764,0.40865946355767135
-"(('aleksandr', 'nedovyesov', 'KAZ'), ('miguel', 'reyes-varela', 'MEX'))",Roland Garros_2023,KAZ,67.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.11303425172534515
+"(('aleksandr', 'nedovyesov', 'KAZ'), ('miguel', 'reyes-varela', 'MEX'))",Roland Garros_2023,KAZ,67.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.11303425172534513
 "(('jackson', 'withrow', 'USA'), ('nathaniel', 'lammons', 'USA'))",Roland Garros_2023,USA,31.0,1,1,1.0,0.07086614173228346,0.2440944881889764,0.40865946355767135
 "(('ben', 'shelton', 'USA'), ('max', 'purcell', 'AUS'))",Roland Garros_2023,AUS,53.0,0,1,0.8875000476837158,0.05511811023622047,0.2440944881889764,0.38336614554557275
 "(('henry', 'patten', 'GBR'), ('julian', 'cash', 'GBR'))",Roland Garros_2023,GBR,48.0,1,1,1.0,0.03937007874015748,0.2440944881889764,0.38336614554557275
@@ -1384,7 +1384,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",US Open_2023,DEU,13.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.37248251873713273
 "(('h', 'patten', 'GBR'), ('j', 'cash', 'GBR'))",US Open_2023,GBR,58.0,1,1,1.0,0.04195804195804196,0.34265734265734266,0.46800700236450543
 "(('s', 'johnson', 'USA'), ('w', 'blumberg', 'USA'))",US Open_2023,USA,122.0,1,1,1.0,0.1888111888111888,0.34265734265734266,0.49843707576498286
-"(('a', 'golubev', 'KAZ'), ('r', 'safiullin', 'RUS'))",US Open_2023,KAZ,73.0,0,0,0.4099999964237213,0.006993006993006993,0.006993006993006993,0.1132919586726002
+"(('a', 'golubev', 'KAZ'), ('r', 'safiullin', 'RUS'))",US Open_2023,KAZ,73.0,0,0,0.4099999964237213,0.006993006993006993,0.006993006993006993,0.11329195867260017
 "(('a', 'kovacevic', 'USA'), ('n', 'alboran', 'USA'))",US Open_2023,USA,278.0,1,1,1.0,0.1888111888111888,0.34265734265734266,0.49843707576498286
 "(('m', 'ebden', 'AUS'), ('r', 'bopanna', 'IND'))",US Open_2023,IND,14.0,0,1,0.0,0.02097902097902098,0.34265734265734266,0.02097902097902098
 "(('a', 'vukic', 'AUS'), ('c', ""o'connell"", 'AUS'))",US Open_2023,AUS,871.0,1,1,1.0,0.055944055944055944,0.34265734265734266,0.46800700236450543
@@ -1397,7 +1397,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'heliövaara', 'FIN'), ('l', 'glasspool', 'GBR'))",US Open_2023,GBR,27.0,0,0,0.0,0.04195804195804196,0.34265734265734266,0.46800700236450543
 "(('j', 'peers', 'AUS'), ('m', 'melo', 'BRA'))",US Open_2023,BRA,37.0,0,0,0.25,0.013986013986013986,0.02097902097902098,0.3806643391197378
 "(('j', 'murray', 'GBR'), ('m', 'venus', 'NZL'))",US Open_2023,GBR,28.0,0,1,1.0,0.04195804195804196,0.34265734265734266,0.46800700236450543
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2023,ECU,51.0,0,0,0.10249999910593033,0.0,0.14685314685314685,0.4212237785120944
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2023,ECU,51.0,0,0,0.1024999991059303,0.0,0.14685314685314685,0.4212237785120944
 "(('n', 'mahut', 'FRA'), ('p-h', 'herbert', 'FRA'))",US Open_2023,FRA,213.0,1,1,1.0,0.11188811188811189,0.1258741258741259,0.3908741304299215
 "(('a', 'popyrin', 'AUS'), ('m', 'fucsovics', 'HUN'))",US Open_2023,HUN,400.0,0,0,0.0,0.0,0.0,0.0017482517482517483
 "(('l', 'harris', 'ZAF'), ('m', 'kecmanović', 'SRB'))",US Open_2023,ZAF,130.0,0,0,0.0,0.0,0.34265734265734266,0.0
@@ -1462,13 +1462,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'stevens', 'NLD'), ('t', 'griekspoor', 'NLD'))",Wimbledon_2023,NLD,176.0,1,1,1.0,0.06993006993006994,0.08391608391608392,0.3953496511582728
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Wimbledon_2023,USA,5.0,0,1,0.8875000476837158,0.11888111888111888,0.3356643356643357,0.4919073582737596
 "(('a', 'vavassori', 'ITA'), ('s', 'bolelli', 'ITA'))",Wimbledon_2023,ITA,42.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.3336713317182514
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2023,ECU,55.0,0,0,0.10249999910593033,0.0,0.16783216783216784,0.4341608407822522
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2023,ECU,55.0,0,0,0.1024999991059303,0.0,0.16783216783216784,0.4341608407822522
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",Wimbledon_2023,FRA,46.0,1,1,1.0,0.11188811188811189,0.1258741258741259,0.390524478538053
 "(('c', 'eubanks', 'USA'), ('jj', 'wolf', 'USA'))",Wimbledon_2023,USA,287.0,1,1,1.0,0.11888111888111888,0.3356643356643357,0.4919073582737596
 "(('j', 'peers', 'AUS'), ('m', 'melo', 'BRA'))",Wimbledon_2023,BRA,36.0,0,0,0.25,0.02097902097902098,0.027972027972027972,0.3917832192215886
 "(('p', 'oswald', 'AUT'), ('r', 'haase', 'NLD'))",Wimbledon_2023,NLD,35.0,0,0,0.75,0.06993006993006994,0.08391608391608392,0.3953496511582728
 "(('l', 'glasspool', 'GBR'), ('n', 'mahut', 'FRA'))",Wimbledon_2023,GBR,9.0,0,0,0.25,0.09090909090909091,0.3356643356643357,0.4737762298200514
-"(('a', 'golubev', 'KAZ'), ('m', 'cressy', 'USA'))",Wimbledon_2023,USA,78.0,0,0,0.10250000655651093,0.11888111888111888,0.3356643356643357,0.4919073582737596
+"(('a', 'golubev', 'KAZ'), ('m', 'cressy', 'USA'))",Wimbledon_2023,USA,78.0,0,0,0.1025000065565109,0.11888111888111888,0.3356643356643357,0.4919073582737596
 "(('d', 'pel', 'NLD'), ('r', 'stalder', 'USA'))",Wimbledon_2023,NLD,86.0,0,0,0.4625000059604645,0.06993006993006994,0.08391608391608392,0.3953496511582728
 "(('c', 'lestienne', 'FRA'), ('c', 'moutet', 'FRA'))",Wimbledon_2023,FRA,278.0,1,1,1.0,0.11188811188811189,0.1258741258741259,0.390524478538053
 "(('j', 'fearnley', 'GBR'), ('j', 'monday', 'GBR'))",Wimbledon_2023,GBR,432.0,1,1,1.0,0.09090909090909091,0.3356643356643357,0.4737762298200514
@@ -1564,7 +1564,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",Australian Open_2024,ARG,13.0,1,1,1.0,0.055944055944055944,0.11888111888111888,0.37125874216948357
 "(('p', 'cachín', 'ARG'), ('r', 'baena', 'ESP'))",Australian Open_2024,ARG,426.0,0,1,1.0,0.055944055944055944,0.11888111888111888,0.37125874216948357
 "(('a', 'vukic', 'AUS'), ('n', 'borges', 'PRT'))",Australian Open_2024,PRT,221.0,0,0,0.25,0.006993006993006993,0.03496503496503497,0.34739510626434444
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Australian Open_2024,ECU,52.0,0,0,0.10249999910593033,0.0,0.11888111888111888,0.37125874216948357
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Australian Open_2024,ECU,52.0,0,0,0.1024999991059303,0.0,0.11888111888111888,0.37125874216948357
 "(('a', 'mannarino', 'FRA'), ('q', 'halys', 'FRA'))",Australian Open_2024,FRA,360.0,1,1,1.0,0.04895104895104895,0.06293706293706294,0.33052447735221235
 "(('j', 'cash', 'GBR'), ('r', 'galloway', 'USA'))",Australian Open_2024,GBR,49.0,0,1,0.8875000476837158,0.03496503496503497,0.3356643356643357,0.4745804232421455
 "(('j', 'withrow', 'USA'), ('n', 'lammons', 'USA'))",Australian Open_2024,USA,25.0,1,1,1.0,0.06993006993006994,0.3356643356643357,0.47379372326227337
@@ -1597,7 +1597,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'mies', 'DEU'), ('n', 'skupski', 'GBR'))",Roland Garros_2024,DEU,42.0,0,0,0.5,0.04195804195804196,0.04195804195804196,0.3577797208111603
 "(('b', 'zandschulp', 'NLD'), ('r', 'haase', 'NLD'))",Roland Garros_2024,NLD,56.0,1,1,1.0,0.04895104895104895,0.07692307692307693,0.3529895110042779
 "(('a', 'müller', 'FRA'), ('l', 'sanchez', 'FRA'))",Roland Garros_2024,FRA,329.0,1,1,1.0,0.1258741258741259,0.16083916083916083,0.40001748444942326
-"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Roland Garros_2024,KAZ,148.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11741783198985187
+"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Roland Garros_2024,KAZ,148.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11741783198985184
 "(('d', 'lajović', 'SRB'), ('m', 'kecmanović', 'SRB'))",Roland Garros_2024,SRB,433.0,1,1,1.0,0.006993006993006993,0.03496503496503497,0.25779720275968937
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",Roland Garros_2024,ARG,17.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.428129371594299
 "(('j-j', 'rojer', 'NLD'), ('l', 'glasspool', 'GBR'))",Roland Garros_2024,GBR,39.0,0,0,0.5,0.06293706293706294,0.23776223776223776,0.41183566833501095
@@ -1629,7 +1629,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'munar', 'ESP'), ('p', 'martínez', 'ESP'))",Roland Garros_2024,ESP,274.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.428129371594299
 "(('g', 'barrère', 'FRA'), ('l', 'pouille', 'FRA'))",Roland Garros_2024,FRA,431.0,1,1,1.0,0.1258741258741259,0.16083916083916083,0.40001748444942326
 "(('g', 'perricard', 'FRA'), ('t', 'droguet', 'FRA'))",Roland Garros_2024,FRA,427.0,1,1,1.0,0.1258741258741259,0.16083916083916083,0.40001748444942326
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Roland Garros_2024,ECU,47.0,0,0,0.10249999910593033,0.006993006993006993,0.16083916083916083,0.428129371594299
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Roland Garros_2024,ECU,47.0,0,0,0.1024999991059303,0.006993006993006993,0.16083916083916083,0.428129371594299
 "(('p', 'busta', 'ESP'), ('s', 'gornés', 'ESP'))",Roland Garros_2024,ESP,42.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.428129371594299
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Roland Garros_2024,USA,6.0,0,1,0.8875000476837158,0.07692307692307693,0.23776223776223776,0.4303286864415749
 "(('a', 'behar', 'URY'), ('a', 'pavlásek', 'CZE'))",Roland Garros_2024,URY,35.0,0,0,0.25,0.0,0.16083916083916083,0.428129371594299
@@ -1712,11 +1712,11 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('m', 'navone', 'ARG'), ('t', 'monteiro', 'BRA'))",US Open_2024,BRA,161.0,0,0,0.75,0.027972027972027972,0.04195804195804196,0.4088811218946964
 "(('a', 'mannarino', 'FRA'), ('a', 'rinderknech', 'FRA'))",US Open_2024,FRA,411.0,1,1,1.0,0.08391608391608392,0.11888111888111888,0.3780594448318015
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",US Open_2024,DEU,20.0,1,1,1.0,0.04195804195804196,0.04195804195804196,0.38984265850557315
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2024,ECU,53.0,0,0,0.10249999910593033,0.006993006993006993,0.1958041958041958,0.45389860337013965
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2024,ECU,53.0,0,0,0.1024999991059303,0.006993006993006993,0.1958041958041958,0.45389860337013965
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",US Open_2024,ARG,33.0,1,1,1.0,0.06993006993006994,0.1958041958041958,0.45389860337013965
 "(('c', 'rodríguez', 'COL'), ('n', 'jarry', 'CHL'))",US Open_2024,CHL,340.0,0,1,1.0,0.006993006993006993,0.1958041958041958,0.45389860337013965
 "(('jj', 'tracy', 'USA'), ('r', 'cash', 'USA'))",US Open_2024,USA,212.0,1,1,1.0,0.16783216783216784,0.3356643356643357,0.5122692449526354
-"(('a', 'shevchenko', 'KAZ'), ('s', 'weissborn', 'AUT'))",US Open_2024,KAZ,876.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.11164335703307932
+"(('a', 'shevchenko', 'KAZ'), ('s', 'weissborn', 'AUT'))",US Open_2024,KAZ,876.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.1116433570330793
 "(('f', 'coria', 'ARG'), ('r', 'baena', 'ESP'))",US Open_2024,ESP,408.0,0,1,1.0,0.04195804195804196,0.1958041958041958,0.45389860337013965
 "(('p', 'kotov', 'RUS'), ('t', 'wild', 'BRA'))",US Open_2024,RUS,869.0,0,0,0.25,0.006993006993006993,0.006993006993006993,0.2539860139359961
 "(('m', 'ebden', 'AUS'), ('r', 'bopanna', 'IND'))",US Open_2024,IND,4.0,0,1,0.0,0.013986013986013986,0.3356643356643357,0.013986013986013986
@@ -1742,7 +1742,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'shelton', 'USA'), ('m', 'mcdonald', 'USA'))",Wimbledon_2024,USA,120.0,1,1,1.0,0.09090909090909091,0.34965034965034963,0.5079195986052493
 "(('f', 'cobolli', 'ITA'), ('l', 'sonego', 'ITA'))",Wimbledon_2024,ITA,1395.0,1,1,1.0,0.027972027972027972,0.027972027972027972,0.3292482540636629
 "(('a', 'olivetti', 'FRA'), ('y', 'bhambri', 'IND'))",Wimbledon_2024,IND,55.0,0,0,0.0,0.02097902097902098,0.34965034965034963,0.02097902097902098
-"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Wimbledon_2024,KAZ,131.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11505244740030983
+"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Wimbledon_2024,KAZ,131.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.1150524474003098
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",Wimbledon_2024,DEU,15.0,1,1,1.0,0.055944055944055944,0.055944055944055944,0.4005769236417083
 "(('f', 'romboli', 'BRA'), ('l', 'darderi', 'ITA'))",Wimbledon_2024,ITA,262.0,0,0,0.5,0.027972027972027972,0.027972027972027972,0.3292482540636629
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Wimbledon_2024,USA,6.0,0,1,0.8875000476837158,0.09090909090909091,0.34965034965034963,0.5079195986052493
@@ -1774,7 +1774,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'cash', 'GBR'), ('r', 'galloway', 'USA'))",Wimbledon_2024,GBR,39.0,0,1,0.8875000476837158,0.13986013986013987,0.34965034965034963,0.5016258787754533
 "(('m', 'daniell', 'NZL'), ('t', 'arribagé', 'FRA'))",Wimbledon_2024,FRA,71.0,0,0,0.25,0.055944055944055944,0.07692307692307693,0.3502272750426839
 "(('r', 'arneodo', 'MCO'), ('s', 'verbeek', 'NLD'))",Wimbledon_2024,MCO,75.0,0,0,0.25,0.006993006993006993,0.006993006993006993,0.36421328902869793
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2024,ECU,47.0,0,0,0.10249999910593033,0.006993006993006993,0.16783216783216784,0.4187587424070685
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2024,ECU,47.0,0,0,0.1024999991059303,0.006993006993006993,0.16783216783216784,0.4187587424070685
 "(('m', 'arévalo', 'SLV'), ('m', 'pavić', 'HRV'))",Wimbledon_2024,SLV,7.0,0,0,0.25,0.006993006993006993,0.16783216783216784,0.4187587424070685
 "(('l', 'johnson', 'GBR'), ('s', 'balaji', 'IND'))",Wimbledon_2024,IND,64.0,0,1,0.0,0.02097902097902098,0.34965034965034963,0.02097902097902098
 "(('s', 'gonzález', 'MEX'), ('é', 'roger-vasselin', 'FRA'))",Wimbledon_2024,MEX,14.0,0,0,0.5,0.006993006993006993,0.16783216783216784,0.4187587424070685
@@ -1830,13 +1830,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'zandschulp', 'NLD'), ('t', 'griekspoor', 'NLD'))",Australian Open_2025,NLD,143.0,1,1,1.0,0.04895104895104895,0.06993006993006994,0.3581818185381956
 "(('c', ""o'connell"", 'AUS'), ('r', 'safiullin', 'RUS'))",Australian Open_2025,AUS,1257.0,0,0,0.25,0.11188811188811189,0.3006993006993007,0.43562937361168697
 "(('má', 'reyes-varela', 'MEX'), ('s', 'balaji', 'IND'))",Australian Open_2025,IND,65.0,0,0,0.0,0.04195804195804196,0.3006993006993007,0.04195804195804196
-"(('a', 'nedovyesov', 'KAZ'), ('r', 'haase', 'NLD'))",Australian Open_2025,NLD,71.0,0,0,0.10249999910593033,0.04895104895104895,0.06993006993006994,0.3581818185381956
+"(('a', 'nedovyesov', 'KAZ'), ('r', 'haase', 'NLD'))",Australian Open_2025,NLD,71.0,0,0,0.1024999991059303,0.04895104895104895,0.06993006993006994,0.3581818185381956
 "(('f', 'cabral', 'PRT'), ('n', 'borges', 'PRT'))",Australian Open_2025,PRT,252.0,1,1,1.0,0.02097902097902098,0.055944055944055944,0.37225524586189046
 "(('m', 'venus', 'NZL'), ('n', 'mektić', 'HRV'))",Australian Open_2025,HRV,8.0,0,0,0.25,0.027972027972027972,0.04195804195804196,0.25954545450794114
 "(('j', 'withrow', 'USA'), ('n', 'lammons', 'USA'))",Australian Open_2025,USA,20.0,1,1,1.0,0.055944055944055944,0.3006993006993007,0.4413986182087785
 "(('e', 'king', 'USA'), ('m', 'giron', 'USA'))",Australian Open_2025,USA,584.0,1,1,1.0,0.055944055944055944,0.3006993006993007,0.4413986182087785
-"(('a', 'behar', 'URY'), ('r', 'galloway', 'USA'))",Australian Open_2025,URY,42.0,0,0,0.36250001192092896,0.0,0.13286713286713286,0.3938461545776654
-"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Australian Open_2025,KAZ,117.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11433566392926903
+"(('a', 'behar', 'URY'), ('r', 'galloway', 'USA'))",Australian Open_2025,URY,42.0,0,0,0.3625000119209289,0.0,0.13286713286713286,0.3938461545776654
+"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Australian Open_2025,KAZ,117.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.114335663929269
 "(('l', 'miedler', 'AUT'), ('s', 'gonzález', 'MEX'))",Australian Open_2025,MEX,45.0,0,0,0.25,0.006993006993006993,0.13286713286713286,0.3938461545776654
 "(('s', 'watanabe', 'JPN'), ('t', 'yuzuki', 'JPN'))",Australian Open_2025,JPN,167.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.006993006993006993
 "(('j', 'cash', 'GBR'), ('l', 'glasspool', 'GBR'))",Australian Open_2025,GBR,31.0,1,1,1.0,0.06293706293706294,0.3006993006993007,0.43562937361168697
@@ -1896,7 +1896,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('pe', 'tsitsipas', 'GRC'), ('s', 'tsitsipas', 'GRC'))",Roland Garros_2025,GRC,105.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.23426573426573427
 "(('a', 'cazaux', 'FRA'), ('h', 'mayot', 'FRA'))",Roland Garros_2025,FRA,580.0,1,1,1.0,0.16083916083916083,0.1958041958041958,0.42645105156865154
 "(('j', 'murray', 'GBR'), ('r', 'ram', 'USA'))",Roland Garros_2025,GBR,29.0,0,1,0.8875000476837158,0.07692307692307693,0.3006993006993007,0.45470280205453195
-"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Roland Garros_2025,MEX,53.0,0,0,0.36250001192092896,0.006993006993006993,0.1258741258741259,0.4183741270245372
+"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Roland Garros_2025,MEX,53.0,0,0,0.3625000119209289,0.006993006993006993,0.1258741258741259,0.4183741270245372
 "(('j', 'withrow', 'USA'), ('n', 'lammons', 'USA'))",Roland Garros_2025,USA,23.0,1,1,1.0,0.0979020979020979,0.3006993006993007,0.4693147021156925
 "(('a', 'olivetti', 'FRA'), ('q', 'halys', 'FRA'))",Roland Garros_2025,FRA,388.0,1,1,1.0,0.16083916083916083,0.1958041958041958,0.42645105156865154
 "(('j', 'kubler', 'AUS'), ('j', 'thompson', 'AUS'))",Roland Garros_2025,AUS,866.0,1,1,1.0,0.06993006993006994,0.3006993006993007,0.45470280205453195
@@ -1953,8 +1953,8 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",US Open_2025,FRA,30.0,1,1,1.0,0.08450704225352113,0.11971830985915492,0.3515140895377582
 "(('a', 'göransson', 'SWE'), ('s', 'verbeek', 'NLD'))",US Open_2025,SWE,33.0,0,0,0.5,0.0,0.014084507042253521,0.3323239449569037
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",US Open_2025,ARG,22.0,1,1,1.0,0.04225352112676056,0.11971830985915492,0.38690141079501367
-"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",US Open_2025,MEX,37.0,0,0,0.36250001192092896,0.007042253521126761,0.11971830985915492,0.38690141079501367
-"(('c', 'harper', 'CAN'), ('j-j', 'rojer', 'NLD'))",US Open_2025,CAN,87.0,0,0,0.42500001192092896,0.0,0.5211267605633803,0.4557746542276631
+"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",US Open_2025,MEX,37.0,0,0,0.3625000119209289,0.007042253521126761,0.11971830985915492,0.38690141079501367
+"(('c', 'harper', 'CAN'), ('j-j', 'rojer', 'NLD'))",US Open_2025,CAN,87.0,0,0,0.4250000119209289,0.0,0.5211267605633803,0.4557746542276631
 "(('b', 'bonzi', 'FRA'), ('t', 'arribagé', 'FRA'))",US Open_2025,FRA,49.0,1,1,1.0,0.08450704225352113,0.11971830985915492,0.3515140895377582
 "(('jj', 'tracy', 'USA'), ('r', 'cash', 'USA'))",US Open_2025,USA,60.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('r', 'arneodo', 'MCO'), ('r', 'bopanna', 'IND'))",US Open_2025,MCO,38.0,0,0,0.0,0.007042253521126761,0.007042253521126761,0.3833802865529564
@@ -1969,7 +1969,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('l', 'johnson', 'GBR'), ('s', 'arends', 'NLD'))",US Open_2025,NLD,24.0,0,0,0.5,0.04225352112676056,0.07042253521126761,0.3675352125625375
 "(('f', 'marozsán', 'HUN'), ('m', 'bellucci', 'ITA'))",US Open_2025,ITA,288.0,0,0,0.0,0.014084507042253521,0.014084507042253521,0.30820423013097803
 "(('f', 'cabral', 'PRT'), ('l', 'miedler', 'AUT'))",US Open_2025,PRT,26.0,0,0,0.25,0.0,0.035211267605633804,0.358116200744686
-"(('n', 'barrientos', 'COL'), ('n', 'lammons', 'USA'))",US Open_2025,COL,71.0,0,0,0.36250001192092896,0.0,0.11971830985915492,0.38690141079501367
+"(('n', 'barrientos', 'COL'), ('n', 'lammons', 'USA'))",US Open_2025,COL,71.0,0,0,0.3625000119209289,0.0,0.11971830985915492,0.38690141079501367
 "(('a', 'pavlásek', 'CZE'), ('j', 'zieliński', 'POL'))",US Open_2025,CZE,36.0,0,0,0.5,0.04225352112676056,0.04225352112676056,0.26904929576205533
 "(('a', 'behar', 'URY'), ('j', 'vliegen', 'BEL'))",US Open_2025,URY,45.0,0,0,0.0,0.0,0.11971830985915492,0.38690141079501367
 "(('e', 'quinn', 'USA'), ('m', 'mcdonald', 'USA'))",US Open_2025,USA,308.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
@@ -1978,7 +1978,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'medjedovic', 'SRB'), ('m', 'kecmanović', 'SRB'))",US Open_2025,SRB,265.0,1,1,1.0,0.007042253521126761,0.04225352112676056,0.26100352123169834
 "(('c', 'harrison', 'USA'), ('e', 'king', 'USA'))",US Open_2025,USA,17.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('f', 'romboli', 'BRA'), ('j-p', 'smith', 'AUS'))",US Open_2025,BRA,47.0,0,0,0.25,0.028169014084507043,0.035211267605633804,0.358116200744686
-"(('a', 'bublik', 'KAZ'), ('m', 'demoliner', 'BRA'))",US Open_2025,KAZ,586.0,0,0,0.10249999910593033,0.0,0.0,0.10250000062752777
+"(('a', 'bublik', 'KAZ'), ('m', 'demoliner', 'BRA'))",US Open_2025,KAZ,586.0,0,0,0.1024999991059303,0.0,0.0,0.10250000062752776
 "(('h', 'jebens', 'DEU'), ('r', 'ho', 'TWN'))",US Open_2025,TWN,80.0,0,0,0.0,0.0,0.0,0.0
 "(('e', 'nava', 'USA'), ('t', 'boyer', 'USA'))",US Open_2025,USA,266.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('n', 'mektić', 'HRV'), ('r', 'ram', 'USA'))",US Open_2025,HRV,9.0,0,0,0.25,0.02112676056338028,0.04225352112676056,0.26376760562121027
@@ -2027,7 +2027,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'schnaitter', 'DEU'), ('m', 'wallner', 'DEU'))",Wimbledon_2025,DEU,60.0,1,1,1.0,0.03496503496503497,0.03496503496503497,0.36260489593227424
 "(('f', 'comesaña', 'ARG'), ('s', 'báez', 'ARG'))",Wimbledon_2025,ARG,346.0,1,1,1.0,0.055944055944055944,0.13286713286713286,0.40351398742490713
 "(('a', 'pavlásek', 'CZE'), ('j', 'zieliński', 'POL'))",Wimbledon_2025,CZE,46.0,0,0,0.5,0.03496503496503497,0.03496503496503497,0.265419580407076
-"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Wimbledon_2025,MEX,36.0,0,0,0.36250001192092896,0.006993006993006993,0.13286713286713286,0.40351398742490713
+"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Wimbledon_2025,MEX,36.0,0,0,0.3625000119209289,0.006993006993006993,0.13286713286713286,0.40351398742490713
 "(('a', 'vavassori', 'ITA'), ('s', 'bolelli', 'ITA'))",Wimbledon_2025,ITA,14.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.32239510780656255
 "(('a', 'behar', 'URY'), ('j', 'vliegen', 'BEL'))",Wimbledon_2025,URY,43.0,0,0,0.0,0.0,0.13286713286713286,0.40351398742490713
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",Wimbledon_2025,DEU,5.0,1,1,1.0,0.03496503496503497,0.03496503496503497,0.36260489593227424
@@ -2056,7 +2056,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'džumhur', 'BIH'), ('s', 'mansouri', 'TUN'))",Wimbledon_2025,BIH,377.0,0,0,0.0,0.0,0.03496503496503497,0.2574300700342739
 "(('r', 'galloway', 'USA'), ('y', 'bhambri', 'IND'))",Wimbledon_2025,IND,35.0,0,1,0.0,0.027972027972027972,0.3706293706293706,0.027972027972027972
 "(('m', 'guinard', 'FRA'), ('r', 'arneodo', 'MCO'))",Wimbledon_2025,MCO,45.0,0,1,1.0,0.013986013986013986,0.013986013986013986,0.3970454575402753
-"(('m', 'giron', 'USA'), ('n', 'borges', 'PRT'))",Wimbledon_2025,PRT,88.0,0,0,0.32500001788139343,0.006993006993006993,0.055944055944055944,0.3795629392241265
+"(('m', 'giron', 'USA'), ('n', 'borges', 'PRT'))",Wimbledon_2025,PRT,88.0,0,0,0.3250000178813934,0.006993006993006993,0.055944055944055944,0.3795629392241265
 "(('j-j', 'rojer', 'NLD'), ('r', 'haase', 'NLD'))",Wimbledon_2025,NLD,75.0,1,1,1.0,0.03496503496503497,0.06293706293706294,0.35910839243577075
 "(('m', 'reyes-varela', 'MEX'), ('s', 'balaji', 'IND'))",Wimbledon_2025,IND,74.0,0,0,0.0,0.027972027972027972,0.3706293706293706,0.027972027972027972
 "(('a', 'kovacevic', 'USA'), ('l', 'tien', 'USA'))",Wimbledon_2025,USA,873.0,1,1,1.0,0.11888111888111888,0.3706293706293706,0.4968356814209398
@@ -2075,7 +2075,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'marozsán', 'HUN'), ('m', 'bellucci', 'ITA'))",Wimbledon_2025,ITA,432.0,0,0,0.0,0.02097902097902098,0.02097902097902098,0.32239510780656255
 "(('d', 'stevenson', 'GBR'), ('j', 'monday', 'GBR'))",Wimbledon_2025,GBR,317.0,1,1,1.0,0.13986013986013987,0.3706293706293706,0.484982523311685
 "(('b', 'harris', 'GBR'), ('m', 'willis', 'GBR'))",Wimbledon_2025,GBR,890.0,1,1,1.0,0.13986013986013987,0.3706293706293706,0.484982523311685
-"(('a', 'bublik', 'KAZ'), ('f', 'cobolli', 'ITA'))",Wimbledon_2025,KAZ,344.0,0,0,0.10249999910593033,0.0,0.0,0.10250000004376565
+"(('a', 'bublik', 'KAZ'), ('f', 'cobolli', 'ITA'))",Wimbledon_2025,KAZ,344.0,0,0,0.1024999991059303,0.0,0.0,0.10250000004376564
 "(('h', 'heliövaara', 'FIN'), ('h', 'patten', 'GBR'))",Wimbledon_2025,FIN,3.0,0,0,0.0,0.006993006993006993,0.013986013986013986,0.008741258741258742
 "(('d', 'evans', 'GBR'), ('h', 'searle', 'GBR'))",Wimbledon_2025,GBR,1172.0,1,1,1.0,0.13986013986013987,0.3706293706293706,0.484982523311685
 "(('marcelo', 'arévalo', 'SLV'), ('mate', 'pavić', 'HRV'))",Wimbledon_2025,SLV,1.0,0,0,0.25,0.006993006993006993,0.13286713286713286,0.40351398742490713
@@ -2100,7 +2100,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'thompson', 'AUS'), ('t', 'kokkinakis', 'AUS'))",Australian Open_2018,AUS,102.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
 "(('g', 'lópez', 'ESP'), ('p', 'busta', 'ESP'))",Australian Open_2018,ESP,78.0,1,1,1.0,0.055944055944055944,0.16083916083916083,0.40136363716809065
 "(('m', 'middelkoop', 'NLD'), ('r', 'haase', 'NLD'))",Australian Open_2018,NLD,36.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.3408741266368986
-"(('d', 'marrero', 'ESP'), ('s', 'lipsky', 'USA'))",Australian Open_2018,ESP,82.0,0,0,0.36250001192092896,0.055944055944055944,0.16083916083916083,0.40136363716809065
+"(('d', 'marrero', 'ESP'), ('s', 'lipsky', 'USA'))",Australian Open_2018,ESP,82.0,0,0,0.3625000119209289,0.055944055944055944,0.16083916083916083,0.40136363716809065
 "(('m', 'venus', 'NZL'), ('r', 'klaasen', 'ZAF'))",Australian Open_2018,NZL,15.0,0,1,0.0,0.02097902097902098,0.34965034965034963,0.4532867170922406
 "(('n', 'mahut', 'FRA'), ('p-h', 'herbert', 'FRA'))",Australian Open_2018,FRA,6.0,1,1,1.0,0.04895104895104895,0.06993006993006994,0.3330069956454364
 "(('j', 'millman', 'AUS'), ('m', 'ebden', 'AUS'))",Australian Open_2018,AUS,194.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
@@ -2130,13 +2130,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'viñolas', 'ESP'), ('p', 'andújar', 'ESP'))",Australian Open_2018,ESP,149.0,1,1,1.0,0.055944055944055944,0.16083916083916083,0.40136363716809065
 "(('sa', 'ratiwatana', 'THA'), ('so', 'ratiwatana', 'THA'))",Australian Open_2018,THA,95.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.006993006993006993
 "(('l', 'hewitt', 'AUS'), ('s', 'groth', 'AUS'))",Australian Open_2018,AUS,172.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
-"(('d', 'istomin', 'UZB'), ('m', 'kukushkin', 'KAZ'))",Australian Open_2018,KAZ,821.0,0,0,0.3133999705314636,0.0,0.0,0.11188811136709227
+"(('d', 'istomin', 'UZB'), ('m', 'kukushkin', 'KAZ'))",Australian Open_2018,KAZ,821.0,0,0,0.3133999705314636,0.0,0.0,0.11188811136709226
 "(('h', 'tecău', 'ROU'), ('j-j', 'rojer', 'NLD'))",Australian Open_2018,ROU,8.0,0,0,0.25,0.013986013986013986,0.02097902097902098,0.3123776242657975
 "(('a', 'molteni', 'ARG'), ('g', 'durán', 'ARG'))",Australian Open_2018,ARG,49.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.40136363716809065
 "(('b', 'bryan', 'USA'), ('m', 'bryan', 'USA'))",Australian Open_2018,USA,12.0,1,1,1.0,0.08391608391608392,0.34965034965034963,0.4599126033172324
 "(('m', 'fucsovics', 'HUN'), ('y', 'nishioka', 'JPN'))",Australian Open_2018,JPN,518.0,0,0,0.0,0.013986013986013986,0.013986013986013986,0.013986013986013986
 "(('m', 'mirnyi', 'BLR'), ('p', 'oswald', 'AUT'))",Australian Open_2018,AUT,44.0,0,0,0.25,0.027972027972027972,0.027972027972027972,0.3513636371264091
-"(('d', 'sela', 'ISR'), ('t', 'fabbiano', 'ITA'))",Australian Open_2018,ISR,174.0,0,0,0.032499998807907104,0.006993006993006993,0.34965034965034963,0.04205664205592829
+"(('d', 'sela', 'ISR'), ('t', 'fabbiano', 'ITA'))",Australian Open_2018,ISR,174.0,0,0,0.0324999988079071,0.006993006993006993,0.34965034965034963,0.04205664205592828
 "(('m', 'reid', 'AUS'), ('n', 'kyrgios', 'AUS'))",Australian Open_2018,AUS,92.0,1,1,1.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
 "(('j-p', 'smith', 'AUS'), ('n', 'monroe', 'USA'))",Australian Open_2018,AUS,69.0,0,1,0.8875000476837158,0.11888111888111888,0.34965034965034963,0.4532867170922406
 "(('f', 'martin', 'FRA'), ('j', 'chardy', 'FRA'))",Australian Open_2018,FRA,34.0,1,1,1.0,0.04895104895104895,0.06993006993006994,0.3330069956454364
@@ -2146,7 +2146,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'škugor', 'HRV'), ('r', 'lindstedt', 'SWE'))",Australian Open_2018,HRV,41.0,0,0,0.25,0.027972027972027972,0.055944055944055944,0.27213286707451295
 "(('j', 'veselý', 'CZE'), ('r', 'jebavý', 'CZE'))",Australian Open_2018,CZE,129.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.25465034959199545
 "(('h', 'chung', 'KOR'), ('r', 'albot', 'MDA'))",Australian Open_2018,KOR,396.0,0,0,0.0,0.0,0.0,0.0
-"(('d', 'nestor', 'CAN'), ('j', 'erlich', 'ISR'))",Australian Open_2018,CAN,55.0,0,1,0.032499998807907104,0.013986013986013986,0.40559440559440557,0.42748251630292905
+"(('d', 'nestor', 'CAN'), ('j', 'erlich', 'ISR'))",Australian Open_2018,CAN,55.0,0,1,0.0324999988079071,0.013986013986013986,0.40559440559440557,0.42748251630292905
 "(('h', 'kontinen', 'FIN'), ('j', 'peers', 'AUS'))",Australian Open_2018,AUS,4.0,0,0,0.0,0.11888111888111888,0.34965034965034963,0.4532867170922406
 "(('d', 'džumhur', 'BIH'), ('d', 'lajović', 'SRB'))",Australian Open_2018,SRB,320.0,0,1,0.8575000166893005,0.013986013986013986,0.055944055944055944,0.2693881119464661
 "(('ben', 'mclachlan', 'JPN'), ('jan-lennard', 'struff', 'DEU'))",Australian Open_2018,DEU,157.0,0,0,0.0,0.027972027972027972,0.027972027972027972,0.3513636371264091
@@ -2160,7 +2160,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('lukasz', 'kubot', 'POL'), ('marcelo', 'melo', 'BRA'))",Roland Garros_2018,BRA,3.0,0,0,0.25,0.015748031496062992,0.023622047244094488,0.4096456709809191
 "(('marco', 'cecchinato', 'ITA'), ('marton', 'fucsovics', 'HUN'))",Roland Garros_2018,HUN,331.0,0,0,0.0,0.0,0.0,0.001968503937007874
 "(('mate', 'pavic', 'HRV'), ('oliver', 'marach', 'AUT'))",Roland Garros_2018,HRV,1.0,0,0,0.25,0.031496062992125984,0.05511811023622047,0.281496062992126
-"(('adil', 'shamasdin', 'CAN'), ('sander', 'arends', 'NLD'))",Roland Garros_2018,CAN,78.0,0,0,0.42500001192092896,0.015748031496062992,0.4094488188976378,0.4177559102614095
+"(('adil', 'shamasdin', 'CAN'), ('sander', 'arends', 'NLD'))",Roland Garros_2018,CAN,78.0,0,0,0.4250000119209289,0.015748031496062992,0.4094488188976378,0.4177559102614095
 "(('henri', 'kontinen', 'FIN'), ('john', 'peers', 'AUS'))",Roland Garros_2018,AUS,7.0,0,0,0.0,0.023622047244094488,0.2440944881889764,0.3956692960318618
 "(('ilya', 'ivashka', 'BLR'), ('karen', 'khachanov', 'RUS'))",Roland Garros_2018,RUS,64.0,0,0,1.0,0.007874015748031496,0.007874015748031496,0.2755905511811024
 "(('bruno', 'soares', 'BRA'), ('jamie', 'murray', 'GBR'))",Roland Garros_2018,BRA,12.0,0,0,0.25,0.015748031496062992,0.023622047244094488,0.4096456709809191
@@ -2172,7 +2172,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('alexander', 'peya', 'AUT'), ('nikola', 'mektic', 'HRV'))",Roland Garros_2018,AUT,23.0,0,0,0.25,0.015748031496062992,0.015748031496062992,0.34448818991503377
 "(('dominic', 'inglot', 'GBR'), ('franko', 'skugor', 'HRV'))",Roland Garros_2018,HRV,41.0,0,0,0.25,0.031496062992125984,0.05511811023622047,0.281496062992126
 "(('ivan', 'dodig', 'HRV'), ('rajeev', 'ram', 'USA'))",Roland Garros_2018,USA,29.0,0,0,0.25,0.10236220472440945,0.2440944881889764,0.42399607657447574
-"(('hans', 'podlipnik-castillo', 'CHL'), ('jackson', 'withrow', 'USA'))",Roland Garros_2018,USA,75.0,0,0,0.36250001192092896,0.10236220472440945,0.2440944881889764,0.42399607657447574
+"(('hans', 'podlipnik-castillo', 'CHL'), ('jackson', 'withrow', 'USA'))",Roland Garros_2018,USA,75.0,0,0,0.3625000119209289,0.10236220472440945,0.2440944881889764,0.42399607657447574
 "(('michael', 'venus', 'NZL'), ('raven', 'klaasen', 'ZAF'))",Roland Garros_2018,NZL,15.0,0,1,0.0,0.007874015748031496,0.2440944881889764,0.3956692960318618
 "(('alexandre', 'muller', 'FRA'), ('corentin', 'denolly', 'FRA'))",Roland Garros_2018,FRA,661.0,1,1,1.0,0.15748031496062992,0.18110236220472442,0.4307086646087526
 "(('marcel', 'granollers', 'ESP'), ('pablo', 'cuevas', 'URY'))",Roland Garros_2018,ESP,20.0,0,1,1.0,0.05511811023622047,0.1889763779527559,0.45511811126874185
@@ -2183,7 +2183,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('frances', 'tiafoe', 'USA'), ('taylor', 'fritz', 'USA'))",Roland Garros_2018,USA,463.0,1,1,1.0,0.10236220472440945,0.2440944881889764,0.42399607657447574
 "(('horacio', 'zeballos', 'ARG'), ('julio', 'peralta', 'CHL'))",Roland Garros_2018,ARG,34.0,0,1,1.0,0.05511811023622047,0.1889763779527559,0.45511811126874185
 "(('clement', 'tabur', 'FRA'), ('hugo', 'gaston', 'FRA'))",Roland Garros_2018,FRA,710.0,1,1,1.0,0.15748031496062992,0.18110236220472442,0.4307086646087526
-"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Roland Garros_2018,USA,68.0,0,0,0.36250001192092896,0.10236220472440945,0.2440944881889764,0.42399607657447574
+"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Roland Garros_2018,USA,68.0,0,0,0.3625000119209289,0.10236220472440945,0.2440944881889764,0.42399607657447574
 "(('ben', 'mclachlan', 'JPN'), ('jan-lennard', 'struff', 'DEU'))",Roland Garros_2018,DEU,36.0,0,0,0.0,0.03937007874015748,0.03937007874015748,0.34448818991503377
 "(('damir', 'dzumhur', 'BIH'), ('mirza', 'basic', 'BIH'))",Roland Garros_2018,BIH,146.0,1,1,1.0,0.007874015748031496,0.05511811023622047,0.2764370080054276
 "(('albert', 'ramos-vinolas', 'ESP'), ('jiri', 'vesely', 'CZE'))",Roland Garros_2018,CZE,173.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.2637795275590551
@@ -2246,7 +2246,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('matwe', 'middelkoop', 'NLD'), ('robin', 'haase', 'NLD'))",US Open_2018,NLD,35.0,1,1,1.0,0.031496062992125984,0.031496062992125984,0.36255905636417585
 "(('christopher', 'eubanks', 'USA'), ('donald', 'young', 'USA'))",US Open_2018,USA,212.0,1,1,1.0,0.18110236220472442,0.3543307086614173,0.4886023742183456
 "(('edouard', 'roger-vasselin', 'FRA'), ('rohan', 'bopanna', 'IND'))",US Open_2018,FRA,26.0,0,0,0.0,0.047244094488188976,0.06299212598425197,0.3416929181049189
-"(('marcos', 'baghdatis', 'CYP'), ('mischa', 'zverev', 'DEU'))",US Open_2018,DEU,108.0,0,0,0.19750000536441803,0.047244094488188976,0.047244094488188976,0.3724015760492152
+"(('marcos', 'baghdatis', 'CYP'), ('mischa', 'zverev', 'DEU'))",US Open_2018,DEU,108.0,0,0,0.197500005364418,0.047244094488188976,0.047244094488188976,0.3724015760492152
 "(('dominic', 'inglot', 'GBR'), ('franko', 'skugor', 'HRV'))",US Open_2018,HRV,38.0,0,0,0.25,0.031496062992125984,0.07086614173228346,0.2782874015841897
 "(('rajeev', 'ram', 'USA'), ('robert', 'lindstedt', 'SWE'))",US Open_2018,USA,33.0,0,0,0.4625000059604645,0.18110236220472442,0.3543307086614173,0.4886023742183456
 "(('malek', 'jaziri', 'TUN'), ('radu', 'albot', 'MDA'))",US Open_2018,TUN,100.0,0,0,0.0,0.0,0.06299212598425197,0.0
@@ -2272,7 +2272,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('andres', 'molteni', 'ARG'), ('roman', 'jebavy', 'CZE'))",US Open_2018,ARG,47.0,0,0,0.25,0.03937007874015748,0.14173228346456693,0.40192913604298913
 "(('evan', 'king', 'USA'), ('nathan', 'pasha', 'USA'))",US Open_2018,USA,143.0,1,1,1.0,0.18110236220472442,0.3543307086614173,0.4886023742183456
 "(('austin', 'krajicek', 'USA'), ('tennys', 'sandgren', 'USA'))",US Open_2018,USA,175.0,1,1,1.0,0.18110236220472442,0.3543307086614173,0.4886023742183456
-"(('aisam-ul-haq', 'qureshi', 'PAK'), ('jonathan', 'erlich', 'ISR'))",US Open_2018,PAK,41.0,0,0,0.032499998807907104,0.0,0.0,0.25350393712755265
+"(('aisam-ul-haq', 'qureshi', 'PAK'), ('jonathan', 'erlich', 'ISR'))",US Open_2018,PAK,41.0,0,0,0.0324999988079071,0.0,0.0,0.25350393712755265
 "(('dusan', 'lajovic', 'SRB'), ('stefanos', 'tsitsipas', 'GRC'))",US Open_2018,GRC,430.0,0,0,0.25,0.0,0.0,0.2292322836170985
 "(('cameron', 'norrie', 'GBR'), ('diego', 'schwartzman', 'ARG'))",US Open_2018,ARG,101.0,0,0,0.25,0.03937007874015748,0.14173228346456693,0.40192913604298913
 "(('joao', 'sousa', 'PRT'), ('leonardo', 'mayer', 'ARG'))",US Open_2018,PRT,48.0,0,0,0.75,0.0,0.023622047244094488,0.3653149639410297
@@ -2296,7 +2296,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('jack', 'sock', 'USA'), ('mike', 'bryan', 'USA'))",Wimbledon_2018,USA,25.0,1,1,1.0,0.07086614173228346,0.31496062992125984,0.4477165507988667
 "(('andreas', 'seppi', 'ITA'), ('daniele', 'bracciali', 'ITA'))",Wimbledon_2018,ITA,234.0,1,1,1.0,0.031496062992125984,0.031496062992125984,0.3252559071920049
 "(('alexander', 'peya', 'AUT'), ('nikola', 'mektic', 'HRV'))",Wimbledon_2018,AUT,19.0,0,0,0.25,0.023622047244094488,0.023622047244094488,0.3760433077342867
-"(('daniel', 'nestor', 'CAN'), ('jurgen', 'melzer', 'AUT'))",Wimbledon_2018,CAN,101.0,0,0,0.42500001192092896,0.007874015748031496,0.3858267716535433,0.4244685034582934
+"(('daniel', 'nestor', 'CAN'), ('jurgen', 'melzer', 'AUT'))",Wimbledon_2018,CAN,101.0,0,0,0.4250000119209289,0.007874015748031496,0.3858267716535433,0.4244685034582934
 "(('aisam-ul-haq', 'qureshi', 'PAK'), ('jean-julien', 'rojer', 'NLD'))",Wimbledon_2018,NLD,11.0,0,0,0.25,0.031496062992125984,0.031496062992125984,0.3602952762382237
 "(('david', 'ferrer', 'ESP'), ('marc', 'lopez', 'ESP'))",Wimbledon_2018,ESP,20.0,1,1,1.0,0.06299212598425197,0.1732283464566929,0.4099015755446877
 "(('marcel', 'granollers', 'ESP'), ('pablo', 'cuevas', 'URY'))",Wimbledon_2018,ESP,22.0,0,1,1.0,0.06299212598425197,0.1732283464566929,0.4099015755446877
@@ -2325,7 +2325,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('marius', 'copil', 'ROU'), ('stefanos', 'tsitsipas', 'GRC'))",Wimbledon_2018,GRC,598.0,0,0,0.25,0.0,0.0,0.22072834644730635
 "(('matthew', 'ebden', 'AUS'), ('taylor', 'fritz', 'USA'))",Wimbledon_2018,USA,424.0,0,1,0.8875000476837158,0.07086614173228346,0.31496062992125984,0.4477165507988667
 "(('benoit', 'paire', 'FRA'), ('peter', 'gojowczyk', 'DEU'))",Wimbledon_2018,FRA,121.0,0,0,0.25,0.05511811023622047,0.07874015748031496,0.34730315184968663
-"(('jonathan', 'erlich', 'ISR'), ('marcin', 'matkowski', 'POL'))",Wimbledon_2018,POL,51.0,0,0,0.06499999761581421,0.007874015748031496,0.007874015748031496,0.2505118110048489
+"(('jonathan', 'erlich', 'ISR'), ('marcin', 'matkowski', 'POL'))",Wimbledon_2018,POL,51.0,0,0,0.0649999976158142,0.007874015748031496,0.007874015748031496,0.2505118110048489
 "(('hugo', 'nys', 'MCO'), ('jonathan', 'eysseric', 'FRA'))",Wimbledon_2018,MCO,61.0,0,1,1.0,0.007874015748031496,0.007874015748031496,0.35557086800965737
 "(('maximo', 'gonzalez', 'ARG'), ('nicolas', 'jarry', 'CHL'))",Wimbledon_2018,CHL,77.0,0,1,1.0,0.015748031496062992,0.1732283464566929,0.4099015755446877
 "(('henri', 'kontinen', 'FIN'), ('john', 'peers', 'AUS'))",Wimbledon_2018,AUS,5.0,0,0,0.0,0.047244094488188976,0.31496062992125984,0.438641735653239
@@ -2358,7 +2358,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('nicolas', 'mahut', 'FRA'), ('pierre-hugues', 'herbert', 'FRA'))",Australian Open_2019,FRA,11.0,1,1,1.0,0.047244094488188976,0.05511811023622047,0.34017716835098943
 "(('david', 'marrero', 'ESP'), ('mischa', 'zverev', 'DEU'))",Australian Open_2019,DEU,92.0,0,0,0.25,0.047244094488188976,0.047244094488188976,0.3700984259407351
 "(('michael', 'venus', 'NZL'), ('raven', 'klaasen', 'ZAF'))",Australian Open_2019,NZL,15.0,0,1,0.0,0.015748031496062992,0.36220472440944884,0.484665360331066
-"(('bradley', 'klahn', 'USA'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2019,USA,230.0,0,0,0.10250000655651093,0.11811023622047244,0.36220472440944884,0.49775592161445165
+"(('bradley', 'klahn', 'USA'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2019,USA,230.0,0,0,0.1025000065565109,0.11811023622047244,0.36220472440944884,0.49775592161445165
 "(('horacio', 'zeballos', 'ARG'), ('lukasz', 'kubot', 'POL'))",Australian Open_2019,ARG,30.0,0,0,0.25,0.047244094488188976,0.1889763779527559,0.42246063141606927
 "(('aljaz', 'bedene', 'SVN'), ('maximilian', 'marterer', 'DEU'))",Australian Open_2019,DEU,286.0,0,0,0.25,0.047244094488188976,0.047244094488188976,0.3700984259407351
 "(('dominic', 'inglot', 'GBR'), ('franko', 'skugor', 'HRV'))",Australian Open_2019,HRV,25.0,0,0,0.25,0.023622047244094488,0.03937007874015748,0.2673622047103296
@@ -2371,7 +2371,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('matt', 'reid', 'AUS'), ('nick', 'kyrgios', 'AUS'))",Australian Open_2019,AUS,115.0,1,1,1.0,0.11023622047244094,0.36220472440944884,0.484665360331066
 "(('malek', 'jaziri', 'TUN'), ('radu', 'albot', 'MDA'))",Australian Open_2019,TUN,100.0,0,0,0.0,0.0,0.05511811023622047,0.0
 "(('ben', 'mclachlan', 'JPN'), ('jan-lennard', 'struff', 'DEU'))",Australian Open_2019,DEU,21.0,0,0,0.0,0.047244094488188976,0.047244094488188976,0.3700984259407351
-"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Australian Open_2019,USA,63.0,0,0,0.36250001192092896,0.11811023622047244,0.36220472440944884,0.49775592161445165
+"(('jamie', 'cerretani', 'USA'), ('marcelo', 'arevalo', 'SLV'))",Australian Open_2019,USA,63.0,0,0,0.3625000119209289,0.11811023622047244,0.36220472440944884,0.49775592161445165
 "(('horia', 'tecau', 'ROU'), ('jean-julien', 'rojer', 'NLD'))",Australian Open_2019,ROU,26.0,0,0,0.25,0.007874015748031496,0.015748031496062992,0.3204921289809107
 "(('jonny', ""o'mara"", 'GBR'), ('luke', 'bambridge', 'GBR'))",Australian Open_2019,GBR,55.0,1,1,1.0,0.05511811023622047,0.36220472440944884,0.484665360331066
 "(('marius', 'copil', 'ROU'), ('marton', 'fucsovics', 'HUN'))",Australian Open_2019,HUN,223.0,0,0,0.0,0.0,0.0,0.001968503937007874
@@ -2478,7 +2478,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('ken', 'skupski', 'GBR'), ('neal', 'skupski', 'GBR'))",Roland Garros_2019,GBR,27.0,1,1,1.0,0.06299212598425197,0.23622047244094488,0.3913582707131941
 "(('jonny', ""o'mara"", 'GBR'), ('luke', 'bambridge', 'GBR'))",Roland Garros_2019,GBR,44.0,1,1,1.0,0.06299212598425197,0.23622047244094488,0.3913582707131941
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",US Open_2019,COL,1.0,1,1,1.0,0.02097902097902098,0.18181818181818182,0.42599650540135126
-"(('p', 'cuevas', 'URY'), ('s', 'johnson', 'USA'))",US Open_2019,USA,455.0,0,0,0.36250001192092896,0.16783216783216784,0.36363636363636365,0.5115909230458987
+"(('p', 'cuevas', 'URY'), ('s', 'johnson', 'USA'))",US Open_2019,USA,455.0,0,0,0.3625000119209289,0.16783216783216784,0.36363636363636365,0.5115909230458987
 "(('c', 'norrie', 'GBR'), ('d', 'evans', 'GBR'))",US Open_2019,GBR,171.0,1,1,1.0,0.07692307692307693,0.36363636363636365,0.4891083995987485
 "(('j-l', 'struff', 'DEU'), ('t', 'pütz', 'DEU'))",US Open_2019,DEU,56.0,1,1,1.0,0.04195804195804196,0.04195804195804196,0.38019230888856875
 "(('f', 'lópez', 'ESP'), ('p', 'busta', 'ESP'))",US Open_2019,ESP,50.0,1,1,1.0,0.04895104895104895,0.18181818181818182,0.42599650540135126
@@ -2512,7 +2512,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'zeballos', 'ARG'), ('m', 'granollers', 'ESP'))",US Open_2019,ARG,7.0,0,1,1.0,0.06293706293706294,0.18181818181818182,0.42599650540135126
 "(('j', 'vliegen', 'BEL'), ('s', 'gillé', 'BEL'))",US Open_2019,BEL,43.0,1,1,1.0,0.006993006993006993,0.14685314685314685,0.013986013986013986
 "(('e', 'king', 'USA'), ('h', 'reese', 'USA'))",US Open_2019,USA,123.0,1,1,1.0,0.16783216783216784,0.36363636363636365,0.5115909230458987
-"(('a', 'bublik', 'KAZ'), ('j', 'millman', 'AUS'))",US Open_2019,AUS,337.0,0,0,0.10249999910593033,0.04195804195804196,0.36363636363636365,0.4891083995987485
+"(('a', 'bublik', 'KAZ'), ('j', 'millman', 'AUS'))",US Open_2019,AUS,337.0,0,0,0.1024999991059303,0.04195804195804196,0.36363636363636365,0.4891083995987485
 "(('a', 'minaur', 'AUS'), ('m', 'reid', 'AUS'))",US Open_2019,AUS,92.0,1,1,1.0,0.04195804195804196,0.36363636363636365,0.4891083995987485
 "(('d', 'schwartzman', 'ARG'), ('g', 'pella', 'ARG'))",US Open_2019,ARG,40.0,1,1,1.0,0.06293706293706294,0.18181818181818182,0.42599650540135126
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",US Open_2019,GBR,25.0,0,1,0.8875000476837158,0.07692307692307693,0.36363636363636365,0.4891083995987485
@@ -2566,7 +2566,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('henri', 'kontinen', 'FIN'), ('john', 'peers', 'AUS'))",Wimbledon_2019,AUS,22.0,0,0,0.0,0.06299212598425197,0.3464566929133858,0.45539370249575517
 "(('gerard', 'granollers', 'ESP'), ('marcel', 'granollers', 'ESP'))",Wimbledon_2019,ESP,92.0,1,1,1.0,0.03937007874015748,0.16535433070866143,0.3910629926469382
 "(('horacio', 'zeballos', 'ARG'), ('maximo', 'gonzalez', 'ARG'))",Wimbledon_2019,ARG,12.0,1,1,1.0,0.05511811023622047,0.16535433070866143,0.3910629926469382
-"(('artem', 'sitak', 'NZL'), ('jonathan', 'erlich', 'ISR'))",Wimbledon_2019,NZL,42.0,0,1,0.032499998807907104,0.015748031496062992,0.3464566929133858,0.45539370249575517
+"(('artem', 'sitak', 'NZL'), ('jonathan', 'erlich', 'ISR'))",Wimbledon_2019,NZL,42.0,0,1,0.0324999988079071,0.015748031496062992,0.3464566929133858,0.45539370249575517
 "(('edouard', 'roger-vasselin', 'FRA'), ('nicolas', 'mahut', 'FRA'))",Wimbledon_2019,FRA,30.0,1,1,1.0,0.03937007874015748,0.07086614173228346,0.3241732295338563
 "(('liam', 'broady', 'GBR'), ('scott', 'clayton', 'GBR'))",Wimbledon_2019,GBR,173.0,1,1,1.0,0.14173228346456693,0.3464566929133858,0.45539370249575517
 "(('joe', 'salisbury', 'GBR'), ('rajeev', 'ram', 'USA'))",Wimbledon_2019,GBR,19.0,0,1,0.8875000476837158,0.14173228346456693,0.3464566929133858,0.45539370249575517
@@ -2577,7 +2577,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('damir', 'dzumhur', 'BIH'), ('romain', 'arneodo', 'MCO'))",Wimbledon_2019,BIH,467.0,0,0,0.25,0.0,0.06299212598425197,0.2621259847729225
 "(('marcelo', 'arevalo', 'SLV'), ('miguel', 'reyes-varela', 'MEX'))",Wimbledon_2019,MEX,75.0,0,1,1.0,0.007874015748031496,0.16535433070866143,0.3910629926469382
 "(('casper', 'ruud', 'NOR'), ('lloyd', 'harris', 'ZAF'))",Wimbledon_2019,NOR,287.0,0,0,0.0,0.0,0.0,0.3197637798748617
-"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Wimbledon_2019,KAZ,180.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.1090503932218852
+"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Wimbledon_2019,KAZ,180.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.10905039322188519
 "(('benoit', 'paire', 'FRA'), ('leander', 'paes', 'IND'))",Wimbledon_2019,FRA,113.0,0,0,0.0,0.03937007874015748,0.07086614173228346,0.3241732295338563
 "(('feliciano', 'lopez', 'ESP'), ('pablo', 'busta', 'ESP'))",Wimbledon_2019,ESP,54.0,1,1,1.0,0.03937007874015748,0.16535433070866143,0.3910629926469382
 "(('cristian', 'garin', 'CHL'), ('nicolas', 'jarry', 'CHL'))",Wimbledon_2019,CHL,58.0,1,1,1.0,0.007874015748031496,0.16535433070866143,0.3910629926469382
@@ -2647,7 +2647,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('frances', 'tiafoe', 'USA'), ('ugo', 'humbert', 'FRA'))",Australian Open_2020,USA,341.0,0,0,0.2875000238418579,0.07874015748031496,0.33070866141732286,0.47368702491906683
 "(('benoit', 'paire', 'FRA'), ('simone', 'bolelli', 'ITA'))",Australian Open_2020,FRA,100.0,0,0,0.5,0.06299212598425197,0.08661417322834646,0.33946850626018105
 "(('nicolas', 'mahut', 'FRA'), ('pierre-hugues', 'herbert', 'FRA'))",Australian Open_2020,FRA,3.0,1,1,1.0,0.06299212598425197,0.08661417322834646,0.33946850626018105
-"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2020,KAZ,142.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.11484527532157936
+"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Australian Open_2020,KAZ,142.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.11484527532157934
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Australian Open_2020,DEU,10.0,1,1,1.0,0.023622047244094488,0.023622047244094488,0.35316929197686864
 "(('jaume', 'munar', 'ESP'), ('juan', 'cabal', 'COL'))",Australian Open_2020,ESP,172.0,0,1,1.0,0.047244094488188976,0.15748031496062992,0.3980905522746364
 "(('taylor', 'fritz', 'USA'), ('tommy', 'paul', 'USA'))",Australian Open_2020,USA,580.0,1,1,1.0,0.07874015748031496,0.33070866141732286,0.47368702491906683
@@ -2692,7 +2692,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('bruno', 'soares', 'BRA'), ('mate', 'pavic', 'HRV'))",Roland Garros_2020,BRA,18.0,0,0,0.25,0.015748031496062992,0.023622047244094488,0.3852755918981522
 "(('marcus', 'daniell', 'NZL'), ('philipp', 'oswald', 'AUT'))",Roland Garros_2020,AUT,42.0,0,0,0.5,0.023622047244094488,0.03937007874015748,0.34954724478440025
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Roland Garros_2020,DEU,17.0,1,1,1.0,0.023622047244094488,0.023622047244094488,0.34954724478440025
-"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Roland Garros_2020,KAZ,74.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.11118110210642101
+"(('alexander', 'bublik', 'KAZ'), ('mikhail', 'kukushkin', 'KAZ'))",Roland Garros_2020,KAZ,74.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.111181102106421
 "(('nikola', 'mektic', 'HRV'), ('wesley', 'koolhof', 'NLD'))",Roland Garros_2020,HRV,19.0,0,0,0.25,0.023622047244094488,0.047244094488188976,0.2689763779245962
 "(('ben', 'mclachlan', 'JPN'), ('luke', 'bambridge', 'GBR'))",Roland Garros_2020,JPN,60.0,0,0,0.0,0.007874015748031496,0.007874015748031496,0.007874015748031496
 "(('john', 'peers', 'AUS'), ('michael', 'venus', 'NZL'))",Roland Garros_2020,NZL,13.0,0,1,1.0,0.015748031496062992,0.2755905511811024,0.43320866515786627
@@ -2752,7 +2752,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('maximo', 'gonzalez', 'ARG'), ('simone', 'bolelli', 'ITA'))",US Open_2020,ARG,43.0,0,0,0.5,0.015873015873015872,0.1111111111111111,0.3779761923684014
 "(('ken', 'skupski', 'GBR'), ('santiago', 'gonzalez', 'MEX'))",US Open_2020,GBR,52.0,0,0,0.25,0.09523809523809523,0.4126984126984127,0.51646826191554
 "(('denis', 'shapovalov', 'CAN'), ('rohan', 'bopanna', 'IND'))",US Open_2020,CAN,45.0,0,1,0.0,0.0,0.5079365079365079,0.46361111459277926
-"(('ernesto', 'escobedo', 'MEX'), ('noah', 'rubin', 'USA'))",US Open_2020,USA,703.0,0,0,0.36250001192092896,0.15873015873015872,0.4126984126984127,0.5257143009276617
+"(('ernesto', 'escobedo', 'MEX'), ('noah', 'rubin', 'USA'))",US Open_2020,USA,703.0,0,0,0.3625000119209289,0.15873015873015872,0.4126984126984127,0.5257143009276617
 "(('marcus', 'daniell', 'NZL'), ('philipp', 'oswald', 'AUT'))",US Open_2020,AUT,41.0,0,0,0.5,0.031746031746031744,0.06349206349206349,0.39702381075374665
 "(('oliver', 'marach', 'AUT'), ('raven', 'klaasen', 'ZAF'))",US Open_2020,AUT,23.0,0,0,0.0,0.031746031746031744,0.06349206349206349,0.39702381075374665
 "(('marcelo', 'demoliner', 'BRA'), ('matwe', 'middelkoop', 'NLD'))",US Open_2020,NLD,62.0,0,0,0.25,0.031746031746031744,0.06349206349206349,0.38511904884898474
@@ -2801,13 +2801,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('marcelo', 'demoliner', 'BRA'), ('santiago', 'gonzalez', 'MEX'))",Australian Open_2021,MEX,46.0,0,0,0.75,0.0,0.15748031496062992,0.39907480359781444
 "(('dominic', 'inglot', 'GBR'), ('luke', 'bambridge', 'GBR'))",Australian Open_2021,GBR,60.0,1,1,1.0,0.06299212598425197,0.30708661417322836,0.4486811047815901
 "(('aljaz', 'bedene', 'SVN'), ('jiri', 'vesely', 'CZE'))",Australian Open_2021,CZE,657.0,0,0,0.75,0.0,0.0,0.25681102357980773
-"(('mikhail', 'kukushkin', 'KAZ'), ('ricardas', 'berankis', 'LTU'))",Australian Open_2021,KAZ,76.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.11824803107132123
+"(('mikhail', 'kukushkin', 'KAZ'), ('ricardas', 'berankis', 'LTU'))",Australian Open_2021,KAZ,76.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.11824803107132122
 "(('edouard', 'roger-vasselin', 'FRA'), ('henri', 'kontinen', 'FIN'))",Australian Open_2021,FRA,14.0,0,0,0.0,0.05511811023622047,0.09448818897637795,0.3467126004691199
 "(('maximo', 'gonzalez', 'ARG'), ('simone', 'bolelli', 'ITA'))",Australian Open_2021,ARG,43.0,0,0,0.5,0.047244094488188976,0.15748031496062992,0.39907480359781444
 "(('fabrice', 'martin', 'FRA'), ('jeremy', 'chardy', 'FRA'))",Australian Open_2021,FRA,26.0,1,1,1.0,0.05511811023622047,0.09448818897637795,0.3467126004691199
 "(('aisam-ul-haq', 'qureshi', 'PAK'), ('tomislav', 'brkic', 'BIH'))",Australian Open_2021,PAK,51.0,0,0,0.25,0.0,0.0,0.27624015774079197
 "(('pablo', 'andujar', 'ESP'), ('pedro', 'martinez', 'ESP'))",Australian Open_2021,ESP,172.0,1,1,1.0,0.047244094488188976,0.15748031496062992,0.39907480359781444
-"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2021,KAZ,84.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.11824803107132123
+"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2021,KAZ,84.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.11824803107132122
 "(('emil', 'ruusuvuori', 'FIN'), ('salvatore', 'caruso', 'ITA'))",Australian Open_2021,FIN,219.0,0,0,0.0,0.007874015748031496,0.007874015748031496,0.007874015748031496
 "(('marcus', 'daniell', 'NZL'), ('philipp', 'oswald', 'AUT'))",Australian Open_2021,AUT,42.0,0,0,0.5,0.023622047244094488,0.03937007874015748,0.34671259906113616
 "(('adrian', 'mannarino', 'FRA'), ('gilles', 'simon', 'FRA'))",Australian Open_2021,FRA,389.0,1,1,1.0,0.05511811023622047,0.09448818897637795,0.3467126004691199
@@ -2865,7 +2865,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'lajović', 'SRB'), ('f', 'krajinović', 'SRB'))",Roland Garros_2021,SRB,116.0,1,1,1.0,0.027972027972027972,0.06293706293706294,0.271678321845048
 "(('d', 'koepfer', 'DEU'), ('e', 'ruusuvuori', 'FIN'))",Roland Garros_2021,FIN,262.0,0,0,0.0,0.006993006993006993,0.006993006993006993,0.008741258741258742
 "(('a', 'bedene', 'SVN'), ('j', 'withrow', 'USA'))",Roland Garros_2021,USA,77.0,0,0,0.25,0.06993006993006994,0.24475524475524477,0.41288463052336155
-"(('a', 'bublik', 'KAZ'), ('a', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,80.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824139
+"(('a', 'bublik', 'KAZ'), ('a', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,80.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824136
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",Roland Garros_2021,FRA,128.0,1,1,1.0,0.14685314685314685,0.16083916083916083,0.40982517662581863
 "(('f', 'polášek', 'SVK'), ('i', 'dodig', 'HRV'))",Roland Garros_2021,SVK,10.0,0,0,0.5,0.0,0.0,0.24919580412911368
 "(('a', 'molteni', 'ARG'), ('f', 'nielsen', 'DNK'))",Roland Garros_2021,DNK,72.0,0,0,0.25,0.0,0.0,0.30090909133424293
@@ -2903,7 +2903,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('k', 'skupski', 'GBR'), ('n', 'skupski', 'GBR'))",Roland Garros_2021,GBR,19.0,1,1,1.0,0.04895104895104895,0.24475524475524477,0.39653846517309443
 "(('pablo', 'andújar', 'ESP'), ('pedro', 'martínez', 'ESP'))",Roland Garros_2021,ESP,189.0,1,1,1.0,0.04895104895104895,0.16083916083916083,0.4173426582263066
 "(('franko', 'škugor', 'HRV'), ('rohan', 'bopanna', 'IND'))",Roland Garros_2021,HRV,37.0,0,0,0.0,0.013986013986013986,0.06293706293706294,0.2666783216116312
-"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,80.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824139
+"(('alexander', 'bublik', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Roland Garros_2021,KAZ,80.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.12170139827824136
 "(('hugo', 'nys', 'MCO'), ('tim', 'pütz', 'DEU'))",Roland Garros_2021,DEU,38.0,0,0,0.25,0.04195804195804196,0.04195804195804196,0.34286713329228485
 "(('nicolas', 'mahut', 'FRA'), ('pierre-hugues', 'herbert', 'FRA'))",Roland Garros_2021,FRA,6.0,1,1,1.0,0.14685314685314685,0.16083916083916083,0.40982517662581863
 "(('nikola', 'ćaćić', 'SRB'), ('tomislav', 'brkić', 'BIH'))",Roland Garros_2021,SRB,52.0,0,1,0.8575000166893005,0.027972027972027972,0.06293706293706294,0.271678321845048
@@ -2921,7 +2921,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('m', 'krueger', 'USA'), ('m', 'mmoh', 'USA'))",US Open_2021,USA,282.0,1,1,1.0,0.17482517482517482,0.4195804195804196,0.5343181972320263
 "(('a', 'molteni', 'ARG'), ('s', 'gonzález', 'MEX'))",US Open_2021,ARG,62.0,0,1,1.0,0.04195804195804196,0.1258741258741259,0.38452797409120976
 "(('m', 'mcdonald', 'USA'), ('r', 'haase', 'NLD'))",US Open_2021,USA,180.0,0,0,0.4625000059604645,0.17482517482517482,0.4195804195804196,0.5343181972320263
-"(('f', 'nielsen', 'DNK'), ('v', 'pospisil', 'CAN'))",US Open_2021,CAN,174.0,0,0,0.42500001192092896,0.0,0.4965034965034965,0.4705069960205705
+"(('f', 'nielsen', 'DNK'), ('v', 'pospisil', 'CAN'))",US Open_2021,CAN,174.0,0,0,0.4250000119209289,0.0,0.4965034965034965,0.4705069960205705
 "(('a', 'göransson', 'SWE'), ('m', 'giron', 'USA'))",US Open_2021,SWE,66.0,0,0,0.4625000059604645,0.0,0.02097902097902098,0.3457167843630264
 "(('h', 'tecău', 'ROU'), ('k', 'krawietz', 'DEU'))",US Open_2021,ROU,18.0,0,0,0.25,0.006993006993006993,0.006993006993006993,0.3027097944404695
 "(('m', 'fucsovics', 'HUN'), ('s', 'travaglia', 'ITA'))",US Open_2021,ITA,234.0,0,0,0.0,0.013986013986013986,0.013986013986013986,0.306206297936973
@@ -2949,7 +2949,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'coria', 'ARG'), ('g', 'mager', 'ITA'))",US Open_2021,ITA,1557.0,0,0,0.5,0.013986013986013986,0.013986013986013986,0.306206297936973
 "(('j-j', 'rojer', 'NLD'), ('w', 'koolhof', 'NLD'))",US Open_2021,NLD,35.0,1,1,1.0,0.02097902097902098,0.03496503496503497,0.3684440570902991
 "(('a', 'karatsev', 'RUS'), ('a', 'nedovyesov', 'KAZ'))",US Open_2021,KAZ,80.0,0,0,0.4099999964237213,0.006993006993006993,0.006993006993006993,0.11416643396853567
-"(('a', 'golubev', 'KAZ'), ('a', 'mies', 'DEU'))",US Open_2021,DEU,24.0,0,0,0.10249999910593033,0.03496503496503497,0.03496503496503497,0.37718531583155784
+"(('a', 'golubev', 'KAZ'), ('a', 'mies', 'DEU'))",US Open_2021,DEU,24.0,0,0,0.1024999991059303,0.03496503496503497,0.03496503496503497,0.37718531583155784
 "(('a', 'viñolas', 'ESP'), ('p', 'martínez', 'ESP'))",US Open_2021,ESP,563.0,1,1,1.0,0.027972027972027972,0.1258741258741259,0.38452797409120976
 "(('n', 'ćaćić', 'SRB'), ('t', 'brkić', 'BIH'))",US Open_2021,SRB,40.0,0,1,0.8575000166893005,0.027972027972027972,0.055944055944055944,0.2750524476274744
 "(('a', 'mannarino', 'FRA'), ('p', 'cuevas', 'URY'))",US Open_2021,FRA,145.0,0,0,0.5,0.055944055944055944,0.07692307692307693,0.331730773711538
@@ -2982,7 +2982,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('bruno', 'soares', 'BRA'), ('jamie', 'murray', 'GBR'))",US Open_2021,BRA,11.0,0,0,0.25,0.027972027972027972,0.027972027972027972,0.3532342688812243
 "(('horacio', 'zeballos', 'ARG'), ('marcel', 'granollers', 'ESP'))",US Open_2021,ARG,4.0,0,1,1.0,0.04195804195804196,0.1258741258741259,0.38452797409120976
 "(('m', 'pavić', 'HRV'), ('n', 'mektić', 'HRV'))",Wimbledon_2021,HRV,1.0,1,1,1.0,0.03496503496503497,0.07692307692307693,0.28447552442133844
-"(('a', 'vasilevski', 'BLR'), ('j', 'erlich', 'ISR'))",Wimbledon_2021,BLR,81.0,0,0,0.12999999523162842,0.006993006993006993,0.006993006993006993,0.26475524464687267
+"(('a', 'vasilevski', 'BLR'), ('j', 'erlich', 'ISR'))",Wimbledon_2021,BLR,81.0,0,0,0.1299999952316284,0.006993006993006993,0.006993006993006993,0.26475524464687267
 "(('a', 'minaur', 'AUS'), ('m', 'reid', 'AUS'))",Wimbledon_2021,AUS,90.0,1,1,1.0,0.055944055944055944,0.3076923076923077,0.44284965248999897
 "(('a', 'matusevich', 'GBR'), ('l', 'johnson', 'GBR'))",Wimbledon_2021,GBR,994.0,1,1,1.0,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('n', 'ćaćić', 'SRB'), ('t', 'brkić', 'BIH'))",Wimbledon_2021,SRB,45.0,0,1,0.8575000166893005,0.027972027972027972,0.07692307692307693,0.2834790210415433
@@ -3000,7 +3000,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",Wimbledon_2021,COL,4.0,1,1,1.0,0.02097902097902098,0.14685314685314685,0.3842832172563026
 "(('d', 'pel', 'NLD'), ('y-h', 'lu', 'TWN'))",Wimbledon_2021,NLD,84.0,0,0,0.0,0.03496503496503497,0.04895104895104895,0.34267482552286627
 "(('r', 'matos', 'BRA'), ('t', 'monteiro', 'BRA'))",Wimbledon_2021,BRA,188.0,1,1,1.0,0.03496503496503497,0.03496503496503497,0.3544755252403813
-"(('a', 'bublik', 'KAZ'), ('a', 'nedovyesov', 'KAZ'))",Wimbledon_2021,KAZ,85.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.12187622318213637
+"(('a', 'bublik', 'KAZ'), ('a', 'nedovyesov', 'KAZ'))",Wimbledon_2021,KAZ,85.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.12187622318213634
 "(('d', 'inglot', 'GBR'), ('l', 'bambridge', 'GBR'))",Wimbledon_2021,GBR,61.0,1,1,1.0,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('j', 'ward', 'GBR'), ('s', 'parker', 'GBR'))",Wimbledon_2021,GBR,537.0,1,1,1.0,0.1258741258741259,0.3076923076923077,0.44284965248999897
 "(('l', 'saville', 'AUS'), ('m', 'purcell', 'AUS'))",Wimbledon_2021,AUS,32.0,1,1,1.0,0.055944055944055944,0.3076923076923077,0.44284965248999897
@@ -3031,7 +3031,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'lajović', 'SRB'), ('i', 'sabanov', 'SRB'))",Wimbledon_2021,SRB,115.0,1,1,1.0,0.027972027972027972,0.07692307692307693,0.2834790210415433
 "(('b', 'soares', 'BRA'), ('j', 'murray', 'GBR'))",Wimbledon_2021,BRA,13.0,0,0,0.25,0.03496503496503497,0.03496503496503497,0.3544755252403813
 "(('n', 'monroe', 'USA'), ('v', 'pospisil', 'CAN'))",Wimbledon_2021,CAN,192.0,0,1,0.7075000405311584,0.0,0.35664335664335667,0.41515733869550947
-"(('a', 'golubev', 'KAZ'), ('r', 'haase', 'NLD'))",Wimbledon_2021,NLD,44.0,0,0,0.10249999910593033,0.03496503496503497,0.04895104895104895,0.34267482552286627
+"(('a', 'golubev', 'KAZ'), ('r', 'haase', 'NLD'))",Wimbledon_2021,NLD,44.0,0,0,0.1024999991059303,0.03496503496503497,0.04895104895104895,0.34267482552286627
 "(('m', 'demoliner', 'BRA'), ('s', 'gonzález', 'MEX'))",Wimbledon_2021,MEX,54.0,0,0,0.75,0.0,0.14685314685314685,0.3842832172563026
 "(('m', 'gonzález', 'ARG'), ('s', 'bolelli', 'ITA'))",Wimbledon_2021,ARG,36.0,0,0,0.5,0.04195804195804196,0.14685314685314685,0.3842832172563026
 "(('f', 'krajinović', 'SRB'), ('m', 'sabanov', 'HRV'))",Wimbledon_2021,HRV,115.0,0,1,0.75,0.03496503496503497,0.07692307692307693,0.28447552442133844
@@ -3085,10 +3085,10 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'thompson', 'AUS'), ('m', 'reid', 'AUS'))",Australian Open_2022,AUS,190.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
 "(('f', 'polášek', 'SVK'), ('j', 'peers', 'AUS'))",Australian Open_2022,SVK,9.0,0,0,0.25,0.006993006993006993,0.006993006993006993,0.2617482516940657
 "(('j-p', 'smith', 'AUS'), ('l', 'saville', 'AUS'))",Australian Open_2022,AUS,68.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
-"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Australian Open_2022,PAK,42.0,0,0,0.10249999910593033,0.0,0.0,0.29608391605682305
+"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Australian Open_2022,PAK,42.0,0,0,0.1024999991059303,0.0,0.0,0.29608391605682305
 "(('f', 'martin', 'FRA'), ('n', 'mahut', 'FRA'))",Australian Open_2022,FRA,31.0,1,1,1.0,0.03496503496503497,0.04895104895104895,0.3214335680737362
 "(('m', 'giron', 'USA'), ('s-w', 'kwon', 'KOR'))",Australian Open_2022,KOR,699.0,0,0,0.0,0.0,0.0,0.0
-"(('a', 'bublik', 'KAZ'), ('j', 'zieliński', 'POL'))",Australian Open_2022,POL,83.0,0,0,0.20499999821186066,0.0,0.0,0.2565034964493105
+"(('a', 'bublik', 'KAZ'), ('j', 'zieliński', 'POL'))",Australian Open_2022,POL,83.0,0,0,0.2049999982118606,0.0,0.0,0.2565034964493105
 "(('d', 'altmaier', 'DEU'), ('t', 'monteiro', 'BRA'))",Australian Open_2022,BRA,161.0,0,0,0.25,0.027972027972027972,0.027972027972027972,0.34853146975482263
 "(('g', 'mager', 'ITA'), ('l', 'musetti', 'ITA'))",Australian Open_2022,ITA,369.0,1,1,1.0,0.04895104895104895,0.04895104895104895,0.3214335680737362
 "(('n', 'skupski', 'GBR'), ('w', 'koolhof', 'NLD'))",Australian Open_2022,GBR,20.0,0,0,0.5,0.055944055944055944,0.38461538461538464,0.5102447585521878
@@ -3098,7 +3098,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'inglot', 'GBR'), ('k', 'skupski', 'GBR'))",Australian Open_2022,GBR,54.0,1,1,1.0,0.055944055944055944,0.38461538461538464,0.5102447585521878
 "(('a', 'vavassori', 'ITA'), ('t', 'griekspoor', 'NLD'))",Australian Open_2022,ITA,72.0,0,0,0.25,0.04895104895104895,0.04895104895104895,0.3214335680737362
 "(('m', 'ebden', 'AUS'), ('m', 'purcell', 'AUS'))",Australian Open_2022,AUS,34.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
-"(('a', 'göransson', 'SWE'), ('j', 'erlich', 'ISR'))",Australian Open_2022,SWE,62.0,0,0,0.032499998807907104,0.0,0.006993006993006993,0.3406643360540583
+"(('a', 'göransson', 'SWE'), ('j', 'erlich', 'ISR'))",Australian Open_2022,SWE,62.0,0,0,0.0324999988079071,0.0,0.006993006993006993,0.3406643360540583
 "(('js', 'cabal', 'COL'), ('r', 'farah', 'COL'))",Australian Open_2022,COL,10.0,1,1,1.0,0.006993006993006993,0.13286713286713286,0.37737762318416074
 "(('a', 'popyrin', 'AUS'), ('l', 'harris', 'ZAF'))",Australian Open_2022,AUS,264.0,0,1,0.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
 "(('b', 'soares', 'BRA'), ('j', 'murray', 'GBR'))",Australian Open_2022,BRA,16.0,0,0,0.25,0.027972027972027972,0.027972027972027972,0.34853146975482263
@@ -3110,7 +3110,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('i', 'dodig', 'HRV'), ('m', 'melo', 'BRA'))",Australian Open_2022,BRA,24.0,0,0,0.25,0.027972027972027972,0.027972027972027972,0.34853146975482263
 "(('a', 'mannarino', 'FRA'), ('h', 'nys', 'MCO'))",Australian Open_2022,MCO,46.0,0,1,1.0,0.006993006993006993,0.006993006993006993,0.3354195820597502
 "(('d', 'sweeny', 'AUS'), ('l', 'tu', 'AUS'))",Australian Open_2022,AUS,979.0,1,1,1.0,0.1888111888111888,0.38461538461538464,0.5102447585521878
-"(('a', 'golubev', 'KAZ'), ('f', 'škugor', 'HRV'))",Australian Open_2022,HRV,56.0,0,0,0.20499999821186066,0.027972027972027972,0.07692307692307693,0.28272727267308667
+"(('a', 'golubev', 'KAZ'), ('f', 'škugor', 'HRV'))",Australian Open_2022,HRV,56.0,0,0,0.2049999982118606,0.027972027972027972,0.07692307692307693,0.28272727267308667
 "(('c', 'rungkat', 'IDN'), ('t', 'huey', 'PHL'))",Australian Open_2022,IDN,152.0,0,0,0.25,0.0,0.0,0.0017482517482517483
 "(('r', 'bopanna', 'IND'), ('é', 'roger-vasselin', 'FRA'))",Australian Open_2022,FRA,44.0,0,0,0.0,0.03496503496503497,0.04895104895104895,0.3214335680737362
 "(('f', 'nielsen', 'DNK'), ('m', 'daniell', 'NZL'))",Australian Open_2022,DNK,102.0,0,0,0.5,0.0,0.0,0.3406643360540583
@@ -3129,13 +3129,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('m', 'giron', 'USA'), ('s-w', 'kwon', 'KOR'))",Roland Garros_2022,KOR,272.0,0,0,0.0,0.0,0.0,0.0
 "(('m', 'kecmanović', 'SRB'), ('n', 'monroe', 'USA'))",Roland Garros_2022,USA,124.0,0,0,0.25,0.09090909090909091,0.24475524475524477,0.41519756563059934
 "(('j', 'sousa', 'PRT'), ('n', 'basilashvili', 'GEO'))",Roland Garros_2022,PRT,256.0,0,0,0.0,0.0,0.03496503496503497,0.3884265753668505
-"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Roland Garros_2022,ESP,67.0,0,0,0.36250001192092896,0.04895104895104895,0.17482517482517482,0.4280069942970376
+"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Roland Garros_2022,ESP,67.0,0,0,0.3625000119209289,0.04895104895104895,0.17482517482517482,0.4280069942970376
 "(('m', 'sabanov', 'HRV'), ('r', 'jebavý', 'CZE'))",Roland Garros_2022,HRV,86.0,0,0,0.5,0.03496503496503497,0.06993006993006994,0.28367132865465605
 "(('m', 'gonzález', 'ARG'), ('m', 'melo', 'BRA'))",Roland Garros_2022,BRA,41.0,0,0,0.75,0.027972027972027972,0.03496503496503497,0.3884265753668505
 "(('a', 'bedene', 'SVN'), ('f', 'krajinović', 'SRB'))",Roland Garros_2022,SRB,282.0,0,0,0.5,0.02097902097902098,0.06993006993006994,0.2809265735266092
 "(('f', 'tiafoe', 'USA'), ('m', 'fucsovics', 'HUN'))",Roland Garros_2022,USA,203.0,0,0,0.0,0.09090909090909091,0.24475524475524477,0.41519756563059934
 "(('a', 'tabilo', 'CHL'), ('tm', 'etcheverry', 'ARG'))",Roland Garros_2022,CHL,360.0,0,1,1.0,0.0,0.17482517482517482,0.4280069942970376
-"(('a', 'bublik', 'KAZ'), ('t', 'kokkinakis', 'AUS'))",Roland Garros_2022,AUS,34.0,0,0,0.10249999910593033,0.04195804195804196,0.24475524475524477,0.39265734733609886
+"(('a', 'bublik', 'KAZ'), ('t', 'kokkinakis', 'AUS'))",Roland Garros_2022,AUS,34.0,0,0,0.1024999991059303,0.04195804195804196,0.24475524475524477,0.39265734733609886
 "(('k', 'majchrzak', 'POL'), ('n', 'lammons', 'USA'))",Roland Garros_2022,POL,657.0,0,0,0.25,0.02097902097902098,0.02097902097902098,0.2679370629203903
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",Roland Garros_2022,FRA,92.0,1,1,1.0,0.13986013986013987,0.15384615384615385,0.394300701682801
 "(('p', 'andújar', 'ESP'), ('p', 'martínez', 'ESP'))",Roland Garros_2022,ESP,51.0,1,1,1.0,0.04895104895104895,0.17482517482517482,0.4280069942970376
@@ -3152,7 +3152,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'soares', 'BRA'), ('j', 'murray', 'GBR'))",Roland Garros_2022,BRA,22.0,0,0,0.25,0.027972027972027972,0.03496503496503497,0.3884265753668505
 "(('j', 'erlich', 'ISR'), ('l', 'harris', 'ZAF'))",Roland Garros_2022,ZAF,112.0,0,1,0.0,0.006993006993006993,0.24475524475524477,0.006993006993006993
 "(('m', 'mcdonald', 'USA'), ('t', 'paul', 'USA'))",Roland Garros_2022,USA,141.0,1,1,1.0,0.09090909090909091,0.24475524475524477,0.41519756563059934
-"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Roland Garros_2022,PAK,50.0,0,0,0.10249999910593033,0.0,0.0,0.24807692308734347
+"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Roland Garros_2022,PAK,50.0,0,0,0.1024999991059303,0.0,0.0,0.24807692308734347
 "(('h', 'reese', 'USA'), ('r', 'ramanathan', 'IND'))",Roland Garros_2022,USA,87.0,0,1,0.0,0.09090909090909091,0.24475524475524477,0.41519756563059934
 "(('d', 'altmaier', 'DEU'), ('o', 'otte', 'DEU'))",Roland Garros_2022,DEU,399.0,1,1,1.0,0.027972027972027972,0.027972027972027972,0.33181818241214417
 "(('n', 'skupski', 'GBR'), ('w', 'koolhof', 'NLD'))",Roland Garros_2022,GBR,13.0,0,0,0.5,0.04895104895104895,0.24475524475524477,0.39265734733609886
@@ -3183,7 +3183,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'mies', 'DEU'), ('k', 'krawietz', 'DEU'))",Roland Garros_2022,DEU,23.0,1,1,1.0,0.027972027972027972,0.027972027972027972,0.33181818241214417
 "(('m', 'middelkoop', 'NLD'), ('r', 'bopanna', 'IND'))",Roland Garros_2022,NLD,39.0,0,0,0.0,0.06293706293706294,0.07692307692307693,0.3388111894051512
 "(('l', 'assche', 'FRA'), ('s', 'wayenburg', 'FRA'))",Roland Garros_2022,FRA,486.0,1,1,1.0,0.13986013986013987,0.15384615384615385,0.394300701682801
-"(('a', 'golubev', 'KAZ'), ('f', 'martin', 'FRA'))",Roland Garros_2022,FRA,56.0,0,0,0.10249999910593033,0.13986013986013987,0.15384615384615385,0.394300701682801
+"(('a', 'golubev', 'KAZ'), ('f', 'martin', 'FRA'))",Roland Garros_2022,FRA,56.0,0,0,0.1024999991059303,0.13986013986013987,0.15384615384615385,0.394300701682801
 "(('f', 'alves', 'BRA'), ('s', 'báez', 'ARG'))",Roland Garros_2022,BRA,77.0,0,0,0.75,0.027972027972027972,0.03496503496503497,0.3884265753668505
 "(('r', 'haase', 'NLD'), ('r', 'klaasen', 'ZAF'))",Roland Garros_2022,ZAF,45.0,0,0,0.0,0.006993006993006993,0.24475524475524477,0.006993006993006993
 "(('g', 'simon', 'FRA'), ('h', 'gaston', 'FRA'))",Roland Garros_2022,FRA,894.0,1,1,1.0,0.13986013986013987,0.15384615384615385,0.394300701682801
@@ -3204,7 +3204,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('jean-julien', 'rojer', 'NLD'), ('marcelo', 'arevalo', 'SLV'))",US Open_2022,NLD,5.0,0,0,0.25,0.023622047244094488,0.031496062992125984,0.3336220483962945
 "(('alexei', 'popyrin', 'AUS'), ('john', 'peers', 'AUS'))",US Open_2022,AUS,10.0,1,1,1.0,0.047244094488188976,0.31496062992125984,0.44484252905047783
 "(('michael', 'venus', 'NZL'), ('tim', 'puetz', 'DEU'))",US Open_2022,NZL,7.0,0,0,0.5,0.0,0.31496062992125984,0.44484252905047783
-"(('andrey', 'golubev', 'KAZ'), ('pedro', 'martinez', 'ESP'))",US Open_2022,ESP,75.0,0,0,0.10249999910593033,0.047244094488188976,0.18110236220472442,0.44385827004205525
+"(('andrey', 'golubev', 'KAZ'), ('pedro', 'martinez', 'ESP'))",US Open_2022,ESP,75.0,0,0,0.1024999991059303,0.047244094488188976,0.18110236220472442,0.44385827004205525
 "(('mate', 'pavic', 'HRV'), ('nikola', 'mektic', 'HRV'))",US Open_2022,HRV,12.0,1,1,1.0,0.023622047244094488,0.047244094488188976,0.27255905507587075
 "(('brandon', 'holt', 'USA'), ('govind', 'nanda', 'USA'))",US Open_2022,USA,528.0,1,1,1.0,0.1889763779527559,0.31496062992125984,0.4806693030858603
 "(('austin', 'krajicek', 'USA'), ('ivan', 'dodig', 'HRV'))",US Open_2022,USA,26.0,0,0,0.25,0.1889763779527559,0.31496062992125984,0.4806693030858603
@@ -3225,7 +3225,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('albert', 'ramos-vinolas', 'ESP'), ('bernabe', 'miralles', 'ESP'))",US Open_2022,ESP,918.0,1,1,1.0,0.047244094488188976,0.18110236220472442,0.44385827004205525
 "(('francisco', 'cabral', 'PRT'), ('nuno', 'borges', 'PRT'))",US Open_2022,PRT,48.0,1,1,1.0,0.015748031496062992,0.05511811023622047,0.4049803184594695
 "(('miguel', 'reyes-varela', 'MEX'), ('nicolas', 'barrientos', 'COL'))",US Open_2022,MEX,67.0,0,1,1.0,0.015748031496062992,0.18110236220472442,0.44385827004205525
-"(('alexander', 'bublik', 'KAZ'), ('holger', 'rune', 'DNK'))",US Open_2022,DNK,220.0,0,0,0.10249999910593033,0.0,0.0,0.3139370090262158
+"(('alexander', 'bublik', 'KAZ'), ('holger', 'rune', 'DNK'))",US Open_2022,DNK,220.0,0,0,0.1024999991059303,0.0,0.0,0.3139370090262158
 "(('denis', 'kudla', 'USA'), ('frances', 'tiafoe', 'USA'))",US Open_2022,USA,222.0,1,1,1.0,0.1889763779527559,0.31496062992125984,0.4806693030858603
 "(('joao', 'sousa', 'PRT'), ('marcelo', 'demoliner', 'BRA'))",US Open_2022,PRT,298.0,0,1,1.0,0.015748031496062992,0.05511811023622047,0.4049803184594695
 "(('horacio', 'zeballos', 'ARG'), ('marcel', 'granollers', 'ESP'))",US Open_2022,ARG,9.0,0,1,1.0,0.03937007874015748,0.18110236220472442,0.44385827004205525
@@ -3255,7 +3255,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('arthur', 'rinderknech', 'FRA'), ('benjamin', 'bonzi', 'FRA'))",US Open_2022,FRA,136.0,1,1,1.0,0.06299212598425197,0.07086614173228346,0.35822835112885226
 "(('keegan', 'smith', 'USA'), ('nicholas', 'monroe', 'USA'))",US Open_2022,USA,379.0,1,1,1.0,0.1889763779527559,0.31496062992125984,0.4806693030858603
 "(('alex', 'molcan', 'SVK'), ('marton', 'fucsovics', 'HUN'))",US Open_2022,SVK,786.0,0,0,0.0,0.0,0.0,0.26074803145382347
-"(('aisam-ul-haq', 'qureshi', 'PAK'), ('aleksandr', 'nedovyesov', 'KAZ'))",US Open_2022,PAK,52.0,0,0,0.10249999910593033,0.0,0.0,0.25045275588439203
+"(('aisam-ul-haq', 'qureshi', 'PAK'), ('aleksandr', 'nedovyesov', 'KAZ'))",US Open_2022,PAK,52.0,0,0,0.1024999991059303,0.0,0.0,0.25045275588439203
 "(('sebastian', 'baez', 'ARG'), ('tomas', 'etcheverry', 'ARG'))",US Open_2022,ARG,208.0,1,1,1.0,0.03937007874015748,0.18110236220472442,0.44385827004205525
 "(('hugo', 'nys', 'MCO'), ('jan', 'zielinski', 'POL'))",US Open_2022,POL,45.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.2587795275168156
 "(('fabrice', 'martin', 'FRA'), ('jonny', ""o'mara"", 'GBR'))",US Open_2022,GBR,60.0,0,0,0.25,0.031496062992125984,0.31496062992125984,0.44484252905047783
@@ -3264,8 +3264,8 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Wimbledon_2022,GBR,1.0,0,1,0.8875000476837158,0.0979020979020979,0.3356643356643357,0.48395105560759566
 "(('c', 'taberner', 'ESP'), ('d', 'altmaier', 'DEU'))",Wimbledon_2022,ESP,779.0,0,0,0.25,0.027972027972027972,0.1888111888111888,0.4437412603960171
 "(('f', 'martin', 'FRA'), ('h', 'nys', 'MCO'))",Wimbledon_2022,MCO,65.0,0,1,1.0,0.0,0.0,0.3843007026227204
-"(('m', 'gonzález', 'ARG'), ('n', 'lammons', 'USA'))",Wimbledon_2022,USA,84.0,0,0,0.36250001192092896,0.13286713286713286,0.3356643356643357,0.5031818336956985
-"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Wimbledon_2022,PAK,54.0,0,0,0.10249999910593033,0.0,0.0,0.27940559439308993
+"(('m', 'gonzález', 'ARG'), ('n', 'lammons', 'USA'))",Wimbledon_2022,USA,84.0,0,0,0.3625000119209289,0.13286713286713286,0.3356643356643357,0.5031818336956985
+"(('a', 'nedovyesov', 'KAZ'), ('a-u-h', 'qureshi', 'PAK'))",Wimbledon_2022,PAK,54.0,0,0,0.1024999991059303,0.0,0.0,0.27940559439308993
 "(('j', 'duckworth', 'AUS'), ('m', 'giron', 'USA'))",Wimbledon_2022,USA,210.0,0,1,0.8875000476837158,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('d', 'hernández', 'ESP'), ('r', 'matos', 'BRA'))",Wimbledon_2022,ESP,42.0,0,0,0.75,0.027972027972027972,0.1888111888111888,0.4437412603960171
 "(('j', 'clarke', 'GBR'), ('l', 'broady', 'GBR'))",Wimbledon_2022,GBR,498.0,1,1,1.0,0.0979020979020979,0.3356643356643357,0.48395105560759566
@@ -3274,7 +3274,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'verdugo', 'MEX'), ('p', 'oswald', 'AUT'))",Wimbledon_2022,AUT,74.0,0,0,0.25,0.0,0.006993006993006993,0.37031468613581225
 "(('h', 'reese', 'USA'), ('r', 'jebavý', 'CZE'))",Wimbledon_2022,USA,73.0,0,0,0.25,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('s', 'walków', 'POL'), ('ł', 'kubot', 'POL'))",Wimbledon_2022,POL,87.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.2773426573176484
-"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Wimbledon_2022,ESP,69.0,0,0,0.36250001192092896,0.027972027972027972,0.1888111888111888,0.4437412603960171
+"(('f', 'lópez', 'ESP'), ('m', 'cressy', 'USA'))",Wimbledon_2022,ESP,69.0,0,0,0.3625000119209289,0.027972027972027972,0.1888111888111888,0.4437412603960171
 "(('a', 'krajicek', 'USA'), ('i', 'dodig', 'HRV'))",Wimbledon_2022,USA,19.0,0,0,0.25,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('s', 'johnson', 'USA'), ('s', 'querrey', 'USA'))",Wimbledon_2022,USA,85.0,1,1,1.0,0.13286713286713286,0.3356643356643357,0.5031818336956985
 "(('n', 'skupski', 'GBR'), ('w', 'koolhof', 'NLD'))",Wimbledon_2022,GBR,8.0,0,0,0.5,0.0979020979020979,0.3356643356643357,0.48395105560759566
@@ -3334,7 +3334,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('mate', 'pavić', 'HRV'), ('nikola', 'mektić', 'HRV'))",Wimbledon_2022,HRV,3.0,1,1,1.0,0.03496503496503497,0.06293706293706294,0.2913286713036624
 "(('andreas', 'mies', 'DEU'), ('kevin', 'krawietz', 'DEU'))",Wimbledon_2022,DEU,36.0,1,1,1.0,0.04195804195804196,0.04195804195804196,0.37031468613581225
 "(('neal', 'skupski', 'GBR'), ('wesley', 'koolhof', 'NLD'))",Australian Open_2023,GBR,3.0,0,0,0.5,0.03937007874015748,0.2992125984251969,0.4137795309968821
-"(('alexander', 'bublik', 'KAZ'), ('john-patrick', 'smith', 'AUS'))",Australian Open_2023,AUS,78.0,0,0,0.10249999910593033,0.11023622047244094,0.2992125984251969,0.4137795309968821
+"(('alexander', 'bublik', 'KAZ'), ('john-patrick', 'smith', 'AUS'))",Australian Open_2023,AUS,78.0,0,0,0.1024999991059303,0.11023622047244094,0.2992125984251969,0.4137795309968821
 "(('joe', 'salisbury', 'GBR'), ('rajeev', 'ram', 'USA'))",Australian Open_2023,GBR,2.0,0,1,0.8875000476837158,0.03937007874015748,0.2992125984251969,0.4137795309968821
 "(('constant', 'lestienne', 'FRA'), ('marcos', 'giron', 'USA'))",Australian Open_2023,FRA,638.0,0,0,0.2875000238418579,0.08661417322834646,0.10236220472440945,0.3705118126639231
 "(('jean-julien', 'rojer', 'NLD'), ('marcelo', 'arevalo', 'SLV'))",Australian Open_2023,NLD,6.0,0,0,0.25,0.023622047244094488,0.03937007874015748,0.3255511816209695
@@ -3346,7 +3346,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('horacio', 'zeballos', 'ARG'), ('marcel', 'granollers', 'ESP'))",Australian Open_2023,ARG,14.0,0,1,1.0,0.08661417322834646,0.2204724409448819,0.452677166309413
 "(('luis', 'martinez', 'CHE'), ('sebastian', 'baez', 'ARG'))",Australian Open_2023,CHE,97.0,0,0,0.3149999976158142,0.007874015748031496,0.007874015748031496,0.3512251960832303
 "(('jamie', 'murray', 'GBR'), ('michael', 'venus', 'NZL'))",Australian Open_2023,NZL,15.0,0,1,1.0,0.0,0.2992125984251969,0.4137795309968821
-"(('cristian', 'rodriguez', 'COL'), ('hunter', 'reese', 'USA'))",Australian Open_2023,USA,83.0,0,0,0.36250001192092896,0.06299212598425197,0.2992125984251969,0.4314941099778874
+"(('cristian', 'rodriguez', 'COL'), ('hunter', 'reese', 'USA'))",Australian Open_2023,USA,83.0,0,0,0.3625000119209289,0.06299212598425197,0.2992125984251969,0.4314941099778874
 "(('juan', 'cabal', 'COL'), ('robert', 'farah', 'COL'))",Australian Open_2023,COL,27.0,1,1,1.0,0.023622047244094488,0.2204724409448819,0.452677166309413
 "(('daniel', 'altmaier', 'DEU'), ('juan', 'varillas', 'PER'))",Australian Open_2023,PER,808.0,0,0,0.25,0.0,0.0,0.452677166309413
 "(('andreas', 'mies', 'DEU'), ('john', 'peers', 'AUS'))",Australian Open_2023,AUS,38.0,0,0,0.5,0.11023622047244094,0.2992125984251969,0.4137795309968821
@@ -3354,7 +3354,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('edouard', 'roger-vasselin', 'FRA'), ('santiago', 'gonzalez', 'MEX'))",Australian Open_2023,FRA,32.0,0,0,0.5,0.08661417322834646,0.10236220472440945,0.3705118126639231
 "(('aslan', 'karatsev', 'RUS'), ('dusan', 'lajovic', 'SRB'))",Australian Open_2023,SRB,554.0,0,0,0.5,0.015748031496062992,0.05511811023622047,0.26068897650936457
 "(('matwe', 'middelkoop', 'NLD'), ('robin', 'haase', 'NLD'))",Australian Open_2023,NLD,21.0,1,1,1.0,0.023622047244094488,0.03937007874015748,0.3255511816209695
-"(('hugo', 'dellien', 'BOL'), ('roberto', 'baena', 'ESP'))",Australian Open_2023,BOL,228.0,0,0,0.5400000214576721,0.0,0.0,0.24640158549185812
+"(('hugo', 'dellien', 'BOL'), ('roberto', 'baena', 'ESP'))",Australian Open_2023,BOL,228.0,0,0,0.5400000214576721,0.0,0.0,0.2464015854918581
 "(('ariel', 'behar', 'URY'), ('nicolas', 'barrientos', 'COL'))",Australian Open_2023,URY,48.0,0,1,1.0,0.0,0.2204724409448819,0.452677166309413
 "(('nicolas', 'mahut', 'FRA'), ('tim', 'puetz', 'DEU'))",Australian Open_2023,DEU,18.0,0,0,0.25,0.015748031496062992,0.015748031496062992,0.3324015753593032
 "(('alex', 'bolt', 'AUS'), ('luke', 'saville', 'AUS'))",Australian Open_2023,AUS,81.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
@@ -3375,14 +3375,14 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('fabio', 'fognini', 'ITA'), ('simone', 'bolelli', 'ITA'))",Australian Open_2023,ITA,26.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.3290944899043699
 "(('alexander', 'erler', 'AUT'), ('lucas', 'miedler', 'AUT'))",Australian Open_2023,AUT,54.0,1,1,1.0,0.015748031496062992,0.031496062992125984,0.3324015753593032
 "(('matthew', 'ebden', 'AUS'), ('rohan', 'bopanna', 'IND'))",Australian Open_2023,AUS,24.0,0,1,0.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
-"(('aleksandr', 'nedovyesov', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2023,KAZ,59.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.1162625980952124
+"(('aleksandr', 'nedovyesov', 'KAZ'), ('andrey', 'golubev', 'KAZ'))",Australian Open_2023,KAZ,59.0,1,1,1.0,0.015748031496062992,0.015748031496062992,0.11626259809521239
 "(('dane', 'sweeny', 'AUS'), ('li', 'tu', 'AUS'))",Australian Open_2023,AUS,197.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
 "(('andre', 'goransson', 'SWE'), ('marc-andrea', 'huesler', 'CHE'))",Australian Open_2023,CHE,344.0,0,0,0.4350000023841858,0.007874015748031496,0.007874015748031496,0.3512251960832303
 "(('adrian', 'mannarino', 'FRA'), ('quentin', 'halys', 'FRA'))",Australian Open_2023,FRA,127.0,1,1,1.0,0.08661417322834646,0.10236220472440945,0.3705118126639231
 "(('lloyd', 'harris', 'ZAF'), ('raven', 'klaasen', 'ZAF'))",Australian Open_2023,ZAF,56.0,1,1,1.0,0.007874015748031496,0.2992125984251969,0.007874015748031496
 "(('pedro', 'martinez', 'ESP'), ('thiago', 'monteiro', 'BRA'))",Australian Open_2023,ESP,85.0,0,0,0.75,0.03937007874015748,0.2204724409448819,0.452677166309413
 "(('jason', 'kubler', 'AUS'), ('rinky', 'hijikata', 'AUS'))",Australian Open_2023,AUS,163.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
-"(('hans', 'verdugo', 'MEX'), ('john', 'isner', 'USA'))",Australian Open_2023,USA,20.0,0,0,0.36250001192092896,0.06299212598425197,0.2992125984251969,0.4314941099778874
+"(('hans', 'verdugo', 'MEX'), ('john', 'isner', 'USA'))",Australian Open_2023,USA,20.0,0,0,0.3625000119209289,0.06299212598425197,0.2992125984251969,0.4314941099778874
 "(('alex', 'molcan', 'SVK'), ('jiri', 'lehecka', 'CZE'))",Australian Open_2023,SVK,820.0,0,0,0.75,0.0,0.0,0.2440944881889764
 "(('francisco', 'cerundolo', 'ARG'), ('tomas', 'etcheverry', 'ARG'))",Australian Open_2023,ARG,236.0,1,1,1.0,0.08661417322834646,0.2204724409448819,0.452677166309413
 "(('ben', 'mclachlan', 'JPN'), ('yoshihito', 'nishioka', 'JPN'))",Australian Open_2023,JPN,439.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.007874015748031496
@@ -3392,13 +3392,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('hugo', 'nys', 'MCO'), ('jan', 'zielinski', 'POL'))",Australian Open_2023,POL,36.0,0,0,0.25,0.0,0.0,0.2421259842519685
 "(('david', 'hernandez', 'ESP'), ('rafael', 'matos', 'BRA'))",Australian Open_2023,ESP,31.0,0,0,0.75,0.03937007874015748,0.2204724409448819,0.452677166309413
 "(('alexei', 'popyrin', 'AUS'), ('marc', 'polmans', 'AUS'))",Australian Open_2023,AUS,268.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
-"(('facundo', 'bagnis', 'ARG'), ('robert', 'galloway', 'USA'))",Australian Open_2023,USA,87.0,0,0,0.36250001192092896,0.06299212598425197,0.2992125984251969,0.4314941099778874
+"(('facundo', 'bagnis', 'ARG'), ('robert', 'galloway', 'USA'))",Australian Open_2023,USA,87.0,0,0,0.3625000119209289,0.06299212598425197,0.2992125984251969,0.4314941099778874
 "(('jordan', 'thompson', 'AUS'), ('max', 'purcell', 'AUS'))",Australian Open_2023,AUS,453.0,1,1,1.0,0.11023622047244094,0.2992125984251969,0.4137795309968821
 "(('guillermo', 'duran', 'ARG'), ('philipp', 'oswald', 'AUT'))",Australian Open_2023,AUT,69.0,0,0,0.25,0.015748031496062992,0.031496062992125984,0.3324015753593032
 "(('petros', 'tsitsipas', 'GRC'), ('stefanos', 'tsitsipas', 'GRC'))",Australian Open_2023,GRC,143.0,1,1,1.0,0.007874015748031496,0.007874015748031496,0.22395669293450557
 "(('miguel', 'reyes-varela', 'MEX'), ('ramkumar', 'ramanathan', 'IND'))",Australian Open_2023,IND,89.0,0,0,0.0,0.03937007874015748,0.2992125984251969,0.03937007874015748
 "(('neal', 'skupski', 'GBR'), ('wesley', 'koolhof', 'NLD'))",Roland Garros_2023,GBR,1.0,0,0,0.5,0.03937007874015748,0.2440944881889764,0.38336614554557275
-"(('andrey', 'golubev', 'KAZ'), ('gonzalo', 'escobar', 'ECU'))",Roland Garros_2023,KAZ,81.0,0,0,0.10249999910593033,0.015748031496062992,0.015748031496062992,0.11303425172534515
+"(('andrey', 'golubev', 'KAZ'), ('gonzalo', 'escobar', 'ECU'))",Roland Garros_2023,KAZ,81.0,0,0,0.1024999991059303,0.015748031496062992,0.015748031496062992,0.11303425172534513
 "(('joe', 'salisbury', 'GBR'), ('rajeev', 'ram', 'USA'))",Roland Garros_2023,GBR,4.0,0,1,0.8875000476837158,0.03937007874015748,0.2440944881889764,0.38336614554557275
 "(('guido', 'pella', 'ARG'), ('hugo', 'dellien', 'BOL'))",Roland Garros_2023,ARG,1004.0,0,0,0.5400000214576721,0.06299212598425197,0.1889763779527559,0.4515944892379243
 "(('jean-julien', 'rojer', 'NLD'), ('marcelo', 'arevalo', 'SLV'))",Roland Garros_2023,NLD,6.0,0,0,0.25,0.03937007874015748,0.05511811023622047,0.33312992182538265
@@ -3424,7 +3424,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('philipp', 'oswald', 'AUT'), ('robin', 'haase', 'NLD'))",Roland Garros_2023,AUT,72.0,0,0,0.75,0.023622047244094488,0.03937007874015748,0.3399803155637163
 "(('luca', 'sanchez', 'FRA'), ('theo', 'arribage', 'FRA'))",Roland Garros_2023,FRA,167.0,1,1,1.0,0.15748031496062992,0.1732283464566929,0.42395669474141806
 "(('arthur', 'fils', 'FRA'), ('giovanni', 'perricard', 'FRA'))",Roland Garros_2023,FRA,749.0,1,1,1.0,0.15748031496062992,0.1732283464566929,0.42395669474141806
-"(('nicolas', 'barrientos', 'COL'), ('robert', 'galloway', 'USA'))",Roland Garros_2023,USA,79.0,0,0,0.36250001192092896,0.07086614173228346,0.2440944881889764,0.40865946355767135
+"(('nicolas', 'barrientos', 'COL'), ('robert', 'galloway', 'USA'))",Roland Garros_2023,USA,79.0,0,0,0.3625000119209289,0.07086614173228346,0.2440944881889764,0.40865946355767135
 "(('albano', 'olivetti', 'FRA'), ('dan', 'added', 'FRA'))",Roland Garros_2023,FRA,63.0,1,1,1.0,0.15748031496062992,0.1732283464566929,0.42395669474141806
 "(('adam', 'pavlasek', 'CZE'), ('ariel', 'behar', 'URY'))",Roland Garros_2023,CZE,87.0,0,0,0.25,0.007874015748031496,0.007874015748031496,0.23818897637795275
 "(('albert', 'ramos-vinolas', 'ESP'), ('bernabe', 'miralles', 'ESP'))",Roland Garros_2023,ESP,561.0,1,1,1.0,0.03937007874015748,0.1889763779527559,0.4515944892379243
@@ -3456,7 +3456,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('juan', 'varillas', 'PER'), ('thiago', 'monteiro', 'BRA'))",Roland Garros_2023,PER,290.0,0,0,0.75,0.0,0.0,0.4515944892379243
 "(('john', 'peers', 'AUS'), ('marcelo', 'melo', 'BRA'))",Roland Garros_2023,AUS,37.0,0,0,0.25,0.05511811023622047,0.2440944881889764,0.38336614554557275
 "(('miomir', 'kecmanovic', 'SRB'), ('william', 'blumberg', 'USA'))",Roland Garros_2023,SRB,127.0,0,0,0.25,0.0,0.023622047244094488,0.24015748031496062
-"(('aleksandr', 'nedovyesov', 'KAZ'), ('miguel', 'reyes-varela', 'MEX'))",Roland Garros_2023,MEX,74.0,0,0,0.10249999910593033,0.007874015748031496,0.1889763779527559,0.4515944892379243
+"(('aleksandr', 'nedovyesov', 'KAZ'), ('miguel', 'reyes-varela', 'MEX'))",Roland Garros_2023,MEX,74.0,0,0,0.1024999991059303,0.007874015748031496,0.1889763779527559,0.4515944892379243
 "(('jackson', 'withrow', 'USA'), ('nathaniel', 'lammons', 'USA'))",Roland Garros_2023,USA,32.0,1,1,1.0,0.07086614173228346,0.2440944881889764,0.40865946355767135
 "(('ben', 'shelton', 'USA'), ('max', 'purcell', 'AUS'))",Roland Garros_2023,USA,141.0,0,1,0.8875000476837158,0.07086614173228346,0.2440944881889764,0.40865946355767135
 "(('henry', 'patten', 'GBR'), ('julian', 'cash', 'GBR'))",Roland Garros_2023,GBR,50.0,1,1,1.0,0.03937007874015748,0.2440944881889764,0.38336614554557275
@@ -3485,7 +3485,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'heliövaara', 'FIN'), ('l', 'glasspool', 'GBR'))",US Open_2023,FIN,25.0,0,0,0.0,0.0,0.006993006993006993,0.0017482517482517483
 "(('j', 'peers', 'AUS'), ('m', 'melo', 'BRA'))",US Open_2023,AUS,39.0,0,0,0.25,0.055944055944055944,0.34265734265734266,0.46800700236450543
 "(('j', 'murray', 'GBR'), ('m', 'venus', 'NZL'))",US Open_2023,NZL,26.0,0,1,1.0,0.0,0.34265734265734266,0.46800700236450543
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2023,KAZ,45.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.1132919586726002
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2023,KAZ,45.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.11329195867260017
 "(('n', 'mahut', 'FRA'), ('p-h', 'herbert', 'FRA'))",US Open_2023,FRA,40.0,1,1,1.0,0.11188811188811189,0.1258741258741259,0.3908741304299215
 "(('a', 'popyrin', 'AUS'), ('m', 'fucsovics', 'HUN'))",US Open_2023,AUS,244.0,0,0,0.0,0.055944055944055944,0.34265734265734266,0.46800700236450543
 "(('l', 'harris', 'ZAF'), ('m', 'kecmanović', 'SRB'))",US Open_2023,SRB,218.0,0,0,0.0,0.013986013986013986,0.04195804195804196,0.2633566433316344
@@ -3550,13 +3550,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'stevens', 'NLD'), ('t', 'griekspoor', 'NLD'))",Wimbledon_2023,NLD,116.0,1,1,1.0,0.06993006993006994,0.08391608391608392,0.3953496511582728
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Wimbledon_2023,GBR,6.0,0,1,0.8875000476837158,0.09090909090909091,0.3356643356643357,0.4737762298200514
 "(('a', 'vavassori', 'ITA'), ('s', 'bolelli', 'ITA'))",Wimbledon_2023,ITA,43.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.3336713317182514
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2023,KAZ,48.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.10916328677660102
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2023,KAZ,48.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.109163286776601
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",Wimbledon_2023,FRA,45.0,1,1,1.0,0.11188811188811189,0.1258741258741259,0.390524478538053
 "(('c', 'eubanks', 'USA'), ('jj', 'wolf', 'USA'))",Wimbledon_2023,USA,561.0,1,1,1.0,0.11888111888111888,0.3356643356643357,0.4919073582737596
 "(('j', 'peers', 'AUS'), ('m', 'melo', 'BRA'))",Wimbledon_2023,AUS,29.0,0,0,0.25,0.04895104895104895,0.3356643356643357,0.4737762298200514
 "(('p', 'oswald', 'AUT'), ('r', 'haase', 'NLD'))",Wimbledon_2023,AUT,64.0,0,0,0.75,0.02097902097902098,0.03496503496503497,0.3966433574686517
 "(('l', 'glasspool', 'GBR'), ('n', 'mahut', 'FRA'))",Wimbledon_2023,FRA,41.0,0,0,0.25,0.11188811188811189,0.1258741258741259,0.390524478538053
-"(('a', 'golubev', 'KAZ'), ('m', 'cressy', 'USA'))",Wimbledon_2023,KAZ,88.0,0,0,0.10250000655651093,0.006993006993006993,0.006993006993006993,0.10916328677660102
+"(('a', 'golubev', 'KAZ'), ('m', 'cressy', 'USA'))",Wimbledon_2023,KAZ,88.0,0,0,0.1025000065565109,0.006993006993006993,0.006993006993006993,0.109163286776601
 "(('d', 'pel', 'NLD'), ('r', 'stalder', 'USA'))",Wimbledon_2023,USA,80.0,0,0,0.4625000059604645,0.11888111888111888,0.3356643356643357,0.4919073582737596
 "(('c', 'lestienne', 'FRA'), ('c', 'moutet', 'FRA'))",Wimbledon_2023,FRA,851.0,1,1,1.0,0.11188811188811189,0.1258741258741259,0.390524478538053
 "(('j', 'fearnley', 'GBR'), ('j', 'monday', 'GBR'))",Wimbledon_2023,GBR,274.0,1,1,1.0,0.09090909090909091,0.3356643356643357,0.4737762298200514
@@ -3652,7 +3652,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",Australian Open_2024,ARG,13.0,1,1,1.0,0.055944055944055944,0.11888111888111888,0.37125874216948357
 "(('p', 'cachín', 'ARG'), ('r', 'baena', 'ESP'))",Australian Open_2024,ESP,240.0,0,1,1.0,0.006993006993006993,0.11888111888111888,0.37125874216948357
 "(('a', 'vukic', 'AUS'), ('n', 'borges', 'PRT'))",Australian Open_2024,AUS,477.0,0,0,0.25,0.16083916083916083,0.3356643356643357,0.4745804232421455
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Australian Open_2024,KAZ,44.0,0,0,0.10249999910593033,0.0,0.0,0.10486538437279788
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Australian Open_2024,KAZ,44.0,0,0,0.1024999991059303,0.0,0.0,0.10486538437279785
 "(('a', 'mannarino', 'FRA'), ('q', 'halys', 'FRA'))",Australian Open_2024,FRA,280.0,1,1,1.0,0.04895104895104895,0.06293706293706294,0.33052447735221235
 "(('j', 'cash', 'GBR'), ('r', 'galloway', 'USA'))",Australian Open_2024,USA,47.0,0,1,0.8875000476837158,0.06993006993006994,0.3356643356643357,0.47379372326227337
 "(('j', 'withrow', 'USA'), ('n', 'lammons', 'USA'))",Australian Open_2024,USA,23.0,1,1,1.0,0.06993006993006994,0.3356643356643357,0.47379372326227337
@@ -3685,7 +3685,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('a', 'mies', 'DEU'), ('n', 'skupski', 'GBR'))",Roland Garros_2024,GBR,10.0,0,0,0.5,0.06293706293706294,0.23776223776223776,0.41183566833501095
 "(('b', 'zandschulp', 'NLD'), ('r', 'haase', 'NLD'))",Roland Garros_2024,NLD,179.0,1,1,1.0,0.04895104895104895,0.07692307692307693,0.3529895110042779
 "(('a', 'müller', 'FRA'), ('l', 'sanchez', 'FRA'))",Roland Garros_2024,FRA,97.0,1,1,1.0,0.1258741258741259,0.16083916083916083,0.40001748444942326
-"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Roland Garros_2024,KAZ,714.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11741783198985187
+"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Roland Garros_2024,KAZ,714.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11741783198985184
 "(('d', 'lajović', 'SRB'), ('m', 'kecmanović', 'SRB'))",Roland Garros_2024,SRB,426.0,1,1,1.0,0.006993006993006993,0.03496503496503497,0.25779720275968937
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",Roland Garros_2024,ARG,16.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.428129371594299
 "(('j-j', 'rojer', 'NLD'), ('l', 'glasspool', 'GBR'))",Roland Garros_2024,NLD,24.0,0,0,0.5,0.04895104895104895,0.07692307692307693,0.3529895110042779
@@ -3717,7 +3717,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'munar', 'ESP'), ('p', 'martínez', 'ESP'))",Roland Garros_2024,ESP,431.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.428129371594299
 "(('g', 'barrère', 'FRA'), ('l', 'pouille', 'FRA'))",Roland Garros_2024,FRA,888.0,1,1,1.0,0.1258741258741259,0.16083916083916083,0.40001748444942326
 "(('g', 'perricard', 'FRA'), ('t', 'droguet', 'FRA'))",Roland Garros_2024,FRA,647.0,1,1,1.0,0.1258741258741259,0.16083916083916083,0.40001748444942326
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Roland Garros_2024,KAZ,40.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.11741783198985187
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Roland Garros_2024,KAZ,40.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.11741783198985184
 "(('p', 'busta', 'ESP'), ('s', 'gornés', 'ESP'))",Roland Garros_2024,ESP,107.0,1,1,1.0,0.04195804195804196,0.16083916083916083,0.428129371594299
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Roland Garros_2024,GBR,5.0,0,1,0.8875000476837158,0.06293706293706294,0.23776223776223776,0.41183566833501095
 "(('a', 'behar', 'URY'), ('a', 'pavlásek', 'CZE'))",Roland Garros_2024,CZE,34.0,0,0,0.25,0.02097902097902098,0.02097902097902098,0.25779720275968937
@@ -3800,11 +3800,11 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('m', 'navone', 'ARG'), ('t', 'monteiro', 'BRA'))",US Open_2024,ARG,873.0,0,0,0.75,0.06993006993006994,0.1958041958041958,0.45389860337013965
 "(('a', 'mannarino', 'FRA'), ('a', 'rinderknech', 'FRA'))",US Open_2024,FRA,257.0,1,1,1.0,0.08391608391608392,0.11888111888111888,0.3780594448318015
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",US Open_2024,DEU,20.0,1,1,1.0,0.04195804195804196,0.04195804195804196,0.38984265850557315
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2024,KAZ,57.0,0,0,0.10249999910593033,0.006993006993006993,0.006993006993006993,0.11164335703307932
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",US Open_2024,KAZ,57.0,0,0,0.1024999991059303,0.006993006993006993,0.006993006993006993,0.1116433570330793
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",US Open_2024,ARG,30.0,1,1,1.0,0.06993006993006994,0.1958041958041958,0.45389860337013965
 "(('c', 'rodríguez', 'COL'), ('n', 'jarry', 'CHL'))",US Open_2024,COL,112.0,0,1,1.0,0.006993006993006993,0.1958041958041958,0.45389860337013965
 "(('jj', 'tracy', 'USA'), ('r', 'cash', 'USA'))",US Open_2024,USA,250.0,1,1,1.0,0.16783216783216784,0.3356643356643357,0.5122692449526354
-"(('a', 'shevchenko', 'KAZ'), ('s', 'weissborn', 'AUT'))",US Open_2024,AUT,77.0,0,0,0.10249999910593033,0.013986013986013986,0.03496503496503497,0.38984265850557315
+"(('a', 'shevchenko', 'KAZ'), ('s', 'weissborn', 'AUT'))",US Open_2024,AUT,77.0,0,0,0.1024999991059303,0.013986013986013986,0.03496503496503497,0.38984265850557315
 "(('f', 'coria', 'ARG'), ('r', 'baena', 'ESP'))",US Open_2024,ARG,869.0,0,1,1.0,0.06993006993006994,0.1958041958041958,0.45389860337013965
 "(('p', 'kotov', 'RUS'), ('t', 'wild', 'BRA'))",US Open_2024,BRA,410.0,0,0,0.25,0.027972027972027972,0.04195804195804196,0.4088811218946964
 "(('m', 'ebden', 'AUS'), ('r', 'bopanna', 'IND'))",US Open_2024,AUS,3.0,0,1,0.0,0.055944055944055944,0.3356643356643357,0.4832342739080216
@@ -3830,7 +3830,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'shelton', 'USA'), ('m', 'mcdonald', 'USA'))",Wimbledon_2024,USA,76.0,1,1,1.0,0.09090909090909091,0.34965034965034963,0.5079195986052493
 "(('f', 'cobolli', 'ITA'), ('l', 'sonego', 'ITA'))",Wimbledon_2024,ITA,162.0,1,1,1.0,0.027972027972027972,0.027972027972027972,0.3292482540636629
 "(('a', 'olivetti', 'FRA'), ('y', 'bhambri', 'IND'))",Wimbledon_2024,FRA,46.0,0,0,0.0,0.055944055944055944,0.07692307692307693,0.3502272750426839
-"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Wimbledon_2024,KAZ,878.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11505244740030983
+"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Wimbledon_2024,KAZ,878.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.1150524474003098
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",Wimbledon_2024,DEU,15.0,1,1,1.0,0.055944055944055944,0.055944055944055944,0.4005769236417083
 "(('f', 'romboli', 'BRA'), ('l', 'darderi', 'ITA'))",Wimbledon_2024,BRA,91.0,0,0,0.5,0.027972027972027972,0.04195804195804196,0.38361888285075035
 "(('j', 'salisbury', 'GBR'), ('r', 'ram', 'USA'))",Wimbledon_2024,GBR,5.0,0,1,0.8875000476837158,0.13986013986013987,0.34965034965034963,0.5016258787754533
@@ -3862,7 +3862,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'cash', 'GBR'), ('r', 'galloway', 'USA'))",Wimbledon_2024,USA,35.0,0,1,0.8875000476837158,0.09090909090909091,0.34965034965034963,0.5079195986052493
 "(('m', 'daniell', 'NZL'), ('t', 'arribagé', 'FRA'))",Wimbledon_2024,NZL,307.0,0,0,0.25,0.013986013986013986,0.34965034965034963,0.5016258787754533
 "(('r', 'arneodo', 'MCO'), ('s', 'verbeek', 'NLD'))",Wimbledon_2024,NLD,77.0,0,0,0.25,0.04895104895104895,0.06293706293706294,0.39183566490044963
-"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2024,KAZ,48.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.11505244740030983
+"(('a', 'nedovyesov', 'KAZ'), ('g', 'escobar', 'ECU'))",Wimbledon_2024,KAZ,48.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.1150524474003098
 "(('m', 'arévalo', 'SLV'), ('m', 'pavić', 'HRV'))",Wimbledon_2024,HRV,9.0,0,0,0.25,0.02097902097902098,0.027972027972027972,0.25604895101143765
 "(('l', 'johnson', 'GBR'), ('s', 'balaji', 'IND'))",Wimbledon_2024,GBR,67.0,0,1,0.0,0.13986013986013987,0.34965034965034963,0.5016258787754533
 "(('s', 'gonzález', 'MEX'), ('é', 'roger-vasselin', 'FRA'))",Wimbledon_2024,FRA,13.0,0,0,0.5,0.055944055944055944,0.07692307692307693,0.3502272750426839
@@ -3918,13 +3918,13 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('b', 'zandschulp', 'NLD'), ('t', 'griekspoor', 'NLD'))",Australian Open_2025,NLD,193.0,1,1,1.0,0.04895104895104895,0.06993006993006994,0.3581818185381956
 "(('c', ""o'connell"", 'AUS'), ('r', 'safiullin', 'RUS'))",Australian Open_2025,RUS,213.0,0,0,0.25,0.0,0.0,0.24636363628860955
 "(('má', 'reyes-varela', 'MEX'), ('s', 'balaji', 'IND'))",Australian Open_2025,MEX,59.0,0,0,0.0,0.006993006993006993,0.13286713286713286,0.3938461545776654
-"(('a', 'nedovyesov', 'KAZ'), ('r', 'haase', 'NLD'))",Australian Open_2025,KAZ,60.0,0,0,0.10249999910593033,0.013986013986013986,0.013986013986013986,0.11433566392926903
+"(('a', 'nedovyesov', 'KAZ'), ('r', 'haase', 'NLD'))",Australian Open_2025,KAZ,60.0,0,0,0.1024999991059303,0.013986013986013986,0.013986013986013986,0.114335663929269
 "(('f', 'cabral', 'PRT'), ('n', 'borges', 'PRT'))",Australian Open_2025,PRT,76.0,1,1,1.0,0.02097902097902098,0.055944055944055944,0.37225524586189046
 "(('m', 'venus', 'NZL'), ('n', 'mektić', 'HRV'))",Australian Open_2025,NZL,17.0,0,0,0.25,0.0,0.3006993006993007,0.43562937361168697
 "(('j', 'withrow', 'USA'), ('n', 'lammons', 'USA'))",Australian Open_2025,USA,20.0,1,1,1.0,0.055944055944055944,0.3006993006993007,0.4413986182087785
 "(('e', 'king', 'USA'), ('m', 'giron', 'USA'))",Australian Open_2025,USA,79.0,1,1,1.0,0.055944055944055944,0.3006993006993007,0.4413986182087785
-"(('a', 'behar', 'URY'), ('r', 'galloway', 'USA'))",Australian Open_2025,USA,32.0,0,0,0.36250001192092896,0.055944055944055944,0.3006993006993007,0.4413986182087785
-"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Australian Open_2025,KAZ,863.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.11433566392926903
+"(('a', 'behar', 'URY'), ('r', 'galloway', 'USA'))",Australian Open_2025,USA,32.0,0,0,0.3625000119209289,0.055944055944055944,0.3006993006993007,0.4413986182087785
+"(('a', 'bublik', 'KAZ'), ('a', 'shevchenko', 'KAZ'))",Australian Open_2025,KAZ,863.0,1,1,1.0,0.013986013986013986,0.013986013986013986,0.114335663929269
 "(('l', 'miedler', 'AUT'), ('s', 'gonzález', 'MEX'))",Australian Open_2025,AUT,46.0,0,0,0.25,0.006993006993006993,0.027972027972027972,0.36342657378295085
 "(('s', 'watanabe', 'JPN'), ('t', 'yuzuki', 'JPN'))",Australian Open_2025,JPN,144.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.006993006993006993
 "(('j', 'cash', 'GBR'), ('l', 'glasspool', 'GBR'))",Australian Open_2025,GBR,23.0,1,1,1.0,0.06293706293706294,0.3006993006993007,0.43562937361168697
@@ -3984,7 +3984,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('pe', 'tsitsipas', 'GRC'), ('s', 'tsitsipas', 'GRC'))",Roland Garros_2025,GRC,160.0,1,1,1.0,0.006993006993006993,0.006993006993006993,0.23426573426573427
 "(('a', 'cazaux', 'FRA'), ('h', 'mayot', 'FRA'))",Roland Garros_2025,FRA,485.0,1,1,1.0,0.16083916083916083,0.1958041958041958,0.42645105156865154
 "(('j', 'murray', 'GBR'), ('r', 'ram', 'USA'))",Roland Garros_2025,USA,30.0,0,1,0.8875000476837158,0.0979020979020979,0.3006993006993007,0.4693147021156925
-"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Roland Garros_2025,USA,73.0,0,0,0.36250001192092896,0.0979020979020979,0.3006993006993007,0.4693147021156925
+"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Roland Garros_2025,USA,73.0,0,0,0.3625000119209289,0.0979020979020979,0.3006993006993007,0.4693147021156925
 "(('j', 'withrow', 'USA'), ('n', 'lammons', 'USA'))",Roland Garros_2025,USA,24.0,1,1,1.0,0.0979020979020979,0.3006993006993007,0.4693147021156925
 "(('a', 'olivetti', 'FRA'), ('q', 'halys', 'FRA'))",Roland Garros_2025,FRA,61.0,1,1,1.0,0.16083916083916083,0.1958041958041958,0.42645105156865154
 "(('j', 'kubler', 'AUS'), ('j', 'thompson', 'AUS'))",Roland Garros_2025,AUS,9.0,1,1,1.0,0.06993006993006994,0.3006993006993007,0.45470280205453195
@@ -4041,8 +4041,8 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'reboul', 'FRA'), ('s', 'doumbia', 'FRA'))",US Open_2025,FRA,29.0,1,1,1.0,0.08450704225352113,0.11971830985915492,0.3515140895377582
 "(('a', 'göransson', 'SWE'), ('s', 'verbeek', 'NLD'))",US Open_2025,NLD,43.0,0,0,0.5,0.04225352112676056,0.07042253521126761,0.3675352125625375
 "(('a', 'molteni', 'ARG'), ('m', 'gonzález', 'ARG'))",US Open_2025,ARG,20.0,1,1,1.0,0.04225352112676056,0.11971830985915492,0.38690141079501367
-"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",US Open_2025,USA,53.0,0,0,0.36250001192092896,0.19718309859154928,0.4014084507042254,0.5108098722469638
-"(('c', 'harper', 'CAN'), ('j-j', 'rojer', 'NLD'))",US Open_2025,NLD,85.0,0,0,0.42500001192092896,0.04225352112676056,0.07042253521126761,0.3675352125625375
+"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",US Open_2025,USA,53.0,0,0,0.3625000119209289,0.19718309859154928,0.4014084507042254,0.5108098722469638
+"(('c', 'harper', 'CAN'), ('j-j', 'rojer', 'NLD'))",US Open_2025,NLD,85.0,0,0,0.4250000119209289,0.04225352112676056,0.07042253521126761,0.3675352125625375
 "(('b', 'bonzi', 'FRA'), ('t', 'arribagé', 'FRA'))",US Open_2025,FRA,192.0,1,1,1.0,0.08450704225352113,0.11971830985915492,0.3515140895377582
 "(('jj', 'tracy', 'USA'), ('r', 'cash', 'USA'))",US Open_2025,USA,57.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('r', 'arneodo', 'MCO'), ('r', 'bopanna', 'IND'))",US Open_2025,IND,54.0,0,0,0.0,0.04929577464788732,0.4014084507042254,0.04929577464788732
@@ -4057,7 +4057,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('l', 'johnson', 'GBR'), ('s', 'arends', 'NLD'))",US Open_2025,GBR,31.0,0,0,0.5,0.06338028169014084,0.4014084507042254,0.48672536167670305
 "(('f', 'marozsán', 'HUN'), ('m', 'bellucci', 'ITA'))",US Open_2025,HUN,336.0,0,0,0.0,0.0,0.0,0.0035211267605633804
 "(('f', 'cabral', 'PRT'), ('l', 'miedler', 'AUT'))",US Open_2025,AUT,28.0,0,0,0.25,0.007042253521126761,0.035211267605633804,0.3710563393231009
-"(('n', 'barrientos', 'COL'), ('n', 'lammons', 'USA'))",US Open_2025,USA,70.0,0,0,0.36250001192092896,0.19718309859154928,0.4014084507042254,0.5108098722469638
+"(('n', 'barrientos', 'COL'), ('n', 'lammons', 'USA'))",US Open_2025,USA,70.0,0,0,0.3625000119209289,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('a', 'pavlásek', 'CZE'), ('j', 'zieliński', 'POL'))",US Open_2025,POL,46.0,0,0,0.5,0.007042253521126761,0.007042253521126761,0.25144366195923845
 "(('a', 'behar', 'URY'), ('j', 'vliegen', 'BEL'))",US Open_2025,BEL,66.0,0,0,0.0,0.02112676056338028,0.18309859154929578,0.035211267605633804
 "(('e', 'quinn', 'USA'), ('m', 'mcdonald', 'USA'))",US Open_2025,USA,543.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
@@ -4066,7 +4066,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('h', 'medjedovic', 'SRB'), ('m', 'kecmanović', 'SRB'))",US Open_2025,SRB,1267.0,1,1,1.0,0.007042253521126761,0.04225352112676056,0.26100352123169834
 "(('c', 'harrison', 'USA'), ('e', 'king', 'USA'))",US Open_2025,USA,18.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('f', 'romboli', 'BRA'), ('j-p', 'smith', 'AUS'))",US Open_2025,AUS,51.0,0,0,0.25,0.04929577464788732,0.4014084507042254,0.48672536167670305
-"(('a', 'bublik', 'KAZ'), ('m', 'demoliner', 'BRA'))",US Open_2025,BRA,88.0,0,0,0.10249999910593033,0.028169014084507043,0.035211267605633804,0.358116200744686
+"(('a', 'bublik', 'KAZ'), ('m', 'demoliner', 'BRA'))",US Open_2025,BRA,88.0,0,0,0.1024999991059303,0.028169014084507043,0.035211267605633804,0.358116200744686
 "(('h', 'jebens', 'DEU'), ('r', 'ho', 'TWN'))",US Open_2025,DEU,81.0,0,0,0.0,0.04225352112676056,0.04225352112676056,0.3710563393231009
 "(('e', 'nava', 'USA'), ('t', 'boyer', 'USA'))",US Open_2025,USA,253.0,1,1,1.0,0.19718309859154928,0.4014084507042254,0.5108098722469638
 "(('n', 'mektić', 'HRV'), ('r', 'ram', 'USA'))",US Open_2025,USA,35.0,0,0,0.25,0.19718309859154928,0.4014084507042254,0.5108098722469638
@@ -4115,7 +4115,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('j', 'schnaitter', 'DEU'), ('m', 'wallner', 'DEU'))",Wimbledon_2025,DEU,60.0,1,1,1.0,0.03496503496503497,0.03496503496503497,0.36260489593227424
 "(('f', 'comesaña', 'ARG'), ('s', 'báez', 'ARG'))",Wimbledon_2025,ARG,885.0,1,1,1.0,0.055944055944055944,0.13286713286713286,0.40351398742490713
 "(('a', 'pavlásek', 'CZE'), ('j', 'zieliński', 'POL'))",Wimbledon_2025,POL,41.0,0,0,0.5,0.013986013986013986,0.013986013986013986,0.25493006991756545
-"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Wimbledon_2025,USA,56.0,0,0,0.36250001192092896,0.11888111888111888,0.3706293706293706,0.4968356814209398
+"(('a', 'krajicek', 'USA'), ('s', 'gonzález', 'MEX'))",Wimbledon_2025,USA,56.0,0,0,0.3625000119209289,0.11888111888111888,0.3706293706293706,0.4968356814209398
 "(('a', 'vavassori', 'ITA'), ('s', 'bolelli', 'ITA'))",Wimbledon_2025,ITA,15.0,1,1,1.0,0.02097902097902098,0.02097902097902098,0.32239510780656255
 "(('a', 'behar', 'URY'), ('j', 'vliegen', 'BEL'))",Wimbledon_2025,BEL,63.0,0,0,0.0,0.02097902097902098,0.18181818181818182,0.04195804195804196
 "(('k', 'krawietz', 'DEU'), ('t', 'pütz', 'DEU'))",Wimbledon_2025,DEU,6.0,1,1,1.0,0.03496503496503497,0.03496503496503497,0.36260489593227424
@@ -4144,7 +4144,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('d', 'džumhur', 'BIH'), ('s', 'mansouri', 'TUN'))",Wimbledon_2025,TUN,84.0,0,0,0.0,0.0,0.1258741258741259,0.0
 "(('r', 'galloway', 'USA'), ('y', 'bhambri', 'IND'))",Wimbledon_2025,USA,37.0,0,1,0.0,0.11888111888111888,0.3706293706293706,0.4968356814209398
 "(('m', 'guinard', 'FRA'), ('r', 'arneodo', 'MCO'))",Wimbledon_2025,FRA,39.0,0,1,1.0,0.08391608391608392,0.1258741258741259,0.36540210106364496
-"(('m', 'giron', 'USA'), ('n', 'borges', 'PRT'))",Wimbledon_2025,USA,584.0,0,0,0.32500001788139343,0.11888111888111888,0.3706293706293706,0.4968356814209398
+"(('m', 'giron', 'USA'), ('n', 'borges', 'PRT'))",Wimbledon_2025,USA,584.0,0,0,0.3250000178813934,0.11888111888111888,0.3706293706293706,0.4968356814209398
 "(('j-j', 'rojer', 'NLD'), ('r', 'haase', 'NLD'))",Wimbledon_2025,NLD,77.0,1,1,1.0,0.03496503496503497,0.06293706293706294,0.35910839243577075
 "(('m', 'reyes-varela', 'MEX'), ('s', 'balaji', 'IND'))",Wimbledon_2025,MEX,76.0,0,0,0.0,0.006993006993006993,0.13286713286713286,0.40351398742490713
 "(('a', 'kovacevic', 'USA'), ('l', 'tien', 'USA'))",Wimbledon_2025,USA,345.0,1,1,1.0,0.11888111888111888,0.3706293706293706,0.4968356814209398
@@ -4163,7 +4163,7 @@ team_key,tourn_year,own_iso3,own_rank,same_country,same_language,ling_prox,compo
 "(('f', 'marozsán', 'HUN'), ('m', 'bellucci', 'ITA'))",Wimbledon_2025,HUN,589.0,0,0,0.0,0.0,0.0,0.0034965034965034965
 "(('d', 'stevenson', 'GBR'), ('j', 'monday', 'GBR'))",Wimbledon_2025,GBR,98.0,1,1,1.0,0.13986013986013987,0.3706293706293706,0.484982523311685
 "(('b', 'harris', 'GBR'), ('m', 'willis', 'GBR'))",Wimbledon_2025,GBR,109.0,1,1,1.0,0.13986013986013987,0.3706293706293706,0.484982523311685
-"(('a', 'bublik', 'KAZ'), ('f', 'cobolli', 'ITA'))",Wimbledon_2025,ITA,188.0,0,0,0.10249999910593033,0.02097902097902098,0.02097902097902098,0.32239510780656255
+"(('a', 'bublik', 'KAZ'), ('f', 'cobolli', 'ITA'))",Wimbledon_2025,ITA,188.0,0,0,0.1024999991059303,0.02097902097902098,0.02097902097902098,0.32239510780656255
 "(('h', 'heliövaara', 'FIN'), ('h', 'patten', 'GBR'))",Wimbledon_2025,GBR,3.0,0,0,0.0,0.13986013986013987,0.3706293706293706,0.484982523311685
 "(('d', 'evans', 'GBR'), ('h', 'searle', 'GBR'))",Wimbledon_2025,GBR,1176.0,1,1,1.0,0.13986013986013987,0.3706293706293706,0.484982523311685
 "(('marcelo', 'arévalo', 'SLV'), ('mate', 'pavić', 'HRV'))",Wimbledon_2025,HRV,1.0,0,0,0.25,0.02097902097902098,0.03496503496503497,0.2619230769105724
