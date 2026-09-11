@@ -187,13 +187,19 @@ ego-rows, clustered by partnership) confirms this: the AME on own rank is positi
 and significant for all three outcomes, meaning *worse*-ranked players sort into
 same-culture partnerships slightly *more*, not less — the reverse of the "stronger players
 have more choice and sort more" concern.
-**Estimator fix (2026-09-10):** `ling_prox` was previously estimated with OLS/LPM in §6.1/6.2
-while `same_country`/`same_language` used logit AME — an inconsistency, since `ling_prox` is
-just as binary as the other two (see the "Culture measures" section above). All three outcomes
-now use logit AME throughout §6.1/6.2, in `homophily.ipynb`, `homophily.do`, `report.html`, and
-`main.tex`. The switch changes `ling_prox`'s coefficients modestly (e.g. §6.1 Spec 1 own_rank:
-was coef=+0.000104 (OLS), now AME=+0.000146) but not the sign, significance, or qualitative
-finding of any table.
+**Estimator fix, two parts (2026-09-10):** Part 1 — back when `ling_prox` meant the binary
+`comlang_ethno`, it was inconsistently estimated with OLS/LPM in §6.1/6.2 while
+`same_country`/`same_language` used logit AME; switched to logit AME for all three. Part 2 —
+once `ling_prox` was redefined to mean `prox1` (continuous, same day), logit AME no longer
+applies to it (it's not a binary outcome), so §6.1/6.2 reverted `ling_prox` specifically back
+to OLS/LPM — `same_country`/`same_language` stayed on logit AME. **Current, correct state
+(verified 2026-09-11 against a fresh `homophily.do` run): `ling_prox` uses OLS coef in §6.1/6.2
+throughout `homophily.ipynb`, `homophily.do`, and `main.tex`.** `report.html` had been left on
+the intermediate Part-1-only (logit AME) numbers and was out of sync — fixed 2026-09-11 to the
+correct OLS coefficients (§6.1: own_rank=+0.000098\*\*, se=0.000044, p=0.026, N=4,178; §6.2 Spec
+1/2/3: own_rank=+0.000098\*\*/—/+0.000088\*\*, composition=—/+1.249\*\*\*/+1.247\*\*\*, N=4,175),
+matching `main.tex`/Stata exactly; `report.pdf` regenerated. Sign/significance/qualitative
+finding unchanged throughout — only report.html's stale AME labeling/numbers were wrong.
 
 **Section 6.2 (new, per Lingqing's 2026-08 meeting notes; finalized 2026-09): tournament-field
 composition.** Extends the §6.1 ego-row regression from `own_rank` alone to three specs: (1)
@@ -208,6 +214,29 @@ partially reported: it produces no single reportable coefficient, and its binary
 (same_country, same_language) fail to converge (quasi-complete separation) regardless. Only
 Spec 1/2/3 above are estimated or reported anywhere. Reported in `main.tex` §6.2, `report.html`
 §6.2, and `homophily.do` Section 8.
+
+## File structure: homophily.ipynb / homophily.do (updated 2026-09-11)
+Both files are reordered to follow `overleaf/main.tex`'s table order: main-text tables
+(every table/float with its own `\label{tab:...}` or `\label{tab:a...}` — Tables 3, 4, 5,
+6a, 6b, 6/Hofstede-excluded from this list since it's report.html-only, 8/9, plus
+Appendices A3-A6b) come first, everything else (age/joint diagnostics, no-intercept and
+random-one-team-per-match checks, quadratic/TxY-FE-restored robustness specs, Tier-2
+Hofstede robustness) is moved to the end.
+- `homophily.ipynb`: cleanly split into "PART A — Main-Text Tables" then "PART B —
+  Additional/Robustness Tables" (two banner cells), since each notebook cell runs in an
+  independent shared namespace with no execution-order dataset constraint. Re-executed
+  end-to-end after reordering; all numbers unchanged (N=3,728 team-obs / 1,864 matches).
+- `homophily.do`: **cannot** use one single Part A/Part B split, because Stata runs as ONE
+  continuous in-memory dataset — `import ..., clear` permanently replaces it, so a block
+  can't be revisited after a later import switches datasets. The file has three sequential
+  dataset sessions (raw excel setup → `team_gs_panel.csv` → `tiebreak_panel.csv` →
+  `partner_selection_ego.csv`), and Part A/Part B are nested WITHIN each session rather than
+  once for the whole file. The only deviation from main.tex's literal order: Table 4 (which
+  needs `tiebreak_panel.csv`) runs after Table 6b's block (still on `team_gs_panel.csv`), not
+  immediately after Table 3, because Table 3/5/6a/6b all share the `team_gs_panel.csv`
+  session and must stay contiguous. Banner comments in the file spell this out. Not
+  independently re-executed (no Stata in this environment) — hand off to the user to run and
+  cross-check `stata_homophily_results.txt` against the notebook's numbers.
 
 ## Key file locations
 - Data (GS panel): `data/atp/team_gs_panel.csv`

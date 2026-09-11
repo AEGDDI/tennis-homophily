@@ -1590,13 +1590,17 @@
         <td class="num">0.000058</td>
         <td class="num">0.013</td>
         <td class="num">4,178</td></tr>
-    <tr><td>Ling. proximity (AME)</td>
-        <td class="num">+0.000144<sup>**</sup></td>
-        <td class="num">0.000058</td>
-        <td class="num">0.014</td>
-        <td class="num">4,178</td></tr>
+    <tr><td>Ling. proximity (OLS coef.)</td>
+        <td class="num" style="color:blue">+0.000098<sup>**</sup></td>
+        <td class="num" style="color:blue">0.000044</td>
+        <td class="num" style="color:blue">0.026</td>
+        <td class="num" style="color:blue">4,178</td></tr>
   </tbody>
 </table>
+<p class="note" style="color:blue">
+  Ling. proximity's row above uses an OLS coefficient, not an AME, since <code>ling_prox</code>
+  (<code>prox1</code>, continuous) is not a binary outcome — logit AME does not apply.
+</p>
 <p class="note">
   Doubles ranking runs the opposite direction from skill (rank 1 = best), so a
   <strong>positive</strong> coefficient means a <em>worse</em>-ranked player is <em>more</em>
@@ -1661,22 +1665,26 @@
         <td class="num">+1.267<sup>***</sup></td></tr>
     <tr class="se"><td></td>
         <td class="num"></td><td class="num">(0.081709)</td><td class="num">(0.082578)</td></tr>
-    <tr><td rowspan="4">Ling. proximity (AME)</td><td>own_rank</td>
-        <td class="num">+0.000146<sup>**</sup></td>
+    <tr><td rowspan="4" style="color:blue">Ling. proximity (OLS coef.)</td><td>own_rank</td>
+        <td class="num" style="color:blue">+0.000098<sup>**</sup></td>
         <td class="num"></td>
-        <td class="num">+0.000115<sup>**</sup></td></tr>
+        <td class="num" style="color:blue">+0.000088<sup>**</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.000058)</td><td class="num"></td><td class="num">(0.000052)</td></tr>
+        <td class="num" style="color:blue">(0.000044)</td><td class="num"></td><td class="num" style="color:blue">(0.000038)</td></tr>
     <tr><td>composition</td>
         <td class="num"></td>
-        <td class="num">+1.102<sup>***</sup></td>
-        <td class="num">+1.097<sup>***</sup></td></tr>
+        <td class="num" style="color:blue">+1.249<sup>***</sup></td>
+        <td class="num" style="color:blue">+1.247<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num"></td><td class="num">(0.063048)</td><td class="num">(0.063932)</td></tr>
+        <td class="num"></td><td class="num" style="color:blue">(0.116322)</td><td class="num" style="color:blue">(0.117364)</td></tr>
     <tr class="bg"><td colspan="2">N (ego-rows)</td>
         <td class="num">4,175</td><td class="num">4,175</td><td class="num">4,175</td></tr>
   </tbody>
 </table>
+<p class="note" style="color:blue">
+  Ling. proximity's row uses OLS coefficients throughout, not AME, since <code>ling_prox</code>
+  (<code>prox1</code>, continuous) is not a binary outcome.
+</p>
 <p class="note">
   Field composition alone (Spec 2) is a strong, highly significant predictor of all three
   outcomes, as expected — a player drawn from a field with more compatriots or linguistically

@@ -164,6 +164,56 @@ generate double ling_prox_avg      = (winners_linguistic_proximity + losers_ling
 display "Section 1 complete: Variable construction."
 
 * ═══════════════════════════════════════════════════════════════════════════════
+* SECTION 3: OLYMPIC CYCLE DESCRIPTIVE EVIDENCE
+* ═══════════════════════════════════════════════════════════════════════════════
+
+display ""
+display "=== TABLE 2A. Tokyo 2021 cycle — Same nat/lang/langprox by period ==="
+
+preserve
+keep if olympics_tourn==0
+collapse (count) N_teams=match_id (mean) same_country_avg same_language_avg ling_prox_avg, by(cycle_tokyo)
+destring N_teams, replace
+replace same_country_avg = same_country_avg*100
+replace same_language_avg = same_language_avg*100
+replace ling_prox_avg = ling_prox_avg*100
+
+replace N_teams = N_teams*2
+order cycle_tokyo
+list cycle_tokyo N_teams same_country_avg same_language_avg ling_prox_avg, abbreviate(14) separator(0)
+restore
+
+display ""
+display "=== TABLE 2B. Paris 2024 cycle — Same nat/lang/langprox by period ==="
+
+preserve
+keep if olympics_tourn==0
+collapse (count) N_teams=match_id (mean) same_country_avg same_language_avg ling_prox_avg, by(cycle_paris)
+destring N_teams, replace
+replace same_country_avg = same_country_avg*100
+replace same_language_avg = same_language_avg*100
+replace ling_prox_avg = ling_prox_avg*100
+
+replace N_teams = N_teams*2
+order cycle_paris
+list cycle_paris N_teams same_country_avg same_language_avg ling_prox_avg, abbreviate(14) separator(0)
+restore
+
+display ""
+display "Overall same vs. diff homophily rates (Grand Slams, all teams):"
+preserve
+keep if olympics_tourn==0
+display "Same nationality (same=avg, diff=1-avg):"
+tabstat same_country_avg, stats(mean) format(%9.3f)
+display "Same language (same=avg, diff=1-avg):"
+tabstat same_language_avg, stats(mean) format(%9.3f)
+display "Linguistic proximity (same=avg, diff=1-avg):"
+tabstat ling_prox_avg, stats(mean) format(%9.3f)
+restore
+
+display "Section 3 complete: Olympic cycle descriptive evidence."
+
+* ═══════════════════════════════════════════════════════════════════════════════
 * SECTION 2: PRESSURE OUTCOMES — COUNTS AND INSPECTION
 * ═══════════════════════════════════════════════════════════════════════════════
 * All descriptive stats in this section (Table 1, 2.1, 2.2, 2.3) are computed on the
@@ -365,56 +415,30 @@ display ""
 display "Section 2.5 complete: Olympics pressure outcomes."
 
 * ═══════════════════════════════════════════════════════════════════════════════
-* SECTION 3: OLYMPIC CYCLE DESCRIPTIVE EVIDENCE
-* ═══════════════════════════════════════════════════════════════════════════════
 
-display ""
-display "=== TABLE 2A. Tokyo 2021 cycle — Same nat/lang/langprox by period ==="
+* =============================================================================
+* REORDERED to follow overleaf/main.tex's table order (2026-09-11), WITHIN the
+* limits of Stata's single continuous in-memory dataset (unlike homophily.ipynb,
+* an independent-cell notebook, this .do file cannot revisit a dataset once a
+* later `import ..., clear` replaces it). Concretely: every block using
+* team_gs_panel.csv (Tables 3, 5, 6a, 6b + their appendices/robustness) must run
+* together before the one-way switch to tiebreak_panel.csv (Table 4 + its
+* appendix/robustness), which must in turn run before the independent switch to
+* partner_selection_ego.csv (Section 8). So the file is organized as THREE
+* dataset sessions in sequence, and WITHIN each session, main-text tables
+* (Part A) come before that session's non-paper/robustness tables (Part B) --
+* rather than one single Part A block followed by one single Part B block for
+* the whole file. The only deviation from main.tex's literal table order is that
+* Table 4 appears after Table 6b's block (not immediately after Table 3), forced
+* by this dataset-session constraint. All tables reproduce the same numbers
+* regardless of this reordering.
+* =============================================================================
 
-preserve
-keep if olympics_tourn==0
-collapse (count) N_teams=match_id (mean) same_country_avg same_language_avg ling_prox_avg, by(cycle_tokyo)
-destring N_teams, replace
-replace same_country_avg = same_country_avg*100
-replace same_language_avg = same_language_avg*100
-replace ling_prox_avg = ling_prox_avg*100
 
-replace N_teams = N_teams*2
-order cycle_tokyo
-list cycle_tokyo N_teams same_country_avg same_language_avg ling_prox_avg, abbreviate(14) separator(0)
-restore
+* =============================================================================
+* PART A (team_gs_panel session) -- main.tex tables with their own \label{tab:...} float
+* =============================================================================
 
-display ""
-display "=== TABLE 2B. Paris 2024 cycle — Same nat/lang/langprox by period ==="
-
-preserve
-keep if olympics_tourn==0
-collapse (count) N_teams=match_id (mean) same_country_avg same_language_avg ling_prox_avg, by(cycle_paris)
-destring N_teams, replace
-replace same_country_avg = same_country_avg*100
-replace same_language_avg = same_language_avg*100
-replace ling_prox_avg = ling_prox_avg*100
-
-replace N_teams = N_teams*2
-order cycle_paris
-list cycle_paris N_teams same_country_avg same_language_avg ling_prox_avg, abbreviate(14) separator(0)
-restore
-
-display ""
-display "Overall same vs. diff homophily rates (Grand Slams, all teams):"
-preserve
-keep if olympics_tourn==0
-display "Same nationality (same=avg, diff=1-avg):"
-tabstat same_country_avg, stats(mean) format(%9.3f)
-display "Same language (same=avg, diff=1-avg):"
-tabstat same_language_avg, stats(mean) format(%9.3f)
-display "Linguistic proximity (same=avg, diff=1-avg):"
-tabstat ling_prox_avg, stats(mean) format(%9.3f)
-restore
-
-display "Section 3 complete: Olympic cycle descriptive evidence."
-
-* ═══════════════════════════════════════════════════════════════════════════════
 * SECTION 4: TEAM PANEL CONSTRUCTION
 * ═══════════════════════════════════════════════════════════════════════════════
 * Load team-level panel from CSV (pre-constructed by homophily_analysis.ipynb)
@@ -641,55 +665,6 @@ display ""
 log using "stata_homophily_results.txt", replace text
 
 * ═══════════════════════════════════════════════════════════════════════════════
-* SECTION 0: OBSERVATION BREAKDOWN
-* ═══════════════════════════════════════════════════════════════════════════════
-
-display ""
-display "=== SECTION 0. OBSERVATION BREAKDOWN ==="
-display "(from raw scraped data to regression sample)"
-display ""
-display "  Step 1  Raw scraped GS matches (2018-2025; Wimbledon 2020 cancelled, AO/RG/USO 2020"
-display "          included). Olympics is loaded alongside GS in this working dataset but is"
-display "          excluded from every count below via reg_sample / olympics_tourn==0 --"
-display "          Part 1 of this report is GS-only throughout."
-display "  Step 2  Drop retirements / walkovers (see count below)"
-display "  ─────────────────────────────────────────────────────────────────────────────"
-display "          Clean match dataset: see count below"
-display ""
-display "  Step 3  Expand to team-level (2 obs per match)"
-display "  Step 4  Drop: ranking incomplete for >=1 player"
-display "  Step 5  Drop: nationality/language missing for >=1 player:    0 matches"
-display "          (pipeline fully resolves via birthplace, surname lookup, Monaco fix,"
-display "           and manual_nationality.csv)"
-display "  ─────────────────────────────────────────────────────────────────────────────"
-display "  Step 6  Years since turning pro missing for >=1 player: imputed to 1 for rookies,"
-display "          no observations dropped"
-display "  ─────────────────────────────────────────────────────────────────────────────"
-
-count
-local n_panel = r(N)
-local n_matches = `n_panel' / 2
-display "          Grand Slams regression sample:  `n_panel' obs (approx `n_matches' matches)"
-display ""
-
-count if missing(win, ty, stage_code, same_country, rank_mean, opp_rank_mean, single_top100, exp_mean)
-display "  Records with any missing regression variable: " r(N) " (should be 0)"
-display ""
-
-display "  Regression sub-samples:"
-count if regular_tb == 1
-local n_tb   = r(N)
-local n_tb_m = `n_tb' / 2
-display "    Table 4  regular 7-pt tiebreaks (sets 1-2):     `n_tb' obs | `n_tb_m' matches"
-count if any_tb == 1
-local n_any_tb = r(N)
-display "    Table 4  any tiebreak (all types):              `n_any_tb' obs | " `n_any_tb'/2 " matches"
-count if lost_set1 == 1
-local n_adv = r(N)
-display "    Table 5  adversity sample (lost set 1):         `n_adv' obs = `n_adv' matches"
-display ""
-
-* ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3: MATCH WIN — LOGIT (Main specification)
 * Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq
 * No rank_gap; see Table 3b for sensitivity with rank_gap.
@@ -750,6 +725,377 @@ margins, dydx(ling_prox_psw_cognet rank_mean opp_rank_mean single_top100 exp_mea
 estimates store win_ling_prox_psw_cognet
 
 estimates table win_ling_prox_binary win_ling_prox_psw_tree win_ling_prox_psw_cognet, b se stats(N ll)
+
+* ─────────────────────────────────────────────────────────────────────────────
+* SECTION 6: HETEROGENEITY ANALYSIS
+* =============================================================================
+* Three sets of interactions, each applied to the match-win logit (team panel).
+*   Table 6a. Culture x Years Since Turning Pro (exp_mean, demeaned), FE: ty + stage_code
+*   Table 5.  Culture x surface (clay / grass vs. rest, two specs), no ty FE
+*   Table 6.  Culture x Hofstede individualism score, demeaned (ic_team_dm),
+*             Spec 2 only (C + IC + C*IC + controls + FE)
+*
+* Sample: same 3,728 obs as Tables 3-4 (exp_mean imputed to 1 for rookies).
+* Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
+* =============================================================================
+
+display "=== SECTION 6. HETEROGENEITY ANALYSIS ==="
+display ""
+
+* Surface dummies from the encoded surface variable (Clay=1, Grass=2, Hard=3)
+* Use decode to safely generate string-based dummies.
+decode surface, generate(surface_str)
+generate byte clay  = (surface_str == "Clay")
+generate byte grass = (surface_str == "Grass")
+drop surface_str
+
+display "Surface distribution:"
+tabstat clay grass, stats(sum mean) format(%9.0f)
+
+* ic_team_dm: demeaned Hofstede individualism score (mean = 0 by construction)
+summarize ic_team_dm
+display "ic_team_dm mean (should be ~0): " r(mean)
+
+* ---------------------------------------------------------------------------
+* TABLE 5: Culture x Surface (was Table 6b)
+* Spec (a): grass + C*grass, baseline = hardcourt + clay pooled
+* Spec (b): clay + C*clay, baseline = hardcourt + grass pooled
+* No tournament x year FE (round FE only) -- surface is a deterministic function
+* of tournament, so dropping the tournament x year FE lets the surface main
+* effects be estimated directly instead of being absorbed/collinear.
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 5. Heterogeneity: Culture x Surface ==="
+display "Hardcourt = AO + USO; clay = Roland Garros; grass = Wimbledon."
+display "Spec (a): grass + C x grass, baseline = hardcourt+clay pooled"
+display "Spec (b): clay + C x clay, baseline = hardcourt+grass pooled"
+display "FE: stage_code only (no tournament x year FE) | SE: clustered by match"
+display "Controls: same as Table 3 -- rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
+display ""
+
+generate double int_sc_clay  = same_country  * clay
+generate double int_sc_grass = same_country  * grass
+generate double int_sl_clay  = same_language * clay
+generate double int_sl_grass = same_language * grass
+generate double int_lp_clay  = ling_prox     * clay
+generate double int_lp_grass = ling_prox     * grass
+
+display "--- 5a. Same Nationality: Spec (a) grass vs. rest ---"
+logit win i.stage_code same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_sc_grass
+
+display ""
+display "--- 5a. Same Nationality: Spec (b) clay vs. rest ---"
+logit win i.stage_code same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_sc_clay
+
+display ""
+display "--- 5b. Same Language: Spec (a) grass vs. rest ---"
+logit win i.stage_code same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_sl_grass
+
+display ""
+display "--- 5b. Same Language: Spec (b) clay vs. rest ---"
+logit win i.stage_code same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_sl_clay
+
+display ""
+display "--- 5c. Language Proximity: Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_lp_grass
+
+display ""
+display "--- 5c. Language Proximity: Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_lp_clay
+
+display ""
+display "--- Comparison: Spec (a) grass vs. Spec (b) clay ---"
+estimates table het_surf_sc_grass het_surf_sc_clay, b se stats(N ll)
+estimates table het_surf_sl_grass het_surf_sl_clay, b se stats(N ll)
+estimates table het_surf_lp_grass het_surf_lp_clay, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* APPENDIX A5: Culture x Surface, language-proximity robustness measures
+* (mirrors main.tex Appendix Table A5, cf. Table 5 / tab:t5).
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A5. Culture x Surface -- Language Proximity Robustness ==="
+display ""
+
+generate double int_lpbin_clay  = ling_prox_binary     * clay
+generate double int_lpbin_grass = ling_prox_binary     * grass
+generate double int_pswt_clay   = ling_prox_psw_tree   * clay
+generate double int_pswt_grass  = ling_prox_psw_tree   * grass
+generate double int_pswc_clay   = ling_prox_psw_cognet * clay
+generate double int_pswc_grass  = ling_prox_psw_cognet * grass
+
+display "--- A5-i. Binary (comlang_ethno): Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox_binary grass int_lpbin_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary grass int_lpbin_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_lpbin_grass
+
+display ""
+display "--- A5-i. Binary (comlang_ethno): Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox_binary clay int_lpbin_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary clay int_lpbin_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_lpbin_clay
+
+display ""
+display "--- A5-ii. PSW tree: Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox_psw_tree grass int_pswt_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree grass int_pswt_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswt_grass
+
+display ""
+display "--- A5-ii. PSW tree: Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox_psw_tree clay int_pswt_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree clay int_pswt_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswt_clay
+
+display ""
+display "--- A5-iii. PSW cognate: Spec (a) grass vs. rest ---"
+logit win i.stage_code ling_prox_psw_cognet grass int_pswc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet grass int_pswc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswc_grass
+
+display ""
+display "--- A5-iii. PSW cognate: Spec (b) clay vs. rest ---"
+logit win i.stage_code ling_prox_psw_cognet clay int_pswc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet clay int_pswc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surf_pswc_clay
+
+display ""
+display "--- Appendix A5 comparison: Spec (a) grass vs. Spec (b) clay ---"
+estimates table het_surf_lpbin_grass het_surf_lpbin_clay, b se stats(N ll)
+estimates table het_surf_pswt_grass het_surf_pswt_clay, b se stats(N ll)
+estimates table het_surf_pswc_grass het_surf_pswc_clay, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* TABLE 6a: Culture x Years Since Turning Pro
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 6a. Heterogeneity: Culture x Years Since Turning Pro (exp_mean, demeaned) ==="
+display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
+display "  (exp_mean_dm_sq = exp_mean_dm^2, the demeaned quadratic control used consistently"
+display "  across every table in this report, per the blanket 'all controls as in Table 3/4' rule.)"
+display "exp_mean_dm = exp_mean - sample mean, so C is evaluated at mean years since turning pro"
+display "  (consistent with how ic_team_dm is demeaned for Table 6)."
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+display "--- 6a-i. Same Nationality x exp_mean ---"
+generate double int_sc_exp  = same_country  * exp_mean_dm
+generate double int_sl_exp  = same_language * exp_mean_dm
+generate double int_lp_exp  = ling_prox     * exp_mean_dm
+
+logit win i.ty i.stage_code same_country  int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_sc
+
+display ""
+display "--- 6a-ii. Same Language x exp_mean ---"
+logit win i.ty i.stage_code same_language  int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_sl
+
+display ""
+display "--- 6a-iii. Language Proximity x exp_mean ---"
+logit win i.ty i.stage_code ling_prox  int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_lp
+
+estimates table het_exp_sc het_exp_sl het_exp_lp, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* APPENDIX A6: Culture x exp_mean, language-proximity robustness measures
+* (mirrors main.tex Appendix Table A6, cf. Table 6 / tab:t6). Binary comlang_ethno
+* + two PSW2024 continuous measures, relocated out of the main text 2026-09-10.
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A6. Culture x exp_mean -- Language Proximity Robustness ==="
+display ""
+
+generate double int_lpbin_exp = ling_prox_binary   * exp_mean_dm
+generate double int_pswt_exp  = ling_prox_psw_tree * exp_mean_dm
+generate double int_pswc_exp  = ling_prox_psw_cognet * exp_mean_dm
+
+display "--- A6-i. Binary (comlang_ethno) x exp_mean ---"
+logit win i.ty i.stage_code ling_prox_binary int_lpbin_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary int_lpbin_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_lpbin
+
+display ""
+display "--- A6-ii. PSW tree x exp_mean ---"
+logit win i.ty i.stage_code ling_prox_psw_tree int_pswt_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree int_pswt_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_pswt
+
+display ""
+display "--- A6-iii. PSW cognate x exp_mean ---"
+logit win i.ty i.stage_code ling_prox_psw_cognet int_pswc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet int_pswc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_exp_pswc
+
+estimates table het_exp_lpbin het_exp_pswt het_exp_pswc, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* TABLE 6b: Culture x Within-Team Experience Gap (new, per reviewer request 2026-08-11)
+* exp_gap = |exp_i - exp_j|, the two teammates' OWN tenure (not the team average exp_mean).
+* Rationale: shared culture/language may substitute for shared experience when one teammate
+* is a veteran and the other is new. Individual tenure imputed to 1 yr for rookies, same
+* rule as exp_mean. Demeaned like every other interaction table. exp_gap_dm is also included
+* as a plain control alongside its interaction, per the request.
+* Requires re-merging individual player experience (winners/losers p1/p2 experience_double)
+* since team_gs only carries the team-average exp_mean, not each player's own tenure.
+* ---------------------------------------------------------------------------
+display ""
+display "=== TABLE 6b. Heterogeneity: Culture x Within-Team Experience Gap ==="
+display "FE: ty + stage_code | SE: clustered by match"
+display ""
+
+preserve
+import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
+keep match_id winners_p1_experience_double winners_p2_experience_double ///
+    losers_p1_experience_double losers_p2_experience_double
+duplicates drop match_id, force
+tempfile exp_gap_lookup
+save `exp_gap_lookup'
+restore
+
+merge m:1 match_id using `exp_gap_lookup', keep(master match) nogen
+
+destring winners_p1_experience_double winners_p2_experience_double ///
+    losers_p1_experience_double losers_p2_experience_double, replace force
+
+generate double _e1 = winners_p1_experience_double if win == 1
+replace       _e1 = losers_p1_experience_double  if win == 0
+generate double _e2 = winners_p2_experience_double if win == 1
+replace       _e2 = losers_p2_experience_double  if win == 0
+replace _e1 = 1 if missing(_e1) | _e1 <= 0
+replace _e2 = 1 if missing(_e2) | _e2 <= 0
+
+generate double exp_gap = abs(_e1 - _e2)
+quietly summarize exp_gap
+generate double exp_gap_dm = exp_gap - r(mean)
+generate double exp_gap_dm_sq = exp_gap_dm ^ 2
+display "exp_gap_dm: mean = " r(mean) "  SD = " r(sd)
+drop _e1 _e2
+
+generate double int_sc_gap = same_country  * exp_gap_dm
+generate double int_sl_gap = same_language * exp_gap_dm
+generate double int_lp_gap = ling_prox     * exp_gap_dm
+
+display "--- 6b-i. Same Nationality x exp_gap ---"
+logit win i.ty i.stage_code same_country  int_sc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_sc
+
+display ""
+display "--- 6b-ii. Same Language x exp_gap ---"
+logit win i.ty i.stage_code same_language  int_sl_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_sl
+
+display ""
+display "--- 6b-iii. Language Proximity x exp_gap ---"
+logit win i.ty i.stage_code ling_prox  int_lp_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_lp
+
+estimates table het_gap_sc het_gap_sl het_gap_lp, b se stats(N ll)
+
+* ---------------------------------------------------------------------------
+* APPENDIX A6b: Culture x exp_gap, language-proximity robustness measures
+* (mirrors main.tex Appendix Table A6b, cf. Table 6b / tab:t6b).
+* ---------------------------------------------------------------------------
+display ""
+display "=== APPENDIX A6b. Culture x exp_gap -- Language Proximity Robustness ==="
+display ""
+
+generate double int_lpbin_gap = ling_prox_binary     * exp_gap_dm
+generate double int_pswt_gap  = ling_prox_psw_tree   * exp_gap_dm
+generate double int_pswc_gap  = ling_prox_psw_cognet * exp_gap_dm
+
+display "--- A6b-i. Binary (comlang_ethno) x exp_gap ---"
+logit win i.ty i.stage_code ling_prox_binary int_lpbin_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_binary int_lpbin_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_lpbin
+
+display ""
+display "--- A6b-ii. PSW tree x exp_gap ---"
+logit win i.ty i.stage_code ling_prox_psw_tree int_pswt_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_tree int_pswt_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_pswt
+
+display ""
+display "--- A6b-iii. PSW cognate x exp_gap ---"
+logit win i.ty i.stage_code ling_prox_psw_cognet int_pswc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox_psw_cognet int_pswc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_gap_pswc
+
+estimates table het_gap_lpbin het_gap_pswt het_gap_pswc, b se stats(N ll)
+
+
+* =============================================================================
+* PART B (team_gs_panel session) -- additional / robustness tables, not in main.tex
+* (some are cited by number in prose/footnotes but have no own labeled float;
+* Table 6 Hofstede-individualism is report.html-only per CLAUDE.md)
+* =============================================================================
+
+* SECTION 0: OBSERVATION BREAKDOWN
+* ═══════════════════════════════════════════════════════════════════════════════
+
+display ""
+display "=== SECTION 0. OBSERVATION BREAKDOWN ==="
+display "(from raw scraped data to regression sample)"
+display ""
+display "  Step 1  Raw scraped GS matches (2018-2025; Wimbledon 2020 cancelled, AO/RG/USO 2020"
+display "          included). Olympics is loaded alongside GS in this working dataset but is"
+display "          excluded from every count below via reg_sample / olympics_tourn==0 --"
+display "          Part 1 of this report is GS-only throughout."
+display "  Step 2  Drop retirements / walkovers (see count below)"
+display "  ─────────────────────────────────────────────────────────────────────────────"
+display "          Clean match dataset: see count below"
+display ""
+display "  Step 3  Expand to team-level (2 obs per match)"
+display "  Step 4  Drop: ranking incomplete for >=1 player"
+display "  Step 5  Drop: nationality/language missing for >=1 player:    0 matches"
+display "          (pipeline fully resolves via birthplace, surname lookup, Monaco fix,"
+display "           and manual_nationality.csv)"
+display "  ─────────────────────────────────────────────────────────────────────────────"
+display "  Step 6  Years since turning pro missing for >=1 player: imputed to 1 for rookies,"
+display "          no observations dropped"
+display "  ─────────────────────────────────────────────────────────────────────────────"
+
+count
+local n_panel = r(N)
+local n_matches = `n_panel' / 2
+display "          Grand Slams regression sample:  `n_panel' obs (approx `n_matches' matches)"
+display ""
+
+count if missing(win, ty, stage_code, same_country, rank_mean, opp_rank_mean, single_top100, exp_mean)
+display "  Records with any missing regression variable: " r(N) " (should be 0)"
+display ""
+
+display "  Regression sub-samples:"
+count if regular_tb == 1
+local n_tb   = r(N)
+local n_tb_m = `n_tb' / 2
+display "    Table 4  regular 7-pt tiebreaks (sets 1-2):     `n_tb' obs | `n_tb_m' matches"
+count if any_tb == 1
+local n_any_tb = r(N)
+display "    Table 4  any tiebreak (all types):              `n_any_tb' obs | " `n_any_tb'/2 " matches"
+count if lost_set1 == 1
+local n_adv = r(N)
+display "    Table 5  adversity sample (lost set 1):         `n_adv' obs = `n_adv' matches"
+display ""
 
 * ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3-NATLANG: MATCH WIN — NATIONALITY VS. LANGUAGE DECOMPOSITION
@@ -934,102 +1280,35 @@ foreach cvar in same_country same_language ling_prox {
 restore
 
 * ─────────────────────────────────────────────────────────────────────────────
-* SECTION 6: HETEROGENEITY ANALYSIS
-* =============================================================================
-* Three sets of interactions, each applied to the match-win logit (team panel).
-*   Table 6a. Culture x Years Since Turning Pro (exp_mean, demeaned), FE: ty + stage_code
-*   Table 5.  Culture x surface (clay / grass vs. rest, two specs), no ty FE
-*   Table 6.  Culture x Hofstede individualism score, demeaned (ic_team_dm),
-*             Spec 2 only (C + IC + C*IC + controls + FE)
-*
-* Sample: same 3,728 obs as Tables 3-4 (exp_mean imputed to 1 for rookies).
-* Note: ic_team_dm is loaded from team_gs_panel.csv (computed in merge_hofstede.ipynb).
-* =============================================================================
-
-display "=== SECTION 6. HETEROGENEITY ANALYSIS ==="
-display ""
-
-* Surface dummies from the encoded surface variable (Clay=1, Grass=2, Hard=3)
-* Use decode to safely generate string-based dummies.
-decode surface, generate(surface_str)
-generate byte clay  = (surface_str == "Clay")
-generate byte grass = (surface_str == "Grass")
-drop surface_str
-
-display "Surface distribution:"
-tabstat clay grass, stats(sum mean) format(%9.0f)
-
-* ic_team_dm: demeaned Hofstede individualism score (mean = 0 by construction)
-summarize ic_team_dm
-display "ic_team_dm mean (should be ~0): " r(mean)
-
-* ---------------------------------------------------------------------------
-* TABLE 6a: Culture x Years Since Turning Pro
+* TABLE 5 ROBUSTNESS: tournament x year FE restored, interaction only, no separate
+* surface main effect (per reviewer request 2026-08-11). Mirror image of the main Table 5
+* spec's tradeoff: T x Y FE comes back, but the surface main effect can no longer be
+* separately identified from the tournament dummies it's nested in.
 * ---------------------------------------------------------------------------
 display ""
-display "=== TABLE 6a. Heterogeneity: Culture x Years Since Turning Pro (exp_mean, demeaned) ==="
-display "Controls: rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
-display "  (exp_mean_dm_sq = exp_mean_dm^2, the demeaned quadratic control used consistently"
-display "  across every table in this report, per the blanket 'all controls as in Table 3/4' rule.)"
-display "exp_mean_dm = exp_mean - sample mean, so C is evaluated at mean years since turning pro"
-display "  (consistent with how ic_team_dm is demeaned for Table 6)."
+display "=== TABLE 5 ROBUSTNESS. T x Y FE, Culture x Surface interaction only ==="
+display "No separate surface main effect -- hardcourt is the implicit baseline."
 display "FE: ty + stage_code | SE: clustered by match"
 display ""
 
-display "--- 6a-i. Same Nationality x exp_mean ---"
-generate double int_sc_exp  = same_country  * exp_mean_dm
-generate double int_sl_exp  = same_language * exp_mean_dm
-generate double int_lp_exp  = ling_prox     * exp_mean_dm
-
-logit win i.ty i.stage_code same_country  int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_country int_sc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_exp_sc
+display "--- 5-rob-i. Same Nationality ---"
+logit win i.ty i.stage_code same_country int_sc_grass int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_country int_sc_grass int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surfty_sc
 
 display ""
-display "--- 6a-ii. Same Language x exp_mean ---"
-logit win i.ty i.stage_code same_language  int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_language int_sl_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_exp_sl
+display "--- 5-rob-ii. Same Language ---"
+logit win i.ty i.stage_code same_language int_sl_grass int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(same_language int_sl_grass int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surfty_sl
 
 display ""
-display "--- 6a-iii. Language Proximity x exp_mean ---"
-logit win i.ty i.stage_code ling_prox  int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox int_lp_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_exp_lp
+display "--- 5-rob-iii. Language Proximity ---"
+logit win i.ty i.stage_code ling_prox int_lp_grass int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(ling_prox int_lp_grass int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store het_surfty_lp
 
-estimates table het_exp_sc het_exp_sl het_exp_lp, b se stats(N ll)
-
-* ---------------------------------------------------------------------------
-* APPENDIX A6: Culture x exp_mean, language-proximity robustness measures
-* (mirrors main.tex Appendix Table A6, cf. Table 6 / tab:t6). Binary comlang_ethno
-* + two PSW2024 continuous measures, relocated out of the main text 2026-09-10.
-* ---------------------------------------------------------------------------
-display ""
-display "=== APPENDIX A6. Culture x exp_mean -- Language Proximity Robustness ==="
-display ""
-
-generate double int_lpbin_exp = ling_prox_binary   * exp_mean_dm
-generate double int_pswt_exp  = ling_prox_psw_tree * exp_mean_dm
-generate double int_pswc_exp  = ling_prox_psw_cognet * exp_mean_dm
-
-display "--- A6-i. Binary (comlang_ethno) x exp_mean ---"
-logit win i.ty i.stage_code ling_prox_binary int_lpbin_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_binary int_lpbin_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_exp_lpbin
-
-display ""
-display "--- A6-ii. PSW tree x exp_mean ---"
-logit win i.ty i.stage_code ling_prox_psw_tree int_pswt_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_tree int_pswt_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_exp_pswt
-
-display ""
-display "--- A6-iii. PSW cognate x exp_mean ---"
-logit win i.ty i.stage_code ling_prox_psw_cognet int_pswc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_cognet int_pswc_exp rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_exp_pswc
-
-estimates table het_exp_lpbin het_exp_pswt het_exp_pswc, b se stats(N ll)
+estimates table het_surfty_sc het_surfty_sl het_surfty_lp, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
 * TABLE 6a ROBUSTNESS: adding Culture x exp_mean_dm^2 (per reviewer request 2026-08-11)
@@ -1064,102 +1343,6 @@ estimates store het_exp2_lp
 estimates table het_exp2_sc het_exp2_sl het_exp2_lp, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
-* TABLE 6b: Culture x Within-Team Experience Gap (new, per reviewer request 2026-08-11)
-* exp_gap = |exp_i - exp_j|, the two teammates' OWN tenure (not the team average exp_mean).
-* Rationale: shared culture/language may substitute for shared experience when one teammate
-* is a veteran and the other is new. Individual tenure imputed to 1 yr for rookies, same
-* rule as exp_mean. Demeaned like every other interaction table. exp_gap_dm is also included
-* as a plain control alongside its interaction, per the request.
-* Requires re-merging individual player experience (winners/losers p1/p2 experience_double)
-* since team_gs only carries the team-average exp_mean, not each player's own tenure.
-* ---------------------------------------------------------------------------
-display ""
-display "=== TABLE 6b. Heterogeneity: Culture x Within-Team Experience Gap ==="
-display "FE: ty + stage_code | SE: clustered by match"
-display ""
-
-preserve
-import excel using "data/atp/men_matches_with_ranks_cleaned.xlsx", sheet("players_list") firstrow clear
-keep match_id winners_p1_experience_double winners_p2_experience_double ///
-    losers_p1_experience_double losers_p2_experience_double
-duplicates drop match_id, force
-tempfile exp_gap_lookup
-save `exp_gap_lookup'
-restore
-
-merge m:1 match_id using `exp_gap_lookup', keep(master match) nogen
-
-destring winners_p1_experience_double winners_p2_experience_double ///
-    losers_p1_experience_double losers_p2_experience_double, replace force
-
-generate double _e1 = winners_p1_experience_double if win == 1
-replace       _e1 = losers_p1_experience_double  if win == 0
-generate double _e2 = winners_p2_experience_double if win == 1
-replace       _e2 = losers_p2_experience_double  if win == 0
-replace _e1 = 1 if missing(_e1) | _e1 <= 0
-replace _e2 = 1 if missing(_e2) | _e2 <= 0
-
-generate double exp_gap = abs(_e1 - _e2)
-quietly summarize exp_gap
-generate double exp_gap_dm = exp_gap - r(mean)
-generate double exp_gap_dm_sq = exp_gap_dm ^ 2
-display "exp_gap_dm: mean = " r(mean) "  SD = " r(sd)
-drop _e1 _e2
-
-generate double int_sc_gap = same_country  * exp_gap_dm
-generate double int_sl_gap = same_language * exp_gap_dm
-generate double int_lp_gap = ling_prox     * exp_gap_dm
-
-display "--- 6b-i. Same Nationality x exp_gap ---"
-logit win i.ty i.stage_code same_country  int_sc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_country int_sc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_gap_sc
-
-display ""
-display "--- 6b-ii. Same Language x exp_gap ---"
-logit win i.ty i.stage_code same_language  int_sl_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_language int_sl_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_gap_sl
-
-display ""
-display "--- 6b-iii. Language Proximity x exp_gap ---"
-logit win i.ty i.stage_code ling_prox  int_lp_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox int_lp_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_gap_lp
-
-estimates table het_gap_sc het_gap_sl het_gap_lp, b se stats(N ll)
-
-* ---------------------------------------------------------------------------
-* APPENDIX A6b: Culture x exp_gap, language-proximity robustness measures
-* (mirrors main.tex Appendix Table A6b, cf. Table 6b / tab:t6b).
-* ---------------------------------------------------------------------------
-display ""
-display "=== APPENDIX A6b. Culture x exp_gap -- Language Proximity Robustness ==="
-display ""
-
-generate double int_lpbin_gap = ling_prox_binary     * exp_gap_dm
-generate double int_pswt_gap  = ling_prox_psw_tree   * exp_gap_dm
-generate double int_pswc_gap  = ling_prox_psw_cognet * exp_gap_dm
-
-display "--- A6b-i. Binary (comlang_ethno) x exp_gap ---"
-logit win i.ty i.stage_code ling_prox_binary int_lpbin_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_binary int_lpbin_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_gap_lpbin
-
-display ""
-display "--- A6b-ii. PSW tree x exp_gap ---"
-logit win i.ty i.stage_code ling_prox_psw_tree int_pswt_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_tree int_pswt_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_gap_pswt
-
-display ""
-display "--- A6b-iii. PSW cognate x exp_gap ---"
-logit win i.ty i.stage_code ling_prox_psw_cognet int_pswc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_cognet int_pswc_gap exp_gap_dm rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_gap_pswc
-
-estimates table het_gap_lpbin het_gap_pswt het_gap_pswc, b se stats(N ll)
-
 * --- Table 6b robustness: adding Culture x exp_gap_dm^2 ---
 display ""
 display "=== TABLE 6b ROBUSTNESS. + Culture x exp_gap_dm^2 ==="
@@ -1182,158 +1365,6 @@ margins, dydx(ling_prox int_lp_gap int_lp_gap_sq exp_gap_dm exp_gap_dm_sq rank_m
 estimates store het_gap2_lp
 
 estimates table het_gap2_sc het_gap2_sl het_gap2_lp, b se stats(N ll)
-
-* ---------------------------------------------------------------------------
-* TABLE 5: Culture x Surface (was Table 6b)
-* Spec (a): grass + C*grass, baseline = hardcourt + clay pooled
-* Spec (b): clay + C*clay, baseline = hardcourt + grass pooled
-* No tournament x year FE (round FE only) -- surface is a deterministic function
-* of tournament, so dropping the tournament x year FE lets the surface main
-* effects be estimated directly instead of being absorbed/collinear.
-* ---------------------------------------------------------------------------
-display ""
-display "=== TABLE 5. Heterogeneity: Culture x Surface ==="
-display "Hardcourt = AO + USO; clay = Roland Garros; grass = Wimbledon."
-display "Spec (a): grass + C x grass, baseline = hardcourt+clay pooled"
-display "Spec (b): clay + C x clay, baseline = hardcourt+grass pooled"
-display "FE: stage_code only (no tournament x year FE) | SE: clustered by match"
-display "Controls: same as Table 3 -- rank_mean, opp_rank_mean, single_top100, exp_mean_dm, exp_mean_dm_sq"
-display ""
-
-generate double int_sc_clay  = same_country  * clay
-generate double int_sc_grass = same_country  * grass
-generate double int_sl_clay  = same_language * clay
-generate double int_sl_grass = same_language * grass
-generate double int_lp_clay  = ling_prox     * clay
-generate double int_lp_grass = ling_prox     * grass
-
-display "--- 5a. Same Nationality: Spec (a) grass vs. rest ---"
-logit win i.stage_code same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_country grass int_sc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_sc_grass
-
-display ""
-display "--- 5a. Same Nationality: Spec (b) clay vs. rest ---"
-logit win i.stage_code same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_country clay int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_sc_clay
-
-display ""
-display "--- 5b. Same Language: Spec (a) grass vs. rest ---"
-logit win i.stage_code same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_language grass int_sl_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_sl_grass
-
-display ""
-display "--- 5b. Same Language: Spec (b) clay vs. rest ---"
-logit win i.stage_code same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_language clay int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_sl_clay
-
-display ""
-display "--- 5c. Language Proximity: Spec (a) grass vs. rest ---"
-logit win i.stage_code ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox grass int_lp_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_lp_grass
-
-display ""
-display "--- 5c. Language Proximity: Spec (b) clay vs. rest ---"
-logit win i.stage_code ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox clay int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_lp_clay
-
-display ""
-display "--- Comparison: Spec (a) grass vs. Spec (b) clay ---"
-estimates table het_surf_sc_grass het_surf_sc_clay, b se stats(N ll)
-estimates table het_surf_sl_grass het_surf_sl_clay, b se stats(N ll)
-estimates table het_surf_lp_grass het_surf_lp_clay, b se stats(N ll)
-
-* ---------------------------------------------------------------------------
-* APPENDIX A5: Culture x Surface, language-proximity robustness measures
-* (mirrors main.tex Appendix Table A5, cf. Table 5 / tab:t5).
-* ---------------------------------------------------------------------------
-display ""
-display "=== APPENDIX A5. Culture x Surface -- Language Proximity Robustness ==="
-display ""
-
-generate double int_lpbin_clay  = ling_prox_binary     * clay
-generate double int_lpbin_grass = ling_prox_binary     * grass
-generate double int_pswt_clay   = ling_prox_psw_tree   * clay
-generate double int_pswt_grass  = ling_prox_psw_tree   * grass
-generate double int_pswc_clay   = ling_prox_psw_cognet * clay
-generate double int_pswc_grass  = ling_prox_psw_cognet * grass
-
-display "--- A5-i. Binary (comlang_ethno): Spec (a) grass vs. rest ---"
-logit win i.stage_code ling_prox_binary grass int_lpbin_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_binary grass int_lpbin_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_lpbin_grass
-
-display ""
-display "--- A5-i. Binary (comlang_ethno): Spec (b) clay vs. rest ---"
-logit win i.stage_code ling_prox_binary clay int_lpbin_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_binary clay int_lpbin_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_lpbin_clay
-
-display ""
-display "--- A5-ii. PSW tree: Spec (a) grass vs. rest ---"
-logit win i.stage_code ling_prox_psw_tree grass int_pswt_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_tree grass int_pswt_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_pswt_grass
-
-display ""
-display "--- A5-ii. PSW tree: Spec (b) clay vs. rest ---"
-logit win i.stage_code ling_prox_psw_tree clay int_pswt_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_tree clay int_pswt_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_pswt_clay
-
-display ""
-display "--- A5-iii. PSW cognate: Spec (a) grass vs. rest ---"
-logit win i.stage_code ling_prox_psw_cognet grass int_pswc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_cognet grass int_pswc_grass rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_pswc_grass
-
-display ""
-display "--- A5-iii. PSW cognate: Spec (b) clay vs. rest ---"
-logit win i.stage_code ling_prox_psw_cognet clay int_pswc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox_psw_cognet clay int_pswc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surf_pswc_clay
-
-display ""
-display "--- Appendix A5 comparison: Spec (a) grass vs. Spec (b) clay ---"
-estimates table het_surf_lpbin_grass het_surf_lpbin_clay, b se stats(N ll)
-estimates table het_surf_pswt_grass het_surf_pswt_clay, b se stats(N ll)
-estimates table het_surf_pswc_grass het_surf_pswc_clay, b se stats(N ll)
-
-* ---------------------------------------------------------------------------
-* TABLE 5 ROBUSTNESS: tournament x year FE restored, interaction only, no separate
-* surface main effect (per reviewer request 2026-08-11). Mirror image of the main Table 5
-* spec's tradeoff: T x Y FE comes back, but the surface main effect can no longer be
-* separately identified from the tournament dummies it's nested in.
-* ---------------------------------------------------------------------------
-display ""
-display "=== TABLE 5 ROBUSTNESS. T x Y FE, Culture x Surface interaction only ==="
-display "No separate surface main effect -- hardcourt is the implicit baseline."
-display "FE: ty + stage_code | SE: clustered by match"
-display ""
-
-display "--- 5-rob-i. Same Nationality ---"
-logit win i.ty i.stage_code same_country int_sc_grass int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_country int_sc_grass int_sc_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surfty_sc
-
-display ""
-display "--- 5-rob-ii. Same Language ---"
-logit win i.ty i.stage_code same_language int_sl_grass int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(same_language int_sl_grass int_sl_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surfty_sl
-
-display ""
-display "--- 5-rob-iii. Language Proximity ---"
-logit win i.ty i.stage_code ling_prox int_lp_grass int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(ling_prox int_lp_grass int_lp_clay rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store het_surfty_lp
-
-estimates table het_surfty_sc het_surfty_sl het_surfty_lp, b se stats(N ll)
 
 * ---------------------------------------------------------------------------
 * TABLE 6: Culture x Hofstede Individualism (team-level, demeaned) (was Table 6c)
@@ -1434,6 +1465,11 @@ display ""
 display "Section 6 complete: Heterogeneity analysis."
 
 * =============================================================================
+
+* =============================================================================
+* PART A (tiebreak_panel session) -- main.tex tables with their own \label{tab:...} float
+* =============================================================================
+
 * SECTION 7: TABLE 4 — TIEBREAK WIN
 * =============================================================================
 * Unit of observation: one team in one specific tiebreak (2 obs per tiebreak).
@@ -1548,6 +1584,13 @@ estimates store tbn_ling_prox_psw_cognet
 estimates table tbn_ling_prox_binary tbn_ling_prox_psw_tree tbn_ling_prox_psw_cognet, b se stats(N ll)
 
 * ─────────────────────────────────────────────────────────────────────────────
+
+* =============================================================================
+* PART B (tiebreak_panel session) -- additional / robustness tables, not in main.tex
+* (some are cited by number in prose/footnotes but have no own labeled float;
+* Table 6 Hofstede-individualism is report.html-only per CLAUDE.md)
+* =============================================================================
+
 * TABLE 4-AGE: TIEBREAK WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)
 * Same age-vs-experience substitution as Table 3-AGE, applied to the tiebreak-win outcome.
 * ─────────────────────────────────────────────────────────────────────────────
@@ -1677,6 +1720,11 @@ display ""
 display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE, Table 4-NOINT, Table 4-RANDONE)."
 
 * ═══════════════════════════════════════════════════════════════════════════════
+
+* =============================================================================
+* PART A (partner_selection_ego session) -- main.tex tables with their own \label{tab:...} float
+* =============================================================================
+
 * SECTION 8: PARTNER SELECTION — OWN COUNTRY AND TOURNAMENT-FIELD COMPOSITION
 * (new, per Lingqing's meeting notes / main.tex red comment: extend the Section 6.1
 * "does own ranking predict partner-culture similarity?" ego-row regression with own
