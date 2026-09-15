@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.5)  12 SEP 2026 13:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.5)  15 SEP 2026 16:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -956,91 +956,99 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/ALESSANDRO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Excluding 'comment' comment. [1] [2] [3] [4] [5]
-Overfull \hbox (1.83054pt too wide) in paragraph at lines 158--194
+Overfull \hbox (1.83054pt too wide) in paragraph at lines 157--198
  [] 
  []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [6] [7] [8] [9] [10] [11]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 328--357
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 335--364
  [] 
  []
 
-[12] [13]
-Overfull \hbox (43.41415pt too wide) in paragraph at lines 383--407
+[12]
+Overfull \hbox (43.41415pt too wide) in paragraph at lines 393--417
  [] 
  []
 
-[14]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 436--464
+[13] [14]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 446--474
  [] 
  []
 
 [15] [16] [17]
-Overfull \hbox (35.30302pt too wide) in paragraph at lines 529--552
+Overfull \hbox (35.30302pt too wide) in paragraph at lines 539--562
  [] 
  []
 
 [18] [19]
-Overfull \hbox (38.05302pt too wide) in paragraph at lines 588--611
+Overfull \hbox (38.05302pt too wide) in paragraph at lines 598--621
  [] 
  []
 
 [20] [21]
-Overfull \hbox (14.29079pt too wide) in paragraph at lines 651--651
+Overfull \hbox (14.29079pt too wide) in paragraph at lines 661--661
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =2,089)| 
  []
 
 
-Overfull \hbox (14.29079pt too wide) in paragraph at lines 651--651
+Overfull \hbox (14.29079pt too wide) in paragraph at lines 661--661
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =1,211)| 
  []
 
 
-Overfull \hbox (6.51299pt too wide) in paragraph at lines 651--651
+Overfull \hbox (6.51299pt too wide) in paragraph at lines 661--661
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =712)| 
  []
 
-[22] [23]
-Overfull \hbox (35.52539pt too wide) in paragraph at lines 683--713
+[22] [23] [24]
+Overfull \hbox (35.52539pt too wide) in paragraph at lines 695--725
  [] 
  []
 
-[24] [25] Excluding 'comment' comment. [26] [27] [28] [29] [30]
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 821--849
- [] 
- []
-
-
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 855--883
+[25] Excluding 'comment' comment. [26] [27] [28] [29] [30]
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 833--861
  [] 
  []
 
 
-Overfull \hbox (47.942pt too wide) in paragraph at lines 889--913
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 867--895
  [] 
  []
 
-(main.bbl [31] [32] [33])
+
+Overfull \hbox (47.942pt too wide) in paragraph at lines 901--925
+ [] 
+ []
+
+[31] [32] [33]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 996--1024
+ [] 
+ []
+
+(main.bbl [34])
 \Changes@OutFile=\write5
 \openout5 = `main.soc'.
 
 \tf@loc=\write6
 \openout6 = `main.loc'.
 
- [34] (main.aux)
+ [35] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 19171 strings out of 467871
- 383061 string characters out of 5415957
- 792803 words of memory out of 5000000
- 47663 multiletter control sequences out of 15000+600000
+ 19173 strings out of 467871
+ 383082 string characters out of 5415957
+ 791365 words of memory out of 5000000
+ 47665 multiletter control sequences out of 15000+600000
  638895 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 114i,17n,122p,2724b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,17n,122p,2505b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmbx10.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTe
@@ -1067,9 +1075,9 @@ m/cmsy9.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/ALESSANDRO/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on main.pdf (35 pages, 389927 bytes).
+Output written on main.pdf (36 pages, 396114 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
+ 230 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
