@@ -202,7 +202,7 @@ Team-level statistics are the two-teammate average used directly in the regressi
 
 \subsection{Measuring Cultural Similarity [rewrite!]}
 
-\textcolor{blue}{We construct three measures of cultural similarity \textcolor{red}{using dataset xxx CEPII (reference)... and cite 1-2 papers using this dataset or measure.}. The first measure, \textit{Same Nationality}, equals one if both teammates represent the same country and zero otherwise. The second measure, \textit{Same Language}, equals one if both teammates share an official national language and zero otherwise. The third measure, \textit{Linguistic Proximity}, is a continuous index on $[0,1]$ built from Ethnologue's language-tree classification \citep{melitztoubal2014}, obtained from the authors' own data repository (\texttt{faridtoubal.com/Paper/LangJIE/lang.html}) since CEPII's distribution link for this specific table is no longer active. We adopt this continuous, tree-based measure as our main-text linguistic-similarity indicator, rather than a binary same-language indicator, for two reasons: it distinguishes teammates who speak closely related but distinct languages (e.g.\ Italian and Spanish, both Romance languages) from teammates whose languages are totally unrelated; and it is the same measure \citet{bekesottaviano2025} use to characterize linguistic similarity between teammates in the most closely related existing study of cultural homophily within small, interdependent teams, allowing our results to be compared directly to theirs. \citet{melitztoubal2014} score each pair of \emph{languages} on a coarse ordinal scale according to how many levels of the Ethnologue family tree they share (e.g.\ two languages in the same branch but a different sub-branch score $0.5$), and the resulting \emph{country}-pair value is a population-weighted average across each country's principal languages. For example, Belgium is absent from their table; we then construct its value against any other country as the population-weighted average of the Netherlands' and France's own values against that country, using Belgium's approximate Dutch/French population shares ($59\%$/$41\%$) as weights, the same treatment Melitz and Toubal (2014) themselves apply to other multi-language countries such as Switzerland. This gives Belgium a linguistic-proximity value of $0.56$ against France ($0.59\times0.25+0.41\times1.00$: Dutch and French sit in different branches of the same language family, while French scores trivially $1.00$ against itself) and $0.69$ against the Netherlands ($0.59\times1.00+0.41\times0.25$). The measure is defined at the country level from each country's aggregate population-language composition, not at the level of the individual player: a bilingual player is assigned the value implied by their playing nationality, with no separate adjustment for their own personal language repertoire.} \footnote{An alternative binary construction of linguistic proximity (CEPII's \textit{comlang\_ethno}, one if both teammates share a widely-spoken ethnic language and zero otherwise, defined as a language spoken as a mother tongue by at least 9\% of the population in both countries) and two further continuous constructions from \citet{psw2024} are reported as robustness checks in Appendix~\ref{app:langprox}.}
+\textcolor{blue}{We construct three measures of cultural similarity. The first measure, \textit{Same Nationality}, equals one if both teammates represent the same country and zero otherwise. The second measure, \textit{Same Language}, equals one if both teammates share an official national language and zero otherwise. It is built from the \textit{comlang\_off} indicator in the CEPII Gravity database \citep{contecotterlazmayer2022}, merged onto each team by the two players' ISO3 nationality codes; teams sharing the same nationality are set to 1 by definition, since the source table does not include self-pairs, and teams whose specific country pair is not found in the table (both nationalities known, but not a recorded match) default to 0 rather than being dropped. The third measure, \textit{Linguistic Proximity}, is a continuous index on $[0,1]$ built from Ethnologue's language-tree classification \citep{melitztoubal2014}, obtained from the authors' own data repository (\texttt{faridtoubal.com/Paper/LangJIE/lang.html}) since CEPII's distribution link for this specific table is no longer active. We adopt this continuous, tree-based measure as our main-text linguistic-similarity indicator, rather than a binary same-language indicator, for two reasons: it distinguishes teammates who speak closely related but distinct languages (e.g.\ Italian and Spanish, both Romance languages) from teammates whose languages are totally unrelated; and it is the same measure \citet{bekesottaviano2025} use to characterize linguistic similarity between teammates in the most closely related existing study of cultural homophily within small, interdependent teams, allowing our results to be compared directly to theirs. \citet{melitztoubal2014} score each pair of \emph{languages} on a coarse ordinal scale according to how many levels of the Ethnologue family tree they share (e.g.\ two languages in the same branch but a different sub-branch score $0.5$), and the resulting \emph{country}-pair value is a population-weighted average across each country's principal languages. For example, Belgium is absent from their table; we then construct its value against any other country as the population-weighted average of the Netherlands' and France's own values against that country, using Belgium's approximate Dutch/French population shares ($59\%$/$41\%$) as weights, the same treatment Melitz and Toubal (2014) themselves apply to other multi-language countries such as Switzerland. This gives Belgium a linguistic-proximity value of $0.56$ against France ($0.59\times0.25+0.41\times1.00$: Dutch and French sit in different branches of the same language family, while French scores trivially $1.00$ against itself) and $0.69$ against the Netherlands ($0.59\times1.00+0.41\times0.25$). The measure is defined at the country level from each country's aggregate population-language composition, not at the level of the individual player: a bilingual player is assigned the value implied by their playing nationality, with no separate adjustment for their own personal language repertoire.} \footnote{An alternative binary construction of linguistic proximity (CEPII's \textit{comlang\_ethno}, one if both teammates share a widely-spoken ethnic language and zero otherwise, defined as a language spoken as a mother tongue by at least 9\% of the population in both countries) and two further continuous constructions from \citet{psw2024} are reported as robustness checks in Appendix~\ref{app:langprox}.}
 
 
 %\footnote{Monaco is entirely absent from the raw CEPII gravity table's language variables and from the raw Melitz \& Toubal (2014) language-proximity table. For Same Language (and its Appendix binary counterpart), we manually set Monaco pairings against another French-official-language country (France, Belgium, Switzerland, Canada, Luxembourg) to 1, reflecting that French is Monaco's sole official language; other Monaco pairs default to 0. For \textit{prox1}, Monaco pairings against a French-official-language country are set to 1, and any other Monaco pair uses France's \textit{prox1} value against that country as a stand-in, reflecting that Monaco's population is francophone. This affects 39 raw match observations for Same Language and 97 for \textit{prox1}. \textcolor{blue}{Belgium is likewise entirely absent from the raw Melitz \& Toubal table (though present, correctly, in the CEPII language tables underlying Same Language). Since Belgium's population is split between Dutch and French speakers (official-language shares of approximately 59\% and 41\%, respectively), we construct its \textit{prox1} value against every other country as the population-weighted average of the Netherlands' and France's own \textit{prox1} values against that country -- the same two-language-blend approach Melitz and Toubal (2014) use for countries such as Switzerland. This affects 22 raw match observations. South Korea is the only remaining country entirely absent from the raw table; as a linguistic isolate with no other country sharing its official language, no analogous stand-in is available, so South Korea pairings default to 0 (14 raw match observations affected).}}
@@ -210,50 +210,27 @@ Team-level statistics are the two-teammate average used directly in the regressi
 
 These measures reflect increasingly broad notions of cultural similarity. Shared nationality captures common institutional and cultural background. Shared official language captures communication potential through the language used in formal and public life. Linguistic proximity recognizes that communication costs may be lower between teammates whose languages are closely related even when they do not share the same official language.  %Language Proximity and Same Language can diverge substantially -- e.g. two Romance-language speakers score a high \textit{prox1} without sharing an official language.
 
-Table 2: \textcolor{red}{I would remove Panel B and add the absolute number of partnerships next to the share in Panel A, 42.2\%=X teams for each of the 3 measure.}  In our sample,  \textcolor{red}{42.2\%} of teams consist of players sharing the same nationality, \textcolor{red}{56.0\%} share an official language, and \textcolor{blue}{the mean of the continuous measure linguistic proximity is 0.654}.
+In our sample, \textcolor{red}{42.2\%} (882 teams) of teams consist of players sharing the same nationality, \textcolor{blue}{56.7\% (1,184 teams)} share an official language, and \textcolor{blue}{the mean of the continuous measure linguistic proximity is 0.654}.
 
 
 \begin{table}[htbp]
 \color{red}
 \centering
-\caption{Shares of the Three Cultural Similarity Measures, and Unique Teams by Tournament}
+\caption{Shares of the Three Cultural Similarity Measures}
 \label{tab:t2}
 \begin{threeparttable}
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}l}
-{\footnotesize
-\begin{tabular}{lc}
+\begin{tabular}{lcc}
 \toprule
-\multicolumn{2}{l}{\textbf{Panel A: Cultural Similarity Shares}} \\[2pt]
-\toprule
-Measure & Share \\
+Measure & Share & Teams \\
 \midrule
-Same nationality  & 42.2\% \\
-Same language  & 56.0\% \\
-\textcolor{blue}{Ling.\ proximity (mean)} & \textcolor{blue}{0.654} \\
+Same nationality  & 42.2\% & 882 \\
+Same language  & \textcolor{blue}{56.7\%} & \textcolor{blue}{1,184} \\
+\textcolor{blue}{Ling.\ proximity (mean)} & \textcolor{blue}{0.654} & \textcolor{blue}{--} \\
 \bottomrule
-\end{tabular}%
-}
-&
-{\footnotesize
-\begin{tabular}{lc}
-\toprule
-\multicolumn{2}{l}{\textbf{Panel B: Partnerships by Tournament}} \\[2pt]
-\toprule
-Tournament & Teams \\
-\midrule
-Australian Open & 542 \\
-Roland Garros & 543 \\
-Wimbledon & 487 \\
-US Open & 517 \\
-\midrule
-\textbf{Total} & \textbf{2,089} \\
-\bottomrule
-\end{tabular}%
-}
-\end{tabular*}
+\end{tabular}
 \begin{tablenotes}
 \small
-\item Note: Panel A reports shares over the 2,089 distinct tournament$\times$partnership pairings with complete ranking data. Panel B counts the same 2,089 pairings, broken down by tournament.
+\item Note: Computed over the 2,089 distinct tournament$\times$partnership pairings with complete ranking data (542 at the Australian Open, 543 at Roland Garros, 487 at Wimbledon, 517 at the US Open). "Teams" is the absolute number of the 2,089 partnerships satisfying each binary criterion; \textcolor{blue}{linguistic proximity is a continuous $[0,1]$ measure with no natural satisfying/non-satisfying split, so its row instead reports the mean over all 2,089 partnerships.}
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -336,15 +313,15 @@ Throughout the analysis we include tournament-by-year fixed effects $\delta_{ty}
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Cultural similarity & 0.0361** & 0.0459*** & \textcolor{blue}{0.0501**} \\
- & (0.0164) & (0.0157) & \textcolor{blue}{(0.0202)} \\
+Cultural similarity & 0.0361** & \textcolor{blue}{0.0420***} & \textcolor{blue}{0.0501**} \\
+ & (0.0164) & \textcolor{blue}{(0.0157)} & \textcolor{blue}{(0.0202)} \\
 Own avg. doubles ranking & $-$0.0007*** & $-$0.0007*** & $-$0.0007*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
 Opponent avg. doubles ranking & 0.0007*** & 0.0007*** & 0.0007*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player (0,1)& $-$0.0042 & $-$0.0030 & \textcolor{blue}{$-$0.0031} \\
- & (0.0315) & (0.0315) & \textcolor{blue}{(0.0314)} \\
-Team avg. professional years  & 0.0044*** & 0.0043** & \textcolor{blue}{0.0043***} \\
+Top-100 singles player (0,1)& $-$0.0042 & \textcolor{blue}{$-$0.0032} & \textcolor{blue}{$-$0.0031} \\
+ & (0.0315) & \textcolor{blue}{(0.0315)} & \textcolor{blue}{(0.0314)} \\
+Team avg. professional years  & 0.0044*** & \textcolor{blue}{0.0042**} & \textcolor{blue}{0.0043***} \\
  & (0.0017) & (0.0017) & \textcolor{blue}{(0.0017)} \\
 Team avg. professional years$^2$  & $-$0.0008*** & $-$0.0008*** & $-$0.0008*** \\
  & (0.0002) & (0.0002) & (0.0002) \\
@@ -369,7 +346,7 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 Table~\ref{tab:t3} reports average marginal effects (AMEs) estimated in logit models. %which can be interpreted as percentage-point changes in the probability of winning associated with each explanatory variable. 
 Across all three specifications, culturally similar teams are significantly more likely to win Grand Slam matches. The estimated effects range from 3.6 to 5.0 percentage points and are strongest for linguistic proximity, measured on a continuous scale. Team quality are the dominant predictor of success: stronger own doubles rankings significantly increase the probability of winning, while stronger opponent rankings significantly decrease the probability of winning. Whether having a top 100 singles player in the team does not seem to matter for the match outcome. More experienced teams perform better with diminishing returns.
 
-\added{Alternative specification: randomly assign one team per match as the focal team to be kept in the regression analysis (N=1,864). Coefficients are of similar magnitude and slighter weaker significance.} Repeated over 10 random seeds (Appendix Table~\ref{tab:b1}): the same-nationality AME averages 0.0466 (range 0.0161--0.0812, significant at the 5\% level in 5 of 10 draws), same-language averages 0.0517 (range 0.0230--0.0877, significant in 7 of 10 draws), \textcolor{blue}{and, for linguistic proximity averages 0.0656 (range 0.0236--0.0944, significant in 7 of 10 draws)}.
+\added{Alternative specification: randomly assign one team per match as the focal team to be kept in the regression analysis (N=1,864). Coefficients are of similar magnitude and slighter weaker significance.} Repeated over 10 random seeds (Appendix Table~\ref{tab:b1}): the same-nationality AME averages 0.0466 (range 0.0161--0.0812, significant at the 5\% level in 5 of 10 draws), \textcolor{blue}{same-language averages 0.0477 (range 0.0215--0.0847, significant in 6 of 10 draws)}, \textcolor{blue}{and, for linguistic proximity averages 0.0656 (range 0.0236--0.0944, significant in 7 of 10 draws)}.
 
 These findings provide consistent evidence that cultural similarity is positively associated with team performance after accounting for observable differences in own and opponent quality,  experience, and tournament characteristics.
 
@@ -395,11 +372,11 @@ Table \ref{tab:t5} reports the results. The coefficients are remarkably stable a
  & \multicolumn{2}{c}{(1) Same Nationality} & \multicolumn{2}{c}{(2) Same Language} & \multicolumn{2}{c}{(3) Lang. Proximity} \\
  & (a) grass & (b) clay & (a) grass & (b) clay & (a) grass & (b) clay \\
 \midrule
-Cultural similarity (C) & 0.0395** & 0.0351* & 0.0439** & 0.0477*** & \textcolor{blue}{0.0541**} & \textcolor{blue}{0.0486**} \\
- & (0.0183) & (0.0189) & (0.0176) & (0.0182) & \textcolor{blue}{(0.0224)} & \textcolor{blue}{(0.0234)} \\
-Surface & 0.0097 & $-$0.0017 & $-$0.0022 & 0.0047 & \textcolor{blue}{0.0158} & \textcolor{blue}{$-$0.0028} \\
- & (0.0149) & (0.0142) & (0.0207) & (0.0188) & \textcolor{blue}{(0.0308)} & \textcolor{blue}{(0.0285)} \\
-C $\times$ Surface & $-$0.0169 & 0.0023 & 0.0070 & $-$0.0084 & \textcolor{blue}{$-$0.0203} & \textcolor{blue}{0.0034} \\
+Cultural similarity (C) & 0.0395** & 0.0351* & \textcolor{blue}{0.0392**} & \textcolor{blue}{0.0442**} & \textcolor{blue}{0.0541**} & \textcolor{blue}{0.0486**} \\
+ & (0.0183) & (0.0189) & \textcolor{blue}{(0.0176)} & \textcolor{blue}{(0.0182)} & \textcolor{blue}{(0.0224)} & \textcolor{blue}{(0.0234)} \\
+Surface & 0.0097 & $-$0.0017 & \textcolor{blue}{$-$0.0043} & \textcolor{blue}{0.0052} & \textcolor{blue}{0.0158} & \textcolor{blue}{$-$0.0028} \\
+ & (0.0149) & (0.0142) & \textcolor{blue}{(0.0208)} & \textcolor{blue}{(0.0189)} & \textcolor{blue}{(0.0308)} & \textcolor{blue}{(0.0285)} \\
+C $\times$ Surface & $-$0.0169 & 0.0023 & \textcolor{blue}{0.0112} & \textcolor{blue}{$-$0.0094} & \textcolor{blue}{$-$0.0203} & \textcolor{blue}{0.0034} \\
  & (0.0376) & (0.0347) & (0.0364) & (0.0340) & \textcolor{blue}{(0.0474)} & \textcolor{blue}{(0.0438)} \\
 \midrule
 Controls  & Yes & Yes & Yes & Yes & Yes & Yes \\
@@ -447,7 +424,7 @@ We estimate the same empirical specification in Equation (\ref{matchoutcome}) us
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Cultural similarity & 0.0308 & 0.0082 & \textcolor{blue}{0.0388} \\
+Cultural similarity & 0.0308 & \textcolor{blue}{0.0087} & \textcolor{blue}{0.0388} \\
  & (0.0224) & (0.0218) & \textcolor{blue}{(0.0277)} \\
 Own avg. doubles ranking & $-$0.0003*** & $-$0.0003*** & $-$0.0003*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
@@ -528,7 +505,7 @@ We first test whether the association between cultural similarity and match perf
 
 %Team average experience is demeaned at its sample mean of 11.93 years, so the coefficient on cultural similarity represents its association with match performance for a team at the average level of professional experience. The specification also includes the linear and quadratic terms for average experience used in the main analysis.
 
-Table \ref{tab:t6} reports the results. The interaction between cultural similarity and team average experience is positive for all three measures. For same nationality, however, the interaction is very small and statistically insignificant (0.0008, p=0.809). For shared language, the interaction is positive and statistically significant: 0.0069 (p=0.032). \textcolor{blue}{For linguistic proximity, measured on a continuous scale, the interaction is positive but no statistically significant (0.0053, p=0.207)}
+Table \ref{tab:t6} reports the results. The interaction between cultural similarity and team average experience is positive for all three measures. For same nationality, however, the interaction is very small and statistically insignificant (0.0008, p=0.809). For shared language, the interaction is positive and statistically significant: \textcolor{blue}{0.0070 (p=0.029)}. \textcolor{blue}{For linguistic proximity, measured on a continuous scale, the interaction is positive but no statistically significant (0.0053, p=0.207)}
 
 
 \begin{table}[htbp]
@@ -540,9 +517,9 @@ Table \ref{tab:t6} reports the results. The interaction between cultural similar
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Cultural similarity (C)  & 0.0361** & 0.0433*** & \textcolor{blue}{0.0473**} \\
- & (0.0164) & (0.0157) & \textcolor{blue}{(0.0203)} \\
-C $\times$ exp\_mean\_dm & 0.0008 & 0.0069** & \textcolor{blue}{0.0053} \\
+Cultural similarity (C)  & 0.0361** & \textcolor{blue}{0.0394**} & \textcolor{blue}{0.0473**} \\
+ & (0.0164) & \textcolor{blue}{(0.0157)} & \textcolor{blue}{(0.0203)} \\
+C $\times$ exp\_mean\_dm & 0.0008 & \textcolor{blue}{0.0070**} & \textcolor{blue}{0.0053} \\
  & (0.0033) & (0.0032) & \textcolor{blue}{(0.0042)} \\
 exp\_mean\_dm (main) & 0.0041* & 0.0002 & \textcolor{blue}{0.0007} \\
  & (0.0023) & (0.0025) & \textcolor{blue}{(0.0033)} \\
@@ -599,9 +576,9 @@ We test this prediction using the absolute difference between the two teammates'
 \toprule
  & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
 \midrule
-Culture (C) -- mean gap & 0.0356** & 0.0447*** & \textcolor{blue}{0.0473**} \\
- & (0.0164) & (0.0157) & \textcolor{blue}{(0.0203)} \\
-C $\times$ exp\_gap\_dm & 0.0032 & 0.0038 & \textcolor{blue}{0.0031} \\
+Culture (C) -- mean gap & 0.0356** & \textcolor{blue}{0.0408***} & \textcolor{blue}{0.0473**} \\
+ & (0.0164) & \textcolor{blue}{(0.0157)} & \textcolor{blue}{(0.0203)} \\
+C $\times$ exp\_gap\_dm & 0.0032 & \textcolor{blue}{0.0040} & \textcolor{blue}{0.0031} \\
  & (0.0034) & (0.0032) & \textcolor{blue}{(0.0041)} \\
 exp\_gap\_dm (main) & $-$0.0036* & $-$0.0045* & \textcolor{blue}{$-$0.0043} \\
  & (0.0021) & (0.0025) & \textcolor{blue}{(0.0031)} \\
@@ -621,7 +598,7 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 \end{table}
 \FloatBarrier
 
-The results provide no evidence that cultural similarity becomes more strongly associated with performance as the experience gap increases. The interaction is positive for all three measures—0.0032 for same nationality (p=0.344), 0.0038 for same language (p=0.232), and \textcolor{blue}{0.0031 for linguistic proximity (p=0.447)}—but none is statistically significant. Allowing for a quadratic relationship between the experience gap and cultural similarity produces the same conclusion: the quadratic interactions are small and statistically insignificant, while the linear interactions remain insignificant.
+The results provide no evidence that cultural similarity becomes more strongly associated with performance as the experience gap increases. The interaction is positive for all three measures—0.0032 for same nationality (p=0.344), \textcolor{blue}{0.0040 for same language (p=0.214)}, and \textcolor{blue}{0.0031 for linguistic proximity (p=0.447)}—but none is statistically significant. Allowing for a quadratic relationship between the experience gap and cultural similarity produces the same conclusion: the quadratic interactions are small and statistically insignificant, while the linear interactions remain insignificant.
 
 The results therefore distinguish the two potential mechanisms. We find evidence that the association between cultural similarity and performance becomes stronger among more experienced teams, particularly for language-related measures, but no evidence supporting the specific prediction that cultural similarity is especially valuable as a bridge across unequal experience levels. The findings are consequently more consistent with an interpretation based on accumulated professional experience and coordination.
 
@@ -637,7 +614,7 @@ An important feature of doubles tennis is that teams are formed bilaterally betw
 \label{sec:sorting}
 
 
-We construct a partnership-level sample containing each distinct men's doubles partnership appearing in the Grand Slams between 2018 and 2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds, because partner formation occurs before the subsequent match outcomes. The resulting sample contains 2,089 partnerships with complete ranking information (542 at the Australian Open, 543 at Roland Garros, 487 at Wimbledon, and 517 at the US Open; see Table~\ref{tab:t2}, Panel B).
+We construct a partnership-level sample containing each distinct men's doubles partnership appearing in the Grand Slams between 2018 and 2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds, because partner formation occurs before the subsequent match outcomes. The resulting sample contains 2,089 partnerships with complete ranking information (542 at the Australian Open, 543 at Roland Garros, 487 at Wimbledon, and 517 at the US Open; see Table~\ref{tab:t2}).
 
 We compare the observed prevalence of cultural similarity with the rate expected under random matching within each tournament-year. The random-matching benchmark is calculated directly from the composition of the actual player field: for each tournament-year, we calculate the share of all possible player pairs that would satisfy the relevant cultural criterion. This produces a deterministic benchmark that accounts for the nationality and language composition of each tournament field.
 
@@ -653,8 +630,8 @@ Measure & & All players & Both in top-100 & Both in top-50 \\
 \midrule
 \multirow{2}{*}{Same nationality} & Actual & 42.2\% & 32.6\% & 35.5\% \\
  & Random benchmark & 5.2\% & 4.1\% & 4.5\% \\[.3cm]
-\multirow{2}{*}{Same language} & Actual & 56.0\% & 49.7\% & 56.3\% \\
- & Random benchmark & 16.2\% & 15.5\% & 15.8\% \\[.3cm]
+\multirow{2}{*}{Same language} & Actual & \textcolor{blue}{56.7\%} & \textcolor{blue}{49.8\%} & 56.3\% \\
+ & Random benchmark & \textcolor{blue}{16.3\%} & 15.5\% & 15.8\% \\[.3cm]
 \multirow{2}{*}{\textcolor{blue}{Ling.\ proximity (mean)}} & Actual & \textcolor{blue}{0.654} & \textcolor{blue}{0.603} & \textcolor{blue}{0.632} \\
  & Random benchmark & \textcolor{blue}{0.364} & \textcolor{blue}{0.361} & \textcolor{blue}{0.375} \\
 \bottomrule
@@ -666,7 +643,7 @@ Measure & & All players & Both in top-100 & Both in top-50 \\
 \end{threeparttable}
 \end{table}
 
-The results in Table~\ref{tab:t8} show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with 5.2\% under random matching. Similarly, 56.0\% of partnerships share an official language, compared with 16.2\% under random matching. \textcolor{blue}{Mean linguistic proximity is 0.654 among observed partnerships, compared with 0.364 under random matching.} Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
+The results in Table~\ref{tab:t8} show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with 5.2\% under random matching. Similarly, \textcolor{blue}{56.7\%} of partnerships share an official language, compared with \textcolor{blue}{16.3\%} under random matching. \textcolor{blue}{Mean linguistic proximity is 0.654 among observed partnerships, compared with 0.364 under random matching.} Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
 
 This finding is important for interpreting the performance results. Cultural similarity is clearly not randomly distributed across partnerships: players who form teams are much more culturally similar than would be expected from the composition of the tournament field alone. The match-performance estimates should therefore not be interpreted as if cultural similarity were randomly assigned. Rather, they describe an association between the cultural composition of an already formed partnership and its subsequent performance.
 
@@ -682,7 +659,7 @@ We regress each cultural-similarity measure on the focal player's own doubles ra
 
 \textcolor{blue}{Formally, for a focal player from country $c$ entering a tournament-year field of $N$ total entrants (every player who appears in at least one match at that event, not merely the rank-complete partnerships used in Table~\ref{tab:t8}), the nationality field-composition measure is $\text{composition}_{nat}(c) = \#\{\text{other field entrants from country } c\} \, / \, (N-1)$; the language and linguistic-proximity composition measures replace the numerator with the sum, over every other field entrant $j$, of \textit{same\_language}$(c,j)$ or \textit{ling\_prox}$(c,j)$ respectively, again divided by $N-1$. As an illustration, at Roland Garros 2019 the host nation contributed by far the largest national contingent (20 of 128 entrants); an Italian player that year faced a field of 4 (Berrettini, Sonego, Seppi, Cecchinato) total Italians (3 others besides himself) among 127 other entrants, giving $\text{composition}_{nat}=\text{composition}_{lang}=3/127=0.024$, since no other nationality present in that field shared Italian as an official language. The corresponding linguistic-proximity composition is substantially higher, at $0.344$: although almost no entrant shared Italian officially, many were linguistically related to it, as France's 20 entrants alone, each scoring \textit{ling\_prox}$=0.5$ against Italian (both Romance languages, same branch but different sub-branch of the Ethnologue tree), contributed $20\times0.5=10.0$ to the numerator, roughly a quarter of that player's entire composition score that year.}
 
-The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), the coefficient on own ranking is positive and statistically significant for all three measures: 0.000269 for same nationality (p<0.001), 0.000146 for same language (p=0.012), and \textcolor{blue}{0.000107 for linguistic proximity (p=0.012; OLS coefficient rather than AME, since this measure is continuous)}. Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
+The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), the coefficient on own ranking is positive and statistically significant for all three measures: 0.000269 for same nationality (p<0.001), \textcolor{blue}{0.000173 for same language (p=0.004)}, and \textcolor{blue}{0.000107 for linguistic proximity (p=0.012; OLS coefficient rather than AME, since this measure is continuous)}. Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
 
 
 \added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout.}
@@ -703,10 +680,10 @@ Outcome & Variable & Spec 1 & Spec 2 & Spec 3 \\
  & & & (0.241325) & (0.255403) \\
 \addlinespace
 \multirow{4}{*}{Same language (AME)}
- & own\_rank & 0.000146** & & 0.000117** \\
- & & (0.000058) & & (0.000053) \\
- & composition & & 1.275*** & 1.267*** \\
- & & & (0.081709) & (0.082578) \\
+ & own\_rank & \textcolor{blue}{0.000173***} & & \textcolor{blue}{0.000141***} \\
+ & & \textcolor{blue}{(0.000059)} & & \textcolor{blue}{(0.000054)} \\
+ & composition & & \textcolor{blue}{1.253***} & \textcolor{blue}{1.243***} \\
+ & & & \textcolor{blue}{(0.083032)} & \textcolor{blue}{(0.084079)} \\
 \addlinespace
 \multirow{4}{*}{\textcolor{blue}{Ling.\ proximity (OLS coef.)}}
  & own\_rank & \textcolor{blue}{0.000107**} & & \textcolor{blue}{0.000098***} \\
@@ -752,7 +729,7 @@ For the Tokyo cycle, we divide the Grand Slam sample into three periods: a pre-T
 Measure & Pre-Tokyo & Tokyo Prep & Post-Tokyo & Pre-Paris & Paris Prep & Post-Paris \\
 \midrule
 Same nationality & 40.0\% & 40.3\% & 39.0\% & 39.3\% & 42.6\% & 43.9\% \\
-Same language & 54.8\% & 55.0\% & 54.8\% & 54.1\% & 57.6\% & 58.8\% \\
+Same language & \textcolor{blue}{55.1\%} & \textcolor{blue}{55.3\%} & \textcolor{blue}{55.1\%} & \textcolor{blue}{54.3\%} & \textcolor{blue}{58.4\%} & 58.8\% \\
 \textcolor{blue}{Ling.\ proximity (mean)} & \textcolor{blue}{0.619} & \textcolor{blue}{0.660} & \textcolor{blue}{0.651} & \textcolor{blue}{0.649} & \textcolor{blue}{0.664} & \textcolor{blue}{0.683} \\
 \midrule
 $N$ & 980 & 680 & 602 & 484 & 860 & 626 \\
@@ -765,7 +742,7 @@ $N$ & 980 & 680 & 602 & 484 & 860 & 626 \\
 \end{threeparttable}
 \end{table}
 
-The share of same-nationality teams is remarkably stable across the Tokyo cycle's three periods, at 40.0\%, 40.3\%, and 39.0\%, respectively (Table~\ref{tab:t2ab}). The corresponding shares for shared official language are 54.8\%, 55.0\%, and 54.8\%, while \textcolor{blue}{mean linguistic proximity is 0.619, 0.660, and 0.651}.
+The share of same-nationality teams is remarkably stable across the Tokyo cycle's three periods, at 40.0\%, 40.3\%, and 39.0\%, respectively (Table~\ref{tab:t2ab}). The corresponding shares for shared official language are \textcolor{blue}{55.1\%, 55.3\%, and 55.1\%}, while \textcolor{blue}{mean linguistic proximity is 0.619, 0.660, and 0.651}.
 
 The absence of an increase during the Tokyo preparation period is noteworthy because the Tokyo cycle took place during the COVID-19 pandemic. International travel and cross-border interaction were unusually difficult during this period, potentially increasing the relative attractiveness of partnering with compatriots or players from nearby linguistic communities. Nevertheless, the descriptive composition of teams does not show an increase in same-nationality or language-based partnerships during the preparation period.
 
@@ -776,7 +753,7 @@ The absence of an increase during the Tokyo preparation period is noteworthy bec
 \label{fig:cycle_nat}
 \end{figure}
 
-The Paris cycle provides a contrasting pattern (Table~\ref{tab:t2ab} and Figure~\ref{fig:cycle_nat}). Same-nationality partnerships account for 39.3\% of teams before the Paris Games, 42.6\% during the preparation period, and 43.9\% afterwards. Shared-language partnerships increase from 54.1\% to 57.6\% and then 58.8\%, while \textcolor{blue}{mean linguistic proximity rises from 0.649 to 0.664 and then 0.683}.
+The Paris cycle provides a contrasting pattern (Table~\ref{tab:t2ab} and Figure~\ref{fig:cycle_nat}). Same-nationality partnerships account for 39.3\% of teams before the Paris Games, 42.6\% during the preparation period, and 43.9\% afterwards. Shared-language partnerships increase from \textcolor{blue}{54.3\% to 58.4\%} and then 58.8\%, while \textcolor{blue}{mean linguistic proximity rises from 0.649 to 0.664 and then 0.683}.
 
 The contrast between the two Olympic cycles should not be interpreted as a causal estimate of Olympic incentives on partner formation. The two periods differ in many dimensions, most importantly the extraordinary conditions surrounding the Tokyo Games. Instead, the descriptive evidence illustrates that the composition of doubles partnerships can vary with the broader institutional and competitive environment. It also reinforces the broader conclusion from this section: partnership formation involves substantial cultural sorting, but that sorting is not simply a consequence of the strongest players systematically selecting culturally similar teammates.
 
@@ -834,22 +811,22 @@ More broadly, the paper suggests that the consequences of diversity should be un
 \toprule
  & (1) Binary (comlang\_ethno) & (2) PSW tree & (3) PSW cognate \\
 \midrule
-Linguistic proximity & 0.0419*** & 0.0648*** & 0.0719*** \\
+Linguistic proximity & \textcolor{blue}{0.0380**} & 0.0648*** & 0.0719*** \\
  & (0.0157) & (0.0231) & (0.0231) \\
 Own avg. doubles ranking & $-$0.0007*** & $-$0.0007*** & $-$0.0007*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
 Opponent avg. doubles ranking & 0.0007*** & 0.0007*** & 0.0007*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player (0,1)& $-$0.0024 & $-$0.0038 & $-$0.0034 \\
+Top-100 singles player (0,1)& \textcolor{blue}{$-$0.0026} & $-$0.0038 & $-$0.0034 \\
  & (0.0315) & (0.0314) & (0.0315) \\
 Team avg. professional years  & 0.0042** & 0.0046*** & 0.0047*** \\
  & (0.0017) & (0.0017) & (0.0017) \\
-Team avg. professional years$^2$  & $-$0.0008*** & $-$0.0008*** & $-$0.0008*** \\
+Team avg. professional years$^2$  & \textcolor{blue}{$-$0.0007***} & $-$0.0008*** & $-$0.0008*** \\
  & (0.0002) & (0.0002) & (0.0002) \\
 \midrule
 Tournament $\times$ year FE & Yes & Yes & Yes \\
 Match round FE & Yes & Yes & Yes \\
-Pseudo-$R^2$ & 0.097 & 0.097 & 0.097 \\
+Pseudo-$R^2$ & \textcolor{blue}{0.096} & 0.097 & 0.097 \\
 $N$ & 3,728 & 3,728 & 3,728 \\
 \bottomrule
 \end{tabular}
@@ -868,13 +845,13 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 \toprule
  & (1) Binary (comlang\_ethno) & (2) PSW tree & (3) PSW cognate \\
 \midrule
-Linguistic proximity & 0.0026 & 0.0592* & 0.0572* \\
+Linguistic proximity & \textcolor{blue}{0.0031} & 0.0592* & 0.0572* \\
  & (0.0217) & (0.0312) & (0.0321) \\
 Own avg. doubles ranking & $-$0.0003*** & $-$0.0003*** & $-$0.0003*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
 Opponent avg. doubles ranking & 0.0003*** & 0.0003*** & 0.0003*** \\
  & (0.0001) & (0.0001) & (0.0001) \\
-Top-100 singles player (0,1) & $-$0.0644 & $-$0.0684 & $-$0.0677 \\
+Top-100 singles player (0,1) & \textcolor{blue}{$-$0.0645} & $-$0.0684 & $-$0.0677 \\
  & (0.0427) & (0.0428) & (0.0428) \\
 Team avg. professional years & 0.0022 & 0.0029 & 0.0029 \\
  & (0.0021) & (0.0022) & (0.0022) \\
@@ -903,11 +880,11 @@ $N$ & 2,354 & 2,354 & 2,354 \\
  & \multicolumn{2}{c}{(1) Binary} & \multicolumn{2}{c}{(2) PSW tree} & \multicolumn{2}{c}{(3) PSW cognate} \\
  & (a) grass & (b) clay & (a) grass & (b) clay & (a) grass & (b) clay \\
 \midrule
-Cultural similarity (C) & 0.0416** & 0.0401** & 0.0687*** & 0.0610** & 0.0751*** & 0.0708*** \\
+Cultural similarity (C) & \textcolor{blue}{0.0369**} & \textcolor{blue}{0.0365**} & 0.0687*** & 0.0610** & 0.0751*** & 0.0708*** \\
  & (0.0176) & (0.0181) & (0.0256) & (0.0268) & (0.0257) & (0.0268) \\
-Surface & 0.0019 & $-$0.0037 & 0.0148 & $-$0.0083 & 0.0133 & $-$0.0018 \\
- & (0.0209) & (0.0194) & (0.0337) & (0.0308) & (0.0340) & (0.0314) \\
-C $\times$ Surface & 0.0003 & 0.0061 & $-$0.0197 & 0.0124 & $-$0.0171 & 0.0021 \\
+Surface & \textcolor{blue}{$-$0.0003} & \textcolor{blue}{$-$0.0032} & 0.0148 & $-$0.0083 & 0.0133 & $-$0.0018 \\
+ & (0.0209) & \textcolor{blue}{(0.0195)} & (0.0337) & (0.0308) & (0.0340) & (0.0314) \\
+C $\times$ Surface & \textcolor{blue}{0.0045} & \textcolor{blue}{0.0051} & $-$0.0197 & 0.0124 & $-$0.0171 & 0.0021 \\
  & (0.0364) & (0.0344) & (0.0539) & (0.0492) & (0.0536) & (0.0495) \\
 \midrule
 Controls  & Yes & Yes & Yes & Yes & Yes & Yes \\
@@ -932,11 +909,11 @@ $N$ & \multicolumn{2}{c}{3,728} & \multicolumn{2}{c}{3,728} & \multicolumn{2}{c}
 \toprule
  & (1) Binary & (2) PSW tree & (3) PSW cognate \\
 \midrule
-Cultural similarity (C)  & 0.0392** & 0.0642*** & 0.0705*** \\
+Cultural similarity (C)  & \textcolor{blue}{0.0353**} & 0.0642*** & 0.0705*** \\
  & (0.0156) & (0.0230) & (0.0231) \\
-C $\times$ exp\_mean\_dm & 0.0068** & 0.0048 & 0.0053 \\
+C $\times$ exp\_mean\_dm & \textcolor{blue}{0.0069**} & 0.0048 & 0.0053 \\
  & (0.0032) & (0.0047) & (0.0047) \\
-exp\_mean\_dm (main) & 0.0002 & \multicolumn{1}{c}{--} & \multicolumn{1}{c}{--} \\
+exp\_mean\_dm (main) & \textcolor{blue}{0.0000} & \multicolumn{1}{c}{--} & \multicolumn{1}{c}{--} \\
  & (0.0025) & & \\
 \midrule
 Controls & Yes & Yes & Yes \\
@@ -961,11 +938,11 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 \toprule
  & (1) Binary & (2) PSW tree & (3) PSW cognate \\
 \midrule
-Culture (C) -- mean gap & 0.0409*** & 0.0620*** & 0.0690*** \\
+Culture (C) -- mean gap & \textcolor{blue}{0.0370**} & 0.0620*** & 0.0690*** \\
  & (0.0157) & (0.0231) & (0.0231) \\
-C $\times$ exp\_gap\_dm & 0.0036 & 0.0052 & 0.0052 \\
+C $\times$ exp\_gap\_dm & \textcolor{blue}{0.0038} & 0.0052 & 0.0052 \\
  & (0.0032) & (0.0048) & (0.0047) \\
-exp\_gap\_dm (main) & $-$0.0045* & $-$0.0055 & $-$0.0055 \\
+exp\_gap\_dm (main) & \textcolor{blue}{$-$0.0046*} & $-$0.0055 & $-$0.0055 \\
  & (0.0025) & (0.0034) & (0.0033) \\
 \midrule
 Controls (Table~\ref{tab:t3} set) & Yes & Yes & Yes \\

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.5)  15 SEP 2026 17:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.5)  16 SEP 2026 09:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -963,69 +963,74 @@ Overfull \hbox (1.83054pt too wide) in paragraph at lines 157--198
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Overfull \hbox (35.93967pt too wide) in paragraph at lines 205--206
-\OT1/cmr/m/n/10 ob-tained from the au-thors' own data repos-i-tory (\OT1/cmtt/m
-/n/10 faridtoubal.com/Paper/LangJIE/lang.html\OT1/cmr/m/n/10 )
+[6] [7]
+Underfull \hbox (badness 2970) in paragraph at lines 233--234
+[]\OT1/cmr/m/n/9 Note: Com-puted over the 2,089 dis-tinct
  []
 
-[6] [7] [8] [9] [10] [11]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 335--364
+
+Underfull \hbox (badness 2384) in paragraph at lines 233--234
+\OT1/cmr/m/n/9 tournament$\OMS/cmsy/m/n/9 ^^B$\OT1/cmr/m/n/9 partnership pair-i
+ngs with com-
+ []
+
+[8] [9] [10] [11]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 312--341
  [] 
  []
 
 [12] [13]
-Overfull \hbox (43.41415pt too wide) in paragraph at lines 393--417
+Overfull \hbox (38.41414pt too wide) in paragraph at lines 370--394
  [] 
  []
 
 [14] [15]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 446--474
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 423--451
  [] 
  []
 
 [16] [17] [18]
-Overfull \hbox (35.30302pt too wide) in paragraph at lines 539--562
+Overfull \hbox (35.30302pt too wide) in paragraph at lines 516--539
  [] 
  []
 
 [19] [20]
-Overfull \hbox (38.05302pt too wide) in paragraph at lines 598--621
+Overfull \hbox (38.05302pt too wide) in paragraph at lines 575--598
  [] 
  []
 
 [21] [22]
-Overfull \hbox (4.09633pt too wide) in paragraph at lines 661--661
+Overfull \hbox (4.09633pt too wide) in paragraph at lines 638--638
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =2,089)| 
  []
 
 
-Overfull \hbox (4.09633pt too wide) in paragraph at lines 661--661
+Overfull \hbox (4.09633pt too wide) in paragraph at lines 638--638
  []|\OT1/cmr/m/n/10 ($\OML/cmm/m/it/10 N$\OT1/cmr/m/n/10 =1,211)| 
  []
 
 [23] [24] [25]
-Overfull \hbox (4.94199pt too wide) in paragraph at lines 695--725
+Overfull \hbox (4.94199pt too wide) in paragraph at lines 672--702
  [] 
  []
 
 [26] Excluding 'comment' comment. [27] [28] [29] [30] [31]
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 833--861
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 810--838
  [] 
  []
 
 
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 867--895
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 844--872
  [] 
  []
 
 
-Overfull \hbox (47.942pt too wide) in paragraph at lines 901--925
+Overfull \hbox (47.942pt too wide) in paragraph at lines 878--902
  [] 
  []
 
 [32] [33] [34]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 996--1024
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 973--1001
  [] 
  []
 
@@ -1043,43 +1048,42 @@ L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 19176 strings out of 467871
- 383112 string characters out of 5415957
- 792367 words of memory out of 5000000
+ 19175 strings out of 467871
+ 383126 string characters out of 5415957
+ 792398 words of memory out of 5000000
  47667 multiletter control sequences out of 15000+600000
- 639063 words of font info for 84 fonts, out of 8000000 for 9000
+ 638754 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 114i,17n,122p,3214b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 114i,13n,122p,3561b,549s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmbx10.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ALESSANDRO/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/ALESSANDRO/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
-/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.
+X/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/ALESSANDRO/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ALESSANDRO/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users
+/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.
 pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmmi7.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/ALESSANDRO/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ALESSANDRO/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/
-ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.p
-fb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmr6.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ALESSANDRO/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/ALESSANDRO/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ALES
-SANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+nts/cm/cmmi8.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmmi9.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ALESSANDRO/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ALESSANDRO/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/
+ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pf
+b><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmr7.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/ALESSANDRO/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ALESSANDRO/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ALES
+SANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><
 C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmsy9.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/ALESSANDRO/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/ALESSANDRO/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (38 pages, 412528 bytes).
+m/cmti10.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmti8.pfb><C:/Users/ALESSANDRO/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/ALESSANDRO/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (38 pages, 399953 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
+ 239 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -91,6 +91,51 @@ loser scores 4, 6, or 2 points) — but is not currently included in Table 4 eit
 a standard 7-pt format (3 such cases exist). No genuine 10-point super-tiebreak exists anywhere in
 this GS dataset, so Table 4 currently has no valid robustness spec — main spec (7pt, sets 1–5) only.
 
+**`gravity_lang_lookup.xlsx` coverage gap, found and fixed 2026-09-16.** This lookup
+table (CEPII `comlang_off`/`comlang_ethno` by country pair) was built once, early in the
+project, and was missing 17 entire countries that later entered the match data (BLR, BOL,
+CHE, CYP, DOM, GEO, HUN, JAM, KOR, LBN, LTU, MAR, NOR, PER, RUS, SVN, UZB) — any pair
+involving one of these defaulted to `same_language`/`ling_prox_binary` = 0 even when the
+two countries genuinely share a language. All 88 country pairs actually occurring in the
+match data that involve one of these 17 were spot-checked individually (including
+player-level birthplace checks where the country-level fact was ambiguous). Two separate
+overrides resulted, both in `code/cleaning/final_ds.ipynb` (`lang-override-20260916` and
+`ling-prox-binary-override-20260916` cells, both unexecuted per the standing rule below —
+applied instead via standalone patch scripts to `data/atp/men_matches_with_ranks_cleaned.xlsx`,
+`data/atp/tiebreak_panel.csv`, and `data/gravity/gravity_lang_lookup.xlsx` directly):
+- **`same_language` (comlang\_off) override — 8 pairs kept, 1 explicitly excluded.**
+  Kept: ARG-BOL, ARG-DOM, ARG-PER, BOL-ESP, BOL-PER (Spanish, cross-validated against
+  ARG-ESP/ARG-MEX/ARG-CHL etc., all coded 1 in the table), JAM-USA (English, cross-validated
+  against GBR-USA/AUS-USA), BLR-RUS (Russian, full co-official status in Belarus), KAZ-RUS
+  (Russian, "equal basis" status in Kazakhstan — the most borderline case, included after
+  explicit deliberation). **Excluded: CHE-ITA** — Switzerland is constitutionally
+  quadrilingual including Italian, but every CHE-ITA pairing in this dataset is the same
+  player, Dominic Stricker, born in Grosshöchstetten, Canton of Bern (German-speaking
+  Switzerland, nowhere near Italian-speaking Ticino) — the country-level fact does not
+  reflect this specific player's own language, so it was reverted to 0 after being briefly
+  patched to 1. 15 team-obs affected (2 team-obs for CHE-ITA reverted back out).
+- **`ling_prox_binary` (comlang\_ethno) override — same 8 pairs, no exclusions.** Once the
+  8 pairs above were confirmed to share an *official* language, also checked whether CEPII
+  would code them as sharing an *ethnic/native* language (comlang\_ethno, ≥9% native-speaker
+  threshold in both countries) — cross-validated the same way: ARG-ESP and GBR-USA are both
+  coded `comlang_ethno=1` in the existing table, confirming CEPII applies this to ordinary
+  >9%-native-speaker cases, not just official status. All 8 pairs involve languages with a
+  large native-speaker majority in both countries, so `comlang_ethno` was set to 1 for all 8
+  (unlike the `same_language` list, no CHE-ITA-style exception applies here, since CHE-ITA
+  was never in the `same_language` override list to begin with).
+  **Downstream impact:** `ling_prox_binary` only feeds Appendix Tables A3/A4/A5/A6/A6b in
+  `overleaf/main.tex` (the CEPII-binary robustness column) — it is *not* used anywhere in
+  `report.html`/`report.pdf`, nor in the Section 6 random-matching benchmark or
+  `composition_lang` (both of those use `comlang_off` for same-language and `prox1` for
+  ling_prox; the `comlang_ethno` value fetched in that lookup code is computed but discarded
+  — confirmed by reading `homophily.ipynb` cell 61's `_bench_stats`/`_lang_value`). All five
+  Appendix tables were updated in `overleaf/main.tex` (`\label{app:langprox}`); the
+  qualitative finding flagged elsewhere in this file — binary measure's culture×experience
+  interaction significant (now p=0.031, was p=0.034) where the continuous measures are not —
+  is unchanged. `report.html`/`report.pdf` needed **no changes** for the `comlang_ethno` part
+  of this fix, only for the earlier `same_language` part (already resynced).
+  `homophily.do`/Stata still needs a manual re-run by the user to cross-check both parts.
+
 **Outcome variables:**
 - Table 3: `win` (match win, binary)
 - Table 4: `won_tb` (tiebreak win, binary) — unit = one team per tiebreak, N = 2,354 (7pt tiebreaks, sets 1–5; no robustness spec — see above; N post-2026-09-03 qualifying-round fix, was 2,364)
