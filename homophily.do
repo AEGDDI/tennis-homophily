@@ -1128,10 +1128,21 @@ quietly summarize win if d_same_nat_same_lang==0 & d_diff_nat_same_lang==0
 display "  diff_nat_diff_lang (reference): N=`n_ref'  win rate=" %5.4f r(mean)
 display ""
 
-display "--- Regression: win ~ d_same_nat_same_lang + d_diff_nat_same_lang + controls + FE ---"
-logit win i.ty i.stage_code d_same_nat_same_lang d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(d_same_nat_same_lang d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store win_natlang
+* Updated 2026-09-17 (per user request for report clarity): each dummy is now tested
+* in its own separate spec, one at a time (vs. the full remaining sample), mirroring how
+* Table 3 enters same_country/same_language/ling_prox one at a time rather than jointly.
+display "--- Regression (i): win ~ d_same_nat_same_lang + controls + FE (vs. everyone else) ---"
+logit win i.ty i.stage_code d_same_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(d_same_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store win_natlang_i
+
+display ""
+display "--- Regression (ii): win ~ d_diff_nat_same_lang + controls + FE (vs. everyone else) ---"
+logit win i.ty i.stage_code d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+margins, dydx(d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
+estimates store win_natlang_ii
+
+estimates table win_natlang_i win_natlang_ii, b se stats(N ll)
 
 * ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3-AGE: MATCH WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)

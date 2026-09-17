@@ -337,6 +337,73 @@
   continuous data source.
 </p>
 
+<h3 style="color:blue">Table 3-NATLANG — Robustness: Disentangling Nationality from Language &nbsp;|&nbsp; N = 3,728 team-obs &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
+<p style="color:blue">
+  Per Lingqing's request (2026-09-02): <code>same_country</code> and <code>same_language</code> are correlated
+  in one direction in this sample — every same-nationality team-obs also has same-language=1 (confirmed 0
+  same-nationality/different-language team-obs), so Table 3 alone cannot tell whether the cultural-similarity
+  result is driven by shared nationality specifically or has a broader language/communication component. We
+  define three mutually exclusive, exhaustive categories — same nationality &amp; same language, different
+  nationality &amp; same language (e.g. Germany/Austria, UK/Australia/US, Spain/Argentina), and different
+  nationality &amp; different language. The same-nationality &amp; same-language dummy is identical to
+  <code>same_country</code> (Table 3 column 1) since same_country=1 always implies same_language=1 in this
+  sample, so it is not re-reported here — the informative new spec is the one below, testing
+  different-nationality/same-language against the full remaining sample (same controls/FE/clustering as
+  Table 3).
+</p>
+<p style="color:blue">
+  <strong>Descriptives (N and raw win rate):</strong> same nationality &amp; same language: N=1,534, win
+  rate=0.4896. Different nationality &amp; same language: N=575, win rate=0.5565. Different nationality &amp;
+  different language: N=1,619, win rate=0.4898.
+</p>
+<table style="color:blue">
+  <thead>
+    <tr><th style="width:60%">Variable</th>
+        <th class="num">Diff. Nat. &amp; Same Lang.<br><span style="font-weight:normal">vs. everyone else</span></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Culture-category dummy</td>
+        <td class="num">+0.0156</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0215)<br>p=0.467</td></tr>
+    <tr><td>Team avg. doubles rank</td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p=0.000</td></tr>
+    <tr><td>Opponent avg. doubles rank</td>
+        <td class="num">+0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0001)<br>p=0.000</td></tr>
+    <tr><td>Top-100 singles player</td>
+        <td class="num">−0.0010</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0314)<br>p=0.974</td></tr>
+    <tr><td>Team avg. yrs since turning pro</td>
+        <td class="num">+0.0037<sup>**</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0017)<br>p=0.029</td></tr>
+    <tr><td>Yrs since turning pro, squared</td>
+        <td class="num">−0.0007<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0002)<br>p=0.002</td></tr>
+    <tr class="bg"><td>Pseudo-R²</td>
+        <td class="num">0.095</td></tr>
+  </tbody>
+</table>
+<p class="note" style="color:blue">
+  <sup>***</sup>&nbsp;p&lt;0.01 &nbsp;<sup>**</sup>&nbsp;p&lt;0.05 &nbsp;<sup>*</sup>&nbsp;p&lt;0.10.
+  Clustered SE. FE: tournament×year, round. N=3,728. <strong>Key result: the performance association does
+  not survive for different-nationality/same-language partnerships when tested against the full remaining
+  sample (AME=+0.0156, p=0.467)</strong> — only the same-nationality category (Table 3 column 1,
+  AME=+0.0361, p=0.028) is significant. This is evidence against a purely communication/language-driven
+  channel and is more consistent with nationality-specific mechanisms (shared sporting institutions,
+  geographic proximity, prior junior-circuit exposure). Note this result is even weaker than the earlier
+  joint 3-category specification (AME=+0.0353, p=0.119 there), because here the reference group also
+  absorbs the same-nationality teams rather than excluding them. Mirrors the notebook cell "4a-0.
+  Robustness: Disentangling Nationality from Language" and <code>homophily.do</code>'s TABLE 3-NATLANG
+  block exactly (N=3,728; same AME/SE/p-value).
+</p>
+
 <h3>Table 4 — Outcome: Tiebreak Win &nbsp;|&nbsp; Unit: team × tiebreak &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
 <p>
   Standard 7pt tiebreaks only, any set (1–5) — N = 2,354 team-obs (1,177 tiebreaks,
