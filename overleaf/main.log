@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.27)  16 SEP 2026 14:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.27)  21 SEP 2026 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -961,43 +961,53 @@ Overfull \hbox (4.09633pt too wide) in paragraph at lines 638--638
  []
 
 [23] [24] [25]
-Overfull \hbox (4.94199pt too wide) in paragraph at lines 672--702
+Overfull \hbox (4.94199pt too wide) in paragraph at lines 673--703
  [] 
  []
 
-[26] Excluding 'comment' comment. [27] [28] [29] [30] [31]
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 810--838
+[26] [27] Excluding 'comment' comment. [28] [29] [30] [31] [32]
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 813--841
  [] 
  []
 
-
-Overfull \hbox (60.6253pt too wide) in paragraph at lines 844--872
+[33]
+Overfull \hbox (60.6253pt too wide) in paragraph at lines 848--876
  [] 
  []
 
-
-Overfull \hbox (47.942pt too wide) in paragraph at lines 878--902
+[34]
+Overfull \hbox (47.942pt too wide) in paragraph at lines 883--907
  [] 
  []
 
-[32] [33] [34]
-Overfull \hbox (70.60872pt too wide) in paragraph at lines 973--1001
+[35
+
+] [36]
+Overfull \hbox (70.60872pt too wide) in paragraph at lines 981--1009
  [] 
  []
 
-(main.bbl [35] [36])
+[37
+
+]
+Overfull \hbox (0.27509pt too wide) in paragraph at lines 1054--1055
+[][]\OT1/cmr/m/n/10 The per-for-mance as-so-ci-a-tion does not sur-vive for dif
+ferent-nationality/same-language
+ []
+
+[38] (main.bbl)
 \Changes@OutFile=\write5
 \openout5 = `main.soc'.
 
 \tf@loc=\write6
 \openout6 = `main.loc'.
 
- [37] (main.aux) ) 
+ [39] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 19233 strings out of 476339
- 385993 string characters out of 5788591
- 1883340 words of memory out of 5000000
- 39269 multiletter control sequences out of 15000+600000
+ 19235 strings out of 476339
+ 386014 string characters out of 5788591
+ 1869340 words of memory out of 5000000
+ 39271 multiletter control sequences out of 15000+600000
  523320 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  114i,13n,117p,3544b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1019,16 +1029,17 @@ e1/public/amsfonts/cm/cmr7.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/aldi/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/aldi/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/aldi/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/aldi/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/aldi
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Us
-ers/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/aldi/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/aldi
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Use
+rs/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb
 ><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-ti9.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmtt10.pfb>
-Output written on main.pdf (38 pages, 400560 bytes).
+ti8.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmti9.pfb><C:/Users/aldi/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (40 pages, 413747 bytes).
 PDF statistics:
- 239 PDF objects out of 1000 (max. 8388607)
+ 250 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
