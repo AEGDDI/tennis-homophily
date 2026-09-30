@@ -1750,7 +1750,8 @@ display "Section 7 complete: Tiebreak win regressions (Table 4, Table 4-AGE, Tab
 * in Stata, unexecuted, would carry real risk of a subtle, uncaught bug (string-based
 * team-key construction, per-tournament-year field aggregation, etc.). Instead, this
 * section imports data/atp/partner_selection_ego.csv, which was exported directly from
-* the EXECUTED and verified Python ego2 dataframe (4,178 ego-rows; identical
+* the EXECUTED and verified Python ego2_excl dataframe (3,887 ego-rows, i.e. already
+* singleton-excluded; player key fixed 2026-09-30 -- see notebook cell 60; identical
 * construction to homophily.ipynb) -- so the regressions below run on real, correct
 * data even though, like the rest of this do-file, they have not been run through
 * Stata itself in this environment.
@@ -1769,7 +1770,7 @@ egen team_id = group(team_key)
 destring own_rank same_country same_language ling_prox composition_nat composition_lang composition_ling, replace force
 
 count
-display "Ego-rows loaded: " r(N) " (expect 4,178)"
+display "Ego-rows loaded: " r(N) " (expect 3,887 -- CSV is exported post-exclusion)"
 display ""
 
 * Singleton-nationality exclusion (per Alessandro's request 2026-09-01, extended 2026-09-03):
@@ -1782,7 +1783,7 @@ local n_singleton = r(N)
 display "Singleton-nationality exclusion: `n_singleton' ego-rows dropped"
 display ""
 quietly count if !_singleton_iso3
-display "Estimation sample after exclusion: " r(N) " ego-rows (expect 4,175)"
+display "Estimation sample after exclusion: " r(N) " ego-rows (expect 3,887; 0 further singletons)"
 display ""
 
 * NOTE: an own-country (own_iso3) fixed-effects specification was tried and dropped

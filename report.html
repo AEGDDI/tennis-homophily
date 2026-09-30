@@ -1555,7 +1555,7 @@
 <p>
   <strong>Unit of analysis</strong>: one row per <em>distinct partnership</em> — the same
   two players advancing through multiple rounds of one tournament are counted once, not once
-  per round, since the partner choice was made at the start of the event (2,089 partnerships
+  per round, since the partner choice was made at the start of the event (<span style="color:blue">1,945</span> partnerships
   with complete ranking data across the four Grand Slams, 2018–2025, Olympics excluded).
   Doubles ranking is each player's own ranking as of that tournament (the same source
   `rank_mean` is built from). <strong>Random-matching benchmark</strong>: for each
@@ -1571,48 +1571,56 @@
   actual-vs-random gap reported below.
 </p>
 <p class="note">
-  <strong>Updated 2026-09-03</strong>: the 2,089-partnership / 4,178-ego-row counts below reflect
+  <strong style="color:blue">Updated 2026-09-30</strong><span style="color:blue">: partnerships are now identified by
+  first initial + surname + country. The raw data records first names inconsistently across
+  rounds of the same event (e.g. "b mclachlan" in the early rounds vs "ben mclachlan" from the
+  quarter-finals on), so the previous full-first-name key counted every quarter-finalist team
+  twice in 18 of 31 draws (72 "distinct" teams instead of 64). With the fix every draw has
+  exactly 64 teams (32 at US Open 2020), 1,952 in total; 1,945 after dropping incomplete-rank
+  pairs; 3,890 ego-rows. All numbers in Section 6 below are updated accordingly; the
+  qualitative conclusions are unchanged.</span><br>
+  <strong>Updated 2026-09-03</strong>: the partnership / ego-row counts below reflect
   the qualifying-round exclusion (Wimbledon 2018's 12 qualifying-round matches, present in the
   raw source but not part of the main draw, are now dropped upstream — see the Observation
   Breakdown note above). Re-deriving from the raw source
   (<code>men_matches_with_ranks_cleaned.xlsx</code>, sheet <code>players_list</code>) after that
-  exclusion gives 2,096 distinct partnership-events, 2,089 after dropping incomplete-rank pairs,
-  4,178 ego-rows — matching the notebook and this table exactly.
+  exclusion (and the 2026-09-30 player-key fix) gives <span style="color:blue">1,952</span> distinct partnership-events,
+  <span style="color:blue">1,945</span> after dropping incomplete-rank pairs, <span style="color:blue">3,890</span> ego-rows — matching the notebook and this table exactly.
 </p>
 <table>
   <thead>
     <tr><th style="width:26%">Measure</th><th></th>
-        <th class="num">All ranked players<br><span class="se">(N=2,089)</span></th>
-        <th class="num">Both partners top-100<br><span class="se">(N=1,211)</span></th>
-        <th class="num">Both partners top-50<br><span class="se">(N=712)</span></th></tr>
+        <th class="num">All ranked players<br><span class="se" style="color:blue">(N=1,945)</span></th>
+        <th class="num">Both partners top-100<br><span class="se" style="color:blue">(N=1,083)</span></th>
+        <th class="num">Both partners top-50<br><span class="se" style="color:blue">(N=606)</span></th></tr>
   </thead>
   <tbody>
     <tr><td rowspan="2">Same nationality</td><td>Actual</td>
-        <td class="num">42.2%</td><td class="num">32.6%</td><td class="num">35.5%</td></tr>
+        <td class="num">42.2%</td><td class="num" style="color:blue">31.9%</td><td class="num" style="color:blue">35.0%</td></tr>
     <tr class="bg"><td>Random benchmark</td>
-        <td class="num">5.2%</td><td class="num">4.1%</td><td class="num">4.5%</td></tr>
+        <td class="num" style="color:blue">5.1%</td><td class="num" style="color:blue">3.9%</td><td class="num" style="color:blue">3.9%</td></tr>
     <tr><td rowspan="2">Same language</td><td>Actual</td>
-        <td class="num" style="color:blue">56.7%</td><td class="num" style="color:blue">49.8%</td><td class="num">56.3%</td></tr>
+        <td class="num" style="color:blue">56.1%</td><td class="num" style="color:blue">48.2%</td><td class="num" style="color:blue">54.5%</td></tr>
     <tr class="bg"><td>Random benchmark</td>
-        <td class="num" style="color:blue">16.3%</td><td class="num">15.5%</td><td class="num">15.8%</td></tr>
-    <tr><td rowspan="2">Ling. proximity</td><td>Actual</td>
-        <td class="num">56.8%</td><td class="num">50.6%</td><td class="num">56.5%</td></tr>
+        <td class="num" style="color:blue">16.2%</td><td class="num" style="color:blue">15.3%</td><td class="num" style="color:blue">15.1%</td></tr>
+    <tr><td rowspan="2" style="color:blue">Ling. proximity (mean)</td><td>Actual</td>
+        <td class="num" style="color:blue">0.651</td><td class="num" style="color:blue">0.593</td><td class="num" style="color:blue">0.621</td></tr>
     <tr class="bg"><td>Random benchmark</td>
-        <td class="num">19.9%</td><td class="num">18.9%</td><td class="num">18.9%</td></tr>
+        <td class="num" style="color:blue">0.361</td><td class="num" style="color:blue">0.357</td><td class="num" style="color:blue">0.370</td></tr>
   </tbody>
 </table>
 <p class="note">
   Two things stand out. First, <strong>actual partner selection is far more culturally
   assortative than chance at every skill level</strong> — same-nationality rates run
-  6–8× the random-matching benchmark, same-language rates 3–4×, throughout. Sorting by
+  <span style="color:blue">8–9×</span> the random-matching benchmark, same-language rates 3–4×, throughout. Sorting by
   culture is real and substantial; Lingqing's concern that this could contaminate the
   performance regressions is well-founded and worth keeping in mind when interpreting
   Tables 3–6b as effects of culture on winning, rather than pure causal estimates.
   Second, and less expected: <strong>elite players are not more assortative than the field
-  as a whole</strong> — the actual/benchmark ratio for same nationality is ≈8.1× overall,
-  ≈7.9× for top-100, ≈7.9× for top-50, essentially flat across brackets (same-language ratio
+  as a whole</strong> — the actual/benchmark ratio for same nationality is <span style="color:blue">≈8.3× overall,
+  ≈8.2× for top-100, ≈9.0× for top-50, roughly flat across brackets</span> (same-language ratio
   is similarly flat: ≈3.5×, ≈3.2×, ≈3.6×). If anything, the raw same-nationality rate is
-  <em>lower</em> among top-50/100 pairs (32.6–35.5%) than in the full field (42.2%) — top
+  <em>lower</em> among top-50/100 pairs (<span style="color:blue">31.9–35.0%</span>) than in the full field (42.2%) — top
   players draw from a smaller, more international pool of plausible partners, which
   mechanically dilutes same-country pairing even though same-language pairing holds
   roughly steady. This doesn't support the specific "stronger players sort more" version of
@@ -1625,10 +1633,10 @@
 <p>
   The bracket comparison above is a threshold test (top-50, top-100 vs. the field); this
   tests the same mechanism continuously. Each of the two players in a partnership is treated
-  as an "ego" with the other as "partner" (2 ego-rows per partnership, 4,178 rows from the
-  2,089 partnerships), and the ego's <strong>own</strong> doubles ranking (at that tournament)
+  as an "ego" with the other as "partner" (2 ego-rows per partnership, <span style="color:blue">3,890</span> rows from the
+  <span style="color:blue">1,945</span> partnerships), and the ego's <strong>own</strong> doubles ranking (at that tournament)
   is regressed on whether the partnership is same-nationality / same-language / ling_prox
-  (all three binary; logit AME), with tournament×year FE and SE clustered by partnership (so both
+  (<span style="color:blue">logit AME for the two binary outcomes, OLS for continuous ling_prox</span>), with tournament×year FE and SE clustered by partnership (so both
   ego-rows from the same team don't count as independent observations). The model is
   deliberately bivariate — <code>own_rank + C(tourn_year)</code>, no further controls — since
   the point is to test whether own ranking alone predicts partner-culture similarity net of
@@ -1648,20 +1656,20 @@
   </thead>
   <tbody>
     <tr><td>Same nationality (AME)</td>
-        <td class="num">+0.000268<sup>***</sup></td>
-        <td class="num">0.000056</td>
+        <td class="num" style="color:blue">+0.000265<sup>***</sup></td>
+        <td class="num" style="color:blue">0.000060</td>
         <td class="num">&lt;0.001</td>
-        <td class="num">4,178</td></tr>
+        <td class="num" style="color:blue">3,890</td></tr>
     <tr><td>Same language (AME)</td>
-        <td class="num" style="color:blue">+0.000172<sup>***</sup></td>
-        <td class="num" style="color:blue">0.000059</td>
+        <td class="num" style="color:blue">+0.000188<sup>***</sup></td>
+        <td class="num" style="color:blue">0.000065</td>
         <td class="num" style="color:blue">0.004</td>
-        <td class="num">4,178</td></tr>
+        <td class="num" style="color:blue">3,890</td></tr>
     <tr><td>Ling. proximity (OLS coef.)</td>
-        <td class="num" style="color:blue">+0.000107<sup>**</sup></td>
-        <td class="num" style="color:blue">0.000043</td>
-        <td class="num" style="color:blue">0.013</td>
-        <td class="num" style="color:blue">4,178</td></tr>
+        <td class="num" style="color:blue">+0.000114<sup>**</sup></td>
+        <td class="num" style="color:blue">0.000046</td>
+        <td class="num" style="color:blue">0.014</td>
+        <td class="num" style="color:blue">3,890</td></tr>
   </tbody>
 </table>
 <p class="note" style="color:blue">
@@ -1698,7 +1706,7 @@
   every other field player, via the same CEPII lookup used throughout. All three specs also
   exclude the 3 ego-rows whose own nationality is represented by exactly one player in the
   ego-row sample (so a single lone-nationality observation cannot by itself drive any
-  coefficient), leaving N=4,175 (from 4,178).
+  coefficient), leaving <span style="color:blue">N=3,887 (from 3,890)</span>.
 </p>
 <table>
   <thead>
@@ -1709,43 +1717,43 @@
   </thead>
   <tbody>
     <tr><td rowspan="4">Same nationality (AME)</td><td>own_rank</td>
-        <td class="num">+0.000269<sup>***</sup></td>
+        <td class="num" style="color:blue">+0.000266<sup>***</sup></td>
         <td class="num"></td>
-        <td class="num">+0.000116<sup>**</sup></td></tr>
+        <td class="num" style="color:blue">+0.000104<sup>*</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.000056)</td><td class="num"></td><td class="num">(0.000053)</td></tr>
+        <td class="num" style="color:blue">(0.000060)</td><td class="num"></td><td class="num" style="color:blue">(0.000059)</td></tr>
     <tr><td>composition</td>
         <td class="num"></td>
-        <td class="num">+3.853<sup>***</sup></td>
-        <td class="num">+3.756<sup>***</sup></td></tr>
+        <td class="num" style="color:blue">+3.826<sup>***</sup></td>
+        <td class="num" style="color:blue">+3.734<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num"></td><td class="num">(0.241325)</td><td class="num">(0.255403)</td></tr>
+        <td class="num"></td><td class="num" style="color:blue">(0.272174)</td><td class="num" style="color:blue">(0.290074)</td></tr>
     <tr><td rowspan="4">Same language (AME)</td><td>own_rank</td>
-        <td class="num" style="color:blue">+0.000173<sup>***</sup></td>
+        <td class="num" style="color:blue">+0.000189<sup>***</sup></td>
         <td class="num"></td>
-        <td class="num" style="color:blue">+0.000141<sup>***</sup></td></tr>
+        <td class="num" style="color:blue">+0.000152<sup>**</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num" style="color:blue">(0.000059)</td><td class="num"></td><td class="num" style="color:blue">(0.000054)</td></tr>
+        <td class="num" style="color:blue">(0.000065)</td><td class="num"></td><td class="num" style="color:blue">(0.000059)</td></tr>
     <tr><td>composition</td>
         <td class="num"></td>
-        <td class="num" style="color:blue">+1.253<sup>***</sup></td>
-        <td class="num" style="color:blue">+1.243<sup>***</sup></td></tr>
+        <td class="num" style="color:blue">+1.270<sup>***</sup></td>
+        <td class="num" style="color:blue">+1.257<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num"></td><td class="num" style="color:blue">(0.083032)</td><td class="num" style="color:blue">(0.084079)</td></tr>
+        <td class="num"></td><td class="num" style="color:blue">(0.094932)</td><td class="num" style="color:blue">(0.096450)</td></tr>
     <tr><td rowspan="4" style="color:blue">Ling. proximity (OLS coef.)</td><td>own_rank</td>
-        <td class="num" style="color:blue">+0.000107<sup>**</sup></td>
+        <td class="num" style="color:blue">+0.000114<sup>**</sup></td>
         <td class="num"></td>
-        <td class="num" style="color:blue">+0.000098<sup>***</sup></td></tr>
+        <td class="num" style="color:blue">+0.000101<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num" style="color:blue">(0.000043)</td><td class="num"></td><td class="num" style="color:blue">(0.000036)</td></tr>
+        <td class="num" style="color:blue">(0.000046)</td><td class="num"></td><td class="num" style="color:blue">(0.000039)</td></tr>
     <tr><td>composition</td>
         <td class="num"></td>
-        <td class="num" style="color:blue">+1.378<sup>***</sup></td>
-        <td class="num" style="color:blue">+1.375<sup>***</sup></td></tr>
+        <td class="num" style="color:blue">+1.370<sup>***</sup></td>
+        <td class="num" style="color:blue">+1.366<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num"></td><td class="num" style="color:blue">(0.070657)</td><td class="num" style="color:blue">(0.070942)</td></tr>
+        <td class="num"></td><td class="num" style="color:blue">(0.082830)</td><td class="num" style="color:blue">(0.083325)</td></tr>
     <tr class="bg"><td colspan="2">N (ego-rows)</td>
-        <td class="num">4,175</td><td class="num">4,175</td><td class="num">4,175</td></tr>
+        <td class="num" style="color:blue">3,887</td><td class="num" style="color:blue">3,887</td><td class="num" style="color:blue">3,887</td></tr>
   </tbody>
 </table>
 <p class="note" style="color:blue">
@@ -1756,9 +1764,10 @@
   Field composition alone (Spec 2) is a strong, highly significant predictor of all three
   outcomes, as expected — a player drawn from a field with more compatriots or linguistically
   similar entrants is mechanically more likely to end up with a culturally similar partner.
-  Adding both own ranking and field composition together (Spec 3) shrinks the own-ranking
-  coefficients by roughly half relative to Spec 1 but leaves them positive and significant for
-  all three outcomes (p&lt;0.05 throughout), while the composition coefficient stays close to
+  Adding both own ranking and field composition together (Spec 3) <span style="color:blue">shrinks the own-ranking
+  coefficient substantially for same nationality (0.000266 → 0.000104) and only modestly for
+  same language and ling_prox, but leaves it positive and significant for all three outcomes
+  (p&lt;0.05 for same language and ling_prox; p=0.078 for same nationality)</span>, while the composition coefficient stays close to
   its Spec 2 magnitude. Own ranking therefore predicts partner similarity <em>in addition
   to</em>, not merely <em>because of</em>, the cultural composition of the field a player
   happens to be drawn from.

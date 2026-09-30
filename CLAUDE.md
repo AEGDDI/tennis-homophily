@@ -78,7 +78,7 @@ drop immediately after loading the raw Excel, mirroring the notebook's `_qualify
 (cell 1). A handful of cosmetic stale numbers in `homophily.do` comments/display strings
 (1,876/1,886/3,752/4,202/4,198) were also corrected to 1,864/1,874/3,728/4,178/4,175.
 `data/atp/partner_selection_ego.csv` was checked directly (header + row count) and is current
-(4,175 data rows, matching the notebook's fresh export exactly) — the earlier claim above that
+(then 4,175 data rows; 3,887 since the 2026-09-30 player-key fix) — the earlier claim above that
 it was stale was itself outdated by the time it was checked.
 
 **Tiebreak classification:** A standard tiebreak is a 7-pt breaker at 6-6 (any set, 1–5). An
@@ -219,7 +219,8 @@ the effect at mean tenure)
 **Section 6 (new, per reviewer request 2026-08-11): partner-selection sorting check.**
 Descriptive comparison of actual vs. random-matching-benchmark same-nationality/language/
 ling_prox rates among realized doubles partnerships (deduped to one row per tournament×team,
-N = 2,089, post-2026-09-03 qualifying-round fix, was 2,101), split by All / both-top-100 /
+N = 1,945 after the 2026-09-30 player-key fix below; was 2,089 before it, 2,101 before the
+2026-09-03 qualifying-round fix), split by All / both-top-100 /
 both-top-50 (ranking at time of tournament).
 Random benchmark is closed-form (not simulated): Σ over C(n,2) pairs in that tournament's
 actual field, using the same CEPII `comlang_off`/`comlang_ethno` country-pair lookup that
@@ -227,8 +228,8 @@ actual field, using the same CEPII `comlang_off`/`comlang_ethno` country-pair lo
 culturally assortative than chance at every skill level (6–8× benchmark for nationality,
 3–4× for language), but the degree of excess is essentially flat across brackets — elite
 players are not disproportionately more assortative. A follow-up continuous test (§6.1,
-logit AME of same_country/same_language/ling_prox on the ego player's own ranking, ~4,178
-ego-rows, clustered by partnership) confirms this: the AME on own rank is positive
+logit AME of same_country/same_language/ling_prox on the ego player's own ranking, 3,890
+ego-rows (was 4,178 before the 2026-09-30 player-key fix), clustered by partnership) confirms this: the AME on own rank is positive
 and significant for all three outcomes, meaning *worse*-ranked players sort into
 same-culture partnerships slightly *more*, not less — the reverse of the "stronger players
 have more choice and sort more" concern.
@@ -245,6 +246,18 @@ correct OLS coefficients (§6.1: own_rank=+0.000098\*\*, se=0.000044, p=0.026, N
 1/2/3: own_rank=+0.000098\*\*/—/+0.000088\*\*, composition=—/+1.249\*\*\*/+1.247\*\*\*, N=4,175),
 matching `main.tex`/Stata exactly; `report.pdf` regenerated. Sign/significance/qualitative
 finding unchanged throughout — only report.html's stale AME labeling/numbers were wrong.
+
+**Partner-selection player-key fix (2026-09-30).** The Section 6/6.1/6.2 partnership dedup
+(`homophily.ipynb` cell 60, `_team_pkeys`) and the field roster (cell 65) used to key players on
+full first name + surname + iso3. The raw data records first names inconsistently across rounds
+of one event (`b mclachlan` R64–R16 vs `ben mclachlan` QF+), so every quarter-finalist team was
+double-counted in 18 of 31 draws (72 "distinct" teams instead of 64). Key is now first initial +
+surname + iso3, with a name-swap fix for Zhang Zhizhen and full-first-name fallback when both
+teammates collide (Ratiwatana twins). Verified: exactly 64 teams / 128 players per draw (32/64 at
+US Open 2020), 1,952 teams total → 1,945 rank-complete, 3,890 ego-rows, 3,887 after singleton
+exclusion. Tables 3–6b and appendices unaffected (no player-level dedup). Qualitative findings
+unchanged; §6.2 Spec 3 own_rank for same_country dropped from ** to * (p=0.078). Old N's quoted
+below in this file (2,089 / 4,178 / 4,175 and the §6.1/6.2 coefficients) are pre-fix.
 
 **Section 6.2 (new, per Lingqing's 2026-08 meeting notes; finalized 2026-09): tournament-field
 composition.** Extends the §6.1 ego-row regression from `own_rank` alone to three specs: (1)
