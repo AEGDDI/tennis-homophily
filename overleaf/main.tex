@@ -1,6 +1,7 @@
 
 \documentclass[10pt]{article}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -326,10 +327,12 @@ Throughout the analysis we include tournament-by-year fixed effects $\delta_{ty}
 \color{blue}
 \centering
 \caption{Match Win — Average Marginal Effects (AME) from Logit \label{tab:t3}}
+\resizebox{\textwidth}{!}{
 \begin{threeparttable}
 \begin{tabular}{lccc}
 \toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
+ & (1) & (2)  & (3) \\
+  &  Same Nationality &  Same Language & Lang. Proximity \\
 \midrule
 Cultural similarity & 0.0361** & \textcolor{blue}{0.0420***} & \textcolor{blue}{0.0501**} \\
  & (0.0164) & \textcolor{blue}{(0.0157)} & \textcolor{blue}{(0.0202)} \\
@@ -356,6 +359,7 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 % ; the squared term is built from the demeaned variable. %so the linear term is the marginal effect of tenure at the sample mean.
 \end{tablenotes}
 \end{threeparttable}
+}
 \end{table}
 %\FloatBarrier
 
@@ -381,11 +385,12 @@ If the observed association were driven by a particular tactical or environmenta
 Table \ref{tab:t5} reports the results. The coefficients are remarkably stable across playing environments, suggesting that the result is not driven by any specific physical environment of the tournament.\footnote{\textcolor{red}{As a robustness check, restoring tournament$\times$year FE and estimating C$\times$grass/C$\times$clay jointly (hardcourt as baseline, no separate surface main effect) leaves this conclusion unchanged: both C$\times$grass and C$\times$clay interactions remain small and insignificant (p$>$0.65) in that specification.}} 
 
 
-\textcolor{red}{Adjust the table width to text width}
+
 \begin{table}[htbp]
 \color{blue}
 \centering
 \caption{Stability across playing surfaces \label{tab:t5}}
+\resizebox{\textwidth}{!}{
 \begin{threeparttable}
 \begin{tabular}{lcccccc}
 \toprule
@@ -411,6 +416,7 @@ $N$ & \multicolumn{2}{c}{3,728} & \multicolumn{2}{c}{3,728} & \multicolumn{2}{c}
 \item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Spec (a): grass vs.\ rest (hardcourt+clay pooled). Spec (b): clay vs.\ rest (hardcourt+grass pooled). Round FE only; Same controls as in  Table \ref{tab:t3}. 
 \end{tablenotes}
 \end{threeparttable}
+}
 \end{table}
 \FloatBarrier
 
@@ -434,16 +440,19 @@ The contrast between the two outcomes is informative. If culturally similar team
 
 We estimate the same empirical specification in Equation (\ref{matchoutcome}) using tiebreak results as the outcome variable.
 
-\textcolor{red}{Adjust the table width to text width}
+
 
 \begin{table}[htbp]
 \color{blue}
 \centering
 \caption{Tiebreak Win — Average Marginal Effects (AME) from Logit \label{tab:t4}}
+\resizebox{\textwidth}{!}{
 \begin{threeparttable}
+
 \begin{tabular}{lccc}
 \toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
+ & (1)   & (2)   & (3)  \\
+  &   Same Nationality &   Same Language &   Lang. Proximity \\
 \midrule
 Cultural similarity & 0.0308 & \textcolor{blue}{0.0087} & \textcolor{blue}{0.0388} \\
  & (0.0224) & (0.0218) & \textcolor{blue}{(0.0277)} \\
@@ -464,11 +473,14 @@ Pseudo-$R^2$ & 0.013 & 0.013 & 0.013 \\
 $N$ & 2,354 & 2,354 & 2,354 \\
 \bottomrule
 \end{tabular}
+
 \begin{tablenotes}
 \small
 \item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. Unit of observation is team-tiebreak (2 team obs. per tiebreak); standard 7-point tiebreaks only. Same controls and FE as Table \ref{tab:t3}.
 \end{tablenotes}
+
 \end{threeparttable}
+}
 \end{table}
 \FloatBarrier
 
@@ -533,10 +545,13 @@ Table \ref{tab:t6} reports the results. The interaction between cultural similar
 \color{red}
 \centering
 \caption{Team Average Experience \label{tab:t6}}
+
+\resizebox{\textwidth}{!}{
 \begin{threeparttable}
 \begin{tabular}{lccc}
 \toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
+ & (1)  & (2) & (3)   \\
+  &   Same Nationality &   Same Language &   Lang. Proximity \\
 \midrule
 Cultural similarity (C)  & 0.0361** & \textcolor{blue}{0.0394**} & \textcolor{blue}{0.0473**} \\
  & (0.0164) & \textcolor{blue}{(0.0157)} & \textcolor{blue}{(0.0203)} \\
@@ -557,6 +572,7 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 \item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. \textit{exp\_mean\_dm} is demeaned at the sample mean (11.93 years, SD 5.17), so the Culture (C) row is the AME at mean team experience.
 \end{tablenotes}
 \end{threeparttable}
+}
 \end{table}
 %\FloatBarrier
 
@@ -592,10 +608,12 @@ We test this prediction using the absolute difference between the two teammates'
 \color{blue}
 \centering
 \caption{Within-Team Experience Gap \label{tab:t6b}}
+\resizebox{\textwidth}{!}{
 \begin{threeparttable}
 \begin{tabular}{lccc}
 \toprule
- & (1) Same Nationality & (2) Same Language & (3) Lang. Proximity \\
+ & (1)   & (2)   & (3)  \\
+  &   Same Nationality &   Same Language &   Lang. Proximity \\
 \midrule
 Culture (C) -- mean gap & 0.0356** & \textcolor{blue}{0.0408***} & \textcolor{blue}{0.0473**} \\
  & (0.0164) & \textcolor{blue}{(0.0157)} & \textcolor{blue}{(0.0203)} \\
@@ -616,8 +634,9 @@ $N$ & 3,728 & 3,728 & 3,728 \\
 \item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match. \textit{exp\_gap\_dm} $=|{\rm exp}_i-{\rm exp}_j|$, demeaned at the sample mean (5.50 years, SD 4.92); individual tenure is imputed to 1 year for rookies. Controls include team-average \textit{exp\_mean\_dm} and its square, plus \textit{exp\_gap\_dm} itself. A robustness spec adding C $\times$ exp\_gap\_dm$^2$ leaves the conclusion unchanged (quadratic term and linear term both insignificant throughout, p$>$0.29).
 \end{tablenotes}
 \end{threeparttable}
+}
 \end{table}
-\FloatBarrier
+%\FloatBarrier
 
 The results provide no evidence that cultural similarity becomes more strongly associated with performance as the experience gap increases. The interaction is positive for all three measures—0.0032 for same nationality (p=0.344), \textcolor{blue}{0.0040 for same language (p=0.214)}, and \textcolor{blue}{0.0031 for linguistic proximity (p=0.447)}—but none is statistically significant. Allowing for a quadratic relationship between the experience gap and cultural similarity produces the same conclusion: the quadratic interactions are small and statistically insignificant, while the linear interactions remain insignificant.
 
@@ -1049,44 +1068,63 @@ $N$ (per draw) & 1,864 & 1,864 & 1,864 \\
 \section{Disentangling Nationality from Language}
 \label{app:natlang}
 
-\textcolor{blue}{We assume that same nationality implies same language: in this sample, every same-nationality team-obs also has same\_language$=1$ (0 same-nationality/different-language team-obs exist). Under this assumption, the same-nationality-\&-same-language dummy is identical to \texttt{same\_country} (Table~\ref{tab:t3}, column 1), so we do not re-report it. We therefore report only the informative comparison: different nationality \& same language ($N=575$, win rate $0.5565$) versus everyone else ($N=3{,}153$, win rate $0.4897$), e.g.\ Germany/Austria, UK/Australia/US, Spain/Argentina, entered as a single dummy against the full remaining sample (same controls, fixed effects, and clustering as Table~\ref{tab:t3}).}
+\textcolor{blue}{In this sample every same-nationality partnership also shares an official language (no same-nationality/different-language team-observations exist). The two binary measures therefore define three mutually exclusive categories that partition the sample:
+\[
+C_{ij}=\begin{cases}
+0 & \text{different nationality, different language} \quad (N=1{,}619;\ \text{raw win rate } 0.490)\\
+1 & \text{different nationality, same language} \quad (N=575;\ \text{raw win rate } 0.557)\\
+2 & \text{same nationality, same language} \quad (N=1{,}534;\ \text{raw win rate } 0.490)
+\end{cases}
+\]
+ We estimate
+\[
+Y_{ijt}=\delta_1\mathbf{1}(C_{ij}=1)+\delta_2\mathbf{1}(C_{ij}=2)+X_{ijt}'\gamma+FE_t+\varepsilon_{ijt},
+\]
+with category 0 as the reference group and the same controls, fixed effects, and clustering as Table~\ref{tab:t3}. $\delta_1$ measures the association with a shared language across nationalities, $\delta_2$ the association with shared nationality and language, and $\delta_2-\delta_1$ the additional association with same nationality conditional on a shared language.}
 
 \begin{table}[htbp]
+\color{blue}
 \centering
-\caption{Appendix C1 -- Match Win, Different Nationality \& Same Language vs.\ Everyone Else (cf.\ Table~\ref{tab:t3}) \label{tab:c1}}
+\caption{Appendix C1 -- Match Win by Nationality--Language Category (cf.\ Table~\ref{tab:t3}) \label{tab:c1}}
 \begin{threeparttable}
 \begin{tabular}{lc}
 \toprule
- & Diff.\ Nationality \& Same Language \\
+ & Match win \\
 \midrule
-Culture-category dummy & 0.0156 \\
- & (0.0215) \\
+$\delta_1$: Different nationality \& same language & 0.0353 \\
+ & (0.0227) \\
+$\delta_2$: Same nationality \& same language & 0.0449$^{***}$ \\
+ & (0.0173) \\
 Own avg. doubles ranking & $-$0.0007$^{***}$ \\
  & (0.0001) \\
 Opponent avg. doubles ranking & 0.0007$^{***}$ \\
  & (0.0001) \\
-Top-100 singles player (0,1) & $-$0.0010 \\
- & (0.0314) \\
-Team avg. professional years & 0.0037$^{**}$ \\
+Top-100 singles player (0,1) & $-$0.0036 \\
+ & (0.0315) \\
+Team avg. professional years & 0.0043$^{***}$ \\
  & (0.0017) \\
-Team avg. professional years$^2$ & $-$0.0007$^{***}$ \\
+Team avg. professional years$^2$ & $-$0.0008$^{***}$ \\
  & (0.0002) \\
+\midrule
+$\delta_2-\delta_1$ & 0.0096 \\
+ & (0.0237) \\
 \midrule
 Tournament $\times$ year FE & Yes \\
 Round FE & Yes \\
-Pseudo-$R^2$ & 0.095 \\
+Pseudo-$R^2$ & 0.097 \\
 $N$ & 3,728 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match.
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Average marginal effects; standard errors in parentheses, clustered by match. Reference category: different nationality \& different language. $p$-values: $\delta_1$ 0.119, $\delta_2$ 0.010, $\delta_2-\delta_1$ 0.687.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-\textcolor{blue}{The performance association does not survive for different-nationality/same-language partnerships when tested against the full remaining sample ($p=0.467$) -- only the same-nationality category (Table~\ref{tab:t3}, column 1, $p=0.028$) is significant. This is evidence against a purely communication/language-driven channel and is more consistent with nationality-specific mechanisms (shared sporting institutions, geographic proximity, prior junior-circuit exposure).}
+\textcolor{blue}{Relative to fully mixed partnerships, same-nationality partnerships are 4.5 percentage points more likely to win ($p=0.010$). Partnerships of different nationalities that share a language are 3.5 percentage points more likely to win; this is about 80\% of the same-nationality association, but it is not significant ($p=0.119$), reflecting the small size of this group ($N=575$). The additional association with same nationality, conditional on a shared language ($\delta_2-\delta_1$), is small (0.010) and far from significant ($p=0.687$).}
+
 
 
 \bibliographystyle{apalike}

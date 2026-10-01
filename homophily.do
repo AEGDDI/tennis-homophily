@@ -1128,21 +1128,24 @@ quietly summarize win if d_same_nat_same_lang==0 & d_diff_nat_same_lang==0
 display "  diff_nat_diff_lang (reference): N=`n_ref'  win rate=" %5.4f r(mean)
 display ""
 
-* Updated 2026-09-17 (per user request for report clarity): each dummy is now tested
-* in its own separate spec, one at a time (vs. the full remaining sample), mirroring how
-* Table 3 enters same_country/same_language/ling_prox one at a time rather than jointly.
-display "--- Regression (i): win ~ d_same_nat_same_lang + controls + FE (vs. everyone else) ---"
-logit win i.ty i.stage_code d_same_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(d_same_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store win_natlang_i
-
+* Updated 2026-10-01 (reverts the 2026-09-17 one-dummy-at-a-time split): both dummies
+* entered jointly in ONE logit, diff_nat_diff_lang = omitted reference. delta1 = shared
+* language across nationalities; delta2 = same nationality + same language; delta2 - delta1
+* = additional association with same nationality conditional on same language (tested on
+* the AME scale via lincom after margins, post). The one-at-a-time version compared
+* diff_nat_same_lang against "everyone else", which also contained the same-nationality
+* teams and so biased delta1 toward zero. Mirrors homophily.ipynb cell "4a-0".
+display "--- Joint regression: win ~ d_diff_nat_same_lang + d_same_nat_same_lang + controls + FE ---"
+display "    (reference = diff_nat_diff_lang)"
+logit win i.ty i.stage_code d_diff_nat_same_lang d_same_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
+test d_same_nat_same_lang = d_diff_nat_same_lang
+display "  Wald test on logit coefficients, delta2 = delta1: p=" %5.3f r(p)
+estimates store win_natlang
+margins, dydx(d_diff_nat_same_lang d_same_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq) post
 display ""
-display "--- Regression (ii): win ~ d_diff_nat_same_lang + controls + FE (vs. everyone else) ---"
-logit win i.ty i.stage_code d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq, cluster(match_id)
-margins, dydx(d_diff_nat_same_lang rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq)
-estimates store win_natlang_ii
-
-estimates table win_natlang_i win_natlang_ii, b se stats(N ll)
+display "--- delta2 - delta1 (same nationality | same language), AME scale ---"
+lincom _b[d_same_nat_same_lang] - _b[d_diff_nat_same_lang]
+estimates restore win_natlang
 
 * ─────────────────────────────────────────────────────────────────────────────
 * TABLE 3-AGE: MATCH WIN — LOGIT, AGE SPEC (robustness: age_mean replaces exp_mean)

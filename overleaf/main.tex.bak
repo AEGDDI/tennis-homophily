@@ -215,7 +215,7 @@ These measures reflect increasingly broad notions of cultural similarity. First,
 
 %Shared nationality captures common institutional and cultural background; shared official language captures communication potential through the language used in formal and public life; and linguistic proximity recognizes that communication costs may be lower between teammates whose languages are closely related even when they do not share the same official language.  %Language Proximity and Same Language can diverge substantially -- e.g. two Romance-language speakers score a high \textit{prox1} without sharing an official language.
 
-Table \ref{tab:t2}  reports the share of teams by each measure. In our sample, 42.2\% (882 teams) of teams consist of players sharing the same nationality, 56.7\% (1,184 teams) share an official language, and the mean of the continuous measure linguistic proximity is 0.654.
+Table \ref{tab:t2}  reports the share of teams by each measure. In our sample, 42.2\% (\textcolor{blue}{821} teams) of teams consist of players sharing the same nationality, \textcolor{blue}{56.1\%} (\textcolor{blue}{1,091} teams) share an official language, and the mean of the continuous measure linguistic proximity is \textcolor{blue}{0.651}.
 
 
 \begin{table}[htbp]
@@ -228,14 +228,14 @@ Table \ref{tab:t2}  reports the share of teams by each measure. In our sample, 4
 \toprule
 Measure of Cultural Similarity & Share or Mean & No. of Distinct Partnerships \\
 \midrule
-Same nationality  & 42.2\% & 882 \\
-Same language  & 56.7\% & 1,184 \\
-Ling.\ proximity  & 0.654 & 2,089 \\
+Same nationality  & 42.2\% & \textcolor{blue}{821} \\
+Same language  & \textcolor{blue}{56.1\%} & \textcolor{blue}{1,091} \\
+Ling.\ proximity  & \textcolor{blue}{0.651} & \textcolor{blue}{1,945} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item Note: Computed over the 2,089 distinct tournament$\times$partnership pairings with complete ranking data (542 at the Australian Open, 543 at Roland Garros, 487 at Wimbledon, 517 at the US Open). "Teams" is the absolute number of the 2,089 partnerships satisfying each binary criterion; Linguistic proximity is a continuous $[0,1]$.
+\item Note: Computed over the \textcolor{blue}{1,945} distinct tournament$\times$partnership pairings with complete ranking data (\textcolor{blue}{510} at the Australian Open, \textcolor{blue}{511} at Roland Garros, \textcolor{blue}{447} at Wimbledon, \textcolor{blue}{477} at the US Open). "Teams" is the absolute number of the \textcolor{blue}{1,945} partnerships satisfying each binary criterion; Linguistic proximity is a continuous $[0,1]$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -649,36 +649,36 @@ We compare the observed prevalence of cultural similarity with the rate expected
 \begin{tabularx}{\textwidth}{l l Y Y Y}
 \toprule
 Measure & & All players & Both in top-100 & Both in top-50 \\
- & & ($N$=2,089) & ($N$=1,211) & ($N$=712) \\
+ & & ($N$=\textcolor{blue}{1,945}) & ($N$=\textcolor{blue}{1,083}) & ($N$=\textcolor{blue}{606}) \\
 \midrule
-\multirow{2}{*}{Same nationality} & Actual & 42.2\% & 32.6\% & 35.5\% \\
- & Random benchmark & 5.2\% & 4.1\% & 4.5\% \\[.3cm]
-\multirow{2}{*}{Same language} & Actual & \textcolor{blue}{56.7\%} & \textcolor{blue}{49.8\%} & 56.3\% \\
- & Random benchmark & \textcolor{blue}{16.3\%} & 15.5\% & 15.8\% \\[.3cm]
-\multirow{2}{*}{\textcolor{blue}{Ling.\ proximity (mean)}} & Actual & \textcolor{blue}{0.654} & \textcolor{blue}{0.603} & \textcolor{blue}{0.632} \\
- & Random benchmark & \textcolor{blue}{0.364} & \textcolor{blue}{0.361} & \textcolor{blue}{0.375} \\
+\multirow{2}{*}{Same nationality} & Actual & 42.2\% & \textcolor{blue}{31.9\%} & \textcolor{blue}{35.0\%} \\
+ & Random benchmark & \textcolor{blue}{5.1\%} & \textcolor{blue}{3.9\%} & \textcolor{blue}{3.9\%} \\[.3cm]
+\multirow{2}{*}{Same language} & Actual & \textcolor{blue}{56.1\%} & \textcolor{blue}{48.2\%} & \textcolor{blue}{54.5\%} \\
+ & Random benchmark & \textcolor{blue}{16.2\%} & \textcolor{blue}{15.3\%} & \textcolor{blue}{15.1\%} \\[.3cm]
+\multirow{2}{*}{\textcolor{blue}{Ling.\ proximity (mean)}} & Actual & \textcolor{blue}{0.651} & \textcolor{blue}{0.593} & \textcolor{blue}{0.621} \\
+ & Random benchmark & \textcolor{blue}{0.361} & \textcolor{blue}{0.357} & \textcolor{blue}{0.370} \\
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}
 \small
-\item Note: There are 2,089  distinct partnership per tournament between 2018--2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds. Random benchmark is the closed-form expected rate under random pairing within each tournament-year's actual field\textcolor{blue}{, averaged across tournament-years with weights equal to the number of partnerships in each}.% using the same CEPII \textit{comlang\_off}/\textit{comlang\_ethno} country-pair lookup underlying \textit{same\_language}/\textit{ling\_prox}.
+\item Note: There are \textcolor{blue}{1,945} distinct partnership per tournament between 2018--2025. A partnership is counted once within a tournament, even if the same pair advances through several rounds. Random benchmark is the closed-form expected rate under random pairing within each tournament-year's actual field\textcolor{blue}{, averaged across tournament-years with weights equal to the number of partnerships in each}.% using the same CEPII \textit{comlang\_off}/\textit{comlang\_ethno} country-pair lookup underlying \textit{same\_language}/\textit{ling\_prox}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-The results in Table~\ref{tab:t8} show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with 5.2\% under random matching. Similarly, \textcolor{blue}{56.7\%} of partnerships share an official language, compared with \textcolor{blue}{16.3\%} under random matching. \textcolor{blue}{Mean linguistic proximity is 0.654 among observed partnerships, compared with 0.364 under random matching.} Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
+The results in Table~\ref{tab:t8} show substantial cultural sorting. Among all partnerships, 42.2\% consist of players of the same nationality, compared with \textcolor{blue}{5.1\%} under random matching. Similarly, \textcolor{blue}{56.1\%} of partnerships share an official language, compared with \textcolor{blue}{16.2\%} under random matching. \textcolor{blue}{Mean linguistic proximity is 0.651 among observed partnerships, compared with 0.361 under random matching.} Thus, doubles partnerships are strongly assortative along all three dimensions of cultural similarity.
 
 
 
-The sorting does not appear to be concentrated among the strongest players. Among partnerships in which both players are ranked in the top 100, 32.6\% are same-nationality partnerships, compared with 4.1\% under random matching. Among partnerships with both players in the top 50, the corresponding figures are 35.5\% and 4.5\%.  Similar pattern is evident for shared language and linguistic proximity. 
+The sorting does not appear to be concentrated among the strongest players. Among partnerships in which both players are ranked in the top 100, \textcolor{blue}{31.9\%} are same-nationality partnerships, compared with \textcolor{blue}{3.9\%} under random matching. Among partnerships with both players in the top 50, the corresponding figures are \textcolor{blue}{35.0\%} and \textcolor{blue}{3.9\%}.  Similar pattern is evident for shared language and linguistic proximity. 
 %Indeed, the raw prevalence of same-nationality partnerships is lower among top-50 and top-100 partnerships than in the full sample, while same-language sorting remains broadly similar.
 
 This fact is important for interpreting the performance results. Cultural similarity is clearly not randomly distributed across partnerships: players who form teams are much more culturally similar than would be expected from the composition of the tournament field alone. The match-performance estimates should therefore not be interpreted as if cultural similarity were randomly assigned. Rather, they describe an association between the cultural composition of an exiting partnership and its subsequent performance. However, these comparisons provide no evidence that the cultural sorting observed is disproportionately driven by the strongest players.
 
 \subsection{Player Ranking and Partner Selection}
 
-We next examine the relationship between a player's own ranking and the cultural similarity of the partnership more directly. For each partnership, we treat each player in turn as the focal player, generating two player-level observations per partnership. This produces 4,178 player-partnership observations from the 2,089 partnerships. Because the same partnership contributes two observations, standard errors are clustered at the partnership level.
+We next examine the relationship between a player's own ranking and the cultural similarity of the partnership more directly. For each partnership, we treat each player in turn as the focal player, generating two player-level observations per partnership. This produces \textcolor{blue}{3,890} player-partnership observations from the \textcolor{blue}{1,945} partnerships. Because the same partnership contributes two observations, standard errors are clustered at the partnership level.
 
 We regress each cultural-similarity measure on the focal player's own doubles ranking as the baseline specification, including tournament-by-year fixed effects. 
 Since the cultural composition of the player pool differs across tournament-years, a player's potential choice set of a culturally similar partner may vary mechanically with the set of players entering the event. We therefore extend the baseline specification to account for the cultural composition in the field, corresponded to each cultural measure, of the tournament field: for each focal player, we compute the share of  \emph{other} players in that tournament-year  sharing the same nationality and language with the focal player,  as well as the analogous mean pairwise value of linguistic proximity against every other player in the field. Formally, for a focal player $i$ entering a tournament-year field $F_t$ of $N$ total entrants, 
@@ -695,10 +695,10 @@ $$
 
 The specification is deliberately parsimonious: the purpose is not to explain partner selection comprehensively, but to test whether the resulting cultural similarity of the partner is correlated with a player's own ability within a given tournament-year.
 
-The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), the coefficient on own ranking is positive and statistically significant for all three measures: 0.000269 for same nationality (p<0.001), \textcolor{blue}{0.000173 for same language (p=0.004)}, and \textcolor{blue}{0.000107 for linguistic proximity (p=0.012; OLS coefficient rather than AME, since this measure is continuous)}. Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
+The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), the coefficient on own ranking is positive and statistically significant for all three measures: \textcolor{blue}{0.000266} for same nationality (p<0.001), \textcolor{blue}{0.000189 for same language (p=0.004)}, and \textcolor{blue}{0.000114 for linguistic proximity (p=0.014; OLS coefficient rather than AME, since this measure is continuous)}. Because a lower doubles-ranking number indicates a stronger player, the positive coefficient means that worse-ranked players are, if anything, more likely to have culturally similar partners.
 
 
-\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves $N=4{,}175$ (from 4,178) throughout.}
+\added{We estimate three specifications: (1) own ranking alone (as above); (2) the outcome-matched field-composition variable alone; and (3) own ranking plus field composition. All three specifications exclude the 3 ego-rows whose own nationality is represented by exactly one player in the ego-row sample, so that a single lone-nationality observation cannot by itself drive any coefficient; this leaves \textcolor{blue}{$N=3{,}887$ (from 3,890)} throughout.}
 
 \begin{table}[htbp]
 \color{red}
@@ -710,24 +710,24 @@ The results are reported in Table~\ref{tab:t9}. In Spec 1 (own ranking alone), t
 Outcome & Variable & Spec 1 & Spec 2 & Spec 3 \\
 \midrule
 \multirow{4}{*}{Same nationality (AME)}
- & own\_rank & 0.000269*** & & 0.000116** \\
- & & (0.000056) & & (0.000053) \\
- & composition & & 3.853*** & 3.756*** \\
- & & & (0.241325) & (0.255403) \\
+ & own\_rank & \textcolor{blue}{0.000266***} & & \textcolor{blue}{0.000104*} \\
+ & & \textcolor{blue}{(0.000060)} & & \textcolor{blue}{(0.000059)} \\
+ & composition & & \textcolor{blue}{3.826***} & \textcolor{blue}{3.734***} \\
+ & & & \textcolor{blue}{(0.272174)} & \textcolor{blue}{(0.290074)} \\
 \addlinespace
 \multirow{4}{*}{Same language (AME)}
- & own\_rank & \textcolor{blue}{0.000173***} & & \textcolor{blue}{0.000141***} \\
- & & \textcolor{blue}{(0.000059)} & & \textcolor{blue}{(0.000054)} \\
- & composition & & \textcolor{blue}{1.253***} & \textcolor{blue}{1.243***} \\
- & & & \textcolor{blue}{(0.083032)} & \textcolor{blue}{(0.084079)} \\
+ & own\_rank & \textcolor{blue}{0.000189***} & & \textcolor{blue}{0.000152**} \\
+ & & \textcolor{blue}{(0.000065)} & & \textcolor{blue}{(0.000059)} \\
+ & composition & & \textcolor{blue}{1.270***} & \textcolor{blue}{1.257***} \\
+ & & & \textcolor{blue}{(0.094932)} & \textcolor{blue}{(0.096450)} \\
 \addlinespace
 \multirow{4}{*}{\textcolor{blue}{Ling.\ proximity (OLS coef.)}}
- & own\_rank & \textcolor{blue}{0.000107**} & & \textcolor{blue}{0.000098***} \\
- & & \textcolor{blue}{(0.000043)} & & \textcolor{blue}{(0.000036)} \\
- & composition & & \textcolor{blue}{1.378***} & \textcolor{blue}{1.375***} \\
- & & & \textcolor{blue}{(0.070657)} & \textcolor{blue}{(0.070942)} \\
+ & own\_rank & \textcolor{blue}{0.000114**} & & \textcolor{blue}{0.000101***} \\
+ & & \textcolor{blue}{(0.000046)} & & \textcolor{blue}{(0.000039)} \\
+ & composition & & \textcolor{blue}{1.370***} & \textcolor{blue}{1.366***} \\
+ & & & \textcolor{blue}{(0.082830)} & \textcolor{blue}{(0.083325)} \\
 \midrule
-\multicolumn{2}{l}{$N$ (focal player)} & 4,175 & 4,175 & 4,175 \\
+\multicolumn{2}{l}{$N$ (focal player)} & \textcolor{blue}{3,887} & \textcolor{blue}{3,887} & \textcolor{blue}{3,887} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -738,7 +738,7 @@ Outcome & Variable & Spec 1 & Spec 2 & Spec 3 \\
 \end{table}
 \FloatBarrier
 
-\added{Field cultural composition alone (Spec 2) is also a strong, highly significant predictor of all three outcomes, as expected, since a player drawn from a tournament field with more compatriots or linguistically similar entrants is mechanically more likely to end up with a culturally similar partner. Adding both own ranking and field composition together (Spec 3) shrinks the own-ranking coefficients by roughly half relative to Spec 1 but leaves them positive and statistically significant for all three outcomes (p$<$0.05 throughout), while the composition coefficient stays close to its Spec 2 magnitude. Own ranking therefore predicts partner similarity \emph{in addition to}, not merely \emph{because of}, the cultural composition of the field a player happens to be drawn from.}
+\added{Field cultural composition alone (Spec 2) is also a strong, highly significant predictor of all three outcomes, as expected, since a player drawn from a tournament field with more compatriots or linguistically similar entrants is mechanically more likely to end up with a culturally similar partner. Adding both own ranking and field composition together (Spec 3) \textcolor{blue}{shrinks the own-ranking coefficient substantially for same nationality (from 0.000266 to 0.000104) and only modestly for same language and linguistic proximity, but leaves it positive and statistically significant for all three outcomes (p$<$0.05 for same language and linguistic proximity; p=0.078 for same nationality)}, while the composition coefficient stays close to its Spec 2 magnitude. Own ranking therefore predicts partner similarity \emph{in addition to}, not merely \emph{because of}, the cultural composition of the field a player happens to be drawn from.}
 
 This result is the opposite of what would be expected if the performance association were primarily generated by stronger players having greater partner choice and systematically selecting culturally similar teammates. Together with the bracket comparisons, the evidence therefore provides no support for the specific selection mechanism in which stronger players disproportionately sort into culturally similar partnerships. It does not, however, eliminate other forms of endogenous partnership formation, and the performance estimates remain associations rather than causal effects.
 
@@ -1049,44 +1049,62 @@ $N$ (per draw) & 1,864 & 1,864 & 1,864 \\
 \section{Disentangling Nationality from Language}
 \label{app:natlang}
 
-\textcolor{blue}{We assume that same nationality implies same language: in this sample, every same-nationality team-obs also has same\_language$=1$ (0 same-nationality/different-language team-obs exist). Under this assumption, the same-nationality-\&-same-language dummy is identical to \texttt{same\_country} (Table~\ref{tab:t3}, column 1), so we do not re-report it. We therefore report only the informative comparison: different nationality \& same language ($N=575$, win rate $0.5565$) versus everyone else ($N=3{,}153$, win rate $0.4897$), e.g.\ Germany/Austria, UK/Australia/US, Spain/Argentina, entered as a single dummy against the full remaining sample (same controls, fixed effects, and clustering as Table~\ref{tab:t3}).}
+\textcolor{blue}{In this sample every same-nationality partnership also shares an official language (no same-nationality/different-language team-observations exist). The two binary measures therefore define three mutually exclusive categories that partition the sample:
+\[
+C_{ij}=\begin{cases}
+0 & \text{different nationality, different language} \quad (N=1{,}619;\ \text{raw win rate } 0.490)\\
+1 & \text{different nationality, same language} \quad (N=575;\ \text{raw win rate } 0.557)\\
+2 & \text{same nationality, same language} \quad (N=1{,}534;\ \text{raw win rate } 0.490)
+\end{cases}
+\]
+ We estimate
+\[
+Y_{ijt}=\delta_1\mathbf{1}(C_{ij}=1)+\delta_2\mathbf{1}(C_{ij}=2)+X_{ijt}'\gamma+FE_t+\varepsilon_{ijt},
+\]
+with category 0 as the reference group and the same controls, fixed effects, and clustering as Table~\ref{tab:t3}. $\delta_1$ measures the association with a shared language across nationalities, $\delta_2$ the association with shared nationality and language, and $\delta_2-\delta_1$ the additional association with same nationality conditional on a shared language.}
 
 \begin{table}[htbp]
+\color{blue}
 \centering
-\caption{Appendix C1 -- Match Win, Different Nationality \& Same Language vs.\ Everyone Else (cf.\ Table~\ref{tab:t3}) \label{tab:c1}}
+\caption{Appendix C1 -- Match Win by Nationality--Language Category (cf.\ Table~\ref{tab:t3}) \label{tab:c1}}
 \begin{threeparttable}
 \begin{tabular}{lc}
 \toprule
- & Diff.\ Nationality \& Same Language \\
+ & Match win \\
 \midrule
-Culture-category dummy & 0.0156 \\
- & (0.0215) \\
+$\delta_1$: Different nationality \& same language & 0.0353 \\
+ & (0.0227) \\
+$\delta_2$: Same nationality \& same language & 0.0449$^{***}$ \\
+ & (0.0173) \\
 Own avg. doubles ranking & $-$0.0007$^{***}$ \\
  & (0.0001) \\
 Opponent avg. doubles ranking & 0.0007$^{***}$ \\
  & (0.0001) \\
-Top-100 singles player (0,1) & $-$0.0010 \\
- & (0.0314) \\
-Team avg. professional years & 0.0037$^{**}$ \\
+Top-100 singles player (0,1) & $-$0.0036 \\
+ & (0.0315) \\
+Team avg. professional years & 0.0043$^{***}$ \\
  & (0.0017) \\
-Team avg. professional years$^2$ & $-$0.0007$^{***}$ \\
+Team avg. professional years$^2$ & $-$0.0008$^{***}$ \\
  & (0.0002) \\
+\midrule
+$\delta_2-\delta_1$ & 0.0096 \\
+ & (0.0237) \\
 \midrule
 Tournament $\times$ year FE & Yes \\
 Round FE & Yes \\
-Pseudo-$R^2$ & 0.095 \\
+Pseudo-$R^2$ & 0.097 \\
 $N$ & 3,728 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \small
-\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Standard errors in parentheses, clustered by match.
+\item *** p$<$0.01, ** p$<$0.05, * p$<$0.10. Average marginal effects; standard errors in parentheses, clustered by match. Reference category: different nationality \& different language. $p$-values: $\delta_1$ 0.119, $\delta_2$ 0.010, $\delta_2-\delta_1$ 0.687 (delta method on the AME scale; a Wald test of $\delta_2=\delta_1$ on the logit coefficients gives the same $p=0.687$).
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 \FloatBarrier
 
-\textcolor{blue}{The performance association does not survive for different-nationality/same-language partnerships when tested against the full remaining sample ($p=0.467$) -- only the same-nationality category (Table~\ref{tab:t3}, column 1, $p=0.028$) is significant. This is evidence against a purely communication/language-driven channel and is more consistent with nationality-specific mechanisms (shared sporting institutions, geographic proximity, prior junior-circuit exposure).}
+\textcolor{blue}{Relative to fully mixed partnerships, same-nationality partnerships are 4.5 percentage points more likely to win ($p=0.010$). Partnerships of different nationalities that share a language are 3.5 percentage points more likely to win; this is about 80\% of the same-nationality association, but it is imprecisely estimated ($p=0.119$), reflecting the small size of this group ($N=575$). The additional association with same nationality, conditional on a shared language ($\delta_2-\delta_1$), is small (0.010) and far from significant ($p=0.687$). The data therefore cannot separate a language/communication channel from a broader national channel. If anything, the point estimates suggest that most of the association is shared with partnerships that have a common language but different nationalities, but neither comparison is precise enough to rule out the other.}
 
 
 \bibliographystyle{apalike}

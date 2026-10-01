@@ -339,33 +339,41 @@
 
 <h3 style="color:blue">Table 3-NATLANG — Robustness: Disentangling Nationality from Language &nbsp;|&nbsp; N = 3,728 team-obs &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
 <p style="color:blue">
-  Per Lingqing's request (2026-09-02): <code>same_country</code> and <code>same_language</code> are correlated
-  in one direction in this sample — every same-nationality team-obs also has same-language=1 (confirmed 0
-  same-nationality/different-language team-obs), so Table 3 alone cannot tell whether the cultural-similarity
-  result is driven by shared nationality specifically or has a broader language/communication component. We
-  define three mutually exclusive, exhaustive categories — same nationality &amp; same language, different
-  nationality &amp; same language (e.g. Germany/Austria, UK/Australia/US, Spain/Argentina), and different
-  nationality &amp; different language. The same-nationality &amp; same-language dummy is identical to
-  <code>same_country</code> (Table 3 column 1) since same_country=1 always implies same_language=1 in this
-  sample, so it is not re-reported here — the informative new spec is the one below, testing
-  different-nationality/same-language against the full remaining sample (same controls/FE/clustering as
-  Table 3).
+  Per Lingqing's request (2026-09-02): <code>same_country</code> and <code>same_language</code> are nested
+  in this sample — every same-nationality team-obs also has same-language=1 (confirmed 0
+  same-nationality/different-language team-obs) — so Table 3 alone cannot tell whether the cultural-similarity
+  result is driven by shared nationality specifically or has a broader language/communication component. The
+  two measures define three mutually exclusive, exhaustive categories: <strong>C=0</strong> different
+  nationality &amp; different language (reference), <strong>C=1</strong> different nationality &amp; same
+  language (e.g. Germany/Austria, UK/Australia/US, Spain/Argentina), and <strong>C=2</strong> same
+  nationality &amp; same language. <strong>Updated 2026-10-01:</strong> both dummies are now entered
+  jointly in one logit (same controls/FE/clustering as Table 3):
+  win = δ<sub>1</sub>·1(C=1) + δ<sub>2</sub>·1(C=2) + X′γ + FE.
+  δ<sub>1</sub> = shared language across nationalities; δ<sub>2</sub> = shared nationality + language;
+  δ<sub>2</sub> − δ<sub>1</sub> = additional association with same nationality <em>conditional on</em> same
+  language. This replaces the earlier one-dummy-at-a-time version, which tested C=1 against "everyone else" —
+  a reference group that also contained the same-nationality teams and so biased δ<sub>1</sub> toward zero
+  (+0.0156, p=0.467 there).
 </p>
 <p style="color:blue">
-  <strong>Descriptives (N and raw win rate):</strong> same nationality &amp; same language: N=1,534, win
-  rate=0.4896. Different nationality &amp; same language: N=575, win rate=0.5565. Different nationality &amp;
-  different language: N=1,619, win rate=0.4898.
+  <strong>Descriptives (N and raw win rate):</strong> C=0 different nationality &amp; different language:
+  N=1,619, win rate=0.4898. C=1 different nationality &amp; same language: N=575, win rate=0.5565.
+  C=2 same nationality &amp; same language: N=1,534, win rate=0.4896.
 </p>
 <table style="color:blue">
   <thead>
     <tr><th style="width:60%">Variable</th>
-        <th class="num">Diff. Nat. &amp; Same Lang.<br><span style="font-weight:normal">vs. everyone else</span></th></tr>
+        <th class="num">Match win<br><span style="font-weight:normal">reference: C=0</span></th></tr>
   </thead>
   <tbody>
-    <tr><td>Culture-category dummy</td>
-        <td class="num">+0.0156</td></tr>
+    <tr><td>δ<sub>1</sub>: Different nationality &amp; same language</td>
+        <td class="num">+0.0353</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0215)<br>p=0.467</td></tr>
+        <td class="num">(0.0227)<br>p=0.119</td></tr>
+    <tr><td>δ<sub>2</sub>: Same nationality &amp; same language</td>
+        <td class="num">+0.0449<sup>***</sup></td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0173)<br>p=0.010</td></tr>
     <tr><td>Team avg. doubles rank</td>
         <td class="num">−0.0007<sup>***</sup></td></tr>
     <tr class="se"><td></td>
@@ -375,33 +383,37 @@
     <tr class="se"><td></td>
         <td class="num">(0.0001)<br>p=0.000</td></tr>
     <tr><td>Top-100 singles player</td>
-        <td class="num">−0.0010</td></tr>
+        <td class="num">−0.0036</td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0314)<br>p=0.974</td></tr>
+        <td class="num">(0.0315)<br>p=0.909</td></tr>
     <tr><td>Team avg. yrs since turning pro</td>
-        <td class="num">+0.0037<sup>**</sup></td></tr>
+        <td class="num">+0.0043<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0017)<br>p=0.029</td></tr>
+        <td class="num">(0.0017)<br>p=0.010</td></tr>
     <tr><td>Yrs since turning pro, squared</td>
-        <td class="num">−0.0007<sup>***</sup></td></tr>
+        <td class="num">−0.0008<sup>***</sup></td></tr>
     <tr class="se"><td></td>
-        <td class="num">(0.0002)<br>p=0.002</td></tr>
+        <td class="num">(0.0002)<br>p=0.001</td></tr>
+    <tr><td><strong>δ<sub>2</sub> − δ<sub>1</sub></strong> (same nationality | same language)</td>
+        <td class="num">+0.0096</td></tr>
+    <tr class="se"><td></td>
+        <td class="num">(0.0237)<br>p=0.687</td></tr>
     <tr class="bg"><td>Pseudo-R²</td>
-        <td class="num">0.095</td></tr>
+        <td class="num">0.097</td></tr>
   </tbody>
 </table>
 <p class="note" style="color:blue">
   <sup>***</sup>&nbsp;p&lt;0.01 &nbsp;<sup>**</sup>&nbsp;p&lt;0.05 &nbsp;<sup>*</sup>&nbsp;p&lt;0.10.
-  Clustered SE. FE: tournament×year, round. N=3,728. <strong>Key result: the performance association does
-  not survive for different-nationality/same-language partnerships when tested against the full remaining
-  sample (AME=+0.0156, p=0.467)</strong> — only the same-nationality category (Table 3 column 1,
-  AME=+0.0361, p=0.028) is significant. This is evidence against a purely communication/language-driven
-  channel and is more consistent with nationality-specific mechanisms (shared sporting institutions,
-  geographic proximity, prior junior-circuit exposure). Note this result is even weaker than the earlier
-  joint 3-category specification (AME=+0.0353, p=0.119 there), because here the reference group also
-  absorbs the same-nationality teams rather than excluding them. Mirrors the notebook cell "4a-0.
-  Robustness: Disentangling Nationality from Language" and <code>homophily.do</code>'s TABLE 3-NATLANG
-  block exactly (N=3,728; same AME/SE/p-value).
+  Clustered SE. FE: tournament×year, round. N=3,728. δ<sub>2</sub> − δ<sub>1</sub> tested on the AME scale
+  via the delta method (a Wald test of δ<sub>2</sub> = δ<sub>1</sub> on the logit coefficients gives the same
+  p=0.687). <strong>Key result:</strong> relative to fully mixed teams, same-nationality teams are 4.5 pp more
+  likely to win (p=0.010) and different-nationality/same-language teams 3.5 pp more likely (p=0.119) — about
+  80% of the same-nationality association, but imprecise given only 575 team-obs in that group. The extra
+  association with same nationality conditional on shared language is small and insignificant (+0.0096,
+  p=0.687). The data therefore <strong>cannot separate</strong> a language/communication channel from a broader
+  national channel; if anything, most of the point estimate is shared with same-language, different-nationality
+  teams. Mirrors the notebook cell "4a-0. Robustness: Disentangling Nationality from Language" and
+  <code>homophily.do</code>'s TABLE 3-NATLANG block (N=3,728; same AME/SE/p-values).
 </p>
 
 <h3>Table 4 — Outcome: Tiebreak Win &nbsp;|&nbsp; Unit: team × tiebreak &nbsp;|&nbsp; AME (d<em>P</em>/d<em>x</em>)</h3>
