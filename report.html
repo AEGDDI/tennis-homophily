@@ -663,7 +663,7 @@
     new specification.</li>
   <li><strong>Random-one-team spec</strong>: for each match (Table 3) / each specific tiebreak
     (Table 4), keep only one team's row via a coin flip, removing the mechanical
-    complementarity entirely. Repeated over 10 random seeds, since any single draw is
+    complementarity entirely. Repeated over 100 random seeds, since any single draw is
     arbitrary. Robust (HC1) SE for Table 3 (exactly one row per match after de-duplication, so
     no clustering unit remains); SE stays clustered by <code>match_id</code> for Table 4 (a
     match can still contribute more than one tiebreak-row after de-duplication).</li>
@@ -673,7 +673,7 @@
 <p>
   The no-intercept spec reproduces Table 3 and Table 4 <strong>exactly</strong> — same AMEs,
   same SEs, same p-values, same log-likelihood to three decimals (e.g. same-nationality
-  match-win LL = −2352.768 under both parameterizations). Dropping the intercept changes
+  match-win LL = −2335.757 under both parameterizations). Dropping the intercept changes
   nothing here; it is confirmed to be a pure relabeling of the same fixed-effects structure,
   not an alternative model.
 </p>
@@ -683,29 +683,34 @@
   <thead>
     <tr><th style="width:20%">Outcome</th><th>Culture measure</th>
         <th class="num">Baseline AME</th>
-        <th class="num">Random-one: mean AME (range, 10 seeds)</th>
+        <th class="num">Random-one: mean AME (range, 100 seeds)</th>
         <th class="num">Significant (p&lt;.05)</th></tr>
   </thead>
   <tbody>
     <tr><td rowspan="3">Match win<br><span class="se">(N=1,864 per draw)</span></td>
         <td>Same nationality</td><td class="num">+0.0361<sup>**</sup></td>
-        <td class="num">+0.0466&nbsp;[+0.0161,&nbsp;+0.0812]</td><td class="num">5/10</td></tr>
+        <td class="num">+0.0324&nbsp;[−0.0081,&nbsp;+0.0812]</td><td class="num">20/100</td></tr>
     <tr><td>Same language</td><td class="num" style="color:blue">+0.0420<sup>***</sup></td>
-        <td class="num" style="color:blue">+0.0477&nbsp;[+0.0215,&nbsp;+0.0847]</td><td class="num" style="color:blue">6/10</td></tr>
-    <tr><td>Lang. proximity</td><td class="num">+0.0419<sup>***</sup></td>
-        <td class="num">+0.0471&nbsp;[+0.0156,&nbsp;+0.0859]</td><td class="num">6/10</td></tr>
+        <td class="num" style="color:blue">+0.0387&nbsp;[−0.0034,&nbsp;+0.0847]</td><td class="num" style="color:blue">39/100</td></tr>
+    <tr><td>Lang. proximity (prox1)</td><td class="num">+0.0501<sup>**</sup></td>
+        <td class="num">+0.0477&nbsp;[+0.0010,&nbsp;+0.1057]</td><td class="num">32/100</td></tr>
     <tr><td rowspan="3">Tiebreak win<br><span class="se">(N≈1,177 per draw)</span></td>
         <td>Same nationality</td><td class="num">+0.0308 (n.s.)</td>
-        <td class="num">+0.0174&nbsp;[−0.0305,&nbsp;+0.0592]</td><td class="num">1/10</td></tr>
+        <td class="num">+0.0304&nbsp;[−0.0305,&nbsp;+0.0746]</td><td class="num">7/100</td></tr>
     <tr><td>Same language</td><td class="num" style="color:blue">+0.0087 (n.s.)</td>
-        <td class="num" style="color:blue">−0.0046&nbsp;[−0.0419,&nbsp;+0.0506]</td><td class="num">0/10</td></tr>
-    <tr><td>Lang. proximity</td><td class="num">+0.0026 (n.s.)</td>
-        <td class="num">−0.0107&nbsp;[−0.0526,&nbsp;+0.0433]</td><td class="num">0/10</td></tr>
+        <td class="num" style="color:blue">+0.0077&nbsp;[−0.0419,&nbsp;+0.0677]</td><td class="num">3/100</td></tr>
+    <tr><td>Lang. proximity (prox1)</td><td class="num">+0.0388 (n.s.)</td>
+        <td class="num">+0.0381&nbsp;[−0.0399,&nbsp;+0.1175]</td><td class="num">8/100</td></tr>
   </tbody>
 </table>
 <p class="note">
-  All 10 tiebreak seeds converge in every spec (no singular-Hessian failures with the
-  corrected, qualifying-round-excluded tiebreak panel).
+  All 100 tiebreak seeds converge in every spec (no singular-Hessian failures with the
+  corrected, qualifying-round-excluded tiebreak panel). The linguistic-proximity rows use the
+  continuous <code>prox1</code> measure (as in <code>main.tex</code>), so their baseline is the
+  <code>prox1</code> AME (+0.0501 match win, +0.0388 tiebreak), not the binary column-(3)
+  estimate in Tables 3–4 above. An earlier 10-seed version of this check (seeds 0–9) happened
+  to draw favourably (e.g. same-nationality mean +0.0466, 5/10 significant); the 100-seed
+  version reported here is the more reliable summary.
 </p>
 <p class="note">
   <strong>Note on cross-checking against Stata:</strong> the no-intercept check above is a
@@ -717,19 +722,19 @@
   Stata. Re-running the check in Stata (2026-08-19) confirms the same qualitative pattern —
   match-win estimates stay positive-signed with reduced power, and the tiebreak result stays
   null throughout — but with different individual draws (e.g. Stata hit zero convergence
-  failures across its 10 tiebreak seeds, and its tiebreak same-language mean AME came out
-  slightly negative rather than slightly positive). Since the tiebreak baseline itself is a
-  null, near-zero estimate, this sign wobble across engines is noise around zero, not a
-  disagreement about the finding.
+  failures across its 10 tiebreak seeds). Since the tiebreak baseline itself is a null
+  estimate, any sign wobble across engines is noise around zero, not a disagreement about the
+  finding. The Stata block now also runs 100 seeds and needs to be re-run for the cross-check.
 </p>
 <p class="note">
-  Every point estimate keeps the same sign and a broadly similar magnitude to its
-  baseline — there is no evidence the two-rows-per-match design was manufacturing the
-  effect. What changes is <strong>power</strong>: halving the sample inflates SEs by
-  roughly √2, enough to push several draws below the 5% threshold — most visibly for
-  same-nationality, already the weakest of the three culture measures at p=0.021 in the
-  full sample, while same-language (p=0.002 at baseline, the strongest) stays significant
-  in half the draws even with half the data. The tiebreak table's null result stays null
+  Every match-win mean AME stays positive and close to its baseline (0.0324 vs 0.0361,
+  0.0387 vs 0.0420, 0.0477 vs 0.0501) — there is no evidence the two-rows-per-match design
+  was manufacturing the effect. What changes is <strong>power</strong>: halving the sample
+  inflates the mean SE by almost exactly √2 (0.0230 vs 0.0164 for same nationality, 0.0221
+  vs 0.0157 for same language, 0.0283 vs 0.0202 for prox1), so individual draws reach the 5%
+  level in only 20–39% of cases — least often for same nationality, already the weakest of
+  the three measures at p=0.028 in the full sample, most often for same language (p=0.007
+  at baseline). The tiebreak table's null result stays null
   either way. <strong>Conclusion:</strong> the stacked-both-rows + match-clustered design
   already used throughout this report is the correct and more efficient choice — the
   standard fix in the paired/matched-data literature — and the random-one-team check

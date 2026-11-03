@@ -1238,7 +1238,7 @@ margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_me
 * (double-counting check, Option 1 from Lingqing's 2026-08-18 email)
 * For each match, keep only one team's row (coin flip) -- removes the mechanical
 * win/lose complementarity entirely, so no clustering is needed; robust (vce(robust),
-* HC1-style) SE used instead. Repeated over 10 seeds since a single draw is arbitrary.
+* HC1-style) SE used instead. Repeated over 100 seeds since a single draw is arbitrary.
 * Draw is one random uniform PER MATCH (generated on one row, then propagated to both
 * rows of that match via egen max), not one per row -- otherwise the two rows of a
 * match could independently both survive or both be dropped, which is not what
@@ -1247,15 +1247,15 @@ margins, dydx(ling_prox rank_mean opp_rank_mean single_top100 exp_mean_dm exp_me
 display ""
 display "=== TABLE 3-RANDONE. Match Win — Logit, one randomly-selected team per match ==="
 display "Each match contributes exactly one row (winner or loser, 50/50 coin flip); no"
-display "clustering needed (one row per match). Robust SE. 10 random seeds."
+display "clustering needed (one row per match). Robust SE. 100 random seeds."
 display ""
 
 tempfile randone_results
 tempname rr
-postfile `rr' str24 cvar seed double ame double pval using "`randone_results'", replace
+postfile `rr' str24 cvar seed double ame double se double pval double pr2 using "`randone_results'", replace
 
 foreach cvar in same_country same_language ling_prox {
-    forvalues seed = 0/9 {
+    forvalues seed = 0/99 {
         preserve
         set seed `seed'
         tempvar u u_match keep_row
@@ -1265,20 +1265,21 @@ foreach cvar in same_country same_language ling_prox {
         keep if `keep_row'
 
         quietly logit win `cvar' rank_mean opp_rank_mean single_top100 exp_mean_dm exp_mean_dm_sq i.ty i.stage_code, vce(robust)
+        local pr2_ = e(r2_p)
         quietly margins, dydx(`cvar')
         matrix b = r(b)
         matrix V = r(V)
         local ame_ = b[1,1]
         local se_  = sqrt(V[1,1])
         local p_   = 2*(1 - normal(abs(`ame_'/`se_')))
-        post `rr' ("`cvar'") (`seed') (`ame_') (`p_')
+        post `rr' ("`cvar'") (`seed') (`ame_') (`se_') (`p_') (`pr2_')
         restore
     }
 }
 postclose `rr'
 
 display ""
-display "--- Table 3-RANDONE summary across 10 random draws ---"
+display "--- Table 3-RANDONE summary across 100 random draws ---"
 preserve
 use "`randone_results'", clear
 foreach cvar in same_country same_language ling_prox {
@@ -1287,9 +1288,13 @@ foreach cvar in same_country same_language ling_prox {
     local sd_a   = r(sd)
     local min_a  = r(min)
     local max_a  = r(max)
+    quietly summarize se if cvar=="`cvar'"
+    local mean_se = r(mean)
+    quietly summarize pr2 if cvar=="`cvar'"
+    local mean_pr2 = r(mean)
     quietly count if cvar=="`cvar'" & pval<0.05
     local nsig = r(N)
-    display "`cvar': mean AME=" %6.4f `mean_a' "  sd=" %6.4f `sd_a' "  range=[" %6.4f `min_a' ", " %6.4f `max_a' "]  significant in `nsig'/10 draws"
+    display "`cvar': mean AME=" %6.4f `mean_a' "  mean SE=" %6.4f `mean_se' "  sd=" %6.4f `sd_a' "  range=[" %6.4f `min_a' ", " %6.4f `max_a' "]  significant in `nsig'/100 draws  mean pseudo-R2=" %5.3f `mean_pr2'
 }
 restore
 
@@ -1679,7 +1684,7 @@ tempname rr2
 postfile `rr2' str24 cvar seed double ame double pval using "`randone_results_tb'", replace
 
 foreach cvar in same_country same_language ling_prox {
-    forvalues seed = 0/9 {
+    forvalues seed = 0/99 {
         preserve
         set seed `seed'
         tempvar u u_tb keep_row
@@ -1725,7 +1730,7 @@ foreach cvar in same_country same_language ling_prox {
     local max_a  = r(max)
     quietly count if cvar=="`cvar'" & pval<0.05
     local nsig = r(N)
-    display "`cvar': `nok'/10 converged  mean AME=" %6.4f `mean_a' "  sd=" %6.4f `sd_a' "  range=[" %6.4f `min_a' ", " %6.4f `max_a' "]  significant in `nsig'/`nok' draws"
+    display "`cvar': `nok'/100 converged  mean AME=" %6.4f `mean_a' "  sd=" %6.4f `sd_a' "  range=[" %6.4f `min_a' ", " %6.4f `max_a' "]  significant in `nsig'/`nok' draws"
 }
 restore
 
